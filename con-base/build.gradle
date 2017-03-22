@@ -1,0 +1,5 @@
+jar {
+    version = '0.0.1-SNAPSHOT'
+    baseName = 'con-base'
+    bootRepackage.enabled = false
+}
