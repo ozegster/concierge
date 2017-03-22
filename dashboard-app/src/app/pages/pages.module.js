@@ -1,19 +1,15 @@
-/**
- * @author v.lugovsky
- * created on 16.12.2015
- */
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.pages', [
+  angular.module('ConciergeApp.pages', [
     'ui.router',
 
-    'BlurAdmin.pages.dashboard',
+    'ConciergeApp.pages.dashboard'
   ])
       .config(routeConfig);
 
   /** @ngInject */
-  function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
+  function routeConfig($urlRouterProvider) {
     $urlRouterProvider.otherwise('/dashboard');
   }
 

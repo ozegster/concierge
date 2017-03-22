@@ -1,15 +1,11 @@
-/**
- * @author v.lugovksy
- * created on 16.12.2015
- */
 (function () {
   'use strict';
 
-  angular.module('BlurAdmin.theme.components')
+  angular.module('ConciergeApp.theme.components')
       .directive('contentTop', contentTop);
 
   /** @ngInject */
-  function contentTop($location, $state) {
+  function contentTop($state) {
     return {
       restrict: 'E',
       templateUrl: 'app/theme/components/contentTop/contentTop.html',

@@ -1,13 +1,9 @@
-/**
- * @author v.lugovsky
- * created on 15.12.2015
- */
 (function () {
   'use strict';
 
   var IMAGES_ROOT = 'assets/img/';
 
-  angular.module('BlurAdmin.theme')
+  angular.module('ConciergeApp.theme')
     .constant('layoutSizes', {
       resWidthCollapseSidebar: 1200,
       resWidthHideSidebar: 500
@@ -26,16 +22,8 @@
       },
       shade: function(color, weight) {
         return mix('#000000', color, weight);
-      },
+      }
     });
-
-  function shade(color, weight) {
-    return mix('#000000', color, weight);
-  }
-
-  function tint(color, weight) {
-    return mix('#ffffff', color, weight);
-  }
 
   //SASS mix function
   function mix(color1, color2, weight) {

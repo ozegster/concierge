@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('BlurAdmin', [
+angular.module('ConciergeApp', [
   'ngAnimate',
   'ui.bootstrap',
   'ui.sortable',
@@ -11,8 +11,7 @@ angular.module('BlurAdmin', [
   "xeditable",
   'ui.slimscroll',
   'ngJsTree',
-  'angular-progress-button-styles',
 
-  'BlurAdmin.theme',
-  'BlurAdmin.pages'
+  'ConciergeApp.theme',
+  'ConciergeApp.pages'
 ]);
