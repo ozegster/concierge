@@ -4,7 +4,8 @@
   angular.module('ConciergeApp.pages', [
     'ui.router',
 
-    'ConciergeApp.pages.dashboard'
+    'ConciergeApp.pages.dashboard',
+    'ConciergeApp.pages.empty'
   ])
       .config(routeConfig);
 
