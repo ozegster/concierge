@@ -1,85 +1,122 @@
-<div class="container" ng-controller="HotelInfoCtrl as ctrl">
+<div class="container-fluid" ng-controller="HotelInfoCtrl as ctrl">
     <form id="hotel-info-form" name="hotelInfo" ng-submit="ctrl.submit()">
 
         <div id="general-info" class="col-md-12">
-            <div class="form-group">
-                <h3 class="col-md-12">GENERAL INFO</h3>
 
-                <div class="col-md-6  form-group">
-                    <label for="name">Hotel name</label>
-                    <input class="form-control" id="name" type="text" ng-model="ctrl.hotel.name">
+            <div class="border">
+                <div>
+                    <h3>GENERAL INFO</h3>
                 </div>
-                <div class="col-md-6 form-group">
+            </div>
 
-                    <input type="radio" name="rating" value="1" ng-model="ctrl.hotel.rating">
-                    <input type="radio" name="rating" value="2" ng-model="ctrl.hotel.rating">
-                    <input type="radio" name="rating" value="3" ng-model="ctrl.hotel.rating">
-                    <input type="radio" name="rating" value="4" ng-model="ctrl.hotel.rating">
-                    <input type="radio" name="rating" value="5" ng-model="ctrl.hotel.rating">
+            <div class="border bottom">
+                <div class="row form-inline">
+                    <div class="col-md-6  form-group">
+                        <label for="name">Hotel name</label>
+                        <input class="form-control" id="name" type="text" ng-model="ctrl.hotel.name">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stars">
 
+                        <input class="star star-5" id="star-5" type="radio" name="rating" value="5" ng-model="ctrl.hotel.rating">
+                        <label class="star star-5" for="star-5"></label>
+                        <input class="star star-4" id="star-4" type="radio" name="rating" value="4" ng-model="ctrl.hotel.rating">
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" id="star-3" type="radio" name="rating" value="3" ng-model="ctrl.hotel.rating">
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" id="star-2" type="radio" name="rating" value="2" ng-model="ctrl.hotel.rating">
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" id="star-1" type="radio" name="rating" value="1" ng-model="ctrl.hotel.rating">
+                        <label class="star star-1" for="star-1"></label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="col-md-12">
-            <div id="address" class="col-md-6">
-                <h3>ADDRESS</h3>
+            <div class="row">
+                <div class="col-md-6" id="address">
+                    <div class="border">
+                        <h3>ADDRESS</h3>
+                    </div>
+                    <div class="border bottom">
+                        <div class="form-group">
+                            <label for="street-and-number">Street and number</label>
+                            <input class="form-control" id="street-and-number" type="text"
+                                   ng-model="ctrl.hotel.streetAndNumber">
+                        </div>
+                        <div class="row form-inline">
+                            <div class="form-group col-md-6">
+                                <label for="zip">ZIP</label>
+                                <input class="form-control" id="zip" type="text" ng-model="ctrl.hotel.zip">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="city">City</label>
+                                <input class="form-control" id="city" type="text" ng-model="ctrl.hotel.city">
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label for="street-and-number">Street and number</label>
-                    <input class="form-control" id="street-and-number" type="text"
-                           ng-model="ctrl.hotel.streetAndNumber">
+                        <div class="row">
+                            <div class="form-group  col-md-12">
+                                <label for="country">Country</label>
+                                <select class="form-control" id="country" ng-model="ctrl.hotel.country"
+                                        ng-options="country for country in ctrl.countries"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="contact-info" class="col-md-6">
+                    <div class="border">
+                        <h3>CONTACT INFO</h3>
+                    </div>
+                    <div class="border bottom">
+                        <div class="row form-inline">
+                            <div class="form-group col-md-6">
+                                <label for="phone">Phone</label>
+                                <input class="form-control" id="phone" type="text" ng-model="ctrl.hotel.phone">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="fax">Fax</label>
+                                <input class="form-control" id="fax" type="text" ng-model="ctrl.hotel.fax">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input class="form-control" id="email" type="email" ng-model="ctrl.hotel.email">
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input class="form-control" id="website" type="text" ng-model="ctrl.hotel.website">
+                        </div>
+                    </div>
                 </div>
 
 
-                <div class="form-group">
-                    <label for="zip">ZIP</label>
-                    <input class="form-control" id="zip" type="text" ng-model="ctrl.hotel.zip">
-                </div>
-                <div class="form-group">
-                    <label for="city">City</label>
-                    <input class="form-control" id="city" type="text" ng-model="ctrl.hotel.city">
-                </div>
-
-
-                <div class="form-group">
-                    <label for="country">Country</label>
-                    <select class="form-control" id="country" ng-model="ctrl.hotel.country"
-                            ng-options="country for country in ctrl.countries"></select>
-                </div>
-
-            </div>
-            <div id="contact-info" class="col-md-6">
-                <h3>CONTACT INFO</h3>
-
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input class="form-control" id="phone" type="text" ng-model="ctrl.hotel.phone">
-                </div>
-                <div class="form-group">
-                    <label for="fax">Fax</label>
-                    <input class="form-control" id="fax" type="text" ng-model="ctrl.hotel.fax">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input class="form-control" id="email" type="email" ng-model="ctrl.hotel.email">
-                </div>
-                <div class="form-group">
-                    <label for="website">Website</label>
-                    <input class="form-control" id="website" type="url" ng-model="ctrl.hotel.website">
-                </div>
             </div>
         </div>
-        <div class="col-md-12">
-            <div id="description" class="col-md-12">
+
+        <div id="description" class="col-md-12">
+            <div class="border">
                 <div class="form-group">
                     <h3>DESCRIPTION</h3>
-                    <textarea form="hotel-info-form" class="form-control" name="description"
-                              ng-model="ctrl.hotel.description"></textarea>
                 </div>
-                <div class="form-group pull-right">
-                    <button type="submit" class="btn btn-default">Save</button>
+            </div>
+            <div class="border">
+                <div class="form-group">
+                <textarea form="hotel-info-form" class="form-control" name="description"
+                          ng-model="ctrl.hotel.description"></textarea>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row col-md-12">
+            <div class="form-group">
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>
