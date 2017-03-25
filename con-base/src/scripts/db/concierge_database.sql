@@ -59,3 +59,22 @@ INSERT INTO `concierge`.`country` VALUES (50,'Ukraine');
 INSERT INTO `concierge`.`country` VALUES (51,'Vatican City');
 
 
+DROP TABLE IF EXISTS `hotel`;
+
+CREATE TABLE `hotel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rating` tinyint(4) NOT NULL,
+  `address` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `zip` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `phone` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fax` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `website` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_hotel_idx` (`country_id`),
+  CONSTRAINT `fk_hotel` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
