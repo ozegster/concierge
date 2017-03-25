@@ -3,23 +3,19 @@ package ba.codecentric.base.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "countries")
-public class Countries {
+@Table(name = "country")
+public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "country_id")
-    private int countryId;
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "name")
     private String name;
 
-    public int getCountryId() {
-        return countryId;
-    }
-
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -30,11 +26,16 @@ public class Countries {
         this.name = name;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
     @Override
     public String toString() {
-        return "Countries{" +
-                "countryId=" + countryId +
+        return "Country{" +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
     }
+
+
 }
