@@ -10,15 +10,9 @@ buildscript {
 	}
 }
 
-
-
-
 task wrapper(type: Wrapper) {
 	gradleVersion = '3.1'
 }
-
-
-
 
 subprojects {
 	apply plugin: 'java'
@@ -28,9 +22,6 @@ subprojects {
 	repositories {
 		mavenCentral()
 	}
-
-
-	
 
 	dependencies {
 		compile('org.springframework.boot:spring-boot-starter-web')
