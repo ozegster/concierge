@@ -1,6 +1,5 @@
 CREATE SCHEMA `concierge` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
 
-DROP TABLE IF EXISTS `concierge`.`continents`;
 CREATE TABLE `concierge`.`country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
