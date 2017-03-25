@@ -1,0 +1,38 @@
+.border {
+  border: solid;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.bottom {
+  margin-bottom: 15px;
+}
+
+div.stars {
+  //width: 270px;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+}
+
+input.star {
+  display: none;
+}
+
+label.star {
+  float: right;
+  padding: 10px;
+  font-size: 40px;
+  color: #D3D3D3;
+}
+
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #000000;
+}
+
+label.star:before {
+  content: '\f005';
+  font-family: FontAwesome;
+
+}

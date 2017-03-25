@@ -1,17 +1,19 @@
 (function () {
-  'use strict';
+    'use strict';
 
-  angular.module('ConciergeApp.pages', [
-    'ui.router',
+    angular.module('ConciergeApp.pages', [
+        'ui.router',
 
-    'ConciergeApp.pages.dashboard',
-    'ConciergeApp.pages.empty'
-  ])
-      .config(routeConfig);
+        'ConciergeApp.pages.dashboard',
+        'ConciergeApp.pages.empty',
+        'ConciergeApp.pages.hotelinfo'
 
-  /** @ngInject */
-  function routeConfig($urlRouterProvider) {
-    $urlRouterProvider.otherwise('/dashboard');
-  }
+    ])
+        .config(routeConfig);
+
+    /** @ngInject */
+    function routeConfig($urlRouterProvider) {
+        $urlRouterProvider.otherwise('/dashboard');
+    }
 
 })();
