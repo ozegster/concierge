@@ -4,3 +4,12 @@ jar {
     bootRepackage.enabled = false
 }
 
+
+
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    runtime('mysql:mysql-connector-java')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
