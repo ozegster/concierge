@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('ConciergeApp.pages.hotelinfo', [])
+    angular.module('ConciergeApp.pages.hotelinfo', ['ui.select', 'ngSanitize'])
         .config(routeConfig);
 
 
@@ -14,9 +14,9 @@
                 title: 'Hotel info',
                 sidebarMeta: {
                     icon: 'fa fa-info',
-                    order: 250
+                    order: 0
                 }
-            });
+            })
     }
 
 })();
