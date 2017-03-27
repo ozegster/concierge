@@ -45,10 +45,6 @@ public class Hotel {
     private Country country;
 
 
-    public Hotel() {
-    }
-
-
     public Integer getId() {
         return id;
     }
