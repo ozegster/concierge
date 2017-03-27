@@ -7,47 +7,46 @@ public class Hotel {
 
     @Id
     @GeneratedValue
-    @Column(name="id")
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="rating")
+    @Column(name = "rating")
     private int rating;
 
-    @Column(name="address")
+    @Column(name = "address")
     private String address;
 
-    @Column(name="zip")
+    @Column(name = "zip")
     private String zip;
 
-    @Column(name="city")
+    @Column(name = "city")
     private String city;
 
-    @Column(name="country_id")
-    private int country_id;
-
-    @Column(name="phone")
+    @Column(name = "phone")
     private String phone;
 
-    @Column(name="fax")
+    @Column(name = "fax")
     private String fax;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name="website")
+    @Column(name = "website")
     private String website;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 
     @ManyToOne
+    @JoinColumn(name = "country_id")
     private Country country;
 
 
-    public Hotel(){}
+    public Hotel() {
+    }
 
 
     public Integer getId() {
@@ -96,14 +95,6 @@ public class Hotel {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public int getCountry_id() {
-        return country_id;
-    }
-
-    public void setCountry_id(int country_id) {
-        this.country_id = country_id;
     }
 
     public String getPhone() {
@@ -155,9 +146,9 @@ public class Hotel {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Id: " + this.getId() + ", Name: " + this.getName() + " , Rating: " + this.getRating() + " ,Address: " + this.getAddress() +
-                " ,Zip: " + this.getZip() + " ,City: " + this.getCity() + " ,Country_Id: " + this.getCountry_id() +
+                " ,Zip: " + this.getZip() + " ,City: " + this.getCity() +
                 " ,Phone: " + this.getPhone() + " ,Fax: " + this.getFax() + " ,Email: " + this.getEmail() + " ,Website: " + this.getWebsite() +
                 " ,Description: " + this.getDescription();
     }
