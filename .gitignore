@@ -12,3 +12,6 @@
 .classpath
 .project
 .settings/
+/*/.tmp/
+/*/node_modules/
+/*/bower_components/
