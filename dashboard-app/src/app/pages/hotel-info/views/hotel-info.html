@@ -1,4 +1,4 @@
-<div ng-controller="HotelInfoCtrl as ctrl">
+
     <div class="widgets">
         <div class="container-fluid">
             <form id="hotel-info-form" name="hotelInfo" ng-submit="ctrl.submit()">
@@ -11,19 +11,19 @@
                         <div class="form-group col-md-6">
                             <div class="center">
                                 <div class="stars">
-                                    <input class="star star-5" id="star-5" type="radio" name="rating" value="5"
+                                    <input class="star star-5 form-control" id="star-5" type="radio" name="rating" value="5"
                                            ng-model="ctrl.hotel.rating">
                                     <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="rating" value="4"
+                                    <input class="star star-4 form-control" id="star-4" type="radio" name="rating" value="4"
                                            ng-model="ctrl.hotel.rating">
                                     <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="rating" value="3"
+                                    <input class="star star-3 form-control" id="star-3" type="radio" name="rating" value="3"
                                            ng-model="ctrl.hotel.rating">
                                     <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="rating" value="2"
+                                    <input class="star star-2 form-control" id="star-2" type="radio" name="rating" value="2"
                                            ng-model="ctrl.hotel.rating">
                                     <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="rating" value="1"
+                                    <input class="star star-1 form-control" id="star-1" type="radio" name="rating" value="1"
                                            ng-model="ctrl.hotel.rating">
                                     <label class="star star-1" for="star-1"></label>
                                 </div>
@@ -103,4 +103,3 @@
             </form>
         </div>
     </div>
-</div>

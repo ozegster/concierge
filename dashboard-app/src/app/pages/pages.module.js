@@ -5,7 +5,6 @@
         'ui.router',
 
         'ConciergeApp.pages.dashboard',
-        'ConciergeApp.pages.empty',
         'ConciergeApp.pages.hotelinfo'
 
     ])

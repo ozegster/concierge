@@ -10,11 +10,17 @@
         $stateProvider
             .state('hotelinfo', {
                 url: '/hotelinfo',
-                templateUrl: 'app/pages/hotelinfo/hotelinfo.html',
                 title: 'Hotel info',
                 sidebarMeta: {
                     icon: 'fa fa-info',
                     order: 0
+                },
+                views: {
+                    "hotelinfo@ConciergeApp": {
+                        templateUrl: 'app/pages/hotel-info/views/hotel-info.html',
+                        controller: 'HotelInfoCtrl',
+                        controllerAs: 'ctrl'
+                    }
                 }
             })
     }
