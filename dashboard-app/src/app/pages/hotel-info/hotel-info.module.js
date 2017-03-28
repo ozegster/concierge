@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('ConciergeApp.pages.hotelinfo', ['ui.select', 'ngSanitize'])
+    angular.module('ConciergeApp.pages.hotelinfo', ['ui.select'])
         .config(routeConfig);
 
 
@@ -16,7 +16,7 @@
                     order: 0
                 },
                 views: {
-                    "hotelinfo@ConciergeApp": {
+                    "": {
                         templateUrl: 'app/pages/hotel-info/views/hotel-info.html',
                         controller: 'HotelInfoCtrl',
                         controllerAs: 'ctrl'
