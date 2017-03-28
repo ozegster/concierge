@@ -7,17 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class HotelServiceImpl implements HotelService {
 
-    private HotelRepository hotelRepo;
+    private HotelRepository hotelRepository;
 
     @Autowired
-    public HotelServiceImpl(HotelRepository hotelRepo) {
-        this.hotelRepo = hotelRepo;
+    public HotelServiceImpl(HotelRepository hotelRepository) {
+        this.hotelRepository = hotelRepository;
     }
 
     @Override
     public void saveHotel(Hotel hotel) {
-
-        hotelRepo.save(hotel);
+        hotelRepository.save(hotel);
     }
 
 
