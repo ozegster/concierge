@@ -1,17 +1,18 @@
 (function () {
     angular.module('ConciergeApp.pages.hotelinfo')
-        .controller('HotelInfoCtrl', HotelInfoCtrl);
+        .controller('HotelInfoCtrl', ['HotelInfoService', function (HotelInfoService) {
+            var self = this;
 
+            // getting countries from database to show in select box
+            HotelInfoService.getCountries().then(function (data) {
+                self.countries = data;
+            }, function (errorMessage) {
+                console.log(errorMessage);
+            });
 
-    function HotelInfoCtrl() {
-        var self = this;
-
-        // dummy countries just to check if the select box works
-        self.countries = ["Bosnia and Herzegovina", "Serbia", "Croatia"];
-
-        // TO DO
-        self.submit = function () {
-            console.log(self.hotel);
-        }
-    }
+            // TO DO
+            self.submit = function () {
+                console.log(self.hotel);
+            }
+        }])
 })();
