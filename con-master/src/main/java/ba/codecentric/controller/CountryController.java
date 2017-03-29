@@ -1,4 +1,4 @@
-package ba.codecentric.base.controller;
+package ba.codecentric.controller;
 
 import ba.codecentric.base.domain.Country;
 import ba.codecentric.base.service.CountryService;
