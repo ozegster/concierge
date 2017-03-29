@@ -1,29 +1,29 @@
 <div class="widgets">
     <div class="container-fluid">
-        <form id="hotel-info-form" name="hotelInfo" ng-submit="ctrl.submit()">
+        <form id="hotel-info-form" name="hotelInfo" ng-submit="submit()">
             <div id="general-info" class="col-md-12" ba-panel ba-panel-title="General info">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="name">Hotel name</label>
-                        <input class="form-control" id="name" type="text" ng-model="ctrl.hotel.name">
+                        <input class="form-control" id="name" type="text" ng-model="hotel.name">
                     </div>
                     <div class="form-group col-md-6">
                         <div class="center">
                             <div class="stars">
                                 <input class="star star-5 form-control" id="star-5" type="radio" name="rating" value="5"
-                                       ng-model="ctrl.hotel.rating">
+                                       ng-model="hotel.rating">
                                 <label class="star star-5" for="star-5"></label>
                                 <input class="star star-4 form-control" id="star-4" type="radio" name="rating" value="4"
-                                       ng-model="ctrl.hotel.rating">
+                                       ng-model="hotel.rating">
                                 <label class="star star-4" for="star-4"></label>
                                 <input class="star star-3 form-control" id="star-3" type="radio" name="rating" value="3"
-                                       ng-model="ctrl.hotel.rating">
+                                       ng-model="hotel.rating">
                                 <label class="star star-3" for="star-3"></label>
                                 <input class="star star-2 form-control" id="star-2" type="radio" name="rating" value="2"
-                                       ng-model="ctrl.hotel.rating">
+                                       ng-model="hotel.rating">
                                 <label class="star star-2" for="star-2"></label>
                                 <input class="star star-1 form-control" id="star-1" type="radio" name="rating" value="1"
-                                       ng-model="ctrl.hotel.rating">
+                                       ng-model="hotel.rating">
                                 <label class="star star-1" for="star-1"></label>
                             </div>
                         </div>
@@ -36,26 +36,26 @@
                         <div class="form-group">
                             <label for="street-and-number">Street and number</label>
                             <input class="form-control" id="street-and-number" type="text"
-                                   ng-model="ctrl.hotel.address">
+                                   ng-model="hotel.address">
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="zip">ZIP</label>
-                                    <input class="form-control" id="zip" type="text" ng-model="ctrl.hotel.zip">
+                                    <input class="form-control" id="zip" type="text" ng-model="hotel.zip">
                                 </div>
                             </div>
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <label for="city">City</label>
-                                    <input class="form-control" id="city" type="text" ng-model="ctrl.hotel.city">
+                                    <input class="form-control" id="city" type="text" ng-model="hotel.city">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="country">Country</label>
-                            <select class="form-control" id="country" ng-model="ctrl.hotel.country"
-                                    ng-options="country as country.name for country in ctrl.countries"></select>
+                            <select class="form-control" id="country" ng-model="hotel.country"
+                                    ng-options="country as country.name for country in countries"></select>
                         </div>
                     </div>
                     <div id="contact-info" class="col-md-6" ba-panel ba-panel-title="Contact info">
@@ -63,23 +63,23 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input class="form-control" id="phone" type="text" ng-model="ctrl.hotel.phone">
+                                    <input class="form-control" id="phone" type="text" ng-model="hotel.phone">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="fax">Fax</label>
-                                    <input class="form-control" id="fax" type="text" ng-model="ctrl.hotel.fax">
+                                    <input class="form-control" id="fax" type="text" ng-model="hotel.fax">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input class="form-control" id="email" type="email" ng-model="ctrl.hotel.email">
+                            <input class="form-control" id="email" type="email" ng-model="hotel.email">
                         </div>
                         <div class="form-group">
                             <label for="website">Website</label>
-                            <input class="form-control" id="website" type="text" ng-model="ctrl.hotel.website">
+                            <input class="form-control" id="website" type="text" ng-model="hotel.website">
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
             <div id="description" class="col-md-12" ba-panel ba-panel-title="Description">
                 <div class="form-group">
                         <textarea form="hotel-info-form" class="form-control" name="description"
-                                  ng-model="ctrl.hotel.description"></textarea>
+                                  ng-model="hotel.description"></textarea>
                 </div>
             </div>
             <div class="row">
