@@ -21,4 +21,3 @@ public class HotelServiceImpl implements HotelService {
 
 
 }
-CON-12
