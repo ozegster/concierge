@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class CountryServiceImpl implements CountryService{
 
-    CountryRepository countryRepository;
+    private CountryRepository countryRepository;
 
     @Autowired
     public CountryServiceImpl(CountryRepository countryRepository){
