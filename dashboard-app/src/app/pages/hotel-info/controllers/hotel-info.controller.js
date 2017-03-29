@@ -1,30 +1,35 @@
 (function () {
+    'use strict';
+
     angular.module('ConciergeApp.pages.hotelinfo')
-        .controller('HotelInfoCtrl', ['HotelInfoService','$scope', function (HotelInfoService,$scope) {
-            $scope.hotel = {
-                name: '',
-                rating: '',
-                address: '',
-                zip: '',
-                city: '',
-                country: {},
-                phone: '',
-                fax: '',
-                email: '',
-                website: '',
-                description: ''
-            }
+        .controller('HotelInfoCtrl', HotelInfoCtrl);
 
-            // getting countries from database to show in select box
-            HotelInfoService.getCountries().then(function (data) {
-                $scope.countries = data;
-            }, function (errorMessage) {
-                console.log(errorMessage);
-            });
+    HotelInfoCtrl.$inject = ['hotelInfoService', '$scope'];
+    function HotelInfoCtrl(hotelInfoService, $scope) {
+        $scope.hotel = {
+            name: '',
+            rating: '',
+            address: '',
+            zip: '',
+            city: '',
+            country: {},
+            phone: '',
+            fax: '',
+            email: '',
+            website: '',
+            description: ''
+        }
 
-            // TO DO
-            $scope.submit = function () {
-                console.log($scope.hotel);
-            }
-        }])
+        // getting countries from database to show in select box
+        hotelInfoService.countries.then(function (data) {
+            $scope.countries = data;
+        }, function (errorMessage) {
+            console.log(errorMessage);
+        });
+
+        // TO DO
+        $scope.submit = function () {
+            console.log($scope.hotel);
+        }
+    }
 })();
