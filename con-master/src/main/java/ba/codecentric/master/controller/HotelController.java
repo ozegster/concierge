@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class HotelInfoController {
+public class HotelController {
 
     private final HotelService hotelService;
 
     @Autowired
-    public HotelInfoController(HotelService hotelService) {
+    public HotelController(HotelService hotelService) {
         this.hotelService = hotelService;
     }
 
-    @RequestMapping(value = "/saveHotelInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/hotel/save", method = RequestMethod.POST)
     public void saveHotelInfo(@RequestBody Hotel hotel) {
         hotelService.saveHotel(hotel);
     }
