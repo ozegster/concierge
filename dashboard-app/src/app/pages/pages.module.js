@@ -5,7 +5,7 @@
         'ui.router',
 
         'ConciergeApp.pages.dashboard',
-        'ConciergeApp.pages.hotelinfo'
+        'ConciergeApp.pages.hotelInfo'
 
     ])
         .config(routeConfig);

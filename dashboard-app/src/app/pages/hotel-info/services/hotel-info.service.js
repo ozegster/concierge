@@ -1,8 +1,8 @@
 (function () {
     'use strict';
     
-    angular.module('ConciergeApp.pages.hotelinfo')
-        .factory('hotelInfoService', ['$http', function ($http) {
+    angular.module('ConciergeApp.pages.hotelInfo')
+        .factory('hotelService', ['$http', function ($http) {
 
             // getting all countries from db
             var getCountries = function () {

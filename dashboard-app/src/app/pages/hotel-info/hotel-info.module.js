@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('ConciergeApp.pages.hotelinfo', ['ui.select'])
+    angular.module('ConciergeApp.pages.hotelInfo', ['ui.select'])
         .config(routeConfig);
 
 
@@ -18,8 +18,7 @@
                 views: {
                     "": {
                         templateUrl: 'app/pages/hotel-info/views/hotel-info.html',
-                        controller: 'HotelInfoCtrl',
-                        controllerAs: 'ctrl'
+                        controller: 'AdminCtrl'
                     }
                 }
             })

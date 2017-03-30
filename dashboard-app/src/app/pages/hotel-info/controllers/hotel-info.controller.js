@@ -1,11 +1,11 @@
 (function () {
     'use strict';
 
-    angular.module('ConciergeApp.pages.hotelinfo')
-        .controller('HotelInfoCtrl', HotelInfoCtrl);
+    angular.module('ConciergeApp.pages.hotelInfo')
+        .controller('AdminCtrl', AdminCtrl);
 
-    HotelInfoCtrl.$inject = ['hotelInfoService', '$scope'];
-    function HotelInfoCtrl(hotelInfoService, $scope) {
+    AdminCtrl.$inject = ['hotelService', '$scope'];
+    function AdminCtrl(hotelService, $scope) {
         $scope.hotel = {
             name: '',
             rating: '',
@@ -21,7 +21,7 @@
         }
 
         // getting countries from database to show in select box
-        hotelInfoService.countries.then(function (data) {
+        hotelService.countries.then(function (data) {
             $scope.countries = data;
         }, function (errorMessage) {
             console.log(errorMessage);
