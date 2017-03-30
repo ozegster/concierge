@@ -1,5 +1,6 @@
 package ba.codecentric.master.controller;
 
+import ba.codecentric.base.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ public class HotelInfoController {
         this.hotelService = hotelService;
     }
 
-    @RequestMapping("/savehotelinfo", method = RequestMethod.POST)
+    @RequestMapping("/saveHotelInfo", method = RequestMethod.POST)
     public void saveHotelInfo(@RequestBody HotelInfo hotelInfo) {
         hotelService.saveHotel(hotel);
     }

@@ -7,11 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class HotelServiceImpl implements HotelService {
 
-<<<<<<< HEAD
     private HotelRepository hotelRepository;
-=======
+
     private final HotelRepository hotelRepository;
->>>>>>> origin/integration
 
     @Autowired
     public HotelServiceImpl(HotelRepository hotelRepository) {
