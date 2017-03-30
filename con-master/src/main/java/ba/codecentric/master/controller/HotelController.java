@@ -19,7 +19,7 @@ public class HotelController {
     }
 
     @RequestMapping(value = "/hotel/save", method = RequestMethod.POST)
-    public void saveHotelInfo(@RequestBody Hotel hotel) {
+    public void saveHotel(@RequestBody Hotel hotel) {
         hotelService.saveHotel(hotel);
     }
 }
