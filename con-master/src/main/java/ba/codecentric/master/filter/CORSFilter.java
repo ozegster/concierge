@@ -1,4 +1,4 @@
-package ba.codecentric.filter;
+package ba.codecentric.master.filter;
 
 
 import org.springframework.beans.factory.annotation.Value;
