@@ -18,7 +18,7 @@
                 views: {
                     "": {
                         templateUrl: 'app/pages/hotel-info/views/hotel-info.html',
-                        controller: 'AdminCtrl'
+                        controller: 'HotelCtrl'
                     }
                 }
             })

@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('ConciergeApp.pages.hotelInfo')
-        .factory('hotelService', ['$http', 'serverPath', function ($http, serverPath) {
+        .factory('HotelService', ['$http', 'serverPath', function ($http, serverPath) {
 
             // getting all countries from db
             var getCountries = function () {
