@@ -29,7 +29,8 @@
 
         // TO DO
         $scope.submit = function () {
-            console.log($scope.hotel);
+            hotelService.saveHotel($scope.hotel);
+            $scope.hotel = [];
         }
     }
 })();
