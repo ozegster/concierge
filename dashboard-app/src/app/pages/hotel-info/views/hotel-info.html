@@ -55,7 +55,7 @@
                         <div class="form-group">
                             <label for="country">Country</label>
                             <select class="form-control" id="country" ng-model="hotel.country"
-                                    ng-options="country as country.name for country in countries"></select>
+                                    ng-options="country as country.name for country in countries track by country.id"></select>
                         </div>
                     </div>
                     <div id="contact-info" class="col-md-6" ba-panel ba-panel-title="Contact info">

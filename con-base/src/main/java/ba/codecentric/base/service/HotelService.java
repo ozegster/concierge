@@ -2,8 +2,12 @@ package ba.codecentric.base.service;
 
 import ba.codecentric.base.domain.Hotel;
 
+import java.util.List;
+
 public interface HotelService {
 
-    void saveHotel(Hotel hotel);
+    Hotel saveHotel(Hotel hotel);
+
+    List<Hotel> getHotels();
 
 }

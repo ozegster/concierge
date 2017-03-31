@@ -3,10 +3,14 @@ package ba.codecentric.master.controller;
 import ba.codecentric.base.domain.Hotel;
 import ba.codecentric.base.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class HotelController {
@@ -19,7 +23,15 @@ public class HotelController {
     }
 
     @RequestMapping(value = "/hotel/save", method = RequestMethod.POST)
-    public void saveHotel(@RequestBody Hotel hotel) {
-        hotelService.saveHotel(hotel);
+    public ResponseEntity<Hotel> saveHotel(@RequestBody Hotel hotel) {
+        return new ResponseEntity<Hotel>(hotelService.saveHotel(hotel), HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = "/hotel/get", method = RequestMethod.GET)
+    public ResponseEntity<Hotel> getHotel() {
+        List<Hotel> hotels = hotelService.getHotels();
+        return (hotels.isEmpty() ? new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(hotels.get(0), HttpStatus.OK));
+
     }
 }
