@@ -8,6 +8,6 @@ public interface HotelService {
 
     Hotel saveHotel(Hotel hotel);
 
-    List<Hotel> getHotels();
+    Hotel getHotel();
 
 }

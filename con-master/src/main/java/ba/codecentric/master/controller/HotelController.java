@@ -30,8 +30,8 @@ public class HotelController {
 
     @RequestMapping(value = "/hotel/get", method = RequestMethod.GET)
     public ResponseEntity<Hotel> getHotel() {
-        List<Hotel> hotels = hotelService.getHotels();
-        return (hotels.isEmpty() ? new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(hotels.get(0), HttpStatus.OK));
+        Hotel hotel = hotelService.getHotel();
+        return (hotel == null) ? new ResponseEntity<Hotel>(new Hotel(), HttpStatus.OK) : new ResponseEntity<Hotel>(hotel, HttpStatus.OK);
 
     }
 }

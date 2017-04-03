@@ -23,8 +23,8 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Hotel> getHotels() {
-        return hotelRepository.findAll();
+    public Hotel getHotel() {
+        return hotelRepository.findFirstByOrderById();
     }
 
 
