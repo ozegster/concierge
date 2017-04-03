@@ -23,7 +23,7 @@ public class CountryController {
     }
 
     @RequestMapping(value = "/countries", method = RequestMethod.GET)
-    public ResponseEntity<List<Country>> getCountries() {
-        return new ResponseEntity<List<Country>>(countryService.getAllCountries(), HttpStatus.OK);
+    public List<Country> getCountries() {
+        return countryService.getAllCountries();
     }
 }

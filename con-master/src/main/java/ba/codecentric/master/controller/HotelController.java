@@ -23,15 +23,15 @@ public class HotelController {
     }
 
     @RequestMapping(value = "/hotel/save", method = RequestMethod.POST)
-    public ResponseEntity<Hotel> saveHotel(@RequestBody Hotel hotel) {
-        return new ResponseEntity<Hotel>(hotelService.saveHotel(hotel), HttpStatus.OK);
+    public Hotel saveHotel(@RequestBody Hotel hotel) {
+        return hotelService.saveHotel(hotel);
 
     }
 
     @RequestMapping(value = "/hotel/get", method = RequestMethod.GET)
-    public ResponseEntity<Hotel> getHotel() {
+    public Hotel getHotel() {
         Hotel hotel = hotelService.getHotel();
-        return (hotel == null) ? new ResponseEntity<Hotel>(new Hotel(), HttpStatus.OK) : new ResponseEntity<Hotel>(hotel, HttpStatus.OK);
+        return (hotel == null) ? new Hotel() : hotel;
 
     }
 }
