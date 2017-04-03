@@ -9,7 +9,7 @@
         $scope.hotel = {};
 
         // getting countries from database to show in select box
-        HotelService.countries().then(function (response) {
+        HotelService.getCountries().then(function (response) {
             $scope.countries = response.data;
         }, function (errorMessage) {
             console.log(errorMessage);

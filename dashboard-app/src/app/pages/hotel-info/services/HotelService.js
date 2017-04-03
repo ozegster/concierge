@@ -41,7 +41,7 @@
                 return deferred.promise;
             };
             return {
-                countries: getCountries,
+                getCountries: getCountries,
                 getHotel:getHotel,
                 saveHotel: saveHotel
 
