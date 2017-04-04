@@ -16,8 +16,8 @@
                 amChart: 'assets/img/theme/vendor/amcharts/dist/amcharts/images/'
             }
         })
-        .constant('serverPath', {
-            api: 'http://localhost:8080'
+        .constant('SERVER_PATH', {
+            url: 'http://localhost:8080'
         })
         .constant('colorHelper', {
             tint: function (color, weight) {

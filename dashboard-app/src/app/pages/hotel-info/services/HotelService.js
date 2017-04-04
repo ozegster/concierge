@@ -2,11 +2,11 @@
     'use strict';
 
     angular.module('ConciergeApp.pages.hotelInfo')
-        .factory('HotelService', ['$http', 'serverPath', '$q', function ($http, serverPath, $q) {
+        .factory('HotelService', ['$http', 'SERVER_PATH', '$q', function ($http, SERVER_PATH, $q) {
 
             // getting all countries from db
             var getCountries = function () {
-                return $http.get(serverPath.api + '/countries')
+                return $http.get(SERVER_PATH.url + '/countries')
                     .then(function (response) {
                         return response;
                     }, function (error) {
@@ -17,7 +17,7 @@
             var saveHotel = function (hotel) {
                 return $http({
                     method: 'POST',
-                    url: serverPath.api + '/hotel',
+                    url: SERVER_PATH.url + '/hotel',
                     data: hotel
                 }).then(function (result) {
                     return result;
@@ -28,7 +28,7 @@
 
             var getHotel = function () {
                 var deferred = $q.defer();
-                $http.get(serverPath.api + '/hotel')
+                $http.get(SERVER_PATH.url + '/hotel')
                     .then(function (response) {
                         if (!response.data) {
                             deferred.reject("There isn't a hotel in db");
