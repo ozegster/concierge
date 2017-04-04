@@ -15,18 +15,18 @@
             console.log(errorMessage);
         });
 
-        HotelService.getHotel().then(function(response){
+        HotelService.getHotel().then(function (response) {
             $scope.hotel = response.data;
-        },function (error) {
-            $scope.hotel={};
+        }, function () {
+            $scope.hotel = {};
         });
 
         $scope.submit = function (hotelForm) {
 
-            if(hotelForm.$invalid){
-               return;
+            if (hotelForm.$invalid) {
+                return;
             }
-            HotelService.saveHotel($scope.hotel).then(function(response){
+            HotelService.saveHotel($scope.hotel).then(function (response) {
                 $scope.hotel = response.data;
             });
 

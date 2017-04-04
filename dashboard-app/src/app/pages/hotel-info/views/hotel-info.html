@@ -81,7 +81,7 @@
                              ng-class="{'has-error' : hotelInfo.country.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.country.$valid && hotelInfo.$submitted}">
                             <label for="country">Country</label>
                             <select class="form-control" id="country" ng-model="hotel.country"
-                                    ng-options="country as country.name for country in countries track by country.id" required name="country"></select>
+                                    ng-options="country as country.name for country in countries | orderBy:'name' track by country.id" required name="country"></select>
 
                            <div ng-show="hotelInfo.$submitted">
                                  <label class="help-block error-block basic-block" ng-show="hotelInfo.country.$error.required">Please select a country</label>
