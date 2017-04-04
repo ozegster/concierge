@@ -56,10 +56,10 @@
                             <div class="col-md-4">
                                 <div class="form-group has-feedback" ng-class="{'has-error' : hotelInfo.zip.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.zip.$valid && hotelInfo.$submitted}">
                                     <label for="zip">ZIP</label>
-                                    <input class="form-control" name="zip" id="zip" type="text" ng-model="hotel.zip" required ng-pattern='/^[0-9]{5}$/'>
+                                    <input class="form-control" name="zip" id="zip" type="text" ng-model="hotel.zip" required ng-pattern='/^[0-9]{5}$/' ng-maxlength="5">
 
                                     <div ng-show="hotelInfo.$submitted">
-                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.zip.$error.pattern">Please enter a valid zip code e.g. 43452 (5 digit required)</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.zip.$error.pattern || hotelInfo.zip.$error.maxlength">Please enter a valid zip code e.g. 43452 (5 digit required)</label>
                                         <label class="help-block error-block basic-block" ng-show="hotelInfo.zip.$error.required">Please enter zip code</label>
                                     </div>
                                 </div>
