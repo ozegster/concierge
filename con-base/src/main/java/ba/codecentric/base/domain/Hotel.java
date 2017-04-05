@@ -1,6 +1,10 @@
 package ba.codecentric.base.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Hotel {
@@ -11,18 +15,26 @@ public class Hotel {
     private Integer id;
 
     @Column(name = "name")
+    @NotNull(message = "Please enter name of the hotel")
+    @Size(max = 128, message = "Name is too long, 128 characters allowed")
     private String name;
 
     @Column(name = "rating")
+    @Max(5)
     private int rating;
 
     @Column(name = "address")
+    @NotNull(message = "Please enter street and number")
+    @Size(max = 128, message = "Address is too long, 128 characters allowed")
     private String address;
 
     @Column(name = "zip")
+    @Pattern(regexp = "^[0-9]{5}$")
     private String zip;
 
     @Column(name = "city")
+    @NotNull(message = "Please enter city")
+    @Size(max = 64, message = "City name is too long, 64 characters allowed")
     private String city;
 
     @Column(name = "phone")
