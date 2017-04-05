@@ -29,7 +29,8 @@ public class Hotel {
     private String address;
 
     @Column(name = "zip")
-    @Pattern(regexp = "^[0-9]{5}$")
+    @NotNull(message = "Please enter zip code")
+    @Pattern(regexp = "^[0-9]{5}$", message = "Please enter a valid zip code e.g. 43452 (5 digit required)")
     private String zip;
 
     @Column(name = "city")
@@ -38,18 +39,30 @@ public class Hotel {
     private String city;
 
     @Column(name = "phone")
+    @NotNull(message = "Please enter a phone number")
+    @Size(max = 45, message = "Phone is too long, 45 characters allowed")
     private String phone;
 
     @Column(name = "fax")
+    @NotNull(message = "Please enter a fax")
+    @Size(max = 45, message = "Fax is too long, 45 characters allowed")
     private String fax;
 
     @Column(name = "email")
+    @NotNull(message = "Please enter a email")
+    @Size(max = 45, message = "Email is too long, 45 characters allowed")
+    @Pattern(regexp = "^\\w+[\\w.]*@\\w+((-\\w+)|(\\w*))\\.[a-z]{2,3}$", message = "Please enter a valid email address e.g. info@hotel.com")
     private String email;
 
     @Column(name = "website")
+    @NotNull(message = "Please enter a website")
+    @Size( max = 45, message = "Website is too long, 45 characters allowed")
+    @Pattern(regexp = "^(www\\.)([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$", message = "Please enter a valid url e.g. www.hotel.com")
     private String website;
 
     @Column(name = "description")
+    @NotNull(message = "Please add hotel description")
+    @Size(max = 500, message = "Description is too long, 500 characters allowed")
     private String description;
 
     @ManyToOne
