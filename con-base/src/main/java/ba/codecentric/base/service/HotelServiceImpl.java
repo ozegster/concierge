@@ -16,8 +16,13 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public void saveHotel(Hotel hotel) {
-        hotelRepository.save(hotel);
+    public Hotel saveHotel(Hotel hotel) {
+        return hotelRepository.save(hotel);
+    }
+
+    @Override
+    public Hotel getHotel() {
+        return hotelRepository.findFirstByOrderById();
     }
 
 

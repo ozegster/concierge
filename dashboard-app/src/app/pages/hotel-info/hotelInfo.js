@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('ConciergeApp.pages.hotelinfo', [])
+    angular.module('ConciergeApp.pages.hotelInfo', ['ui.select'])
         .config(routeConfig);
 
 
@@ -10,13 +10,18 @@
         $stateProvider
             .state('hotelinfo', {
                 url: '/hotelinfo',
-                templateUrl: 'app/pages/hotelinfo/hotelinfo.html',
                 title: 'Hotel info',
                 sidebarMeta: {
                     icon: 'fa fa-info',
-                    order: 250
+                    order: 0
+                },
+                views: {
+                    "": {
+                        templateUrl: 'app/pages/hotel-info/views/hotel-info.html',
+                        controller: 'HotelCtrl'
+                    }
                 }
-            });
+            })
     }
 
 })();

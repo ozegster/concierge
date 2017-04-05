@@ -18,8 +18,16 @@ public class HotelController {
         this.hotelService = hotelService;
     }
 
-    @RequestMapping(value = "/hotel/save", method = RequestMethod.POST)
-    public void saveHotel(@RequestBody Hotel hotel) {
-        hotelService.saveHotel(hotel);
+    @RequestMapping(value = "/hotel", method = RequestMethod.POST)
+    public Hotel saveHotel(@RequestBody Hotel hotel) {
+        return hotelService.saveHotel(hotel);
+
+    }
+
+    @RequestMapping(value = "/hotel", method = RequestMethod.GET)
+    public Hotel getHotel() {
+        Hotel hotel = hotelService.getHotel();
+        return (hotel == null) ? new Hotel() : hotel;
+
     }
 }

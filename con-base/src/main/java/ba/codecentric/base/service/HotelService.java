@@ -4,6 +4,8 @@ import ba.codecentric.base.domain.Hotel;
 
 public interface HotelService {
 
-    void saveHotel(Hotel hotel);
+    Hotel saveHotel(Hotel hotel);
+
+    Hotel getHotel();
 
 }
