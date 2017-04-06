@@ -19,7 +19,7 @@ public class FeatureController {
         this.featureService = featureService;
     }
 
-    @RequestMapping(name = "features", method = RequestMethod.GET)
+    @RequestMapping(value = "/features", method = RequestMethod.GET)
     public List<Feature> getFeatures() {
         return featureService.getAllFeatures();
     }
