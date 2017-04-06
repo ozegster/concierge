@@ -105,6 +105,7 @@ CREATE TABLE `concierge`.`room` (
   `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `number_of_people` tinyint(4) NOT NULL,
   `number_of_kids` tinyint(4) NOT NULL,
+  `size` tinyint(4) NOT NULL,
   `image` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `bed_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
