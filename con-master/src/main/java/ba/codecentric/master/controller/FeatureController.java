@@ -15,12 +15,14 @@ public class FeatureController {
     private FeatureService featureService;
 
     @Autowired
-    public FeatureController(FeatureService featureService){
+    public FeatureController(FeatureService featureService) {
         this.featureService = featureService;
     }
 
-    @RequestMapping(name="features", method= RequestMethod.GET)
-    public List<Feature> getFeatures(){
+    @RequestMapping(name = "features", method = RequestMethod.GET)
+    public List<Feature> getFeatures() {
         return featureService.getAllFeatures();
     }
+
+
 }
