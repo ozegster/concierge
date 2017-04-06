@@ -7,37 +7,26 @@ public class Hotel {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "rating")
     private int rating;
 
-    @Column(name = "address")
     private String address;
 
-    @Column(name = "zip")
     private String zip;
 
-    @Column(name = "city")
     private String city;
 
-    @Column(name = "phone")
     private String phone;
 
-    @Column(name = "fax")
     private String fax;
 
-    @Column(name = "email")
     private String email;
 
-    @Column(name = "website")
     private String website;
 
-    @Column(name = "description")
     private String description;
 
     @ManyToOne
