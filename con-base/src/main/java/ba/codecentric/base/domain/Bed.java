@@ -10,7 +10,6 @@ public class Bed {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(name = "type")
     private String type;
 
     public Integer getId() {
