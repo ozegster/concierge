@@ -23,7 +23,7 @@ public class Room {
 
     private String image;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "bed_id")
     private Bed bed;
 
@@ -94,5 +94,19 @@ public class Room {
 
     public void setFeatures(List<Feature> features) {
         this.features = features;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", numberOfPeople=" + numberOfPeople +
+                ", numberOfKids=" + numberOfKids +
+                ", size=" + size +
+                ", image='" + image + '\'' +
+                ", bed=" + bed +
+                ", features=" + features +
+                '}';
     }
 }
