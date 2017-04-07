@@ -6,7 +6,7 @@
 
         'ConciergeApp.pages.dashboard',
         'ConciergeApp.pages.hotelInfo',
-        'ConciergeApp.pages.roomInfo'
+        'ConciergeApp.pages.roomType'
 
     ])
         .config(routeConfig);

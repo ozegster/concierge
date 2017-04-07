@@ -2,7 +2,7 @@
     'use strict';
 
 
-    angular.module('ConciergeApp.pages.roomInfo', ['ui.select'])
+    angular.module('ConciergeApp.pages.roomType', ['ui.select'])
            .config(routeConfig);
 
 
@@ -21,7 +21,7 @@
            })
            .state('room.roomType', {
                   url: '/room',
-                  templateUrl: 'app/pages/room-info/views/room-info.html',
+                  templateUrl: 'app/pages/room-type/views/room-type.html',
                   title: 'Room Type',
                   sidebarMeta: {
                      order: 0,
