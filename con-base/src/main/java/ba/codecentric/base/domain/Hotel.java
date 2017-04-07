@@ -16,7 +16,9 @@ public class Hotel {
 
     @Column(name = "name")
     @NotNull(message = "Please enter name of the hotel")
-    @Size(max = 128, message = "Name is too long, 128 characters allowed")
+    @Size.List({
+            @Size(max = 128, message = "Name is too long, 128 characters allowed"),
+            @Size(min = 1, message = "Please enter name of the hotel")})
     private String name;
 
     @Column(name = "rating")
@@ -25,7 +27,9 @@ public class Hotel {
 
     @Column(name = "address")
     @NotNull(message = "Please enter street and number")
-    @Size(max = 128, message = "Address is too long, 128 characters allowed")
+    @Size.List({
+            @Size(max = 128, message = "Address is too long, 128 characters allowed"),
+            @Size(min = 1, message = "Please enter street and number")})
     private String address;
 
     @Column(name = "zip")
@@ -35,34 +39,46 @@ public class Hotel {
 
     @Column(name = "city")
     @NotNull(message = "Please enter city")
-    @Size(max = 64, message = "City name is too long, 64 characters allowed")
+    @Size.List({
+            @Size(max = 64, message = "City name is too long, 64 characters allowed"),
+            @Size(min = 1, message = "Please enter city")})
     private String city;
 
     @Column(name = "phone")
     @NotNull(message = "Please enter a phone number")
-    @Size(max = 45, message = "Phone is too long, 45 characters allowed")
+    @Size.List({
+            @Size(max = 45, message = "Phone is too long, 45 characters allowed"),
+            @Size(min = 1, message = "Please enter a phone number")})
     private String phone;
 
     @Column(name = "fax")
     @NotNull(message = "Please enter a fax")
-    @Size(max = 45, message = "Fax is too long, 45 characters allowed")
+    @Size.List({
+            @Size(max = 45, message = "Fax is too long, 45 characters allowed"),
+            @Size(min = 1, message = "Please enter a fax")})
     private String fax;
 
     @Column(name = "email")
     @NotNull(message = "Please enter a email")
-    @Size(max = 45, message = "Email is too long, 45 characters allowed")
+    @Size.List({
+            @Size(max = 45, message = "Email is too long, 45 characters allowed"),
+            @Size(min = 1, message = "Please enter a email")})
     @Pattern(regexp = "^\\w+[\\w.]*@\\w+((-\\w+)|(\\w*))\\.[a-z]{2,3}$", message = "Please enter a valid email address e.g. info@hotel.com")
     private String email;
 
     @Column(name = "website")
     @NotNull(message = "Please enter a website")
-    @Size( max = 45, message = "Website is too long, 45 characters allowed")
+    @Size.List({
+            @Size(max = 45, message = "Website is too long, 45 characters allowed"),
+            @Size(min = 1, message = "Please enter a website")})
     @Pattern(regexp = "^(www\\.)([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$", message = "Please enter a valid url e.g. www.hotel.com")
     private String website;
 
     @Column(name = "description")
     @NotNull(message = "Please add hotel description")
-    @Size(max = 500, message = "Description is too long, 500 characters allowed")
+    @Size.List({
+            @Size(max = 500, message = "Description is too long, 500 characters allowed"),
+            @Size(min = 1, message = "Please add hotel description")})
     private String description;
 
     @ManyToOne
