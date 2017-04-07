@@ -27,7 +27,7 @@ public class HotelTest {
     @BeforeClass
     public static void setUp() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        validator = (Validator) factory.getValidator();
+        validator = factory.getValidator();
     }
 
     @Test
