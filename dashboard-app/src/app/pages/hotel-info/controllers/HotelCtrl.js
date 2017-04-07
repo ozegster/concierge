@@ -22,24 +22,18 @@
         });
 
         $scope.submit = function (hotelForm) {
-
             if (hotelForm.$invalid) {
                 return;
             }
             HotelService.saveHotel($scope.hotel).then(function (response) {
-
-                if (response.status == 400) {
+                if (response.status === 400) {
                     angular.forEach(response.data.errors, function (value, key) {
                         toastr.error(response.data.errors[key].defaultMessage, 'Error');
                     });
-
                 } else {
                     $scope.hotel = response.data;
                 }
             });
-
         }
-
-
     }
 })();
