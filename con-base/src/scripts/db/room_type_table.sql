@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `concierge`.`room`;
-CREATE TABLE `concierge`.`room` (
+DROP TABLE IF EXISTS `concierge`.`room_type`;
+CREATE TABLE `concierge`.`room_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `number_of_people` tinyint(4) NOT NULL,

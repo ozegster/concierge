@@ -1,6 +1,6 @@
 package ba.codecentric.master.controller;
 
-import ba.codecentric.base.domain.Room;
+import ba.codecentric.base.domain.RoomType;
 import ba.codecentric.base.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +19,7 @@ public class RoomController {
     }
 
     @RequestMapping(value = "/room", method = RequestMethod.POST)
-    public Room saveRoom(@RequestBody Room room) {
-        return roomService.saveRoom(room);
+    public RoomType saveRoom(@RequestBody RoomType roomType) {
+        return roomService.saveRoom(roomType);
     }
 }

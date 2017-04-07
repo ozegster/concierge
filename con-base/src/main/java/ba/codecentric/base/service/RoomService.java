@@ -1,9 +1,9 @@
 package ba.codecentric.base.service;
 
 
-import ba.codecentric.base.domain.Room;
+import ba.codecentric.base.domain.RoomType;
 
 public interface RoomService {
 
-    Room saveRoom(Room room);
+    RoomType saveRoom(RoomType roomType);
 }

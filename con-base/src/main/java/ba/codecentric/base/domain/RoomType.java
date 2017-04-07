@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Room {
+@Table(name = "room_type")
+public class RoomType {
 
     @Id
     @GeneratedValue
@@ -28,7 +29,7 @@ public class Room {
     private Bed bed;
 
     @ManyToMany
-    @JoinTable(name = "room_feature", joinColumns = {@JoinColumn(name = "room_id")}, inverseJoinColumns = {
+    @JoinTable(name = "room_type_feature", joinColumns = {@JoinColumn(name = "room_type_id")}, inverseJoinColumns = {
             @JoinColumn(name = "feature_id")})
     private List<Feature> features = new ArrayList<>();
 
@@ -98,7 +99,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" +
+        return "RoomType{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", numberOfPeople=" + numberOfPeople +

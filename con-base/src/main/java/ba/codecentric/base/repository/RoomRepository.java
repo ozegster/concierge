@@ -1,8 +1,8 @@
 package ba.codecentric.base.repository;
 
-import ba.codecentric.base.domain.Room;
+import ba.codecentric.base.domain.RoomType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface RoomRepository extends JpaRepository<Room, Integer> {
+public interface RoomRepository extends JpaRepository<RoomType, Integer> {
 }
