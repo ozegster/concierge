@@ -1,10 +1,7 @@
 package ba.codecentric.base.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
 public class Hotel {
@@ -22,7 +19,8 @@ public class Hotel {
     private String name;
 
     @Column(name = "rating")
-    @Max(5)
+    @Max(value = 5, message = "Rating must be less than 5")
+    @Min(value = 1, message = "Rating must be greater than 0")
     private int rating;
 
     @Column(name = "address")
@@ -76,9 +74,8 @@ public class Hotel {
 
     @Column(name = "description")
     @NotNull(message = "Please add hotel description")
-    @Size.List({
-            @Size(max = 500, message = "Description is too long, 500 characters allowed"),
-            @Size(min = 1, message = "Please add hotel description")})
+
+    @Size(max = 500, message = "Description is too long, 500 characters allowed")
     private String description;
 
     @ManyToOne
