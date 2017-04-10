@@ -1,80 +1,64 @@
 package ba.codecentric.base.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Hotel {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    @NotNull(message = "Please enter name of the hotel")
-    @Size.List({
-            @Size(max = 128, message = "Name is too long, 128 characters allowed"),
-            @Size(min = 1, message = "Please enter name of the hotel")})
+    @NotBlank(message = "Please enter name of the hotel")
+    @Size(max = 128, message = "Name is too long, 128 characters allowed")
     private String name;
 
-    @Column(name = "rating")
     @Max(value = 5, message = "Rating must be less than 5")
     @Min(value = 1, message = "Rating must be greater than 0")
     private int rating;
 
-    @Column(name = "address")
-    @NotNull(message = "Please enter street and number")
-    @Size.List({
-            @Size(max = 128, message = "Address is too long, 128 characters allowed"),
-            @Size(min = 1, message = "Please enter street and number")})
+    @NotBlank(message = "Please enter street and number")
+    @Size(max = 128, message = "Address is too long, 128 characters allowed")
     private String address;
 
-    @Column(name = "zip")
-    @NotNull(message = "Please enter zip code")
+    @NotBlank(message = "Please enter zip code")
     @Pattern(regexp = "^[0-9]{5}$", message = "Please enter a valid zip code e.g. 43452 (5 digit required)")
     private String zip;
 
-    @Column(name = "city")
-    @NotNull(message = "Please enter city")
-    @Size.List({
-            @Size(max = 64, message = "City name is too long, 64 characters allowed"),
-            @Size(min = 1, message = "Please enter city")})
+    @NotBlank(message = "Please enter city")
+    @Size(max = 64, message = "City name is too long, 64 characters allowed")
     private String city;
 
-    @Column(name = "phone")
-    @NotNull(message = "Please enter a phone number")
-    @Size.List({
-            @Size(max = 45, message = "Phone is too long, 45 characters allowed"),
-            @Size(min = 1, message = "Please enter a phone number")})
+    @NotBlank(message = "Please enter a phone number")
+    @Size(max = 45, message = "Phone is too long, 45 characters allowed")
     private String phone;
 
-    @Column(name = "fax")
-    @NotNull(message = "Please enter a fax")
-    @Size.List({
-            @Size(max = 45, message = "Fax is too long, 45 characters allowed"),
-            @Size(min = 1, message = "Please enter a fax")})
+    @NotBlank(message = "Please enter a fax")
+    @Size(max = 45, message = "Fax is too long, 45 characters allowed")
     private String fax;
 
-    @Column(name = "email")
-    @NotNull(message = "Please enter a email")
-    @Size.List({
-            @Size(max = 45, message = "Email is too long, 45 characters allowed"),
-            @Size(min = 1, message = "Please enter a email")})
-    @Pattern(regexp = "^\\w+[\\w.]*@\\w+((-\\w+)|(\\w*))\\.[a-z]{2,3}$", message = "Please enter a valid email address e.g. info@hotel.com")
+    @NotBlank(message = "Please enter a email")
+    @Size(max = 45, message = "Email is too long, 45 characters allowed")
+    @Email(message = "Please enter a valid email address e.g. info@hotel.com")
     private String email;
 
-    @Column(name = "website")
-    @NotNull(message = "Please enter a website")
-    @Size.List({
-            @Size(max = 45, message = "Website is too long, 45 characters allowed"),
-            @Size(min = 1, message = "Please enter a website")})
+    @NotBlank(message = "Please enter a website")
+    @Size(max = 45, message = "Website is too long, 45 characters allowed")
     @Pattern(regexp = "^(www\\.)([a-z0-9]+(-[a-z0-9]+)*\\.)+[a-z]{2,}$", message = "Please enter a valid url e.g. www.hotel.com")
     private String website;
 
-    @Column(name = "description")
-    @NotNull(message = "Please add hotel description")
-
+    @NotBlank(message = "Please add hotel description")
     @Size(max = 500, message = "Description is too long, 500 characters allowed")
     private String description;
 

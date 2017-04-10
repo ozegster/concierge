@@ -47,7 +47,7 @@ public class HotelTest {
     @Test
     public void hotelNameIsEmpty() {
         Hotel hotel = getHotel();
-        hotel.setName("");
+        hotel.setName(" ");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Please enter name of the hotel", validations.iterator().next().getMessage());
@@ -74,7 +74,7 @@ public class HotelTest {
     @Test
     public void hotelNameIsCorrect() {
         Hotel hotel = getHotel();
-        hotel.setName("Hilton hotel");
+        hotel.setName(" t");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(0, validations.size());
     }
@@ -126,7 +126,7 @@ public class HotelTest {
     @Test
     public void addressIsEmpty() {
         Hotel hotel = getHotel();
-        hotel.setAddress("");
+        hotel.setAddress(" ");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Please enter street and number", validations.iterator().next().getMessage());
@@ -152,7 +152,7 @@ public class HotelTest {
     @Test
     public void zipIsWrong() {
         Hotel hotel = getHotel();
-        hotel.setZip("333333");
+        hotel.setZip("999999");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Please enter a valid zip code e.g. 43452 (5 digit required)", validations.iterator().next().getMessage());
@@ -161,7 +161,7 @@ public class HotelTest {
     @Test
     public void zipHasLetter() {
         Hotel hotel = getHotel();
-        hotel.setZip("3333r");
+        hotel.setZip("6985y");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Please enter a valid zip code e.g. 43452 (5 digit required)", validations.iterator().next().getMessage());
@@ -170,7 +170,7 @@ public class HotelTest {
     @Test
     public void zipIsCorrect() {
         Hotel hotel = getHotel();
-        hotel.setZip("33335");
+        hotel.setZip("99999");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(0, validations.size());
     }
@@ -187,7 +187,7 @@ public class HotelTest {
     @Test
     public void cityIsEmpty() {
         Hotel hotel = getHotel();
-        hotel.setCity("");
+        hotel.setCity(" ");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Please enter city", validations.iterator().next().getMessage());
@@ -222,7 +222,7 @@ public class HotelTest {
     @Test
     public void phoneIsEmpty() {
         Hotel hotel = getHotel();
-        hotel.setPhone("");
+        hotel.setPhone(" ");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Please enter a phone number", validations.iterator().next().getMessage());
@@ -257,7 +257,7 @@ public class HotelTest {
     @Test
     public void faxIsEmpty() {
         Hotel hotel = getHotel();
-        hotel.setFax("");
+        hotel.setFax(" ");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Please enter a fax", validations.iterator().next().getMessage());
@@ -364,7 +364,7 @@ public class HotelTest {
         hotel.setName("hotel name");
         hotel.setRating(3);
         hotel.setAddress("address");
-        hotel.setZip("12345");
+        hotel.setZip("36986");
         hotel.setCity("city");
         hotel.setPhone("123123123");
         hotel.setFax("123123123");

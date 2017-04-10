@@ -21,7 +21,7 @@ public class HotelController {
     }
 
     @RequestMapping(value = "/hotel", method = RequestMethod.POST)
-    public Hotel saveHotel(@Valid @RequestBody Hotel hotel) throws Exception{
+    public Hotel saveHotel(@Valid @RequestBody Hotel hotel) {
         return hotelService.saveHotel(hotel);
 
     }
