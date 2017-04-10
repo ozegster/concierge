@@ -43,30 +43,12 @@
              </div>
             <div class="input-demo checkbox-demo row">
                 <div class="col-md-12 form-group" ba-panel ba-panel-title="FEATURES">
-                        <div>
-                            <label class="custom-checkbox">
-                                <input type="checkbox" value="option1">
-                                <span>Check 1</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="custom-checkbox nowrap">
-                                <input type="checkbox" value="option2">
-                                <span>Check 2</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="custom-checkbox nowrap">
-                                <input type="checkbox"  value="option3">
-                                <span>Check 3</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label class="custom-checkbox nowrap">
-                                <input type="checkbox" value="option3">
-                                <span>Check 4</span>
-                            </label>
-                        </div>
+                     <div ng-repeat="feature in features track by feature.id">
+                         <label class="custom-checkbox">
+                             <input type="checkbox">
+                             <span>{{feature.name}}</span>
+                         </label>
+                     </div>
                 </div>
             </div>
             <div class="row">
