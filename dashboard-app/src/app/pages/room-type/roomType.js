@@ -26,6 +26,7 @@
                   sidebarMeta: {
                      order: 0,
                   },
+                  controller: 'RoomTypeCtrl'
            })
   }
 

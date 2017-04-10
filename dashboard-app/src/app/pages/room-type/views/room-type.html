@@ -31,7 +31,7 @@
                              <div class="col-md-8">
                                  <div class="form-group">
                                      <label for="bed-type">Bed Type</label>
-                                     <select type="text" id="bed-type" class="form-control"></select>
+                                     <select type="text" id="bed-type" class="form-control" ng-model="roomType.bed" ng-options="bed as bed.type for bed in beds track by bed.id"></select>
                                  </div>
                              </div>
                          </div>
