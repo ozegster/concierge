@@ -10,7 +10,8 @@ public class FacilityType {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String type;
+    @Column(name = "facility_type")
+    private String FacilityType;
 
     public Integer getId() {
         return id;
@@ -20,19 +21,19 @@ public class FacilityType {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getFacilityType() {
+        return FacilityType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setFacilityType(String facilityType) {
+        FacilityType = facilityType;
     }
 
     @Override
     public String toString() {
         return "FacilityType{" +
                 "id=" + id +
-                ", type='" + type + '\'' +
+                ", FacilityType='" + FacilityType + '\'' +
                 '}';
     }
 }

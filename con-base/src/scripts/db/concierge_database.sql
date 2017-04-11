@@ -81,7 +81,7 @@ CREATE TABLE `concierge`.`hotel` (
 
 CREATE TABLE IF NOT EXISTS `concierge`.`facility_type` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `type` VARCHAR(80) NOT NULL,
+  `facility_type` VARCHAR(80) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
