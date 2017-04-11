@@ -7,6 +7,7 @@
     function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope) {
 
         $scope.roomType = {};
+        $scope.selected = [];
 
 
         BedTypeService.getBedTypes().then(function (response) {
@@ -16,8 +17,7 @@
         });
 
         FeatureService.getFeatures().then(function (response) {
-            $scope.features = response.data;
-            console.log($scope.features)
+            $scope.listOfFeatures = response.data;
         }, function (error) {
             console.log(error);
         });
