@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 public class FacilityController {
 
@@ -17,7 +19,7 @@ public class FacilityController {
     public  FacilityController(FacilityService facilityService) {this.facilityService = facilityService;}
 
     @RequestMapping(value = "/facility", method = RequestMethod.POST)
-    public Facility saveFacility(@RequestBody Facility facility){
+    public Facility saveFacility(@Valid @RequestBody Facility facility){
         return facilityService.saveFacility(facility);
     }
 

@@ -1,6 +1,9 @@
 package ba.codecentric.base.domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Facility {
@@ -10,10 +13,16 @@ public class Facility {
     private Integer id;
 
     @Column(name = "facility_name")
+    @NotBlank(message = "Please enter name of the facility")
+    @Size(max = 80, message = "Name is too long, 80 characters allowed")
     private String facilityName;
 
+    @NotBlank(message = "Please add facility description")
+    @Size(max = 400, message = "Description is too long, 400 characters allowed")
     private String description;
 
+    @NotBlank(message = "Please add facility image")
+    @Size(max = 128, message = "Address of image is too long, 128 characters allowed")
     private String image;
 
     @ManyToOne
