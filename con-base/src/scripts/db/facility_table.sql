@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS `concierge`.`facility` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `facility_name` VARCHAR(80) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
   `description` VARCHAR(400) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `image` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `facility_type_id` BLOB NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_facility_facility_type1_idx` (`facility_type_id` ASC),

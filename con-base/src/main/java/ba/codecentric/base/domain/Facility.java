@@ -14,6 +14,8 @@ public class Facility {
 
     private String description;
 
+    private String image;
+
     @ManyToOne
     @JoinColumn(name = "facility_type_id")
     private FacilityType facilityTypeId;
@@ -42,6 +44,14 @@ public class Facility {
         this.description = description;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public FacilityType getFacilityTypeId() {
         return facilityTypeId;
     }
@@ -56,6 +66,7 @@ public class Facility {
                 "id=" + id +
                 ", facilityName='" + facilityName + '\'' +
                 ", description='" + description + '\'' +
+                ", image='" + image + '\'' +
                 ", facilityTypeId=" + facilityTypeId +
                 '}';
     }
