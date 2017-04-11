@@ -3,9 +3,11 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomTypeCtrl', RoomTypeCtrl);
 
+    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope'];
+    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope) {
 
-    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', '$scope'];
-    function RoomTypeCtrl(BedTypeService, FeatureService, $scope) {
+        $scope.roomType = {};
+
 
         $scope.roomType = {};
         $scope.selected = [];
@@ -36,5 +38,14 @@
          $scope.roomType.list = $scope.selected;
 
                    }
+
+        $scope.submit = function () {
+            console.log($scope.roomType,$scope.roomType.image);
+            RoomTypeService.saveRoomType($scope.roomType,$scope.roomType.image).then(function (response) {
+                console.log(response);
+            }, function (error) {
+                console.log(error);
+            })
+        }
     }
 })();
