@@ -1,0 +1,159 @@
+<div class="widgets">
+    <div class="container-fluid">
+        <form id="hotel-info-form" name="hotelInfo" ng-submit="submit(hotelInfo)" autocomplete="off" novalidate>
+            <div id="general-info" class="col-md-12" ba-panel ba-panel-title="General info">
+                <div class="row">
+                    <div class="form-group col-md-6"
+                         ng-class="{'has-error' : hotelInfo.hotelName.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.hotelName.$valid && hotelInfo.$submitted}">
+                        <label for="name">Hotel name</label>
+                        <input class="form-control has-success text-danger" id="name" type="text" name="hotelName" ng-model="hotel.name" required ng-maxlength="128">
+                             <div ng-show="hotelInfo.$submitted">
+                                  <label class="help-block error-block basic-block" ng-show="hotelInfo.hotelName.$error.required">Please enter name of the hotel</label>
+                                  <label class="help-block error-block basic-block" ng-show="hotelInfo.hotelName.$error.maxlength">Name is too long, 128 characters allowed</label>
+                            </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="center">
+                            <div class="stars" ng-class="{'has-error' : hotelInfo.rating.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.rating.$valid && hotelInfo.$submitted}">
+                                <input class="star star-5 form-control" id="star-5" type="radio" name="rating" value="5"
+                                       ng-model="hotel.rating" ng-required="!hotel.rating">
+                                <label class="star star-5" for="star-5"></label>
+                                <input class="star star-4 form-control" id="star-4" type="radio" name="rating" value="4"
+                                       ng-model="hotel.rating" ng-required="!hotel.rating">
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3 form-control" id="star-3" type="radio" name="rating" value="3"
+                                       ng-model="hotel.rating" ng-required="!hotel.rating">
+                                <label class="star star-3" for="star-3"></label>
+                                <input class="star star-2 form-control" id="star-2" type="radio" name="rating" value="2"
+                                       ng-model="hotel.rating" ng-required="!hotel.rating">
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1 form-control" id="star-1" type="radio" name="rating" value="1"
+                                       ng-model="hotel.rating" ng-required="!hotel.rating">
+                                <label class="star star-1" for="star-1"></label>
+
+                                <div ng-show="hotelInfo.$submitted">
+                                    <label class="help-block error-block basic-block" ng-show="hotelInfo.rating.$invalid" >Please select number of hotel stars</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6" id="address" ba-panel ba-panel-title="Address">
+                        <div class="form-group"
+                             ng-class="{'has-error' : hotelInfo.streetAndNumber.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.streetAndNumber.$valid && hotelInfo.$submitted}">
+                            <label for="street-and-number">Street and number</label>
+                            <input class="form-control" id="street-and-number" type="text"
+                                   ng-model="hotel.address" name="streetAndNumber" required ng-maxlength="128">
+                            <div ng-show="hotelInfo.$submitted">
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.streetAndNumber.$error.required">Please enter street and number</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.streetAndNumber.$error.maxlength">Address is too long, 128 characters allowed</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group has-feedback" ng-class="{'has-error' : hotelInfo.zip.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.zip.$valid && hotelInfo.$submitted}">
+                                    <label for="zip">ZIP</label>
+                                    <input class="form-control" name="zip" id="zip" type="text" ng-model="hotel.zip" required ng-pattern='/^[0-9]{5}$/' ng-maxlength="5">
+
+                                    <div ng-show="hotelInfo.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.zip.$error.pattern || hotelInfo.zip.$error.maxlength">Please enter a valid zip code e.g. 43452 (5 digit required)</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.zip.$error.required">Please enter zip code</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group" ng-class="{'has-error' : hotelInfo.city.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.city.$valid && hotelInfo.$submitted}">
+                                    <label for="city">City</label>
+                                    <input class="form-control" name="city" id="city" type="text" ng-model="hotel.city" required ng-maxlength="64">
+
+                                    <div ng-show="hotelInfo.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.city.$error.required">Please enter city</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.city.$error.maxlength">City name is too long, 64 characters allowed</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group"
+                             ng-class="{'has-error' : hotelInfo.country.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.country.$valid && hotelInfo.$submitted}">
+                            <label for="country">Country</label>
+                            <select class="form-control" id="country" ng-model="hotel.country"
+                                    ng-options="country as country.name for country in countries | orderBy:'name' track by country.id" required name="country"></select>
+
+                           <div ng-show="hotelInfo.$submitted">
+                                 <label class="help-block error-block basic-block" ng-show="hotelInfo.country.$error.required">Please select a country</label>
+                           </div>
+                        </div>
+                    </div>
+                    <div id="contact-info" class="col-md-6" ba-panel ba-panel-title="Contact info">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error' : hotelInfo.phone.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.phone.$valid && hotelInfo.$submitted}">
+                                    <label for="phone">Phone</label>
+                                    <input class="form-control" name="phone" id="phone" type="text" ng-model="hotel.phone" required ng-maxlength="45">
+                                    <div ng-show="hotelInfo.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.phone.$error.required">Please enter a phone number</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.phone.$error.maxlength">Phone is too long, 45 characters allowed</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" ng-class="{'has-error' : hotelInfo.fax.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.fax.$valid && hotelInfo.$submitted}">
+                                    <label for="fax">Fax</label>
+                                    <input class="form-control" name="fax" id="fax" type="text" ng-model="hotel.fax" ng-maxlength="45" required>
+                                    <div ng-show="hotelInfo.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.fax.$error.maxlength">Fax is too long, 45 characters allowed</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.fax.$error.required">Please enter a fax</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error' : hotelInfo.email.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.email.$valid && hotelInfo.$submitted}">
+                            <label for="email">Email</label>
+                            <input class="form-control" id="email" type="email" ng-model="hotel.email" name="email"
+                                   required ng-pattern="/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/" ng-maxlength="45">
+                            <div ng-show="hotelInfo.$submitted" >
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.email.$error.required">Please enter a email</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.email.$error.pattern">Please enter a valid email address e.g. info@hotel.com</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.email.$error.maxlength">Email is too long, 45 characters allowed</label>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error' : hotelInfo.website.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.website.$valid && hotelInfo.$submitted}">
+                            <label for="website">Website</label>
+                            <input class="form-control" id="website" type="text" ng-model="hotel.website" name="website" required
+                                   ng-pattern="/^(www\.)([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/"  ng-maxlength="45" >
+                            <div ng-show="hotelInfo.$submitted" >
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.website.$error.required">Please enter a website</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.website.$error.pattern">Please enter a valid url e.g. www.hotel.com</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.website.$error.maxlength">Website is too long, 45 characters allowed</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="description" class="col-md-12" ba-panel ba-panel-title="Description">
+                <div class="form-group" ng-class="{'has-error' : hotelInfo.description.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.description.$valid && hotelInfo.$submitted}">
+                        <textarea form="hotel-info-form" class="form-control" name="description"
+                                  ng-model="hotel.description" required ng-maxlength="500"></textarea>
+                    <div ng-show="hotelInfo.$submitted">
+                        <label class="help-block error-block basic-block" ng-show="hotelInfo.description.$error.required">Please add hotel description</label>
+                        <label class="help-block error-block basic-block" ng-show="hotelInfo.description.$error.maxlength">Description is too long, 500 characters allowed</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary btn-lg" ng-disabled="hotelInfo.$invalid && hotelInfo.$submitted"
+                                    ng-attr-title="{{hotelInfo.$invalid && hotelInfo.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

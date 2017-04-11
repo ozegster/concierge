@@ -1,0 +1,47 @@
+
+div.stars {
+  display: inline-block;
+  line-height: normal;
+}
+
+input.star {
+  display: none;
+}
+
+label.star {
+  float: right;
+  padding: 5px;
+  font-size: 36px;
+  color: #D3D3D3;
+}
+
+@media screen
+and (max-width: 500px){
+  label.star {
+    font-size: 20px;
+  }
+}
+
+input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #ffe80a;
+}
+
+label.star:before {
+  content: '\f005';
+  font-family: FontAwesome;
+
+}
+
+label.star:hover {
+  cursor: pointer;
+}
+
+.center {
+  line-height: 0px;
+  text-align: center;
+}
+
+#description textarea {
+  resize: none;
+}
