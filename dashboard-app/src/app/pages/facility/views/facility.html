@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <form id="facility-form" name="facility" ng-submit="submit(facility)" autocomplete="off" novalidate>
 
-            <div id="description" class="col-md-6" ba-panel ba-panel-title="Facility">
+            <div class="col-md-6" ba-panel ba-panel-title="Facility">
 
                 <div class="form-group">
                     <label for="name">Facility name</label>
@@ -11,9 +11,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea form="facility-form" class="form-control" name="description"
-                              ng-model="hotel.description"></textarea>
+                    <label>Description</label>
+                    <textarea form="facility-form" class="form-control" name="facilityDescription"
+                              ng-model="facility.description"></textarea>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
