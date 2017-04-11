@@ -45,7 +45,7 @@
                 <div class="col-md-12 form-group" ba-panel ba-panel-title="FEATURES">
                      <div ng-repeat="feature in features track by feature.id">
                          <label class="custom-checkbox">
-                             <input type="checkbox">
+                             <input type="checkbox"  ng-click="toggleSelection(feature)">
                              <span>{{feature.name}}</span>
                          </label>
                      </div>
