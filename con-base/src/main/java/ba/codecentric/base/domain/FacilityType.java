@@ -11,7 +11,7 @@ public class FacilityType {
     private Integer id;
 
     @Column(name = "facility_type")
-    private String FacilityType;
+    private String facilityType;
 
     public Integer getId() {
         return id;
@@ -22,18 +22,18 @@ public class FacilityType {
     }
 
     public String getFacilityType() {
-        return FacilityType;
+        return facilityType;
     }
 
     public void setFacilityType(String facilityType) {
-        FacilityType = facilityType;
+        this.facilityType = facilityType;
     }
 
     @Override
     public String toString() {
         return "FacilityType{" +
                 "id=" + id +
-                ", FacilityType='" + FacilityType + '\'' +
+                ", facilityType='" + facilityType + '\'' +
                 '}';
     }
 }

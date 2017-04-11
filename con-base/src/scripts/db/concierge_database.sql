@@ -1,5 +1,7 @@
+DROP SCHEMA IF EXISTS `concierge`;
 CREATE SCHEMA `concierge` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
-DROP TABLE IF EXISTS `concierge`.`country`;
+
+
 CREATE TABLE `concierge`.`country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
@@ -59,8 +61,6 @@ INSERT INTO `concierge`.`country` VALUES (50,'Ukraine');
 INSERT INTO `concierge`.`country` VALUES (51,'Vatican City');
 
 
-DROP TABLE IF EXISTS `concierge`.`hotel`;
-
 CREATE TABLE `concierge`.`hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -80,12 +80,23 @@ CREATE TABLE `concierge`.`hotel` (
 
 
 CREATE TABLE IF NOT EXISTS `concierge`.`facility_type` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `facility_type` VARCHAR(80) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `facility_type` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
 
-INSERT INTO `concierge`.`facility_type` VALUES (1,'Restaurant');
-INSERT INTO `concierge`.`facility_type` VALUES (2,'Bar');
-INSERT INTO `concierge`.`facility_type` VALUES (3,'Recreation');
-INSERT INTO `concierge`.`facility_type` VALUES (4,'Wellnes');
+INSERT INTO `concierge`.`facility_type` VALUES (1,'Restaurants');
+INSERT INTO `concierge`.`facility_type` VALUES (2,'Bars');
+INSERT INTO `concierge`.`facility_type` VALUES (3,'Recreations');
+INSERT INTO `concierge`.`facility_type` VALUES (4,'Wellness');
+
+
+CREATE TABLE IF NOT EXISTS `concierge`.`facility` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `facility_name` VARCHAR(80) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `description` VARCHAR(400) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `facility_type_id` BLOB NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_facility_facility_type1_idx` (`facility_type_id` ASC),
+  CONSTRAINT `fk_facility_facility_type1` FOREIGN KEY (`facility_type_id`) REFERENCES `concierge`.`facility_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB;
