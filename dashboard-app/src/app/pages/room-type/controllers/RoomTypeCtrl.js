@@ -8,6 +8,7 @@
 
         $scope.roomType = {};
 
+
         BedTypeService.getBedTypes().then(function (response) {
             $scope.beds = response.data;
         }, function (error) {
@@ -22,7 +23,8 @@
         });
 
         $scope.submit = function () {
-            RoomTypeService.saveRoomType($scope.roomType,$scope.image).then(function (response) {
+            console.log($scope.roomType,$scope.roomType.image);
+            RoomTypeService.saveRoomType($scope.roomType,$scope.roomType.image).then(function (response) {
                 console.log(response);
             }, function (error) {
                 console.log(error);
