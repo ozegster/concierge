@@ -81,7 +81,7 @@ CREATE TABLE `concierge`.`hotel` (
 
 CREATE TABLE IF NOT EXISTS `concierge`.`facility_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `facility_type` varchar(80) NOT NULL,
+  `facility_type` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
@@ -93,11 +93,15 @@ INSERT INTO `concierge`.`facility_type` VALUES (4,'Wellness');
 
 CREATE TABLE IF NOT EXISTS `concierge`.`facility` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `facility_name` VARCHAR(80) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
-  `description` VARCHAR(400) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
-  `image` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `facility_type_id` BLOB NOT NULL,
+  `facility_name` VARCHAR(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` VARCHAR(400) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` VARCHAR(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `facility_type_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_facility_facility_type1_idx` (`facility_type_id` ASC),
-  CONSTRAINT `fk_facility_facility_type1` FOREIGN KEY (`facility_type_id`) REFERENCES `concierge`.`facility_type` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE = InnoDB;
+  CONSTRAINT `fk_facility_facility_type1`
+    FOREIGN KEY (`facility_type_id`)
+    REFERENCES `concierge`.`facility_type` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
