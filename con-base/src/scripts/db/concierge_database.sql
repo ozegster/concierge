@@ -78,7 +78,6 @@ CREATE TABLE `concierge`.`hotel` (
   CONSTRAINT `fk_hotel_country` FOREIGN KEY (`country_id`) REFERENCES `concierge`.`country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-DROP TABLE IF EXISTS `concierge`.`facility_type`;
 
 CREATE TABLE IF NOT EXISTS `concierge`.`facility_type` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
