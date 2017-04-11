@@ -1,0 +1,53 @@
+<div class="widgets">
+    <div class="container-fluid">
+        <form id="facility-form" name="facility" ng-submit="submit(facility)" autocomplete="off" novalidate>
+
+            <div id="description" class="col-md-6" ba-panel ba-panel-title="Facility">
+
+                <div class="form-group">
+                    <label for="name">Facility name</label>
+                    <input class="form-control has-success text-danger" id="name" type="text" name="name"
+                           ng-model="facility.facilityName">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea form="facility-form" class="form-control" name="description"
+                              ng-model="hotel.description"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                            <label for="floor">Floor</label>
+                            <select class="form-control" id="floor" ng-model="facility.floor"
+                                    ng-options="item as item for item in floors" name="floors"></select>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <label for="type">Type</label>
+                            <select class="form-control" id="type" ng-model="facility.type"
+                                    ng-options="type as type.facilityType for type in facilityType | orderBy:'facilityType' track by facility.id"
+                                    name="country"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
