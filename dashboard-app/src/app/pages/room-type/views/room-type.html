@@ -1,12 +1,12 @@
 <div class="widgets">
     <div class="container-fluid">
-        <form id="room-type-form" name="roomType" ng-submit="" autocomplete="off" novalidate>
+        <form id="room-type-form" name="roomType" ng-submit="submit()" autocomplete="off" novalidate>
             <div class="row">
                  <div class="col-md-12">
                      <div class="col-md-6" ba-panel ba-panel-title="ROOM TYPE">
                          <div class="form-group">
                              <label for="room-name">Room Name</label>
-                             <input type="text" class="form-control" id="room-name">
+                             <input type="text" class="form-control" id="room-name" ng-model="roomType.name">
                          </div>
                          <div class="form-group row form-horizontal">
                              <label for="number-of-people" class="col-md-4">Number of people</label>
@@ -38,6 +38,7 @@
                      </div>
                      <div class="col-md-6" ba-panel ba-panel-title="IMAGE">
                          <img class="img-center" src="http://focusyouronlinemarketing.com/heating/wp-content/uploads/2013/12/default_image_01-1024x1024-960x720.png" height="250">
+                         <input type="file" name="filename" accept="image/gif, image/jpeg, image/png" file-model="image">
                      </div>
                  </div>
              </div>

@@ -3,10 +3,8 @@ package ba.codecentric.master.controller;
 import ba.codecentric.base.domain.RoomType;
 import ba.codecentric.base.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 public class RoomTypeController {
@@ -19,7 +17,11 @@ public class RoomTypeController {
     }
 
     @RequestMapping(value = "/roomtype", method = RequestMethod.POST)
-    public RoomType saveRoom(@RequestBody RoomType roomType) {
-        return roomTypeService.saveRoom(roomType);
+    public RoomType saveRoom(@RequestPart("roomType") RoomType roomType, @RequestPart(value="image") MultipartFile image) {
+        System.out.println(roomType);
+        System.out.println(image.getOriginalFilename());
+        System.out.println(image.getSize());
+        //return roomTypeService.saveRoom(roomType);
+        return roomType;
     }
 }
