@@ -1,8 +1,12 @@
 package ba.codecentric.base.domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -24,6 +28,11 @@ public class Facility {
     @NotBlank(message = "Please add facility image")
     @Size(max = 128, message = "Address of image is too long, 128 characters allowed")
     private String image;
+
+    @NotNull(message = "Please add floor")
+    @Min(value = -2, message = "Floor is too low, allowed to -2")
+    @Max(value = 10, message = "Floor is too high, allowed to 10")
+    private Integer floor;
 
     @ManyToOne
     @JoinColumn(name = "facility_type_id")
@@ -61,6 +70,14 @@ public class Facility {
         this.image = image;
     }
 
+    public Integer getFloor() {
+        return floor;
+    }
+
+    public void setFloor(Integer floor) {
+        this.floor = floor;
+    }
+
     public FacilityType getFacilityTypeId() {
         return facilityTypeId;
     }
@@ -76,6 +93,7 @@ public class Facility {
                 ", facilityName='" + facilityName + '\'' +
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
+                ", floor=" + floor +
                 ", facilityTypeId=" + facilityTypeId +
                 '}';
     }

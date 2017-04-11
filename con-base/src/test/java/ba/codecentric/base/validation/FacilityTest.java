@@ -34,7 +34,7 @@ public class FacilityTest {
     public void facilityIsEmpty(){
         Facility facility = new Facility();
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
-        assertEquals(3, validations.size());
+        assertEquals(4, validations.size());
     }
 
     @Test
@@ -107,11 +107,39 @@ public class FacilityTest {
         assertEquals("Address of image is too long, 128 characters allowed", validations.iterator().next().getMessage());
     }
 
+    @Test
+    public void floorIsNull() {
+        Facility facility = getFacility();
+       facility.setFloor(null);
+        Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
+        assertEquals(1, validations.size());
+        assertEquals("Please add floor", validations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void floorIsTooHigh() {
+        Facility facility = getFacility();
+        facility.setFloor(15);
+        Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
+        assertEquals(1, validations.size());
+        assertEquals("Floor is too high, allowed to 10", validations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void floorIsTooLow() {
+        Facility facility = getFacility();
+        facility.setFloor(-5);
+        Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
+        assertEquals(1, validations.size());
+        assertEquals("Floor is too low, allowed to -2", validations.iterator().next().getMessage());
+    }
+
         private Facility getFacility() {
 
         Facility facility = new Facility();
         facility.setFacilityName("facility name");
         facility.setDescription("description");
+        facility.setFloor(5);
         facility.setImage("image");
         facility.setFacilityTypeId(new FacilityType());
 
