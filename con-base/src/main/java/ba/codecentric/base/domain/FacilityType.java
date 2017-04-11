@@ -3,38 +3,41 @@ package ba.codecentric.base.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "country")
-public class Country {
+@Table(name = "facility_type")
+public class FacilityType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String name;
+    private String type;
 
     public Integer getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Country{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+    public String getType() {
+        return type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
 
+    @Override
+    public String toString() {
+        return "FacilityType{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }
+
+
+
+
+
