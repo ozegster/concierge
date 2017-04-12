@@ -40,5 +40,20 @@
                 console.log(error);
             })
         }
+
+        $scope.$on('$viewContentLoaded', function () {
+
+            var canvas = document.getElementById('canvas');
+            var context=canvas.getContext("2d");
+            var img = new Image();
+            img.onload = function () {
+                context.drawImage(img, 0, 0, img.width,img.height,0, 0, canvas.width, canvas.height);
+
+            };
+            img.src = "http://focusyouronlinemarketing.com/heating/wp-content/uploads/2013/12/default_image_01-1024x1024-960x720.png"
+
+       });
+
+
     }
 })();
