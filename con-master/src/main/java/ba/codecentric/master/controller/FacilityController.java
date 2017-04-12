@@ -18,12 +18,12 @@ public class FacilityController {
     @Autowired
     public  FacilityController(FacilityService facilityService) {this.facilityService = facilityService;}
 
-    @RequestMapping(value = "/facility", method = RequestMethod.POST)
+    @RequestMapping(value = "/facilities", method = RequestMethod.POST)
     public Facility saveFacility(@Valid @RequestBody Facility facility){
         return facilityService.saveFacility(facility);
     }
 
-    @RequestMapping(value = "/facility", method = RequestMethod.GET)
+    @RequestMapping(value = "/facilities", method = RequestMethod.GET)
     public Facility getFacility(){
         Facility facility = facilityService.getFacility();
         return (facility == null)? new Facility() : facility;
