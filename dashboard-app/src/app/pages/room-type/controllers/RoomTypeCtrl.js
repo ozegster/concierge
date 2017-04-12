@@ -54,6 +54,10 @@
 
        });
 
+       $scope.getImages = function () {
+           var fileInput = document.getElementById('uploadFile');
+               fileInput.click();
+       }
 
     }
 })();
