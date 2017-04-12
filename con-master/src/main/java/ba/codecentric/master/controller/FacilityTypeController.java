@@ -1,6 +1,5 @@
 package ba.codecentric.master.controller;
 
-import ba.codecentric.base.domain.Country;
 import ba.codecentric.base.domain.FacilityType;
 import ba.codecentric.base.service.FacilityTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class FacilityTypeController {
         this.facilityTypeService = facilityTypeService;
     }
 
-    @RequestMapping(value = "/facilitytype", method = RequestMethod.GET)
+    @RequestMapping(value = "/facility/type", method = RequestMethod.GET)
     public List<FacilityType> getFacilityTypes() {
         return facilityTypeService.getAllFacilityTypes();
     }

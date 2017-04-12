@@ -4,7 +4,6 @@
     angular.module('ConciergeApp.pages.facility')
         .factory('FacilityService', ['$http', 'SERVER_PATH', '$q', function ($http, SERVER_PATH, $q) {
 
-            // getting all countries from db
             var getFacilityType = function () {
                 return $http.get(SERVER_PATH.url + '/facility/type')
                     .then(function (response) {
@@ -31,7 +30,7 @@
                 $http.get(SERVER_PATH.url + '/facility')
                     .then(function (response) {
                         if (!response.data) {
-                            deferred.reject("There isn't a hotel in db");
+                            deferred.reject("There isn't a facility in db");
                         } else {
                             deferred.resolve(response);
                         }
