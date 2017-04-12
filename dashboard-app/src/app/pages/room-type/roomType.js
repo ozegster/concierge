@@ -20,7 +20,7 @@
                  },
            })
            .state('room.roomType', {
-                  url: '/room',
+                  url: '/roomType',
                   templateUrl: 'app/pages/room-type/views/room-type.html',
                   title: 'Room Type',
                   sidebarMeta: {
