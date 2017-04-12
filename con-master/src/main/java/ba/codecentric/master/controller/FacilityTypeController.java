@@ -20,7 +20,7 @@ public class FacilityTypeController {
         this.facilityTypeService = facilityTypeService;
     }
 
-    @RequestMapping(value = "/facilitytype", method = RequestMethod.GET)
+    @RequestMapping(value = "/facility/type", method = RequestMethod.GET)
     public List<FacilityType> getFacilityTypes() {
         return facilityTypeService.getAllFacilityTypes();
     }
