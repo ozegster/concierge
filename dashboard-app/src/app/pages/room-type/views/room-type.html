@@ -1,6 +1,6 @@
 <div class="widgets">
     <div class="container-fluid">
-        <form id="room-type-form" name="roomTypeForm" ng-submit="submit()" autocomplete="off" novalidate>
+        <form id="room-type-form" name="roomTypeForm" ng-submit="submit(roomTypeForm)" autocomplete="off" novalidate>
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-6" ba-panel ba-panel-title="ROOM TYPE">
@@ -102,7 +102,8 @@
                 <div class="col-md-12">
                     <div class="form-group col-md-12">
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                            <button type="submit" class="btn btn-primary btn-lg"  ng-disabled="roomTypeForm.$invalid && roomTypeForm.$submitted"
+                                    ng-attr-title="{{roomTypeForm.$invalid && roomTypeForm.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
                         </div>
                     </div>
                 </div>

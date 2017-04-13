@@ -37,7 +37,10 @@
                fileInput.click();
         }
 
-        $scope.submit = function () {
+        $scope.submit = function (roomTypeForm) {
+            if (roomTypeForm.$invalid) {
+                return;
+            }
             RoomTypeService.saveRoomType($scope.roomType, $scope.roomType.image).then(function (response) {
                 console.log(response);
             }, function (error) {
