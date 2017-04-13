@@ -25,13 +25,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="form-group" ng-class="{'has-error' : hotelFacility.facilityFloor.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityFloor.$valid && hotelFacility.$submitted}">
+                                <div class="form-group" ng-class="{'has-error' : hotelFacility.floors.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.floors.$valid && hotelFacility.$submitted}">
                                     <label for="floor">Floor</label>
-                                    <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors" required ng-minlength="-2" ng-maxlength="10"></select>
+                                    <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors" required ></select>
                                         <div ng-show="hotelFacility.$submitted">
-                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityFloor.$error.required">Please add floor</label>
-                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityFloor.$error.maxlength">Floor is too high, allowed to 10</label>
-                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityFloor.$error.minlength">Floor is too low, allowed to -2</label>
+                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.floors.$error.required">Please add floor</label>
                                         </div>
                                 </div>
                             </div>
