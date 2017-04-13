@@ -22,11 +22,4 @@ public class FacilityController {
     public Facility saveFacility(@Valid @RequestBody Facility facility){
         return facilityService.saveFacility(facility);
     }
-
-    @RequestMapping(value = "/facilities", method = RequestMethod.GET)
-    public Facility getFacility(){
-        Facility facility = facilityService.getFacility();
-        return (facility == null)? new Facility() : facility;
-    }
-
 }
