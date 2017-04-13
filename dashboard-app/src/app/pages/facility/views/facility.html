@@ -27,20 +27,19 @@
                             <div class="col-md-4">
                                 <div class="form-group" ng-class="{'has-error' : hotelFacility.floors.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.floors.$valid && hotelFacility.$submitted}">
                                     <label for="floor">Floor</label>
-                                    <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors" required ng-maxlength="10" ng-minlength="-2"></select>
+                                    <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors" required ></select>
                                         <div ng-show="hotelFacility.$submitted">
                                             <label class="help-block error-block basic-block" ng-show="hotelFacility.floors.$error.required">Please add floor</label>
-                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.floors.$error.maxlength">Floor is too high, allowed to 10</label>
-                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.floors.$error.minlength">Floor is too low, allowed to -2</label>
                                         </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{'has-error' : hotelFacility.type.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.type.$valid && hotelFacility.$submitted}">
                                     <label for="type">Type</label>
-                                    <select class="form-control" id="type" ng-model="facility.facilityType"
-                                            ng-options="type as type.facilityType for type in facilityType | orderBy:'facilityType' track by facility.id"
-                                            name="country"></select>
+                                    <select class="form-control" id="type" ng-model="facility.facilityType" ng-options="type as type.facilityType for type in facilityType | orderBy:'facilityType' track by facility.id" name="type" required></select>
+                                    <div ng-show="hotelFacility.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelFacility.type.$error.required">Please add type</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
