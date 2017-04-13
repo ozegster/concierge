@@ -24,7 +24,7 @@
                 if (response.status === 200) {
                     toastr.success(response.data.facilityName + ' has successfully saved', 'Save Facility');
                     var original = $scope.facility;
-                    $scope.facility= angular.copy(original)
+                    $scope.facility= angular.copy(original);
                     $scope.facility.$setPristine()
                 }
             }, function (error) {
