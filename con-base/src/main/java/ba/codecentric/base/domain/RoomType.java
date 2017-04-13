@@ -1,6 +1,11 @@
 package ba.codecentric.base.domain;
 
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,16 +17,24 @@ public class RoomType {
     @GeneratedValue
     private Integer id;
 
+    @NotBlank(message = "Please enter name of the room type")
+    @Size(max = 80, message = "Room type name is too long, 80 characters allowed")
     private String name;
 
+    @Min(value = 1, message = "Minimum number of people is 1")
+    @Max(value = 6, message = "Maximum number of people is 6")
     @Column(name = "number_of_people")
-    private int numberOfPeople;
+    private Integer numberOfPeople;
 
+    @Min(value = 0, message = "Minimum number of kids is 0")
+    @Max(value = 3, message = "Maximum number of kids is 3")
     @Column(name = "number_of_kids")
-    private int numberOfKids;
+    private Integer numberOfKids;
 
-    private int size;
+    @NotNull(message = "Please enter size of the room")
+    private Integer size;
 
+    @NotEmpty(message = "Please enter image of the room")
     private String image;
 
     @ManyToOne
@@ -49,27 +62,27 @@ public class RoomType {
         this.name = name;
     }
 
-    public int getNumberOfPeople() {
+    public Integer getNumberOfPeople() {
         return numberOfPeople;
     }
 
-    public void setNumberOfPeople(int numberOfPeople) {
+    public void setNumberOfPeople(Integer numberOfPeople) {
         this.numberOfPeople = numberOfPeople;
     }
 
-    public int getNumberOfKids() {
+    public Integer getNumberOfKids() {
         return numberOfKids;
     }
 
-    public void setNumberOfKids(int numberOfKids) {
+    public void setNumberOfKids(Integer numberOfKids) {
         this.numberOfKids = numberOfKids;
     }
 
-    public int getSize() {
+    public Integer getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(Integer size) {
         this.size = size;
     }
 
