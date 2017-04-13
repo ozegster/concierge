@@ -38,7 +38,7 @@
                                     <label for="type">Type</label>
                                     <select class="form-control" id="type" ng-model="facility.facilityType" ng-options="type as type.facilityType for type in facilityType | orderBy:'facilityType' track by facility.id" name="type" required></select>
                                     <div ng-show="hotelFacility.$submitted">
-                                        <label class="help-block error-block basic-block" ng-show="hotelFacility.type.$error.required">Please add type</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelFacility.type.$error.required">Please add type of facility</label>
                                     </div>
                                 </div>
                             </div>
