@@ -5,7 +5,7 @@
         .factory('FacilityService', ['$http', 'SERVER_PATH', '$q', function ($http, SERVER_PATH, $q) {
 
             var getFacilityType = function () {
-                return $http.get(SERVER_PATH.url + '/facility/type')
+                return $http.get(SERVER_PATH.url + '/facilities/types')
                     .then(function (response) {
                         return response;
                     }, function (error) {
@@ -13,15 +13,15 @@
                     });
             };
 
-            var saveFacility = function (hotel) {
+            var saveFacility = function (facility) {
                 return $http({
                     method: 'POST',
-                    url: SERVER_PATH.url + '/facility',
-                    data: hotel
+                    url: SERVER_PATH.url + '/facilities',
+                    data: facility
                 }).then(function (result) {
                     return result;
                 }, function (error) {
-                    return error.message;
+                    return error;
                 })
             };
 

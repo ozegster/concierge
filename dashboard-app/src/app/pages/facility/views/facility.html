@@ -1,48 +1,52 @@
 <div class="widgets">
     <div class="container-fluid">
-        <form id="facility-form" name="facility" ng-submit="submit(facility)" autocomplete="off" novalidate>
+        <form id="facility-form" name="facilityForm" ng-submit="submit(facility)" autocomplete="off" novalidate>
 
-            <div  class="col-md-6" ba-panel ba-panel-title="Facility">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6" ba-panel ba-panel-title="Facility">
 
-                <div class="form-group">
-                    <label for="name">Facility name</label>
-                    <input class="form-control has-success text-danger" id="name" type="text" name="name"
-                           ng-model="facility.facilityName">
-                </div>
-
-                <div id="description" class="form-group">
-                    <label for="description">Description</label>
-                    <textarea form="facility-form" class="form-control" name="facilityDescription"
-                              ng-model="facility.description"></textarea>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
                         <div class="form-group">
-                            <label for="floor">Floor</label>
-                            <select class="form-control" id="floor" ng-model="facility.floor"
-                                    ng-options="item as item for item in floors" name="floors"></select>
+                            <label for="facility-name">Facility name</label>
+                            <input class="form-control" id="facility-name" type="text" ng-model="facility.facilityName">
+                        </div>
+
+                        <div id="description" class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" name="facilityDescription" ng-model="facility.description"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="floor">Floor</label>
+                                    <select class="form-control" id="floor" ng-model="facility.floor"
+                                            ng-options="item as item for item in floors" name="floors"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label for="type">Type</label>
+                                    <select class="form-control" id="type" ng-model="facility.facilityType"
+                                            ng-options="type as type.facilityType for type in facilityType | orderBy:'facilityType' track by facility.id"
+                                            name="country"></select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label for="type">Type</label>
-                            <select class="form-control" id="type" ng-model="facility.type"
-                                    ng-options="type as type.facilityType for type in facilityType | orderBy:'facilityType' track by facility.id"
-                                    name="country"></select>
+
+                    <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
+                        <div class="image">
+                            <div class="img-center">
+                                <img ng-src="{{imageScr}}" ng-click="uploadPicture()"  height="270">
+                            </div>
+
+                            <a href class="change-image" ng-click="uploadPicture()">Add Picture</a>
+                            <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)" ng-model="facility.image">
                         </div>
+
                     </div>
+
                 </div>
-            </div>
-            <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
-                    <div class="image">
-                        <div class="img-center">
-                            <img ng-src="{{imageScr}}" ng-click="uploadPicture()"  height="270">
-                        </div>
-
-                        <a href class="change-image" ng-click="uploadPicture()">Add Picture</a>
-                        <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)" ng-model="facility.image">
-                    </div>
-
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -53,8 +57,6 @@
                     </div>
                 </div>
             </div>
-
-
         </form>
     </div>
 </div>
