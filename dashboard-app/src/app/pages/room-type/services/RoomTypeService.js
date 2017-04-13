@@ -2,7 +2,7 @@
     angular.module('ConciergeApp.pages.roomType')
         .factory('RoomTypeService', ['$http', 'SERVER_PATH', function ($http, SERVER_PATH) {
             var saveRoomType = function (roomType, file) {
-                roomType.image = "";
+                roomType.image = file.name;
                 var fd = new FormData();
                 fd.append('roomType', new Blob([JSON.stringify(roomType)], {
                     type: "application/json"
