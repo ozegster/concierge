@@ -1,6 +1,6 @@
 <div class="widgets">
     <div class="container-fluid">
-        <form id="facility-form" name="hotelFacility" ng-submit="submit(hotelFacility)" autocomplete="off" novalidate>
+        <form id="facility-form" name="hotelFacility" ng-submit="submit(facility)" autocomplete="off" novalidate>
 
             <div class="row">
                 <div class="col-md-12">
@@ -29,16 +29,19 @@
                                     <label for="floor">Floor</label>
                                     <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors" required ></select>
                                         <div ng-show="hotelFacility.$submitted">
-                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.floors.$error.required">Please add floor</label>
+                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.floors.$error.required">Please select floor</label>
                                         </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <div class="form-group">
-                                    <label for="type">Type</label>
-                                    <select class="form-control" id="type" ng-model="facility.facilityType"
-                                            ng-options="type as type.facilityType for type in facilityType | orderBy:'facilityType' track by facility.id"
-                                            name="country"></select>
+                                <div class="form-group" ng-class="{'has-error' : hotelFacility.facilityType.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityType.$valid && hotelFacility.$submitted}">
+                                    <label for="facilityType">Type</label>
+                                    <select class="form-control" id="facilityType" ng-model="facility.facilityType"
+                                            ng-options="type as type.facilityType for type in facilityTypes"
+                                            name="facilityType"></select>
+                                    <div ng-show="hotelFacility.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityType.$error.required">Please select facility type</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +50,7 @@
                     <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
                         <div class="image">
                             <div class="img-center">
-                                <img ng-src="{{imageScr}}" ng-click="uploadPicture()" height="270">
+                                <img ng-src="{{image}}" ng-click="uploadPicture()" height="270">
                             </div>
 
                             <a href class="change-image" ng-click="uploadPicture()">Add Picture</a>

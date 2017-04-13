@@ -14,6 +14,7 @@
             };
 
             var saveFacility = function (facility) {
+                facility.image = "http://focusyouronlinemarketing.com/heating/wp-content/uploads/2013/12/default_image_01-1024x1024-960x720.png";
                 return $http({
                     method: 'POST',
                     url: SERVER_PATH.url + '/facilities',
@@ -25,23 +26,8 @@
                 })
             };
 
-            var getFacility = function () {
-                var deferred = $q.defer();
-                $http.get(SERVER_PATH.url + '/facility')
-                    .then(function (response) {
-                        if (!response.data) {
-                            deferred.reject("There isn't a facility in db");
-                        } else {
-                            deferred.resolve(response);
-                        }
-                    }, function (error) {
-                        deferred.reject(error);
-                    });
-                return deferred.promise;
-            };
             return {
                 getFacilityType: getFacilityType,
-                getFacility: getFacility,
                 saveFacility: saveFacility
 
             };
