@@ -18,8 +18,4 @@ public class FacilityServiceImpl implements FacilityService {
         return facilityRepository.save(facility);
     }
 
-    @Override
-    public Facility getFacility(){
-        return facilityRepository.findFirstByOrderById();
-    }
 }

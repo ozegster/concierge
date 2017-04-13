@@ -6,5 +6,4 @@ public interface FacilityService {
 
     Facility saveFacility(Facility facility);
 
-    Facility getFacility();
 }
