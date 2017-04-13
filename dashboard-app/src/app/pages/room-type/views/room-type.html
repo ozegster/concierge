@@ -77,13 +77,15 @@
                         </div>
                     </div>
                     <div class="col-md-6" ba-panel ba-panel-title="IMAGE">
-                        <img ng-click="getFileSystem()" class="img-center" src="assets/img/placeholder.png"
-                             height="250">
-                        <input ng-show="false" type="file" name="roomImage" accept="image/gif, image/jpeg, image/png" id="upload-image"
-                               file-model="roomType.image" required>
-                        <div ng-show="roomTypeForm.$submitted">
-                            <label class="help-block error-block basic-block"
-                                   ng-show="roomTypeForm.roomImage.$error.required">Please enter the image</label>
+                        <div class="form-group" ng-class="{'has-error' : roomTypeForm.roomImage.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomImage.$valid && roomTypeForm.$submitted}">
+                            <img ng-click="getFileSystem()" class="img-center" src="assets/img/placeholder.png"
+                                 height="250">
+                            <input ng-show="false" type="file" name="roomImage" ng-model="roomImage" valid-file accept="image/gif, image/jpeg, image/png" id="upload-image"
+                                   file-model="roomType.image" >
+                            <div class="centerText" ng-show="roomTypeForm.$submitted">
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomTypeForm.roomImage.$error.validFile">Please enter the image</label>
+                            </div>
                         </div>
                     </div>
                 </div>
