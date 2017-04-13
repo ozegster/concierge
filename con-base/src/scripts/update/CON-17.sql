@@ -1,6 +1,16 @@
-DROP TABLE IF EXISTS `concierge`.`facility`;
+CREATE TABLE `concierge`.`facility_type` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `facility_type` VARCHAR(80) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `concierge`.`facility` (
+INSERT INTO `concierge`.`facility_type` VALUES (1,'Restaurants');
+INSERT INTO `concierge`.`facility_type` VALUES (2,'Bars');
+INSERT INTO `concierge`.`facility_type` VALUES (3,'Recreations');
+INSERT INTO `concierge`.`facility_type` VALUES (4,'Wellness');
+
+
+CREATE TABLE `concierge`.`facility` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `facility_name` VARCHAR(80) COLLATE utf8mb4_unicode_ci NOT NULL,
   `floor` SMALLINT(2) COLLATE utf8mb4_unicode_ci NOT NULL,

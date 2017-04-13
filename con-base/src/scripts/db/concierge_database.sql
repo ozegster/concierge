@@ -79,7 +79,7 @@ CREATE TABLE `concierge`.`hotel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-CREATE TABLE IF NOT EXISTS `concierge`.`facility_type` (
+CREATE TABLE `concierge`.`facility_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `facility_type` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
@@ -91,7 +91,7 @@ INSERT INTO `concierge`.`facility_type` VALUES (3,'Recreations');
 INSERT INTO `concierge`.`facility_type` VALUES (4,'Wellness');
 
 
-CREATE TABLE IF NOT EXISTS `concierge`.`facility` (
+CREATE TABLE `concierge`.`facility` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `facility_name` VARCHAR(80) COLLATE utf8mb4_unicode_ci NOT NULL,
   `floor` SMALLINT(2) COLLATE utf8mb4_unicode_ci NOT NULL,

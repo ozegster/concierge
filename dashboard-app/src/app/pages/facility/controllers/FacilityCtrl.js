@@ -7,7 +7,7 @@
     FacilityCrtl.$inject = ['FacilityService', '$scope'];
     function FacilityCrtl(FacilityService, $scope) {
         $scope.facility = {};
-        $scope.floors = [-1, -2, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        $scope.floors = [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
         FacilityService.getFacilityType().then(function (response) {
             $scope.facilityTypes = response.data;
