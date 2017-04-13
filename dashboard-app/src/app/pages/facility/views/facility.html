@@ -4,7 +4,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-md-6" ba-panel ba-panel-title="Facility" height="270">
+                    <div class="col-md-6" ba-panel ba-panel-title="Facility">
                         <div class="form-group"
                              ng-class="{'has-error' : hotelFacility.facilityName.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityName.$valid && hotelFacility.$submitted}">
                             <label for="facility-name">Facility name</label>
@@ -27,18 +27,15 @@
                             <div class="col-md-4">
                                 <div class="form-group" ng-class="{'has-error' : hotelFacility.floors.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.floors.$valid && hotelFacility.$submitted}">
                                     <label for="floor">Floor</label>
-                                    <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors" required ></select>
+                                    <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors"></select>
                                         <div ng-show="hotelFacility.$submitted">
                                             <label class="help-block error-block basic-block" ng-show="hotelFacility.floors.$error.required">Please add floor</label>
                                         </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <div class="form-group" ng-class="{'has-error' : hotelFacility.type.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.type.$valid && hotelFacility.$submitted}">
+                                <div class="form-group">
                                     <label for="type">Type</label>
-                                    <div ng-show="hotelFacility.$submitted">
-                                        <label class="help-block error-block basic-block" ng-show="hotelFacility.type.$error.required">Please add type of facility</label>
-                                    </div>
                                     <select class="form-control" id="type" ng-model="facility.facilityType"
                                             ng-options="type as type.facilityType for type in facilityTypes"
                                             name="facilityType"></select>
@@ -46,14 +43,14 @@
                             </div>
                         </div>
                     </div>
-
                     <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
                         <div class="image">
                             <div class="img-center">
-                                <img src="assets/img/placeholder.png" ng-click="uploadPicture()" height="270">
+                                <img ng-src="img" ng-click="uploadPicture()" height="270">
                             </div>
 
-                            <a href class="change-image" ng-click="uploadPicture()">Add Picture</a>
+
+                            change-image" ng-click="uploadPicture()">Add Picture</a>
                             <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)"
                                    ng-model="facility.image">
                         </div>

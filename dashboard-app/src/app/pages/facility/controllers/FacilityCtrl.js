@@ -2,10 +2,10 @@
     'use strict';
 
     angular.module('ConciergeApp.pages.facility')
-        .controller('FacilityCrtl', FacilityCrtl);
+        .controller('FacilityCtrl', FacilityCtrl);
 
-    FacilityCrtl.$inject = ['FacilityService', '$scope', 'toastr'];
-    function FacilityCrtl(FacilityService, $scope, toastr) {
+    FacilityCtrl.$inject = ['FacilityService', '$scope', 'toastr'];
+    function FacilityCtrl(FacilityService, $scope, toastr) {
         $scope.facility = {};
         $scope.floors = [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 

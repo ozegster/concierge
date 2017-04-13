@@ -18,7 +18,7 @@
                 views: {
                     "": {
                         templateUrl: 'app/pages/facility/views/facility.html',
-                        controller: 'FacilityCrtl'
+                        controller: 'FacilityCtrl'
                     }
                 }
             })
