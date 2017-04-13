@@ -18,7 +18,7 @@ public class Facility {
 
     @Column(name = "facility_name")
     @NotBlank(message = "Please enter name of the facility")
-    @Size(max = 80, message = "Name is too long, 80 characters allowed")
+    @Size(max = 80, message = "Facility name is too long, 80 characters allowed")
     private String facilityName;
 
     @NotBlank(message = "Please add facility description")

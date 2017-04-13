@@ -8,31 +8,31 @@
                         <div class="form-group"
                              ng-class="{'has-error' : hotelFacility.facilityName.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityName.$valid && hotelFacility.$submitted}">
                             <label for="facility-name">Facility name</label>
-                            <input class="form-control has-success text-danger" id="facility-name" type="text"
-                                   name="facilityName"
-                                   ng-model="facility.facilityName" required ng-maxlength="80">
+                            <input class="form-control has-success text-danger" id="facility-name" type="text" name="facilityName" ng-model="facility.facilityName" required ng-maxlength="80">
                             <div ng-show="hotelFacility.$submitted">
-                                <label class="help-block error-block basic-block"
-                                       ng-show="hotelFacility.facilityName.$error.required">Please enter facility
-                                    name</label>
-                                <label class="help-block error-block basic-block"
-                                       ng-show="hotelFacility.facilityName.$error.maxlength">Facility name is too long,
-                                    80 characters
-                                    allowed</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityName.$error.required">Please enter name of the facility</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityName.$error.maxlength">Facility name is too long, 80 characters allowed</label>
                             </div>
                         </div>
 
-                        <div id="description" class="form-group">
+                        <div id="description" class="form-group" ng-class="{'has-error' : hotelFacility.facilityDescription.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityDescription.$valid && hotelFacility.$submitted}" >
                             <label for="description">Description</label>
-                            <textarea class="form-control" name="facilityDescription"
-                                      ng-model="facility.description"></textarea>
+                            <textarea class="form-control" name="facilityDescription" ng-model="facility.description" required ng-maxlength="400"></textarea>
+                                <div ng-show="hotelFacility.$submitted">
+                                    <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityDescription.$error.required">Please add facility description</label>
+                                    <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityDescription.$error.maxlength">Description is too long, 400 characters allowed</label>
+                                </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{'has-error' : hotelFacility.facilityFloor.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityFloor.$valid && hotelFacility.$submitted}">
                                     <label for="floor">Floor</label>
-                                    <select class="form-control" id="floor" ng-model="facility.floor"
-                                            ng-options="item as item for item in floors" name="floors"></select>
+                                    <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors" required ng-minlength="-2" ng-maxlength="10"></select>
+                                        <div ng-show="hotelFacility.$submitted">
+                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityFloor.$error.required">Please add floor</label>
+                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityFloor.$error.maxlength">Floor is too high, allowed to 10</label>
+                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityFloor.$error.minlength">Floor is too low, allowed to -2</label>
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -56,9 +56,7 @@
                             <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)"
                                    ng-model="facility.image">
                         </div>
-
                     </div>
-
                 </div>
             </div>
             <div class="row">
