@@ -27,18 +27,19 @@
                             <div class="col-md-4">
                                 <div class="form-group" ng-class="{'has-error' : hotelFacility.floors.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.floors.$valid && hotelFacility.$submitted}">
                                     <label for="floor">Floor</label>
-                                    <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors"></select>
+                                    <select class="form-control" id="floor" ng-model="facility.floor" ng-options="item as item for item in floors" name="floors" required></select>
                                         <div ng-show="hotelFacility.$submitted">
                                             <label class="help-block error-block basic-block" ng-show="hotelFacility.floors.$error.required">Please add floor</label>
                                         </div>
                                 </div>
                             </div>
                             <div class="col-md-8">
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{'has-error' : hotelFacility.facilityType.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityType.$valid && hotelFacility.$submitted}">
                                     <label for="type">Type</label>
-                                    <select class="form-control" id="type" ng-model="facility.facilityType"
-                                            ng-options="type as type.facilityType for type in facilityTypes"
-                                            name="facilityType"></select>
+                                    <select class="form-control" id="type" ng-model="facility.facilityType" ng-options="type as type.facilityType for type in facilityTypes" name="facilityType" required></select>
+                                        <div ng-show="hotelFacility.$submitted">
+                                            <label class="help-block error-block basic-block" ng-show="hotelFacility.facilityType.$error.required">Please add facility type</label>
+                                        </div>
                                 </div>
                             </div>
                         </div>
