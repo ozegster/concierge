@@ -1,10 +1,10 @@
 <div class="widgets">
     <div class="container-fluid">
-        <form id="facility-form" name="hotelFacility" ng-submit="submit(hotelFacility)" autocomplete="off" novalidate>
+        <form id="facility-form" name="hotelFacility" ng-submit="submit(facility)" autocomplete="off" novalidate>
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-md-6" ba-panel ba-panel-title="Facility">
+                    <div class="col-md-6" ba-panel ba-panel-title="Facility" height="270">
                         <div class="form-group"
                              ng-class="{'has-error' : hotelFacility.facilityName.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityName.$valid && hotelFacility.$submitted}">
                             <label for="facility-name">Facility name</label>
@@ -36,10 +36,12 @@
                             <div class="col-md-8">
                                 <div class="form-group" ng-class="{'has-error' : hotelFacility.type.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.type.$valid && hotelFacility.$submitted}">
                                     <label for="type">Type</label>
-                                    <select class="form-control" id="type" ng-model="facility.facilityType" ng-options="type as type.facilityType for type in facilityType | orderBy:'facilityType' track by facility.id" name="type" required></select>
                                     <div ng-show="hotelFacility.$submitted">
                                         <label class="help-block error-block basic-block" ng-show="hotelFacility.type.$error.required">Please add type of facility</label>
                                     </div>
+                                    <select class="form-control" id="type" ng-model="facility.facilityType"
+                                            ng-options="type as type.facilityType for type in facilityTypes"
+                                            name="facilityType"></select>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +50,7 @@
                     <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
                         <div class="image">
                             <div class="img-center">
-                                <img ng-src="{{imageScr}}" ng-click="uploadPicture()" height="270">
+                                <img src="assets/img/placeholder.png" ng-click="uploadPicture()" height="270">
                             </div>
 
                             <a href class="change-image" ng-click="uploadPicture()">Add Picture</a>

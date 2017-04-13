@@ -4,8 +4,8 @@
     angular.module('ConciergeApp.pages.facility')
         .controller('FacilityCrtl', FacilityCrtl);
 
-    FacilityCrtl.$inject = ['FacilityService', '$scope'];
-    function FacilityCrtl(FacilityService, $scope) {
+    FacilityCrtl.$inject = ['FacilityService', '$scope', 'toastr'];
+    function FacilityCrtl(FacilityService, $scope, toastr) {
         $scope.facility = {};
         $scope.floors = [-1, -2, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -20,8 +20,12 @@
                 return;
             }
             FacilityService.saveFacility(facility).then(function (response) {
+
                 if (response.status === 200) {
-                    $scope.facility = {};
+                    toastr.success(response.data.facilityName + ' has successfully saved', 'Save Facility');
+                    var original = $scope.facility;
+                    $scope.facility= angular.copy(original)
+                    $scope.facility.$setPristine()
                 }
             }, function (error) {
                 console.log(error);
