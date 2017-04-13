@@ -9,7 +9,6 @@
         $scope.roomType = {};
         $scope.selected = [];
 
-
         BedTypeService.getBedTypes().then(function (response) {
             $scope.beds = response.data;
         }, function (error) {
@@ -33,6 +32,11 @@
             $scope.roomType.features = $scope.selected;
         }
 
+        $scope.getFileSystem = function () {
+           var fileInput = document.getElementById('upload-image');
+               fileInput.click();
+        }
+
         $scope.submit = function () {
             RoomTypeService.saveRoomType($scope.roomType, $scope.roomType.image).then(function (response) {
                 console.log(response);
@@ -40,24 +44,6 @@
                 console.log(error);
             })
         }
-
-        $scope.$on('$viewContentLoaded', function () {
-
-            var canvas = document.getElementById('canvas');
-            var context=canvas.getContext("2d");
-            var img = new Image();
-            img.onload = function () {
-                context.drawImage(img, 0, 0, img.width,img.height,0, 0, canvas.width, canvas.height);
-
-            };
-            img.src = "http://focusyouronlinemarketing.com/heating/wp-content/uploads/2013/12/default_image_01-1024x1024-960x720.png"
-
-       });
-
-       $scope.getImages = function () {
-           var fileInput = document.getElementById('uploadFile');
-               fileInput.click();
-       }
 
     }
 })();
