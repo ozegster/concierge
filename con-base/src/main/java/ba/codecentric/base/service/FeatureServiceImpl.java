@@ -8,17 +8,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FeatureServiceImpl implements FeatureService{
+public class FeatureServiceImpl implements FeatureService {
 
     private final FeatureRepository featureRepository;
 
     @Autowired
-    public FeatureServiceImpl(FeatureRepository featureRepository){
+    public FeatureServiceImpl(FeatureRepository featureRepository) {
         this.featureRepository = featureRepository;
     }
 
     @Override
-    public List<Feature> getAllFeatures(){
+    public List<Feature> getAllFeatures() {
         return featureRepository.findAll();
     }
 }
