@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @RestController
 public class RoomTypeController {
@@ -27,8 +28,9 @@ public class RoomTypeController {
     }
 
     @RequestMapping(value = "/roomtype", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) {
-        imageService.saveImage(image);
-        return roomTypeService.saveRoom(roomType);
+    public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) throws IOException {
+        return (imageService.saveImage(image.getInputStream(), image.getOriginalFilename())) ?
+                roomTypeService.saveRoom(roomType) : new RoomType();
+
     }
 }

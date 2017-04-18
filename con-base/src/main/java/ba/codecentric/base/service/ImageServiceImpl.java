@@ -6,6 +6,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -14,11 +19,13 @@ public class ImageServiceImpl implements ImageService {
     private String directoryPath;
 
     @Override
-    public void saveImage(MultipartFile image) {
+    public boolean saveImage(InputStream image, String name) {
+        Path filePath = Paths.get(directoryPath + name);
         try {
-            image.transferTo(new File(directoryPath + image.getOriginalFilename()));
+            Files.copy(image, filePath);
+            return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            return false;
         }
     }
 }

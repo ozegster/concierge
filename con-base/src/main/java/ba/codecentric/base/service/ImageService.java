@@ -1,9 +1,9 @@
 package ba.codecentric.base.service;
 
-import org.springframework.web.multipart.MultipartFile;
+import java.io.InputStream;
 
 public interface ImageService {
 
-    void saveImage(MultipartFile image);
+    boolean saveImage(InputStream image, String name);
 
 }
