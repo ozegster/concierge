@@ -13,12 +13,23 @@
                     });
             };
 
-            var saveFacility = function (facility) {
-                facility.image = "http://focusyouronlinemarketing.com/heating/wp-content/uploads/2013/12/default_image_01-1024x1024-960x720.png";
+            var saveFacility = function (facility, image) {
+                if (image) {
+                    facility.image = image.name;
+                } else {
+                    facility.image = '';
+                }
+                var fd = new FormData();
+                fd.append('facility', new Blob([JSON.stringify(facility)], {
+                    type: "application/json"
+                }));
+                fd.append('image', image);
                 return $http({
                     method: 'POST',
-                    url: SERVER_PATH.url + '/facilities',
-                    data: facility
+                    url: SERVER_PATH.url + '/facility',
+                    data: fd,
+                    transformRequest: angular.identity,
+                    headers: {'Content-Type': undefined}
                 }).then(function (result) {
                     return result;
                 }, function (error) {

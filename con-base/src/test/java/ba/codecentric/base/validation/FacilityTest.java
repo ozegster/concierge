@@ -141,7 +141,7 @@ public class FacilityTest {
         facility.setDescription("description");
         facility.setFloor(5);
         facility.setImage("image");
-        facility.setFacilityTypeId(new FacilityType());
+        facility.setFacilityType(new FacilityType());
 
         return facility;
     }
