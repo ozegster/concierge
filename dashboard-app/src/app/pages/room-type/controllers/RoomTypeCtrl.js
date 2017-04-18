@@ -3,8 +3,8 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomTypeCtrl', RoomTypeCtrl);
 
-    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope'];
-    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope) {
+    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr'];
+    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr) {
 
         $scope.roomType = {};
         $scope.selected = [];
@@ -33,8 +33,8 @@
         }
 
         $scope.getFileSystem = function () {
-           var fileInput = document.getElementById('upload-image');
-               fileInput.click();
+            var fileInput = document.getElementById('upload-image');
+            fileInput.click();
         }
 
         $scope.submit = function (roomTypeForm) {
@@ -42,7 +42,14 @@
                 return;
             }
             RoomTypeService.saveRoomType($scope.roomType, $scope.roomType.image).then(function (response) {
-                console.log(response);
+                if (response.status === 200 && response.data) {
+                    toastr.success(response.data.name + ' has been saved successfully', 'Save Room type');
+                    roomTypeForm.$setPristine();
+                    roomTypeForm.$setUntouched();
+                    $scope.roomType = {};
+                } else {
+                    toastr.error(response.data.name + ' has not been saved successfully', 'Save Room type');
+                }
             }, function (error) {
                 console.log(error);
             })
