@@ -11,6 +11,8 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -19,13 +21,25 @@ public class ImageServiceImpl implements ImageService {
     private String directoryPath;
 
     @Override
-    public boolean saveImage(InputStream image, String name) {
-        Path filePath = Paths.get(directoryPath + name);
+    public String saveImage(InputStream image, String name) {
+        Path path = Paths.get(directoryPath);
+
         try {
+            if (!Files.exists(path)) {
+                Files.createDirectories(path);
+            }
+            String newFileName = getImageName(name);
+            Path filePath = Paths.get(directoryPath + newFileName);
             Files.copy(image, filePath);
-            return true;
+            return newFileName;
         } catch (IOException e) {
-            return false;
+            return new String();
         }
+    }
+
+    public String getImageName(String oldName) {
+        String[] parts = oldName.split("\\.");
+        String timeStamp = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss").format(new Date());
+        return timeStamp + "." + parts[parts.length - 1];
     }
 }

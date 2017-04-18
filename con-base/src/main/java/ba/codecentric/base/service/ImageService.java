@@ -4,6 +4,8 @@ import java.io.InputStream;
 
 public interface ImageService {
 
-    boolean saveImage(InputStream image, String name);
+    String saveImage(InputStream image, String name);
+
+    String getImageName(String oldName);
 
 }
