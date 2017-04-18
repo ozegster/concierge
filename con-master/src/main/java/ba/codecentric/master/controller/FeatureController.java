@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class FeatureController {
 
-    private FeatureService featureService;
+    private final FeatureService featureService;
 
     @Autowired
     public FeatureController(FeatureService featureService) {
