@@ -121,17 +121,4 @@ public class RoomType {
         this.features = features;
     }
 
-    @Override
-    public String toString() {
-        return "RoomType{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", numberOfPeople=" + numberOfPeople +
-                ", numberOfKids=" + numberOfKids +
-                ", size=" + size +
-                ", image='" + image + '\'' +
-                ", bed=" + bed +
-                ", features=" + features +
-                '}';
-    }
 }

@@ -32,8 +32,4 @@ public class Feature {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Id: " + this.getId() + " ,Name: " + this.getName();
-    }
 }

@@ -32,11 +32,4 @@ public class Bed {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Bed{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                '}';
-    }
 }
