@@ -66,11 +66,10 @@
                     </div>
                     <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
                         <div class="image">
-                            <div class="img-center">
-                                <img ng-src="img" ng-click="uploadPicture()" height="272">
-                            </div>
-                            <a class="change-image" ng-click="uploadPicture()">Add Picture</a>
-                            <input type="file" ng-show="false" id="uploadFile" ng-file-select="onFileSelect($files)"
+                            <img class="img-center" src="assets/img/placeholder.png" ng-click="uploadPicture()"
+                                 height="272">
+                            <input ng-show="false" type="file" name="facilityImage" ng-model="facilityImage" valid-file
+                                   accept="image/gif, image/jpeg, image/png" id="upload-image"
                                    file-model="facility.image">
                         </div>
                     </div>

@@ -19,12 +19,17 @@ public class ImageServiceImpl implements ImageService {
         try {
 
             String imageUrl = directoryPath + image.getOriginalFilename();
+            File file = new File(directoryPath);
+
+            if (!file.exists()) {
+                file.mkdir();
+            }
+
             image.transferTo(new File(imageUrl));
             return imageUrl;
 
         } catch (IOException e) {
-            return e.getMessage();
+            return "Error:" + e.getMessage();
         }
-
     }
 }

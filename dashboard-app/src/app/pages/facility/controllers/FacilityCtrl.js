@@ -33,7 +33,7 @@
         };
 
         $scope.uploadPicture = function () {
-            var fileInput = document.getElementById('uploadFile');
+            var fileInput = document.getElementById('upload-image');
             fileInput.click();
         };
     }
