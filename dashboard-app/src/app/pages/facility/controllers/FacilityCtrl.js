@@ -19,13 +19,14 @@
             if (facility.$invalid) {
                 return;
             }
-            FacilityService.saveFacility(facility).then(function (response) {
+            FacilityService.saveFacility($scope.facility).then(function (response) {
 
                 if (response.status === 200) {
                     toastr.success(response.data.facilityName + ' has successfully saved', 'Save Facility');
-                    var original = $scope.facility;
-                    $scope.facility= angular.copy(original);
-                    $scope.facility.$setPristine()
+                    facility.$setPristine();
+                    facility.$setUntouched();
+                    $scope.facility = {};
+
                 }
             }, function (error) {
                 console.log(error);
