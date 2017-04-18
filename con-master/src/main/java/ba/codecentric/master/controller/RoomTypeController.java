@@ -1,5 +1,6 @@
 package ba.codecentric.master.controller;
 
+
 import ba.codecentric.base.domain.RoomType;
 import ba.codecentric.base.service.ImageService;
 import ba.codecentric.base.service.RoomTypeService;
@@ -15,8 +16,8 @@ import javax.validation.Valid;
 @RestController
 public class RoomTypeController {
 
-    private RoomTypeService roomTypeService;
-    private ImageService imageService;
+    private final RoomTypeService roomTypeService;
+    private final ImageService imageService;
 
     @Autowired
     public RoomTypeController(RoomTypeService roomTypeService, ImageService imageService) {
