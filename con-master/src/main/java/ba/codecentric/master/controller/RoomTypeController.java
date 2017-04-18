@@ -5,6 +5,7 @@ import ba.codecentric.base.domain.RoomType;
 import ba.codecentric.base.service.ImageService;
 import ba.codecentric.base.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -25,7 +26,7 @@ public class RoomTypeController {
         this.imageService = imageService;
     }
 
-    @RequestMapping(value = "/roomtype", method = RequestMethod.POST, consumes = {"multipart/form-data"})
+    @RequestMapping(value = "/roomtype", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) {
         imageService.saveImage(image);
         return roomTypeService.saveRoom(roomType);
