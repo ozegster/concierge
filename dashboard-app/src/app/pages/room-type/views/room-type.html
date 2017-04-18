@@ -65,8 +65,8 @@
                                      ng-class="{'has-error' : roomTypeForm.bedType.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.bedType.$valid && roomTypeForm.$submitted}">
                                     <label for="bed-type">Bed Type</label>
                                     <select type="text" name="bedType" id="bed-type" class="form-control"
-                                            ng-model="roomType.bed"
-                                            ng-options="bed as bed.type for bed in beds track by bed.id"
+                                            ng-model="roomType.bedType"
+                                            ng-options="bedType as bedType.type for bedType in beds track by bedType.id"
                                             required></select>
                                     <div ng-show="roomTypeForm.$submitted">
                                         <label class="help-block error-block basic-block"

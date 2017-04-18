@@ -50,7 +50,7 @@ public class RoomType {
 
     @ManyToOne
     @JoinColumn(name = "bed_id")
-    private Bed bed;
+    private BedType bedType;
 
     @ManyToMany
     @JoinTable(name = "room_type_feature", joinColumns = {@JoinColumn(name = "room_type_id")}, inverseJoinColumns = {
@@ -105,12 +105,12 @@ public class RoomType {
         this.image = image;
     }
 
-    public Bed getBed() {
-        return bed;
+    public BedType getBedType() {
+        return bedType;
     }
 
-    public void setBed(Bed bed) {
-        this.bed = bed;
+    public void setBedType(BedType bedType) {
+        this.bedType = bedType;
     }
 
     public List<Feature> getFeatures() {

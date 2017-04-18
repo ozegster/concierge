@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "bed_type")
-public class Bed {
+public class BedType {
 
     @Id
     @GeneratedValue

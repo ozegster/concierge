@@ -1,7 +1,7 @@
 package ba.codecentric.master.controller;
 
-import ba.codecentric.base.domain.Bed;
-import ba.codecentric.base.service.BedService;
+import ba.codecentric.base.domain.BedType;
+import ba.codecentric.base.service.BedTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class BedController {
+public class BedTypeController {
 
-    private final BedService bedService;
+    private final BedTypeService bedTypeService;
 
     @Autowired
-    public BedController(BedService bedService) {
-        this.bedService = bedService;
+    public BedTypeController(BedTypeService bedTypeService) {
+        this.bedTypeService = bedTypeService;
     }
 
     @RequestMapping(value = "/beds", method = RequestMethod.GET)
-    public List<Bed> getAllBeds(){
-        return bedService.getAllBeds();
+    public List<BedType> getAllBeds(){
+        return bedTypeService.getAllBeds();
     }
 }
