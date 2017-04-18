@@ -17,7 +17,7 @@
             }
         })
         .constant('SERVER_PATH', {
-            url: 'http://localhost:8080'
+            url: location.protocol + '//' + location.hostname + ':8090'
         })
         .constant('colorHelper', {
             tint: function (color, weight) {

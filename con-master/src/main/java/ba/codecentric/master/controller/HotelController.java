@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 public class HotelController {
 
@@ -19,7 +21,7 @@ public class HotelController {
     }
 
     @RequestMapping(value = "/hotel", method = RequestMethod.POST)
-    public Hotel saveHotel(@RequestBody Hotel hotel) {
+    public Hotel saveHotel(@Valid @RequestBody Hotel hotel) {
         return hotelService.saveHotel(hotel);
 
     }
