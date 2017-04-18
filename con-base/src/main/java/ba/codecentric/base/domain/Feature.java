@@ -1,6 +1,10 @@
 package ba.codecentric.base.domain;
 
-import javax.persistence.*;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "feature")
@@ -29,7 +33,7 @@ public class Feature {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Id: " + this.getId() + " ,Name: " + this.getName();
     }
 }
