@@ -66,7 +66,7 @@
                     </div>
                     <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
                         <div class="image">
-                            <img class="img-center" src="assets/img/placeholder.png" ng-click="uploadPicture()"
+                            <img class="img-center" ng-src="{{imageSrc}}" ng-click="uploadPicture()"
                                  height="272">
                             <input ng-show="false" type="file" name="facilityImage" ng-model="facilityImage" valid-file
                                    accept="image/gif, image/jpeg, image/png" id="upload-image"
