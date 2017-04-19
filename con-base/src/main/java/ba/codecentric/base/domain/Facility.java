@@ -88,16 +88,4 @@ public class Facility {
     public void setFacilityType(FacilityType facilityType) {
         this.facilityType = facilityType;
     }
-
-    @Override
-    public String toString() {
-        return "Facility{" +
-                "id=" + id +
-                ", facilityName='" + facilityName + '\'' +
-                ", description='" + description + '\'' +
-                ", image='" + image + '\'' +
-                ", floor=" + floor +
-                ", facilityType=" + facilityType +
-                '}';
-    }
 }

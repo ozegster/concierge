@@ -1,6 +1,12 @@
 package ba.codecentric.base.domain;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "facility_type")
@@ -27,14 +33,6 @@ public class FacilityType {
 
     public void setFacilityType(String facilityType) {
         this.facilityType = facilityType;
-    }
-
-    @Override
-    public String toString() {
-        return "FacilityType{" +
-                "id=" + id +
-                ", facilityType='" + facilityType + '\'' +
-                '}';
     }
 }
 
