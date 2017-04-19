@@ -8,6 +8,8 @@
 
         $scope.roomType = {};
         $scope.selected = [];
+        $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
+
 
         BedTypeService.getBedTypes().then(function (response) {
             $scope.beds = response.data;
@@ -47,6 +49,10 @@
                     roomTypeForm.$setPristine();
                     roomTypeForm.$setUntouched();
                     $scope.roomType = {};
+                    $scope.featureBox = false;
+                    angular.element("input[type='file']").val(null);
+                    $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
+
                 } else {
                     toastr.error(response.data.name + ' has not been saved successfully', 'Save Room type');
                 }
