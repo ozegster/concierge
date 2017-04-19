@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class FacilityTypeServiceImpl implements FacilityTypeService {
 
-    private FacilityTypeRepository facilityTypeRepository;
+    private final FacilityTypeRepository facilityTypeRepository;
 
     @Autowired
     public FacilityTypeServiceImpl(FacilityTypeRepository facilityTypeRepository) {
