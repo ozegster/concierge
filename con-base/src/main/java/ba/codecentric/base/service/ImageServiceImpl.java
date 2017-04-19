@@ -35,7 +35,18 @@ public class ImageServiceImpl implements ImageService {
         return newImageName;
     }
 
-    public String getImageExtension(String imageName) {
+    private void createImageDirectories() throws IOException {
+        Path defaultDirectoryPath = Paths.get(directoryPath);
+        if (!Files.exists(defaultDirectoryPath)) {
+            Files.createDirectories(defaultDirectoryPath);
+        }
+    }
+
+    private String getUniqueImageName(String imageName) {
+        return UUID.randomUUID() + getTimestamp() + "." + getImageExtension(imageName);
+    }
+
+    private String getImageExtension(String imageName) {
         String[] partsOfTheName = imageName.split("\\.");
         return partsOfTheName[partsOfTheName.length - 1];
     }
@@ -43,16 +54,4 @@ public class ImageServiceImpl implements ImageService {
     private String getTimestamp() {
         return System.currentTimeMillis() + "";
     }
-
-    private String getUniqueImageName(String imageName) {
-        return UUID.randomUUID() + getTimestamp() + "." + getImageExtension(imageName);
-    }
-
-    public void createImageDirectories() throws IOException {
-        Path defaultDirectoryPath = Paths.get(directoryPath);
-        if (!Files.exists(defaultDirectoryPath)) {
-            Files.createDirectories(defaultDirectoryPath);
-        }
-    }
-
 }
