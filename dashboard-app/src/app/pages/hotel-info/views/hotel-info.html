@@ -134,13 +134,36 @@
                     </div>
                 </div>
             </div>
-            <div id="description" class="col-md-12" ba-panel ba-panel-title="Description">
-                <div class="form-group" ng-class="{'has-error' : hotelInfo.description.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.description.$valid && hotelInfo.$submitted}">
-                        <textarea form="hotel-info-form" class="form-control" name="description"
-                                  ng-model="hotel.description" required ng-maxlength="500"></textarea>
-                    <div ng-show="hotelInfo.$submitted">
-                        <label class="help-block error-block basic-block" ng-show="hotelInfo.description.$error.required">Please add hotel description</label>
-                        <label class="help-block error-block basic-block" ng-show="hotelInfo.description.$error.maxlength">Description is too long, 500 characters allowed</label>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="description" class="col-md-6" ba-panel ba-panel-title="Description">
+                        <div class="form-group" ng-class="{'has-error' : hotelInfo.description.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.description.$valid && hotelInfo.$submitted}">
+                            <textarea form="hotel-info-form" class="form-control" name="description" ng-model="hotel.description" required ng-maxlength="500"></textarea>
+                            <div ng-show="hotelInfo.$submitted">
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.description.$error.required">Please add hotel description</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.description.$error.maxlength">Description is too long, 500 characters allowed</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="additionalInfo" class="col-md-6" ba-panel ba-panel-title="Additional info">
+                        <div class="form-group" ng-class="{'has-error' : hotelInfo.checkIn.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.checkIn.$valid && hotelInfo.$submitted}">
+                            <label for="checkIn">Check-in</label>
+                            <div>
+                                <input type="time" class="form-control" id="checkIn" name="checkIn" ng-model="additionalCheckIn" placeholder="HH:mm:ss" required />
+                                    <div ng-show="hotelInfo.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.checkIn.$error.required">Please add Check-in time </label>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="form-group" ng-class="{'has-error' : hotelInfo.checkOut.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.checkOut.$valid && hotelInfo.$submitted}">
+                            <label for="checkOut">Check-out</label>
+                            <div>
+                                <input type="time" class="form-control" id="checkOut" name="checkOut" ng-model="additionalCheckOut" placeholder="HH:mm:ss" required />
+                                    <div ng-show="hotelInfo.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.checkOut.$error.required">Please add Check-out time </label>
+                                    </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

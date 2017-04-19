@@ -3,21 +3,15 @@ package ba.codecentric.base.domain;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Entity
+@Table(name = "hotel")
 public class Hotel {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @NotBlank(message = "Please enter name of the hotel")
@@ -61,6 +55,14 @@ public class Hotel {
     @NotBlank(message = "Please add hotel description")
     @Size(max = 500, message = "Description is too long, 500 characters allowed")
     private String description;
+
+    @NotNull(message = "Please add Check-in time")
+    @Column(name = "check_in")
+    private int checkIn;
+
+    @NotNull(message = "Please add Check-out time")
+    @Column(name = "check_out")
+    private int checkOut;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
@@ -163,11 +165,39 @@ public class Hotel {
         this.country = country;
     }
 
+    public int getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(int checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public int getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(int checkOut) {
+        this.checkOut = checkOut;
+    }
+
     @Override
     public String toString() {
-        return "Id: " + this.getId() + ", Name: " + this.getName() + " , Rating: " + this.getRating() + " ,Address: " + this.getAddress() +
-                " ,Zip: " + this.getZip() + " ,City: " + this.getCity() +
-                " ,Phone: " + this.getPhone() + " ,Fax: " + this.getFax() + " ,Email: " + this.getEmail() + " ,Website: " + this.getWebsite() +
-                " ,Description: " + this.getDescription();
+        return "Hotel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", rating=" + rating +
+                ", address='" + address + '\'' +
+                ", zip='" + zip + '\'' +
+                ", city='" + city + '\'' +
+                ", phone='" + phone + '\'' +
+                ", fax='" + fax + '\'' +
+                ", email='" + email + '\'' +
+                ", website='" + website + '\'' +
+                ", description='" + description + '\'' +
+                ", checkIn=" + checkIn +
+                ", checkOut=" + checkOut +
+                ", country=" + country +
+                '}';
     }
 }
