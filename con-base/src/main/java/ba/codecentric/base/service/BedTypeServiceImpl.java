@@ -4,6 +4,7 @@ import ba.codecentric.base.domain.BedType;
 import ba.codecentric.base.repository.BedTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class BedTypeServiceImpl implements BedTypeService {
     }
 
     @Override
+    @Transactional
     public List<BedType> getAllBeds() {
         return bedTypeRepository.findAll();
     }
