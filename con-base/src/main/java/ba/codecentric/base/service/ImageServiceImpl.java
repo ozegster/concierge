@@ -52,6 +52,6 @@ public class ImageServiceImpl implements ImageService {
     }
 
     private String getTimestamp() {
-        return System.currentTimeMillis() + "";
+        return String.valueOf(System.currentTimeMillis());
     }
 }
