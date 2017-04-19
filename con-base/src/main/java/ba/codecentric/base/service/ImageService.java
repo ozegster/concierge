@@ -1,8 +1,10 @@
 package ba.codecentric.base.service;
 
-import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
+import java.io.InputStream;
 
 public interface ImageService {
 
-    String saveImage(MultipartFile image);
+    String saveImage(InputStream image, String name) throws IOException;
+
 }
