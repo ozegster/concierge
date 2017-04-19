@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -50,7 +51,6 @@ public class ImageServiceImpl implements ImageService {
 
     public String getImageName(String oldName) {
         String[] parts = oldName.split("\\.");
-        String timeStamp = new SimpleDateFormat(timestampFormat).format(new Date());
-        return timeStamp + "." + parts[parts.length - 1];
+        return UUID.randomUUID() + new SimpleDateFormat(timestampFormat).format(new Date()) + "." + parts[parts.length - 1];
     }
 }
