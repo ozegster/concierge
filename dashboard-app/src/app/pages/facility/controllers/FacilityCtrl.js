@@ -26,6 +26,18 @@
                     facility.$setPristine();
                     facility.$setUntouched();
                     $scope.facility = {};
+                    $scope.featureBox = false;
+                    angular.element("input[type='file']").val(null);
+                    $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
+                } else {
+                    if (response.data.errors) {
+                        angular.forEach(response.data.errors, function (value, key) {
+                            toastr.error(response.data.errors[key].defaultMessage, 'Error');
+                        });
+                    } else {
+                        toastr.error(response.data.error, 'Error');
+                    }
+
                 }
             }, function (error) {
                 console.log(error);
