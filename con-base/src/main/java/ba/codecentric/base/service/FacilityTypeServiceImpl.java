@@ -8,13 +8,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FacilityTypeServiceImpl implements FacilityTypeService{
+public class FacilityTypeServiceImpl implements FacilityTypeService {
 
     private FacilityTypeRepository facilityTypeRepository;
 
     @Autowired
-    public FacilityTypeServiceImpl(FacilityTypeRepository facilityTypeRepository) {this.facilityTypeRepository = facilityTypeRepository;}
+    public FacilityTypeServiceImpl(FacilityTypeRepository facilityTypeRepository) {
+        this.facilityTypeRepository = facilityTypeRepository;
+    }
 
     @Override
-    public List<FacilityType> getAllFacilityTypes(){return facilityTypeRepository.findAll();}
+    public List<FacilityType> getAllFacilityTypes() {
+        return facilityTypeRepository.findAll();
+    }
 }
