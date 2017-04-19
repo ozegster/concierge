@@ -1,0 +1,123 @@
+<div class="widgets">
+    <div class="container-fluid">
+        <form id="room-type-form" name="roomTypeForm" ng-submit="submit(roomTypeForm)" autocomplete="off" novalidate>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6" ba-panel ba-panel-title="ROOM TYPE">
+                        <div class="form-group"
+                             ng-class="{'has-error' : roomTypeForm.roomTypeName.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomTypeName.$valid && roomTypeForm.$submitted}">
+                            <label for="room-name">Room Name</label>
+                            <input type="text" name="roomTypeName" class="form-control" id="room-name"
+                                   ng-model="roomType.name" required ng-maxlength="80">
+                            <div ng-show="roomTypeForm.$submitted">
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomTypeForm.roomTypeName.$error.required">Please enter name of the room</label>
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomTypeForm.roomTypeName.$error.maxlength">Name is too long, 80 characters allowed</label>
+                            </div>
+                        </div>
+                        <div class="form-group row form-horizontal"
+                             ng-class="{'has-error' : roomTypeForm.numberOfPeople.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.numberOfPeople.$valid && roomTypeForm.$submitted}">
+                            <label for="number-of-people" class="col-md-4">Number of people</label>
+                            <div class="col-md-3">
+                                <input type="number" name="numberOfPeople" class="form-control" id="number-of-people"
+                                       min="1" max="6" ng-model="roomType.numberOfPeople" required
+                                       ng-pattern="/^[1-6]{1}$/">
+                            </div>
+
+                            <label class="help-block error-block basic-block"
+                                   ng-show="roomTypeForm.numberOfPeople.$error.required && roomTypeForm.$submitted">Please enter number of people</label>
+                            <label class="help-block error-block basic-block"
+                                   ng-show="roomTypeForm.numberOfPeople.$error.pattern && roomTypeForm.$submitted">Please enter a valid number 1 - 6</label>
+
+                        </div>
+
+                        <div class="form-group row form-horizontal"
+                             ng-class="{'has-error' : roomTypeForm.numberOfKids.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.numberOfKids.$valid && roomTypeForm.$submitted}">
+                            <label for="number-of-kids" class="col-md-4">Number of kids</label>
+                            <div class="col-md-3">
+                                <input type="number" name="numberOfKids" class="form-control" id="number-of-kids"
+                                       min="0" max="3"
+                                       ng-model="roomType.numberOfKids" required ng-pattern="/^[0-3]{1}$/">
+                            </div>
+                            <label class="help-block error-block basic-block"
+                                   ng-show="roomTypeForm.numberOfKids.$error.required && roomTypeForm.$submitted">Please enter number of kids</label>
+                            <label class="help-block error-block basic-block"
+                                   ng-show="roomTypeForm.numberOfKids.$error.pattern && roomTypeForm.$submitted">Please enter a valid number 0 - 3</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group"
+                                     ng-class="{'has-error' : roomTypeForm.roomSize.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomSize.$valid && roomTypeForm.$submitted}">
+                                    <label for="size">Size(sq meters)</label>
+                                    <input type="text" id="size" name="roomSize" class="form-control"
+                                           ng-model="roomType.size" required ng-pattern="/^[0-9]*$/">
+                                    <div ng-show="roomTypeForm.$submitted">
+                                        <label class="help-block error-block basic-block"
+                                               ng-show="roomTypeForm.roomSize.$error.required">Please enter size of the room</label>
+                                        <label class="help-block error-block basic-block"
+                                               ng-show="roomTypeForm.roomSize.$error.pattern">Please enter only numbers</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group"
+                                     ng-class="{'has-error' : roomTypeForm.bedType.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.bedType.$valid && roomTypeForm.$submitted}">
+                                    <label for="bed-type">Bed Type</label>
+                                    <select type="text" name="bedType" id="bed-type" class="form-control"
+                                            ng-model="roomType.bedType"
+                                            ng-options="bedType as bedType.type for bedType in beds track by bedType.id"
+                                            required></select>
+                                    <div ng-show="roomTypeForm.$submitted">
+                                        <label class="help-block error-block basic-block"
+                                               ng-show="roomTypeForm.bedType.$error.required">Please enter bed type of the room</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" ba-panel ba-panel-title="IMAGE">
+                        <div class="form-group" ng-class="{'has-error' : roomTypeForm.roomImage.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomImage.$valid && roomTypeForm.$submitted}">
+                            <img ng-click="getFileSystem()" class="img-center" ng-src="{{imageSrc}}">
+                            <input ng-show="false" type="file" name="roomImage" ng-model="roomImage" valid-file accept="image/gif, image/jpeg, image/png" id="upload-image"
+                                   file-model="roomType.image" >
+                            <div class="centerText" ng-show="roomTypeForm.$submitted">
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomTypeForm.roomImage.$error.validFile">Please enter the image</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="input-demo checkbox-demo row">
+                            <div class="col-md-12 form-group" ba-panel ba-panel-title="FEATURES">
+                                <div ng-repeat="feature in listOfFeatures">
+                                    <div class="clearfix" ng-if="$index % 4 == 0"></div>
+                                    <div class="col-md-3">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" ng-checked="featureBox" ng-click="toggleSelection(feature)">
+                                            <span>{{feature.name}}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group col-md-12">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary btn-lg"  ng-disabled="roomTypeForm.$invalid && roomTypeForm.$submitted"
+                                    ng-attr-title="{{roomTypeForm.$invalid && roomTypeForm.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
