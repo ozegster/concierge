@@ -18,30 +18,41 @@ public class ImageServiceImpl implements ImageService {
     @Value("${image.directory.path}")
     private String directoryPath;
 
-    @Value("${image.timestamp.format}")
-    private String timestampFormat;
-
     /**
      * @return new unique image name (randomUUID + timestamp + .extension)
-     * @throws IOException
      */
     @Override
     public String saveImage(InputStream image, String imageName) throws IOException {
-        Path defaultDirectoryPath = Paths.get(directoryPath);
         String newImageName;
         try {
-            if (!Files.exists(defaultDirectoryPath)) {
-                Files.createDirectories(defaultDirectoryPath);
-            }
-            String[] partsOfTheName = imageName.split("\\.");
-            newImageName = UUID.randomUUID() + new SimpleDateFormat(timestampFormat).format(new Date()) + "." + partsOfTheName[partsOfTheName.length - 1];
+            createImageDirectories();
+            newImageName = getUniqueImageName(imageName);
             Path filePath = Paths.get(directoryPath + newImageName);
             Files.copy(image, filePath);
         } finally {
             image.close();
         }
-
         return newImageName;
+    }
+
+    public String getImageExtension(String imageName) {
+        String[] partsOfTheName = imageName.split("\\.");
+        return partsOfTheName[partsOfTheName.length - 1];
+    }
+
+    private String getTimestamp() {
+        return System.currentTimeMillis() + "";
+    }
+
+    private String getUniqueImageName(String imageName) {
+        return UUID.randomUUID() + getTimestamp() + "." + getImageExtension(imageName);
+    }
+
+    public void createImageDirectories() throws IOException {
+        Path defaultDirectoryPath = Paths.get(directoryPath);
+        if (!Files.exists(defaultDirectoryPath)) {
+            Files.createDirectories(defaultDirectoryPath);
+        }
     }
 
 }

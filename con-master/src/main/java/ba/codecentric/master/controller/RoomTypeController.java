@@ -27,7 +27,7 @@ public class RoomTypeController {
         this.imageService = imageService;
     }
 
-    @RequestMapping(value = "/roomtype", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = "/room-type", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) throws IOException {
         String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
         if (fileName != null) {
