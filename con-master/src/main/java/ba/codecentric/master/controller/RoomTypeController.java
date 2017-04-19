@@ -30,7 +30,7 @@ public class RoomTypeController {
     @RequestMapping(value = "/roomtype", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) throws IOException {
         String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
-        if (!fileName.isEmpty()) {
+        if (fileName != null) {
             roomType.setImage(fileName);
             return roomTypeService.saveRoom(roomType);
         }
