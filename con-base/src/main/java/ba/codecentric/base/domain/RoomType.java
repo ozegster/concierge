@@ -2,7 +2,6 @@ package ba.codecentric.base.domain;
 
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,11 +31,13 @@ public class RoomType {
     @Size(max = 80, message = "Room type name is too long, 80 characters allowed")
     private String name;
 
+    @NotNull(message = "Please enter number of people")
     @Min(value = 1, message = "Minimum number of people is 1")
     @Max(value = 6, message = "Maximum number of people is 6")
     @Column(name = "number_of_people")
     private Integer numberOfPeople;
 
+    @NotNull(message = "Please enter number of kids")
     @Min(value = 0, message = "Minimum number of kids is 0")
     @Max(value = 3, message = "Maximum number of kids is 3")
     @Column(name = "number_of_kids")
@@ -45,9 +46,10 @@ public class RoomType {
     @NotNull(message = "Please enter size of the room")
     private Integer size;
 
-    @NotEmpty(message = "Please enter image of the room")
+    @NotBlank(message = "Please enter image of the room")
     private String image;
 
+    @NotNull(message = "Please select bed type of the room")
     @ManyToOne
     @JoinColumn(name = "bed_id")
     private BedType bedType;
