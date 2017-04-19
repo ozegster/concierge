@@ -7,6 +7,4 @@ public interface ImageService {
 
     String saveImage(InputStream image, String name) throws IOException;
 
-    String getImageName(String oldName);
-
 }

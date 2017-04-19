@@ -22,35 +22,26 @@ public class ImageServiceImpl implements ImageService {
     private String timestampFormat;
 
     /**
-     * Saving an image from InputStream on the file system
-     * If the directory doesn't exist, it is created
-     * Name of the image is a timestamp and it is returned as a string
-     *
-     * @param image
-     * @param name
-     * @return
+     * @return new unique image name (randomUUID + timestamp + .extension)
      * @throws IOException
      */
     @Override
-    public String saveImage(InputStream image, String name) throws IOException {
-        Path path = Paths.get(directoryPath);
-        String newFileName;
+    public String saveImage(InputStream image, String imageName) throws IOException {
+        Path defaultDirectoryPath = Paths.get(directoryPath);
+        String newImageName;
         try {
-            if (!Files.exists(path)) {
-                Files.createDirectories(path);
+            if (!Files.exists(defaultDirectoryPath)) {
+                Files.createDirectories(defaultDirectoryPath);
             }
-            newFileName = getImageName(name);
-            Path filePath = Paths.get(directoryPath + newFileName);
+            String[] partsOfTheName = imageName.split("\\.");
+            newImageName = UUID.randomUUID() + new SimpleDateFormat(timestampFormat).format(new Date()) + "." + partsOfTheName[partsOfTheName.length - 1];
+            Path filePath = Paths.get(directoryPath + newImageName);
             Files.copy(image, filePath);
         } finally {
             image.close();
         }
 
-        return newFileName;
+        return newImageName;
     }
 
-    public String getImageName(String oldName) {
-        String[] parts = oldName.split("\\.");
-        return UUID.randomUUID() + new SimpleDateFormat(timestampFormat).format(new Date()) + "." + parts[parts.length - 1];
-    }
 }
