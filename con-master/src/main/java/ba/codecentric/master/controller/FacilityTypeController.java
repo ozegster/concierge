@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class FacilityTypeController {
 
-    private FacilityTypeService facilityTypeService;
+    private final FacilityTypeService facilityTypeService;
 
     @Autowired
     public FacilityTypeController(FacilityTypeService facilityTypeService) {
