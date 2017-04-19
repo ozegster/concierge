@@ -6,3 +6,7 @@ jar{
 dependencies {
     compile project(":con-base")
 }
+
+springBoot {
+    executable = true
+}

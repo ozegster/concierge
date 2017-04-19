@@ -22,7 +22,7 @@
                 }).then(function (result) {
                     return result;
                 }, function (error) {
-                    return error.message;
+                    return error;
                 })
             };
 
