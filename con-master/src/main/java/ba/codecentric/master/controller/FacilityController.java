@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @RestController
 public class FacilityController {
@@ -26,8 +27,13 @@ public class FacilityController {
     }
 
     @RequestMapping(value = "/facility", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Facility saveFacility(@RequestPart("image") MultipartFile image, @Valid @RequestPart("facility") Facility facility) {
-        facility.setImage(imageService.saveImage(image));
-        return facilityService.saveFacility(facility);
+    public Facility saveFacility(@RequestPart("image") MultipartFile image, @Valid @RequestPart("facility") Facility facility) throws IOException {
+
+        String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
+        if (fileName != null) {
+            facility.setImage(fileName);
+            return facilityService.saveFacility(facility);
+        }
+        return new Facility();
     }
 }
