@@ -6,8 +6,7 @@
 
         'ConciergeApp.pages.dashboard',
         'ConciergeApp.pages.hotelInfo',
-        'ConciergeApp.pages.facility'
-        'ConciergeApp.pages.hotelInfo',
+        'ConciergeApp.pages.facility',
         'ConciergeApp.pages.roomType'
 
     ])
