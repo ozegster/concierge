@@ -26,7 +26,7 @@ public class FacilityController {
         this.imageService = imageService;
     }
 
-    @RequestMapping(value = "/facility", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RequestMapping(value = "/facilities", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Facility saveFacility(@RequestPart("image") MultipartFile image, @Valid @RequestPart("facility") Facility facility) throws IOException {
 
         String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());

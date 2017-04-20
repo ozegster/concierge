@@ -26,7 +26,7 @@
                 fd.append('image', image);
                 return $http({
                     method: 'POST',
-                    url: SERVER_PATH.url + '/facility',
+                    url: SERVER_PATH.url + '/facilities',
                     data: fd,
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
