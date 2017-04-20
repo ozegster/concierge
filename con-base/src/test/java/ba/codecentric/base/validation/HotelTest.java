@@ -369,14 +369,6 @@ public class HotelTest {
     }
 
     @Test
-    public void checkInIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setCheckIn(Time.valueOf("10:10:10"));
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
-    }
-
-    @Test
     public void checkOutIsNull() {
         Hotel hotel = getHotel();
         hotel.setCheckOut(null);
@@ -385,13 +377,6 @@ public class HotelTest {
         assertEquals("Please add Check-out time", validations.iterator().next().getMessage());
     }
 
-    @Test
-    public void checkOutIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setCheckIn(Time.valueOf("9:9:9"));
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
-    }
 
         private Hotel getHotel() {
         Hotel hotel = new Hotel();
