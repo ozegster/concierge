@@ -3,13 +3,13 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomTypeCtrl', RoomTypeCtrl);
 
-    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr'];
-    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr) {
+    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr','$uibModal'];
+    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal) {
 
         $scope.roomType = {};
         $scope.selected = [];
         $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
-
+        $scope.cropper = {};
 
         BedTypeService.getBedTypes().then(function (response) {
             $scope.beds = response.data;
@@ -34,11 +34,6 @@
             $scope.roomType.features = $scope.selected;
         }
 
-        $scope.getFileSystem = function () {
-            var fileInput = document.getElementById('upload-image');
-            fileInput.click();
-        }
-
         $scope.submit = function (roomTypeForm) {
             if (roomTypeForm.$invalid) {
                 return;
@@ -61,5 +56,12 @@
             })
         }
 
+        $scope.openModal = function(){
+            $uibModal.open({
+                templateUrl: 'app/theme/components/crop-image/crop-upload-image.html',
+                controller: 'ModalCtrl',
+                scope:$scope
+            })
+        }
     }
 })();
