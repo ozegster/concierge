@@ -147,26 +147,26 @@
                     </div>
                     <div id="additionalInfo" class="col-md-6" ba-panel ba-panel-title="Additional info">
                         <div class="form-group" ng-class="{'has-error' : hotelInfo.checkIn.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.checkIn.$valid && hotelInfo.$submitted}">
-                            <label>Check-in</label>
-                                <div class="input-group" moment-picker="ctrl.timepickerIn" format="HH:mm">
+                            <label for="checkIn">Check-in</label>
+                                <div class="input-group" moment-picker="hotel.checkIn" format="HH:mm:ss">
                                     <span class="input-group-addon">
                                         <i class="octicon octicon-clock"></i>
                                     </span>
-                                    <input name="checkIn" class="form-control" placeholder="Select a time" ng-model="ctrl.timepickerIn" ng-model-options="{ updateOn: 'blur' }" required>
-                                        <div ng-show="hotelInfo.$submitted">
-                                            <label class="help-block error-block basic-block" ng-show="hotelInfo.checkIn.$error.required">Please add Check-in time </label>
-                                        </div>
+                                    <input id="checkIn" name="checkIn" class="form-control" placeholder="Select a time" ng-model="hotel.checkIn" ng-model-options="{ updateOn: 'blur' }" required>
+                                    <div ng-show="hotelInfo.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.checkIn.$error.required">Please add Check-in time </label>
+                                    </div>
                                 </div>
                         <div class="form-group" ng-class="{'has-error' : hotelInfo.checkOut.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.checkOut.$valid && hotelInfo.$submitted}">
-                            <label>Check-out</label>
-                                <div class="input-group" moment-picker="ctrl.timepickerOut" format="HH:mm">
+                            <label for="checkOut">Check-out</label>
+                                <div class="input-group" moment-picker="hotel.checkOut" format="HH:mm:ss">
                                     <span class="input-group-addon">
                                         <i class="octicon octicon-clock"></i>
                                     </span>
-                                    <input name="checkOut" class="form-control" placeholder="Select a time" ng-model="ctrl.timepickerOut" ng-model-options="{ updateOn: 'blur' }" required>
-                                        <div ng-show="hotelInfo.$submitted">
-                                            <label class="help-block error-block basic-block" ng-show="hotelInfo.checkOut.$error.required">Please add Check-out time </label>
-                                        </div>
+                                    <input id="checkOut" name="checkOut" class="form-control" placeholder="Select a time" ng-model="hotel.checkOut" ng-model-options="{ updateOn: 'blur' }" required>
+                                    <div ng-show="hotelInfo.$submitted">
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.checkOut.$error.required">Please add Check-out time </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>

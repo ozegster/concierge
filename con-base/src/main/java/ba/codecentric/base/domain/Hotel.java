@@ -167,14 +167,12 @@ public class Hotel {
     }
 
     public Time getCheckIn() {
-        return Time.valueOf(checkIn.toString());
+        return checkIn;
     }
 
     public void setCheckIn(Time checkIn) { this.checkIn = checkIn; }
 
-    public Time getCheckOut() {
-        return Time.valueOf(checkOut.toString());
-    }
+    public Time getCheckOut() { return checkOut; }
 
     public void setCheckOut(Time checkOut) {
         this.checkOut = checkOut;
