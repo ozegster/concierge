@@ -11,6 +11,7 @@ angular.module('ConciergeApp', [
   "xeditable",
   'ui.slimscroll',
   'ngJsTree',
+  'angular-img-cropper',
 
   'ConciergeApp.theme',
   'ConciergeApp.pages'
