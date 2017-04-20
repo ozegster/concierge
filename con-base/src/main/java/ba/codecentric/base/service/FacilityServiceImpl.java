@@ -11,10 +11,12 @@ public class FacilityServiceImpl implements FacilityService {
     private final FacilityRepository facilityRepository;
 
     @Autowired
-    public FacilityServiceImpl(FacilityRepository facilityRepository) { this.facilityRepository = facilityRepository;}
+    public FacilityServiceImpl(FacilityRepository facilityRepository) {
+        this.facilityRepository = facilityRepository;
+    }
 
     @Override
-    public Facility saveFacility(Facility facility){
+    public Facility saveFacility(Facility facility) {
         return facilityRepository.save(facility);
     }
 
