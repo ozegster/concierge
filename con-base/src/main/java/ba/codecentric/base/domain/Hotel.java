@@ -176,23 +176,4 @@ public class Hotel {
 
     public void setCheckOut(Time checkOut) { this.checkOut = checkOut; }
 
-    @Override
-    public String toString() {
-        return "Hotel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", rating=" + rating +
-                ", address='" + address + '\'' +
-                ", zip='" + zip + '\'' +
-                ", city='" + city + '\'' +
-                ", phone='" + phone + '\'' +
-                ", fax='" + fax + '\'' +
-                ", email='" + email + '\'' +
-                ", website='" + website + '\'' +
-                ", description='" + description + '\'' +
-                ", checkIn=" + checkIn +
-                ", checkOut=" + checkOut +
-                ", country=" + country +
-                '}';
-    }
 }

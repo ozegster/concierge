@@ -77,13 +77,9 @@ CREATE TABLE `concierge`.`hotel` (
   `check_out` TIME(0) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_hotel_country` (`country_id` ASC),
-  CONSTRAINT `fk_hotel_country`
-    FOREIGN KEY (`country_id`)
-    REFERENCES `concierge`.`country` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-=======
+  CONSTRAINT `fk_hotel_country` FOREIGN KEY (`country_id`) REFERENCES `concierge`.`country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 CREATE TABLE `concierge`.`hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
