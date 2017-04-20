@@ -25,13 +25,13 @@ public class FacilityTest {
     private static Validator validator;
 
     @BeforeClass
-    public static void setUp(){
+    public static void setUp() {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         validator = factory.getValidator();
     }
 
     @Test
-    public void facilityIsEmpty(){
+    public void facilityIsEmpty() {
         Facility facility = new Facility();
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(4, validations.size());
@@ -82,7 +82,7 @@ public class FacilityTest {
 
     @Test
     public void descriptionIsTooLong() {
-       Facility facility = getFacility();
+        Facility facility = getFacility();
         facility.setDescription("Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description ");
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
@@ -110,7 +110,7 @@ public class FacilityTest {
     @Test
     public void floorIsNull() {
         Facility facility = getFacility();
-       facility.setFloor(null);
+        facility.setFloor(null);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Please add floor", validations.iterator().next().getMessage());
@@ -134,7 +134,7 @@ public class FacilityTest {
         assertEquals("Floor is too low, allowed to -2", validations.iterator().next().getMessage());
     }
 
-        private Facility getFacility() {
+    private Facility getFacility() {
 
         Facility facility = new Facility();
         facility.setFacilityName("facility name");
