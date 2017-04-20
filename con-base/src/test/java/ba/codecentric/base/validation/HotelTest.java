@@ -13,6 +13,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.sql.Time;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -358,6 +359,24 @@ public class HotelTest {
         assertEquals(0, validations.size());
     }
 
+    @Test
+    public void CheckInIsNull() {
+        Hotel hotel = getHotel();
+        hotel.setCheckIn(null);
+        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
+        assertEquals(1, validations.size());
+        assertEquals("Please add Check-in time", validations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void CheckOutIsNull() {
+        Hotel hotel = getHotel();
+        hotel.setCheckOut(null);
+        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
+        assertEquals(1, validations.size());
+        assertEquals("Please add Check-out time", validations.iterator().next().getMessage());
+    }
+
     private Hotel getHotel() {
 
         Hotel hotel = new Hotel();
@@ -371,6 +390,8 @@ public class HotelTest {
         hotel.setEmail("email@email.com");
         hotel.setWebsite("www.site.com");
         hotel.setDescription("description");
+        hotel.setCheckIn(new Time(2));
+        hotel.setCheckOut(new Time(5));
         hotel.setCountry(new Country());
 
         return hotel;
