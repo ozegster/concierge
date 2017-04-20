@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.sql.Time;
 
 @Entity
 @Table(name = "hotel")
@@ -58,11 +59,11 @@ public class Hotel {
 
     @NotNull(message = "Please add Check-in time")
     @Column(name = "check_in")
-    private int checkIn;
+    private Time checkIn;
 
     @NotNull(message = "Please add Check-out time")
     @Column(name = "check_out")
-    private int checkOut;
+    private Time checkOut ;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
@@ -165,19 +166,17 @@ public class Hotel {
         this.country = country;
     }
 
-    public int getCheckIn() {
-        return checkIn;
+    public Time getCheckIn() {
+        return Time.valueOf(checkIn.toString());
     }
 
-    public void setCheckIn(int checkIn) {
-        this.checkIn = checkIn;
+    public void setCheckIn(Time checkIn) { this.checkIn = checkIn; }
+
+    public Time getCheckOut() {
+        return Time.valueOf(checkOut.toString());
     }
 
-    public int getCheckOut() {
-        return checkOut;
-    }
-
-    public void setCheckOut(int checkOut) {
+    public void setCheckOut(Time checkOut) {
         this.checkOut = checkOut;
     }
 
