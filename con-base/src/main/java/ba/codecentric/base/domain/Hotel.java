@@ -174,9 +174,7 @@ public class Hotel {
 
     public Time getCheckOut() { return checkOut; }
 
-    public void setCheckOut(Time checkOut) {
-        this.checkOut = checkOut;
-    }
+    public void setCheckOut(Time checkOut) { this.checkOut = checkOut; }
 
     @Override
     public String toString() {

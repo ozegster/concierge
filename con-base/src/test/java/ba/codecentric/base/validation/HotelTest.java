@@ -35,7 +35,7 @@ public class HotelTest {
     public void hotelIsEmpty() {
         Hotel hotel = new Hotel();
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(10, validations.size());
+        assertEquals(12, validations.size());
     }
 
     @Test
@@ -360,7 +360,7 @@ public class HotelTest {
     }
 
     @Test
-    public void CheckInIsNull() {
+    public void checkInIsNull() {
         Hotel hotel = getHotel();
         hotel.setCheckIn(null);
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
@@ -369,7 +369,15 @@ public class HotelTest {
     }
 
     @Test
-    public void CheckOutIsNull() {
+    public void checkInIsCorrect() {
+        Hotel hotel = getHotel();
+        hotel.setCheckIn(Time.valueOf("10:10:10"));
+        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
+        assertEquals(0, validations.size());
+    }
+
+    @Test
+    public void checkOutIsNull() {
         Hotel hotel = getHotel();
         hotel.setCheckOut(null);
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
@@ -377,8 +385,15 @@ public class HotelTest {
         assertEquals("Please add Check-out time", validations.iterator().next().getMessage());
     }
 
-    private Hotel getHotel() {
+    @Test
+    public void checkOutIsCorrect() {
+        Hotel hotel = getHotel();
+        hotel.setCheckIn(Time.valueOf("9:9:9"));
+        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
+        assertEquals(0, validations.size());
+    }
 
+        private Hotel getHotel() {
         Hotel hotel = new Hotel();
         hotel.setName("hotel name");
         hotel.setRating(3);
@@ -390,8 +405,8 @@ public class HotelTest {
         hotel.setEmail("email@email.com");
         hotel.setWebsite("www.site.com");
         hotel.setDescription("description");
-        hotel.setCheckIn(new Time(2));
-        hotel.setCheckOut(new Time(5));
+        hotel.setCheckIn(Time.valueOf("12:12:12"));
+        hotel.setCheckOut(Time.valueOf("13:13:13"));
         hotel.setCountry(new Country());
 
         return hotel;
