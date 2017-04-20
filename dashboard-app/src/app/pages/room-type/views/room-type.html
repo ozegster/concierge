@@ -24,14 +24,11 @@
                                        min="1" max="6" ng-model="roomType.numberOfPeople" required
                                        ng-pattern="/^[1-6]{1}$/">
                             </div>
-
                             <label class="help-block error-block basic-block"
-                                   ng-show="roomTypeForm.numberOfPeople.$error.required && roomTypeForm.$submitted">Please enter number of people</label>
-                            <label class="help-block error-block basic-block"
-                                   ng-show="roomTypeForm.numberOfPeople.$error.pattern && roomTypeForm.$submitted">Please enter a valid number 1 - 6</label>
-
+                                       ng-show="roomTypeForm.numberOfPeople.$error.required && roomTypeForm.$submitted">Please enter number of people</label>
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomTypeForm.numberOfPeople.$error.pattern && roomTypeForm.$submitted">Please enter a valid number 1 - 6</label>
                         </div>
-
                         <div class="form-group row form-horizontal"
                              ng-class="{'has-error' : roomTypeForm.numberOfKids.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.numberOfKids.$valid && roomTypeForm.$submitted}">
                             <label for="number-of-kids" class="col-md-4">Number of kids</label>
@@ -78,9 +75,7 @@
                     </div>
                     <div class="col-md-6" ba-panel ba-panel-title="IMAGE">
                         <div class="form-group" ng-class="{'has-error' : roomTypeForm.roomImage.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomImage.$valid && roomTypeForm.$submitted}">
-                            <img ng-click="getFileSystem()" class="img-center" ng-src="{{imageSrc}}">
-                            <input ng-show="false" type="file" name="roomImage" ng-model="roomImage" valid-file accept="image/gif, image/jpeg, image/png" id="upload-image"
-                                   file-model="roomType.image" >
+                            <img ng-click="openModal()" class="img-center" ng-src="{{imageSrc}}" id="room-type-image">
                             <div class="centerText" ng-show="roomTypeForm.$submitted">
                                 <label class="help-block error-block basic-block"
                                        ng-show="roomTypeForm.roomImage.$error.validFile">Please enter the image</label>
