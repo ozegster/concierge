@@ -74,11 +74,10 @@
                         </div>
                     </div>
                     <div class="col-md-6" ba-panel ba-panel-title="IMAGE">
-                        <div class="form-group" ng-class="{'has-error' : roomTypeForm.roomImage.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomImage.$valid && roomTypeForm.$submitted}">
-                            <img ng-click="openModal()" class="img-center" ng-src="{{imageSrc}}" id="room-type-image">
+                        <div class="form-group" ng-class="{'has-error' : isImageMissing() && roomTypeForm.$submitted, 'has-success' : !isImageMissing() && roomTypeForm.$submitted}">
+                            <img ng-click="openModal()" class="img-center" ng-src="{{imageSrc}}" id="room-type-image" valid-img>
                             <div class="centerText" ng-show="roomTypeForm.$submitted">
-                                <label class="help-block error-block basic-block"
-                                       ng-show="roomTypeForm.roomImage.$error.validFile">Please enter the image</label>
+                                <label class="help-block error-block basic-block" ng-show="isImageMissing()">Please enter the image</label>
                             </div>
                         </div>
                     </div>
