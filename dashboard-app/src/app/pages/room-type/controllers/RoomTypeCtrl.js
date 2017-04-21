@@ -3,13 +3,12 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomTypeCtrl', RoomTypeCtrl);
 
-    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr','$uibModal'];
-    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal) {
+    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr','$uibModal','$rootScope'];
+    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal, $rootScope) {
 
         $scope.roomType = {};
         $scope.selected = [];
         $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
-        $scope.cropper = {};
 
         BedTypeService.getBedTypes().then(function (response) {
             $scope.beds = response.data;
@@ -38,7 +37,7 @@
             if (roomTypeForm.$invalid) {
                 return;
             }
-            RoomTypeService.saveRoomType($scope.roomType, $scope.roomType.image).then(function (response) {
+            RoomTypeService.saveRoomType($scope.roomType, $rootScope.croppedImg).then(function (response) {
                 if (response.status === 200 && response.data) {
                     toastr.success(response.data.name + ' has been saved successfully', 'Save Room type');
                     roomTypeForm.$setPristine();
@@ -62,6 +61,11 @@
                 controller: 'ModalCtrl',
                 scope:$scope
             })
+        }
+
+        $scope.isImageMissing = function () {
+            var image = angular.element('#room-type-image').attr('src');
+            return image === $scope.imageSrc;
         }
     }
 })();
