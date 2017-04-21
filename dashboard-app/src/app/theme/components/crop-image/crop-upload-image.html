@@ -1,21 +1,20 @@
 
 <div  class="modal-container">
-<div class="modal-content modal-md">
-    <div class="modal-header">
-        <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
-            <em class="ion-ios-close-empty sn-link-close"></em>
-        </button>
-        <h4 class="modal-title">CROP AND UPLOAD IMAGE</h4>
+    <div class="modal-content modal-md">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+                <em class="ion-ios-close-empty sn-link-close"></em>
+            </button>
+            <h4 class="modal-title">CROP AND UPLOAD IMAGE</h4>
+        </div>
+        <div class="modal-body">
+            <canvas canvas-placeholder class="modal-canvas" id="canvas" width="500" height="400" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="460" crop-height="320" keep-aspect="true" touch-radius="150" crop-area-bounds="bounds"></canvas>
+            <input ng-show="false" type="file" img-cropper-fileread image="cropper.sourceImage" id="upload-image">
+        </div>
+        <div class="text-center footer">
+            <button type="button" class="btn btn-primary btn-responsive" ng-click="getFileSystem()">Upload Image</button>
+            <button type="button" class="btn btn-primary btn-responsive" ng-click="getCroppedImage()">Add Image</button>
+            <button type="button" class="btn btn-primary btn-responsive" ng-click="closeModal()">Cancel</button>
+        </div>
     </div>
-    <div class="modal-body">
-        <canvas canvas-placeholder class="modal-canvas" id="canvas" width="500" height="400" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="460" crop-height="320" keep-aspect="true" touch-radius="150" crop-area-bounds="bounds"></canvas>
-        <input ng-show="false" type="file" img-cropper-fileread image="cropper.sourceImage" id="upload-image" valid-file ng-model="roomImage" file-model="roomType.image">
-    </div>
-    <div class="text-center footer">
-        <button type="button" class="btn btn-primary btn-responsive" ng-click="getFileSystem()">Upload Image</button>
-        <button type="button" class="btn btn-primary btn-responsive" ng-click="getCroppedImage()">Add Image</button>
-        <button type="button" class="btn btn-primary btn-responsive" ng-click="closeModal()">Cancel</button>
-    </div>
-
-</div>
 </div>
