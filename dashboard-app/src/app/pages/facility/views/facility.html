@@ -65,12 +65,16 @@
                         </div>
                     </div>
                     <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
-                        <div class="image">
+                        <div class="form-group" ng-class="{'has-error' : hotelFacility.facilityImage.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityImage.$valid && hotelFacility.$submitted}">
                             <img class="img-center" ng-src="{{imageSrc}}" ng-click="uploadPicture()"
-                                 height="272">
+                                 style="height: 258px">
                             <input ng-show="false" type="file" name="facilityImage" ng-model="facilityImage" valid-file
                                    accept="image/gif, image/jpeg, image/png" id="upload-image"
                                    file-model="facility.image">
+                            <div class="centerText" ng-show="hotelFacility.$submitted">
+                                <label class="help-block error-block basic-block"
+                                       ng-show="hotelFacility.facilityImage.$error.validFile">Please select the image</label>
+                            </div>
                         </div>
                     </div>
                 </div>

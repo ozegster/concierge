@@ -5,7 +5,6 @@ import ba.codecentric.base.domain.FacilityType;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -19,7 +18,6 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@SpringBootConfiguration
 public class FacilityTest {
 
     private static Validator validator;
@@ -34,7 +32,7 @@ public class FacilityTest {
     public void facilityIsEmpty() {
         Facility facility = new Facility();
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
-        assertEquals(4, validations.size());
+        assertEquals(3, validations.size());
     }
 
     @Test
@@ -59,7 +57,7 @@ public class FacilityTest {
         facility.setFacilityName("facility name facility name facility name facility name facility name facility name facility name facility name facility name facility name facility name facility name");
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
-        assertEquals("Name is too long, 80 characters allowed", validations.iterator().next().getMessage());
+        assertEquals("Facility name is too long, 80 characters allowed", validations.iterator().next().getMessage());
     }
 
     @Test
@@ -105,15 +103,6 @@ public class FacilityTest {
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Address of image is too long, 128 characters allowed", validations.iterator().next().getMessage());
-    }
-
-    @Test
-    public void floorIsNull() {
-        Facility facility = getFacility();
-        facility.setFloor(null);
-        Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
-        assertEquals(1, validations.size());
-        assertEquals("Please add floor", validations.iterator().next().getMessage());
     }
 
     @Test
