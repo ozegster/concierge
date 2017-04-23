@@ -9,6 +9,7 @@
         $scope.roomType = {};
         $scope.selected = [];
         $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
+        $scope.croppedImg = {};
 
         BedTypeService.getBedTypes().then(function (response) {
             $scope.beds = response.data;
@@ -37,7 +38,7 @@
             if (roomTypeForm.$invalid) {
                 return;
             }
-            RoomTypeService.saveRoomType($scope.roomType, $rootScope.croppedImg).then(function (response) {
+            RoomTypeService.saveRoomType($scope.roomType, $scope.croppedImg).then(function (response) {
                 if (response.status === 200 && response.data) {
                     toastr.success(response.data.name + ' has been saved successfully', 'Save Room type');
                     roomTypeForm.$setPristine();
