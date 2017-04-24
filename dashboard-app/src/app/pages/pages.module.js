@@ -5,7 +5,8 @@
         'ui.router',
 
         'ConciergeApp.pages.dashboard',
-        'ConciergeApp.pages.hotelInfo'
+        'ConciergeApp.pages.hotelInfo',
+        'ConciergeApp.pages.roomType'
 
     ])
         .config(routeConfig);
@@ -13,6 +14,7 @@
     /** @ngInject */
     function routeConfig($urlRouterProvider) {
         $urlRouterProvider.otherwise('/dashboard');
-    }
+
+       }
 
 })();
