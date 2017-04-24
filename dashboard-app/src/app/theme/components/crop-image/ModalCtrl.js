@@ -9,7 +9,7 @@
 
         $scope.getFileSystem = function () {
             var fileInput = document.getElementById('upload-image');
-            fileInput.click()
+            fileInput.click();
         }
 
         $scope.getCroppedImage = function () {
@@ -28,9 +28,9 @@
 
         $scope.getFileFromCroppedImage = function () {
             var selectedImg = document.querySelector('input[type=file]').files[0];
-            var name = selectedImg.name;
-            var blob = $scope.getBlobFromBase64($scope.cropper.croppedImage,selectedImg.type)
-            var fileImg= new File([blob],name);
+            var name = selectedImg.name.split('.')[1];
+            var byteArray = $scope.getBlobFromBase64($scope.cropper.croppedImage,selectedImg.type)
+            var fileImg= new File([byteArray],name + '.png');
             var reader = new FileReader();
             $scope.$parent.croppedImg = fileImg;
 
@@ -39,7 +39,7 @@
             }
         }
 
-        $scope.getBlobFromBase64 = function (dataURI,selectedImgType) {
+        $scope.getBlobFromBase64 = function (dataURI) {
              var byteString;
 
              if (dataURI.split(',')[0].indexOf('base64') >= 0){
@@ -54,7 +54,7 @@
              for (var i = 0; i < byteString.length; i++) {
                  bytes[i] = byteString.charCodeAt(i);
              }
-                 return new Blob([bytes], {type:selectedImgType});
+                 return bytes;
         }
-    }
+     }
 })()
