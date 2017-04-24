@@ -44,6 +44,8 @@ public class RoomType {
     private Integer numberOfKids;
 
     @NotNull(message = "Please enter size of the room")
+    @Min(value = 5, message = "Minimum size is 5")
+    @Max(value = 127, message = "Maximum size is 127")
     private Integer size;
 
     @NotBlank(message = "Please enter image of the room")
