@@ -4,9 +4,6 @@ import ba.codecentric.base.domain.BedType;
 import ba.codecentric.base.domain.RoomType;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -16,8 +13,6 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class RoomTypeTest {
 
 
