@@ -196,11 +196,11 @@ public class Hotel {
     private Time timeCheck(String string) {
         final String SECONDS = ":00";
         final String REGEX = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
-        final Time time;
+        final Time TIME;
         if (string != null) {
             if (string.matches(REGEX)) {
-                return time = Time.valueOf(string + SECONDS);
-            } else return time = null;
-        } else return time = null;
+                return TIME = Time.valueOf(string + SECONDS);
+            } else return TIME = null;
+        } else return TIME = null;
     }
 }
