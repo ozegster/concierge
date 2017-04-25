@@ -10,41 +10,41 @@
         $scope.getFileSystem = function () {
             var fileInput = document.getElementById('upload-image');
             fileInput.click();
-        }
+        };
 
         $scope.getCroppedImage = function () {
-            if($scope.cropper.croppedImage == null){
+            if($scope.cropper.croppedImage === null){
                return;
             }
             $scope.imageSrc = angular.element(document.querySelector('#room-type-image'));
             $scope.imageSrc.attr('src',$scope.cropper.croppedImage);
             $scope.getFileFromCroppedImage();
             $uibModalInstance.dismiss();
-        }
+        };
 
         $scope.closeModal = function () {
             $uibModalInstance.dismiss();
-        }
+        };
 
         $scope.getFileFromCroppedImage = function () {
             var selectedImg = document.querySelector('input[type=file]').files[0];
             var name = selectedImg.name.split('.')[1];
-            var byteArray = $scope.getBlobFromBase64($scope.cropper.croppedImage,selectedImg.type)
-            var fileImg= new File([byteArray],name + '.png');
+            var byteArray = $scope.getBlobFromBase64($scope.cropper.croppedImage);
+            var fileImg = new File([byteArray], name + '.png');
             var reader = new FileReader();
             $scope.$parent.croppedImg = fileImg;
 
             if ($scope.$parent.croppedImg) {
                 reader.readAsDataURL($scope.$parent.croppedImg);
             }
-        }
+        };
 
         $scope.getBlobFromBase64 = function (dataURI) {
              var byteString;
 
-             if (dataURI.split(',')[0].indexOf('base64') >= 0){
+             if (dataURI.split(',')[0].indexOf('base64') >= 0) {
                  byteString = atob(dataURI.split(',')[1]);
-             }else{
+             } else {
                  byteString = unescape(dataURI.split(',')[1]);
              }
 
@@ -55,6 +55,6 @@
                  bytes[i] = byteString.charCodeAt(i);
              }
                  return bytes;
-        }
-     }
-})()
+        };
+     };
+})();
