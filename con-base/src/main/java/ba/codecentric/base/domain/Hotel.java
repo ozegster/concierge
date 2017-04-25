@@ -182,7 +182,7 @@ public class Hotel {
     }
 
     public void setCheckIn(String checkIn) {
-        this.checkIn = timeCheck(checkIn);
+        this.checkIn = parseTimeCheck(checkIn);
     }
 
     public Time getCheckOut() {
@@ -190,16 +190,16 @@ public class Hotel {
     }
 
     public void setCheckOut(String checkOut) {
-        this.checkOut = timeCheck(checkOut);
+        this.checkOut = parseTimeCheck(checkOut);
     }
 
-    private Time timeCheck(String string) {
-        final String SECONDS = ":00";
-        final String REGEX = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
-        if (string != null) {
-            if (string.matches(REGEX)) {
-                return Time.valueOf(string + SECONDS);
-            } else return null;
-        } return null;
+    private Time parseTimeCheck(String time) {
+        final String EXTEND_SECONDS = ":00";
+        final String TIME_WITHOUT_SECOND = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
+        if(time != null) {
+           if (time.matches(TIME_WITHOUT_SECOND)) {
+               return Time.valueOf(time + EXTEND_SECONDS);
+           } else return null;
+       } return null;
     }
 }

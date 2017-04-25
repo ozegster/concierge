@@ -409,7 +409,6 @@ public class HotelTest {
     }
 
 
-
         private Hotel getHotel() {
         Hotel hotel = new Hotel();
         hotel.setName("hotel name");
