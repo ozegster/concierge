@@ -32,7 +32,7 @@
                 $scope.selected.splice(index, 1);
             }
             $scope.roomType.features = $scope.selected;
-        }
+        };
 
         $scope.submit = function (roomTypeForm) {
             if (roomTypeForm.$invalid) {
@@ -54,7 +54,7 @@
             }, function (error) {
                 console.log(error);
             })
-        }
+        };
 
         $scope.openModal = function(){
             $uibModal.open({
@@ -62,11 +62,11 @@
                 controller: 'ModalCtrl',
                 scope:$scope
             })
-        }
+        };
 
         $scope.isImageMissing = function () {
             var image = angular.element('#room-type-image').attr('src');
             return image === $scope.imageSrc;
         }
-    }
+    };
 })();
