@@ -148,25 +148,25 @@
                     <div id="additionalInfo" class="col-md-6" ba-panel ba-panel-title="Additional info">
                         <div class="form-group" ng-class="{'has-error' : hotelInfo.checkIn.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.checkIn.$valid && hotelInfo.$submitted}">
                             <label for="checkIn">Check-in</label>
-                                <div class="input-group" moment-picker="hotel.checkIn" format="HH:mm:ss">
+                                <div class="input-group" moment-picker="hotel.checkIn" format="HH:mm">
                                     <span class="input-group-addon">
                                         <i class="fa fa-lg fa-clock-o"></i>
                                     </span>
                                     <input id="checkIn" name="checkIn" class="form-control" placeholder="Select a time" ng-model="hotel.checkIn" ng-model-options="{ updateOn: 'blur' }" required>
                                 </div>
                             <div ng-show="hotelInfo.$submitted">
-                                <label class="help-block error-block basic-block" ng-show="hotelInfo.checkIn.$error.required">Please add Check-in time </label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.checkIn.$error.required">Please enter a valid Check-in time</label>
                             </div>
                         <div class="form-group" ng-class="{'has-error' : hotelInfo.checkOut.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.checkOut.$valid && hotelInfo.$submitted}">
                             <label for="checkOut">Check-out</label>
-                                <div class="input-group" moment-picker="hotel.checkOut" format="HH:mm:ss">
+                                <div class="input-group" moment-picker="hotel.checkOut" format="HH:mm">
                                     <span class="input-group-addon">
                                         <i class="fa fa-lg fa-clock-o"></i>
                                     </span>
                                     <input id="checkOut" name="checkOut" class="form-control" placeholder="Select a time" ng-model="hotel.checkOut" ng-model-options="{ updateOn: 'blur' }" required>
                                 </div>
                             <div ng-show="hotelInfo.$submitted">
-                                <label class="help-block error-block basic-block" ng-show="hotelInfo.checkOut.$error.required">Please add Check-out time </label></div>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.checkOut.$error.required">Please enter a valid Check-out time</label></div>
                             </div>
                         </div>
                     </div>

@@ -3,8 +3,19 @@ package ba.codecentric.base.domain;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.sql.Time;
 
 @Entity
@@ -57,13 +68,13 @@ public class Hotel {
     @Size(max = 500, message = "Description is too long, 500 characters allowed")
     private String description;
 
-    @NotNull(message = "Please add Check-in time")
+    @NotNull(message = "Please enter a valid Check-in time")
     @Column(name = "check_in")
     private Time checkIn;
 
-    @NotNull(message = "Please add Check-out time")
+    @NotNull(message = "Please enter a valid Check-out time")
     @Column(name = "check_out")
-    private Time checkOut ;
+    private Time checkOut;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
@@ -170,10 +181,23 @@ public class Hotel {
         return checkIn;
     }
 
-    public void setCheckIn(Time checkIn) { this.checkIn = checkIn; }
+    public void setCheckIn(String checkIn) {
+        final String SECONDS = ":00";
+        final String REGEX = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
+        if(checkIn.matches(REGEX)) {
+            this.checkIn = Time.valueOf(checkIn + SECONDS);
+        } else this.checkIn = null;
+    }
 
-    public Time getCheckOut() { return checkOut; }
+    public Time getCheckOut() {
+        return checkOut;
+    }
 
-    public void setCheckOut(Time checkOut) { this.checkOut = checkOut; }
-
+    public void setCheckOut(String checkOut) {
+        final String SECONDS = ":00";
+        final String REGEX = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
+        if(checkOut.matches(REGEX)){
+            this.checkOut = Time.valueOf(checkOut + SECONDS);
+        } else this.checkOut = null;
+    }
 }
