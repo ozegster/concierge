@@ -1,0 +1,54 @@
+<div class="widgets">
+    <div class="container-fluid">
+        <form id="room-form" name="roomForm" autocomplete="off" novalidate ng-submit="submit()">
+            <div class="row">
+                <div class="col-md-12" ba-panel ba-panel-title="ROOM">
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <label for="room-number">Room number</label>
+                            <input type="number" name="roomNumber" class="form-control" id="room-number"
+                                   ng-model="room.number">
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label for="floor-number">Floor number</label>
+                            <input type="number" name="roomNumber" class="form-control" id="floor-number"
+                                   ng-model="room.floorNumber">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="room-type">Room type</label>
+                            <select type="text" id="room-type" class="form-control"
+                                    ng-model="room.roomType"
+                                    ng-change="changeRoomType(room.roomType)"
+                                    ng-options="roomType as roomType.name for roomType in roomTypes track by roomType.id"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" ba-panel ba-panel-title="ROOM TYPE DETAILS">
+                    <div class="row" ng-show="selectedRoomType">
+                        <div class="col-md-6">
+                            <p>Name: {{selectedRoomType.name}}</p>
+                            <p>Number of people: {{selectedRoomType.numberOfPeople}}</p>
+                            <p>Number of kids: {{selectedRoomType.numberOfKids}}</p>
+                            <p>Bed type: {{selectedRoomType.bedType.type}}</p>
+                            <p>Features</p>
+                            <div ng-repeat="feature in selectedRoomType.features">
+                                <p> {{feature.name}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!--   <img height="400" width="350" ng-src="data:image/jpg;base64,{{selectedRoomType.image}}"> -->
+                            <canvas id="room-type-image" height="400" width="350"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg pull-right">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
