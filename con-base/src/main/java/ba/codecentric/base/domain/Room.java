@@ -1,5 +1,6 @@
 package ba.codecentric.base.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ public class Room {
 
     private Integer number;
 
+    @Column(name = "floor_number")
     private Integer floorNumber;
 
     @ManyToOne
@@ -52,4 +54,5 @@ public class Room {
     public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
+
 }
