@@ -182,11 +182,7 @@ public class Hotel {
     }
 
     public void setCheckIn(String checkIn) {
-        final String SECONDS = ":00";
-        final String REGEX = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
-        if(checkIn.matches(REGEX)) {
-            this.checkIn = Time.valueOf(checkIn + SECONDS);
-        } else this.checkIn = null;
+        this.checkIn = timeCheck(checkIn);
     }
 
     public Time getCheckOut() {
@@ -194,10 +190,17 @@ public class Hotel {
     }
 
     public void setCheckOut(String checkOut) {
+        this.checkOut = timeCheck(checkOut);
+    }
+
+    private Time timeCheck(String string) {
         final String SECONDS = ":00";
         final String REGEX = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
-        if(checkOut.matches(REGEX)){
-            this.checkOut = Time.valueOf(checkOut + SECONDS);
-        } else this.checkOut = null;
+        final Time time;
+        if (string != null) {
+            if (string.matches(REGEX)) {
+                return time = Time.valueOf(string + SECONDS);
+            } else return time = null;
+        } else return time = null;
     }
 }
