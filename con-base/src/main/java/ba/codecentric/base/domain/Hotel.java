@@ -201,6 +201,6 @@ public class Hotel {
             if (string.matches(REGEX)) {
                 return TIME = Time.valueOf(string + SECONDS);
             } else return TIME = null;
-        } else return TIME = null;
+        } return TIME = null;
     }
 }
