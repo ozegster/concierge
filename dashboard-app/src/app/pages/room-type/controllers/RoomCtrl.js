@@ -21,6 +21,10 @@
             RoomService.saveRoom($scope.room).then(function (response) {
                 if (response.status === 200) {
                     toastr.success('Room has been saved successfully', 'Save Room');
+                    roomForm.$setPristine();
+                    roomForm.$setUntouched();
+                    $scope.room = {};
+                    $scope.selectedRoomType = null;
                 } else {
                     toastr.error('Room has not been saved successfully', 'Save Room type');
                 }
