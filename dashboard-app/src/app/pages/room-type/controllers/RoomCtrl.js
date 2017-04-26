@@ -15,7 +15,6 @@
         });
 
         $scope.submit = function () {
-            console.log($scope.room);
             RoomService.saveRoom($scope.room).then(function (response) {
                 console.log(response)
             }, function (error) {

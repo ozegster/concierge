@@ -3,8 +3,7 @@ package ba.codecentric.master.controller;
 import ba.codecentric.base.domain.Feature;
 import ba.codecentric.base.service.FeatureService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class FeatureController {
         this.featureService = featureService;
     }
 
-    @RequestMapping(value = "/features", method = RequestMethod.GET)
+    @GetMapping(value = "/features")
     public List<Feature> getFeatures() {
         return featureService.getAllFeatures();
     }

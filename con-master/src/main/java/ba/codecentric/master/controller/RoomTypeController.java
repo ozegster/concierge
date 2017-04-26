@@ -6,8 +6,8 @@ import ba.codecentric.base.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +29,7 @@ public class RoomTypeController {
         this.imageService = imageService;
     }
 
-    @RequestMapping(value = "/room-type", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/room-types", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) throws IOException {
         String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
         if (fileName != null) {
@@ -39,12 +39,12 @@ public class RoomTypeController {
         return new RoomType();
     }
 
-    @RequestMapping(value = "/room-types", method = RequestMethod.GET)
+    @GetMapping(value = "/room-types")
     public List<RoomType> getRoomTypes() {
         return roomTypeService.getAllRoomTypes();
     }
 
-    @RequestMapping(value = "/room-types/image", method = RequestMethod.GET, produces = { MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE })
+    @GetMapping(value = "/room-types/image", produces = { MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE })
     public InputStreamResource getImage(@RequestParam String imageName) throws IOException {
         return new InputStreamResource(imageService.loadImage(imageName));
     }
