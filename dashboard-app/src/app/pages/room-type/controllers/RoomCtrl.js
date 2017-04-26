@@ -14,9 +14,16 @@
             console.log(error);
         });
 
-        $scope.submit = function () {
+        $scope.submit = function (roomForm) {
+            if (roomForm.$invalid) {
+                return;
+            }
             RoomService.saveRoom($scope.room).then(function (response) {
-                console.log(response)
+                if (response.status === 200) {
+                    toastr.success('Room has been saved successfully', 'Save Room');
+                } else {
+                    toastr.error('Room has not been saved successfully', 'Save Room type');
+                }
             }, function (error) {
                 console.log(error);
             })
