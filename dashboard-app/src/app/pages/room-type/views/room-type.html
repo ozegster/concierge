@@ -75,7 +75,7 @@
                     </div>
                     <div class="col-md-6" ba-panel ba-panel-title="IMAGE">
                         <div class="form-group" ng-class="{'has-error' : isImageMissing() && roomTypeForm.$submitted, 'has-success' : !isImageMissing() && roomTypeForm.$submitted}">
-                            <img ng-click="openModal()" class="img-center" ng-src="{{imageSrc}}" id="room-type-image" valid-img>
+                            <img ng-click="openModal()" class="img-center" ng-src="{{imageSrc}}" id="room-type-image">
                             <div class="centerText" ng-show="roomTypeForm.$submitted">
                                 <label class="help-block error-block basic-block" ng-show="isImageMissing()">Please enter the image</label>
                             </div>
@@ -106,7 +106,7 @@
                 <div class="col-md-12">
                     <div class="form-group col-md-12">
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-primary btn-lg"  ng-disabled="roomTypeForm.$invalid && roomTypeForm.$submitted"
+                            <button type="submit" class="btn btn-primary btn-lg"  ng-disabled="(roomTypeForm.$invalid || isImageMissing()) && roomTypeForm.$submitted"
                                     ng-attr-title="{{roomTypeForm.$invalid && roomTypeForm.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
                         </div>
                     </div>
