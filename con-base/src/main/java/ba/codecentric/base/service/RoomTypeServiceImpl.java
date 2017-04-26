@@ -20,17 +20,14 @@ public class RoomTypeServiceImpl implements RoomTypeService {
 
     @Override
     @Transactional
-    public RoomType saveRoom(RoomType roomType) {
+    public RoomType saveRoomType(RoomType roomType) {
         return roomTypeRepository.save(roomType);
     }
 
     @Override
+    @Transactional
     public List<RoomType> getAllRoomTypes() {
         return roomTypeRepository.findAll();
     }
 
-    @Override
-    public RoomType getRoomTypeById(Integer id) {
-        return roomTypeRepository.getOne(id);
-    }
 }

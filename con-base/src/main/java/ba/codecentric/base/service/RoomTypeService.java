@@ -6,9 +6,8 @@ import java.util.List;
 
 public interface RoomTypeService {
 
-    RoomType saveRoom(RoomType roomType);
+    RoomType saveRoomType(RoomType roomType);
 
     List<RoomType> getAllRoomTypes();
 
-    RoomType getRoomTypeById(Integer id);
 }
