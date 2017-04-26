@@ -35,7 +35,7 @@
         };
 
         $scope.submit = function (roomTypeForm) {
-            if (roomTypeForm.$invalid) {
+            if (roomTypeForm.$invalid || $scope.isImageMissing()) {
                 return;
             }
             RoomTypeService.saveRoomType($scope.roomType, $scope.croppedImg).then(function (response) {
