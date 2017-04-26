@@ -13,7 +13,7 @@
                         };
                         image.src = 'assets/img/placeholder.png';
                     });
-                };
+                }
             };
         });
 })();
