@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 public class RoomController {
 
@@ -18,7 +20,7 @@ public class RoomController {
     }
 
     @PostMapping(value = "/rooms")
-    public void save(@RequestBody Room room) {
+    public void save(@Valid @RequestBody Room room) {
         roomService.saveRoom(room);
     }
 }

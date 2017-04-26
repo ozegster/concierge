@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Room {
@@ -14,11 +15,14 @@ public class Room {
     @GeneratedValue
     private Integer id;
 
+    @NotNull(message = "Please enter the room number")
     private Integer number;
 
+    @NotNull(message = "Please enter the floor number")
     @Column(name = "floor_number")
     private Integer floorNumber;
 
+    @NotNull(message = "Please select the room type")
     @ManyToOne
     @JoinColumn(name = "room_type_id")
     private RoomType roomType;
