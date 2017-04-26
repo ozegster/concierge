@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,8 +44,8 @@ public class RoomTypeController {
         return roomTypeService.getAllRoomTypes();
     }
 
-    @GetMapping(value = "/room-types/image", produces = { MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE })
-    public InputStreamResource getImage(@RequestParam String imageName) throws IOException {
+    @GetMapping(value = "/room-types/image/{imageName:.+}", produces = { MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE })
+    public InputStreamResource getImage(@PathVariable String imageName) throws IOException {
         return new InputStreamResource(imageService.loadImage(imageName));
     }
 }
