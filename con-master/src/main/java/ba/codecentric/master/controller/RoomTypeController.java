@@ -44,7 +44,7 @@ public class RoomTypeController {
         return roomTypeService.getAllRoomTypes();
     }
 
-    @RequestMapping(value = "/room-type/image", method = RequestMethod.GET, produces = {"image/jpg", "image/jpeg", "image/png"})
+    @RequestMapping(value = "/room-types/image", method = RequestMethod.GET, produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     public InputStreamResource getImage(@RequestParam String imageName) throws IOException {
         return new InputStreamResource(imageService.loadImage(imageName));
     }
