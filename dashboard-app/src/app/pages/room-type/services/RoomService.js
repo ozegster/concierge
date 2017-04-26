@@ -5,7 +5,7 @@
             var saveRoom = function (room) {
                 return $http({
                     method: 'POST',
-                    url: SERVER_PATH.url + '/room',
+                    url: SERVER_PATH.url + '/rooms',
                     data: room
                 }).then(function (response) {
                     return response;

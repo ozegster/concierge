@@ -40,7 +40,7 @@
             var getImage = function (imageName) {
                 return $http({
                     method: 'GET',
-                    url: SERVER_PATH.url + '/room-type/image?imageName=' + imageName,
+                    url: SERVER_PATH.url + '/room-types/image?imageName=' + imageName,
                     responseType: "arraybuffer"
                 }).then(function (response) {
                     var base64Image = arrayBufferToBase64(response.data);
