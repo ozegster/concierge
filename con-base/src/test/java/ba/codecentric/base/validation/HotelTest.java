@@ -72,14 +72,6 @@ public class HotelTest {
     }
 
     @Test
-    public void hotelNameIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setName(" t");
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
-    }
-
-    @Test
     public void ratingIsZero() {
         Hotel hotel = getHotel();
         hotel.setRating(0);
@@ -95,14 +87,6 @@ public class HotelTest {
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Rating must be less than 5", validations.iterator().next().getMessage());
-    }
-
-    @Test
-    public void ratingIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setRating(4);
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
     }
 
     @Test
@@ -133,14 +117,6 @@ public class HotelTest {
     }
 
     @Test
-    public void addressIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setAddress("Beverly Hills 45");
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
-    }
-
-    @Test
     public void zipIsNull() {
         Hotel hotel = getHotel();
         hotel.setZip(null);
@@ -165,14 +141,6 @@ public class HotelTest {
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Please enter a valid zip code e.g. 43452 (5 digit required)", validations.iterator().next().getMessage());
-    }
-
-    @Test
-    public void zipIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setZip("99999");
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
     }
 
     @Test
@@ -203,14 +171,6 @@ public class HotelTest {
     }
 
     @Test
-    public void cityIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setCity("Doboj");
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
-    }
-
-    @Test
     public void phoneIsNull() {
         Hotel hotel = getHotel();
         hotel.setPhone(null);
@@ -235,14 +195,6 @@ public class HotelTest {
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Phone is too long, 45 characters allowed", validations.iterator().next().getMessage());
-    }
-
-    @Test
-    public void phoneIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setPhone("053/123-456");
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
     }
 
     @Test
@@ -273,14 +225,6 @@ public class HotelTest {
     }
 
     @Test
-    public void faxIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setFax("053/456-789");
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
-    }
-
-    @Test
     public void emailIsNull() {
         Hotel hotel = getHotel();
         hotel.setEmail(null);
@@ -308,14 +252,6 @@ public class HotelTest {
     }
 
     @Test
-    public void emailIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setEmail("hotel@gmail.com");
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
-    }
-
-    @Test
     public void websiteIsWrong() {
         Hotel hotel = getHotel();
         hotel.setWebsite("website");
@@ -334,28 +270,12 @@ public class HotelTest {
     }
 
     @Test
-    public void websiteIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setWebsite("www.hilton-hotel.com");
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
-    }
-
-    @Test
     public void descriptionIsTooLong() {
         Hotel hotel = getHotel();
         hotel.setDescription("Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description ");
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Description is too long, 500 characters allowed", validations.iterator().next().getMessage());
-    }
-
-    @Test
-    public void descriptionIsCorrect() {
-        Hotel hotel = getHotel();
-        hotel.setDescription("Hotel Hilton");
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
     }
 
     @Test
@@ -374,20 +294,6 @@ public class HotelTest {
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
         assertEquals(1, validations.size());
         assertEquals("Please enter a valid Check-in time", validations.iterator().next().getMessage());
-    }
-
-    @Test
-    public void checkInIsCorrect() {
-        Hotel hotel = getHotel();
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
-    }
-
-    @Test
-    public void checkOutIsCorrect() {
-        Hotel hotel = getHotel();
-        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(0, validations.size());
     }
 
     @Test
