@@ -19,7 +19,9 @@
                             <select type="text" id="room-type" class="form-control"
                                     ng-model="room.roomType"
                                     ng-change="changeRoomType(room.roomType)"
-                                    ng-options="roomType as roomType.name for roomType in roomTypes track by roomType.id"></select>
+                                    ng-options="roomType as roomType.name for roomType in roomTypes track by roomType.id">
+                                <option value="" disabled selected>Options</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -28,18 +30,41 @@
                 <div class="col-md-12" ba-panel ba-panel-title="ROOM TYPE DETAILS">
                     <div class="row" ng-show="selectedRoomType">
                         <div class="col-md-6">
-                            <p>Name: {{selectedRoomType.name}}</p>
-                            <p>Number of people: {{selectedRoomType.numberOfPeople}}</p>
-                            <p>Number of kids: {{selectedRoomType.numberOfKids}}</p>
-                            <p>Bed type: {{selectedRoomType.bedType.type}}</p>
-                            <p>Features</p>
-                            <div ng-repeat="feature in selectedRoomType.features">
-                                <p> {{feature.name}}</p>
-                            </div>
+                            <table id="room-type-details" class="table table-responsive">
+                                <tr>
+                                    <td>Name:</td>
+                                    <td>{{selectedRoomType.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Number of people:</td>
+                                    <td>{{selectedRoomType.numberOfPeople}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Number of kids:</td>
+                                    <td>{{selectedRoomType.numberOfKids}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Size:</td>
+                                    <td>{{selectedRoomType.size}} sq meters</td>
+                                </tr>
+                                <tr>
+                                    <td>Bed type:</td>
+                                    <td>{{selectedRoomType.bedType.type}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Features:</td>
+                                    <td>
+                                        <div ng-repeat="feature in selectedRoomType.features">
+                                            {{feature.name}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="col-md-6">
-                            <!--   <img height="400" width="350" ng-src="data:image/jpg;base64,{{selectedRoomType.image}}"> -->
-                            <canvas id="room-type-image" height="400" width="350"></canvas>
+                            <div id="canvas-container">
+                                <canvas id="room-type-image" height="300" width="300"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
