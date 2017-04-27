@@ -108,6 +108,7 @@ CREATE TABLE `concierge`.`room_type` (
   `size` tinyint(4) NOT NULL,
   `image` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `bed_id` int(11) NOT NULL,
+  UNIQUE (name),
   PRIMARY KEY (`id`),
   FOREIGN KEY (`bed_id`) REFERENCES `concierge`.`bed_type` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
