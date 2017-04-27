@@ -3,10 +3,14 @@ img.img-facility {
   display: block;
   margin: 0 auto;
   cursor: pointer;
-  width: auto;
-  height: 257px;
+  width: 100%;
+  height: 300px;
 }
 
 .centerText {
   text-align: center;
+}
+
+.same-height{
+  height: 335px;
 }
