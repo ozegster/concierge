@@ -21,4 +21,9 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     public RoomType saveRoom(RoomType roomType) {
         return roomTypeRepository.save(roomType);
     }
+
+    @Override
+    public boolean isExistingName(String name) {
+        return roomTypeRepository.existsByName(name);
+    }
 }

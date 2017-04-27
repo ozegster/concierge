@@ -6,6 +6,8 @@ import ba.codecentric.base.service.ImageService;
 import ba.codecentric.base.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -29,13 +31,18 @@ public class RoomTypeController {
 
     @RequestMapping(value = "/room-type", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) throws IOException {
-        String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
-        if (fileName != null) {
-            roomType.setImage(fileName);
-            return roomTypeService.saveRoom(roomType);
+        if (!roomTypeService.isExistingName(roomType.getName())) {
+            String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
+            if (fileName != null) {
+                roomType.setImage(fileName);
+                return roomTypeService.saveRoom(roomType);
+            }
         }
         return new RoomType();
+    }
 
-
+    @GetMapping(value = "/room-types/{name}")
+    public boolean isRoomTypeNameExisting(@PathVariable String name) {
+        return roomTypeService.isExistingName(name);
     }
 }
