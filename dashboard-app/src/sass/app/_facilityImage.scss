@@ -3,15 +3,10 @@ img.img-facility {
   display: block;
   margin: 0 auto;
   cursor: pointer;
-  width: 73%;
-  height: 235px;
+  width: auto;
+  height: 257px;
 }
 
 .centerText {
   text-align: center;
-}
-
-#facility textarea {
-  resize: none;
-  height: 75px;
 }
