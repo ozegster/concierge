@@ -22,6 +22,8 @@ import java.sql.Time;
 @Table(name = "hotel")
 public class Hotel {
 
+    final private String EXTEND_SECONDS = ":00";
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -182,7 +184,6 @@ public class Hotel {
     }
 
     public void setCheckIn(String checkIn) {
-        final String EXTEND_SECONDS = ":00";
         if(parseTime(checkIn)){
             this.checkIn = Time.valueOf(checkIn + EXTEND_SECONDS);
         } else  this.checkIn = null;
@@ -193,14 +194,13 @@ public class Hotel {
     }
 
     public void setCheckOut(String checkOut) {
-        final String EXTEND_SECONDS = ":00";
         if(parseTime(checkOut)){
             this.checkOut = Time.valueOf(checkOut + EXTEND_SECONDS);
         } else this.checkOut = null;
     }
 
     private Boolean parseTime(String time) {
-        final String TIME_WITHOUT_SECOND = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
-          return (time != null) && time.matches(TIME_WITHOUT_SECOND);
+        final String TIME_WITHOUT_SECONDS = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
+          return (time != null) && time.matches(TIME_WITHOUT_SECONDS);
     }
 }
