@@ -26,8 +26,21 @@
 
             };
 
+            var isExistingName = function (name) {
+                return $http({
+                    method: 'GET',
+                    url: SERVER_PATH.url + '/room-types/' + name,
+                }).then(function (response) {
+                    return response.data;
+                }, function (error) {
+                    return error;
+                });
+
+            };
+
             return {
-                saveRoomType: saveRoomType
+                saveRoomType: saveRoomType,
+                isExistingName: isExistingName
             };
         }])
 })();
