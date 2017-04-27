@@ -4,17 +4,14 @@ img.img-facility {
   margin: 0 auto;
   cursor: pointer;
   width: 73%;
-  height: auto;
+  height: 235px;
 }
 
 .centerText {
   text-align: center;
 }
-.list
-{
-  display: flex;
-}
-.list__item
-{
-  display: flex;
+
+#facility textarea {
+  resize: none;
+  height: 75px;
 }

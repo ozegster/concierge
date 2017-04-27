@@ -3,7 +3,7 @@
         <form id="facility-form" name="hotelFacility" ng-submit="submit(hotelFacility)" autocomplete="off" novalidate>
 
             <div class="row">
-                <div class="col-md-12 list">
+                <div class="col-md-12">
                     <div id="facility" class="col-md-6" ba-panel ba-panel-title="Facility">
                         <div class="form-group"
                              ng-class="{'has-error' : hotelFacility.facilityName.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityName.$valid && hotelFacility.$submitted}">
@@ -12,11 +12,9 @@
                                    name="facilityName" ng-model="facility.facilityName" required ng-maxlength="80">
                             <div ng-show="hotelFacility.$submitted">
                                 <label class="help-block error-block basic-block"
-                                       ng-show="hotelFacility.facilityName.$error.required">Please enter name of the
-                                    facility</label>
+                                       ng-show="hotelFacility.facilityName.$error.required">Please enter name of the facility</label>
                                 <label class="help-block error-block basic-block"
-                                       ng-show="hotelFacility.facilityName.$error.maxlength">Facility name is too long,
-                                    80 characters allowed</label>
+                                       ng-show="hotelFacility.facilityName.$error.maxlength">Facility name is too long, 80 characters allowed</label>
                             </div>
                         </div>
 
@@ -27,11 +25,9 @@
                                       required ng-maxlength="400"></textarea>
                             <div ng-show="hotelFacility.$submitted">
                                 <label class="help-block error-block basic-block"
-                                       ng-show="hotelFacility.facilityDescription.$error.required">Please add facility
-                                    description</label>
+                                       ng-show="hotelFacility.facilityDescription.$error.required">Please add facility description</label>
                                 <label class="help-block error-block basic-block"
-                                       ng-show="hotelFacility.facilityDescription.$error.maxlength">Description is too
-                                    long, 400 characters allowed</label>
+                                       ng-show="hotelFacility.facilityDescription.$error.maxlength">Description is too long, 400 characters allowed</label>
                             </div>
                         </div>
                         <div class="row">
@@ -57,14 +53,13 @@
                                             name="facilityType" required></select>
                                     <div ng-show="hotelFacility.$submitted">
                                         <label class="help-block error-block basic-block"
-                                               ng-show="hotelFacility.facilityType.$error.required">Please add facility
-                                            type</label>
+                                               ng-show="hotelFacility.facilityType.$error.required">Please add facility type</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="image" class="col-md-6 list__item" ba-panel ba-panel-title="Image">
+                    <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
                         <div class="form-group"
                              ng-class="{'has-error' : hotelFacility.facilityImage.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityImage.$valid && hotelFacility.$submitted}">
                             <img class="img-facility" ng-src="{{imageSrc}}" ng-click="uploadPicture()">
