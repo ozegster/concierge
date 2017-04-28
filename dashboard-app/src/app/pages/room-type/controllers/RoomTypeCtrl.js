@@ -4,7 +4,7 @@
         .controller('RoomTypeCtrl', RoomTypeCtrl);
 
     RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr','$uibModal','$rootScope'];
-    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal, $rootScope) {
+    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal) {
 
         $scope.roomType = {};
         $scope.selected = [];
@@ -68,5 +68,5 @@
             var image = angular.element('#room-type-image').attr('src');
             return image === $scope.imageSrc;
         }
-    };
+    }
 })();

@@ -9,7 +9,7 @@
                         <input class="form-control has-success text-danger" id="name" type="text" name="hotelName" ng-model="hotel.name" required ng-maxlength="128">
                              <div ng-show="hotelInfo.$submitted">
                                   <label class="help-block error-block basic-block" ng-show="hotelInfo.hotelName.$error.required">Please enter name of the hotel</label>
-                                  <label class="help-block error-block basic-block" ng-show="hotelInfo.hotelName.$error.maxlength">Name is too long, 128 characters allowed</label>
+                                  <label class="help-block error-block basic-block" ng-show="hotelInfo.hotelName.$error.maxLength">Name is too long, 128 characters allowed</label>
                             </div>
                     </div>
                     <div class="form-group col-md-6">
@@ -49,7 +49,7 @@
                                    ng-model="hotel.address" name="streetAndNumber" required ng-maxlength="128">
                             <div ng-show="hotelInfo.$submitted">
                                 <label class="help-block error-block basic-block" ng-show="hotelInfo.streetAndNumber.$error.required">Please enter street and number</label>
-                                <label class="help-block error-block basic-block" ng-show="hotelInfo.streetAndNumber.$error.maxlength">Address is too long, 128 characters allowed</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.streetAndNumber.$error.maxLength">Address is too long, 128 characters allowed</label>
                             </div>
                         </div>
                         <div class="row">
@@ -59,7 +59,7 @@
                                     <input class="form-control" name="zip" id="zip" type="text" ng-model="hotel.zip" required ng-pattern='/^[0-9]{5}$/' ng-maxlength="5">
 
                                     <div ng-show="hotelInfo.$submitted">
-                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.zip.$error.pattern || hotelInfo.zip.$error.maxlength">Please enter a valid zip code e.g. 43452 (5 digit required)</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.zip.$error.pattern || hotelInfo.zip.$error.maxLength">Please enter a valid zip code e.g. 43452 (5 digit required)</label>
                                         <label class="help-block error-block basic-block" ng-show="hotelInfo.zip.$error.required">Please enter zip code</label>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
 
                                     <div ng-show="hotelInfo.$submitted">
                                         <label class="help-block error-block basic-block" ng-show="hotelInfo.city.$error.required">Please enter city</label>
-                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.city.$error.maxlength">City name is too long, 64 characters allowed</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.city.$error.maxLength">City name is too long, 64 characters allowed</label>
                                     </div>
 
                                 </div>
@@ -96,7 +96,7 @@
                                     <input class="form-control" name="phone" id="phone" type="text" ng-model="hotel.phone" required ng-maxlength="45">
                                     <div ng-show="hotelInfo.$submitted">
                                         <label class="help-block error-block basic-block" ng-show="hotelInfo.phone.$error.required">Please enter a phone number</label>
-                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.phone.$error.maxlength">Phone is too long, 45 characters allowed</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.phone.$error.maxLength">Phone is too long, 45 characters allowed</label>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                                     <label for="fax">Fax</label>
                                     <input class="form-control" name="fax" id="fax" type="text" ng-model="hotel.fax" ng-maxlength="45" required>
                                     <div ng-show="hotelInfo.$submitted">
-                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.fax.$error.maxlength">Fax is too long, 45 characters allowed</label>
+                                        <label class="help-block error-block basic-block" ng-show="hotelInfo.fax.$error.maxLength">Fax is too long, 45 characters allowed</label>
                                         <label class="help-block error-block basic-block" ng-show="hotelInfo.fax.$error.required">Please enter a fax</label>
                                     </div>
                                 </div>
@@ -118,7 +118,7 @@
                             <div ng-show="hotelInfo.$submitted" >
                                 <label class="help-block error-block basic-block" ng-show="hotelInfo.email.$error.required">Please enter a email</label>
                                 <label class="help-block error-block basic-block" ng-show="hotelInfo.email.$error.pattern">Please enter a valid email address e.g. info@hotel.com</label>
-                                <label class="help-block error-block basic-block" ng-show="hotelInfo.email.$error.maxlength">Email is too long, 45 characters allowed</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.email.$error.maxLength">Email is too long, 45 characters allowed</label>
                             </div>
                         </div>
                         <div class="form-group" ng-class="{'has-error' : hotelInfo.website.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.website.$valid && hotelInfo.$submitted}">
@@ -128,7 +128,7 @@
                             <div ng-show="hotelInfo.$submitted" >
                                 <label class="help-block error-block basic-block" ng-show="hotelInfo.website.$error.required">Please enter a website</label>
                                 <label class="help-block error-block basic-block" ng-show="hotelInfo.website.$error.pattern">Please enter a valid url e.g. www.hotel.com</label>
-                                <label class="help-block error-block basic-block" ng-show="hotelInfo.website.$error.maxlength">Website is too long, 45 characters allowed</label>
+                                <label class="help-block error-block basic-block" ng-show="hotelInfo.website.$error.maxLength">Website is too long, 45 characters allowed</label>
                             </div>
                         </div>
                     </div>
@@ -136,11 +136,12 @@
             </div>
             <div id="description" class="col-md-12" ba-panel ba-panel-title="Description">
                 <div class="form-group" ng-class="{'has-error' : hotelInfo.description.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.description.$valid && hotelInfo.$submitted}">
-                        <textarea form="hotel-info-form" class="form-control" name="description"
-                                  ng-model="hotel.description" required ng-maxlength="500"></textarea>
+                    <label>
+                        <textarea form="hotel-info-form" class="form-control" name="description" ng-model="hotel.description" required ng-maxlength="500"></textarea>
+                    </label>
                     <div ng-show="hotelInfo.$submitted">
                         <label class="help-block error-block basic-block" ng-show="hotelInfo.description.$error.required">Please add hotel description</label>
-                        <label class="help-block error-block basic-block" ng-show="hotelInfo.description.$error.maxlength">Description is too long, 500 characters allowed</label>
+                        <label class="help-block error-block basic-block" ng-show="hotelInfo.description.$error.maxLength">Description is too long, 500 characters allowed</label>
                     </div>
                 </div>
             </div>
