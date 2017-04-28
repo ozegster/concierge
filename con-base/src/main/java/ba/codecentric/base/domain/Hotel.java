@@ -186,7 +186,9 @@ public class Hotel {
     public void setCheckIn(String checkIn) {
         if(parseTime(checkIn)){
             this.checkIn = Time.valueOf(checkIn + EXTEND_SECONDS);
-        } else  this.checkIn = null;
+        } else  {
+            this.checkIn = null;
+        }
     }
 
     public Time getCheckOut() {
@@ -196,7 +198,9 @@ public class Hotel {
     public void setCheckOut(String checkOut) {
         if(parseTime(checkOut)){
             this.checkOut = Time.valueOf(checkOut + EXTEND_SECONDS);
-        } else this.checkOut = null;
+        } else {
+            this.checkOut = null;
+        }
     }
 
     private Boolean parseTime(String time) {
