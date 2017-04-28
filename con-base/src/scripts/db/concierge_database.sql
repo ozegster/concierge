@@ -1,6 +1,9 @@
+DROP SCHEMA IF EXISTS `concierge`;
 
 DROP SCHEMA IF EXISTS `concierge`;
 CREATE SCHEMA `concierge` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
+
+
 
 CREATE TABLE `concierge`.`country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -60,6 +63,7 @@ INSERT INTO `concierge`.`country` VALUES (49,'San Marino');
 INSERT INTO `concierge`.`country` VALUES (50,'Ukraine');
 INSERT INTO `concierge`.`country` VALUES (51,'Vatican City');
 
+
 CREATE TABLE `concierge`.`hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -76,6 +80,35 @@ CREATE TABLE `concierge`.`hotel` (
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_hotel_country` FOREIGN KEY (`country_id`) REFERENCES `concierge`.`country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+CREATE TABLE `concierge`.`facility_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `facility_type` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB;
+
+INSERT INTO `concierge`.`facility_type` VALUES (1,'Restaurants');
+INSERT INTO `concierge`.`facility_type` VALUES (2,'Bars');
+INSERT INTO `concierge`.`facility_type` VALUES (3,'Recreations');
+INSERT INTO `concierge`.`facility_type` VALUES (4,'Wellness');
+
+
+CREATE TABLE `concierge`.`facility` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `facility_name` VARCHAR(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `floor` SMALLINT(2) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` VARCHAR(400) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` VARCHAR(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `facility_type_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_facility_facility_type1_idx` (`facility_type_id` ASC),
+  CONSTRAINT `fk_facility_facility_type1`
+    FOREIGN KEY (`facility_type_id`)
+    REFERENCES `concierge`.`facility_type` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 CREATE TABLE `concierge`.`bed_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
