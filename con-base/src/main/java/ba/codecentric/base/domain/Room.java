@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,9 +18,13 @@ public class Room {
     private Integer id;
 
     @NotNull(message = "Please enter the room number")
+    @Min(message = "Minimum room number is 1", value = 1)
+    @Max(message = "Maximum room number is 100 100", value = 100100)
     private Integer number;
 
     @NotNull(message = "Please enter the floor number")
+    @Min(message = "Minimum floor number is -2", value = -2)
+    @Max(message = "Maximum floor number is 100", value = 100)
     @Column(name = "floor_number")
     private Integer floorNumber;
 

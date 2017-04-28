@@ -52,9 +52,43 @@ public class RoomTest {
     }
 
     @Test
+    public void roomNumberIsTooSmall() {
+        Room room = getRoom();
+        room.setNumber(-10);
+        Set<ConstraintViolation<Room>> violations = validator.validate(room);
+        assertEquals(1, violations.size());
+        assertEquals("Minimum room number is 1", violations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void roomNumberIsTooBig() {
+        Room room = getRoom();
+        room.setNumber(100105);
+        Set<ConstraintViolation<Room>> violations = validator.validate(room);
+        assertEquals(1, violations.size());
+        assertEquals("Maximum room number is 100 100", violations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void roomNumberIsValidMinimum() {
+        Room room = getRoom();
+        room.setNumber(1);
+        Set<ConstraintViolation<Room>> violations = validator.validate(room);
+        assertEquals(0, violations.size());
+    }
+
+    @Test
+    public void roomNumberIsValidMaximum() {
+        Room room = getRoom();
+        room.setNumber(100100);
+        Set<ConstraintViolation<Room>> violations = validator.validate(room);
+        assertEquals(0, violations.size());
+    }
+
+    @Test
     public void roomNumberIsValid() {
         Room room = getRoom();
-        room.setNumber(10);
+        room.setNumber(1025);
         Set<ConstraintViolation<Room>> violations = validator.validate(room);
         assertEquals(0, violations.size());
     }
@@ -66,6 +100,40 @@ public class RoomTest {
         Set<ConstraintViolation<Room>> violations = validator.validate(room);
         assertEquals(1, violations.size());
         assertEquals("Please enter the floor number", violations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void floorNumberIsTooSmall() {
+        Room room = getRoom();
+        room.setFloorNumber(-5);
+        Set<ConstraintViolation<Room>> violations = validator.validate(room);
+        assertEquals(1, violations.size());
+        assertEquals("Minimum floor number is -2", violations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void floorNumberIsTooBig() {
+        Room room = getRoom();
+        room.setFloorNumber(101);
+        Set<ConstraintViolation<Room>> violations = validator.validate(room);
+        assertEquals(1, violations.size());
+        assertEquals("Maximum floor number is 100", violations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void floorNumberIsValidMinimum() {
+        Room room = getRoom();
+        room.setFloorNumber(-2);
+        Set<ConstraintViolation<Room>> violations = validator.validate(room);
+        assertEquals(0, violations.size());
+    }
+
+    @Test
+    public void floorNumberIsValidMaximum() {
+        Room room = getRoom();
+        room.setFloorNumber(100);
+        Set<ConstraintViolation<Room>> violations = validator.validate(room);
+        assertEquals(0, violations.size());
     }
 
     @Test
