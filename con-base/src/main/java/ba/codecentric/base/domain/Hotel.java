@@ -22,7 +22,7 @@ import java.sql.Time;
 @Table(name = "hotel")
 public class Hotel {
 
-    final private String EXTEND_SECONDS = ":00";
+    private final String EXTEND_SECONDS = ":00";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
