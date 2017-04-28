@@ -3,7 +3,7 @@
         .directive('canvasPlaceholder', function () {
             return {
                 restrict: 'A',
-                link: function(scope, element, attrs) {
+                link: function(scope, element) {
                     element.ready(function () {
                         var canvas = document.getElementById('canvas');
                         var context = canvas.getContext('2d');

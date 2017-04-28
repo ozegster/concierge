@@ -4,7 +4,7 @@
     angular.module('ConciergeApp.theme')
         .controller('ModalCtrl', ModalCtrl);
 
-    function ModalCtrl ($scope,$timeout,$uibModalInstance,$rootScope) {
+    function ModalCtrl ($scope,$uibModalInstance) {
         $scope.cropper = {};
 
         $scope.getFileSystem = function () {
@@ -47,8 +47,6 @@
              } else {
                  byteString = unescape(dataURI.split(',')[1]);
              }
-
-             var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
              var bytes = new Uint8Array(new ArrayBuffer(byteString.length));
 
              for (var i = 0; i < byteString.length; i++) {
@@ -56,5 +54,5 @@
              }
                  return bytes;
         };
-     };
+    }
 })();
