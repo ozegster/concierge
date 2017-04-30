@@ -203,7 +203,7 @@ public class Hotel {
         }
     }
 
-    private Boolean parseTime(String time) {
+    private boolean parseTime(String time) {
         final String TIME_WITHOUT_SECONDS = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
           return (time != null) && time.matches(TIME_WITHOUT_SECONDS);
     }
