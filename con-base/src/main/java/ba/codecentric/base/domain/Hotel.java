@@ -184,11 +184,7 @@ public class Hotel {
     }
 
     public void setCheckIn(String checkIn) {
-        if(parseTime(checkIn)){
-            this.checkIn = Time.valueOf(checkIn + EXTEND_SECONDS);
-        } else  {
-            this.checkIn = null;
-        }
+            this.checkIn = checkParse(checkIn);
     }
 
     public Time getCheckOut() {
@@ -196,15 +192,19 @@ public class Hotel {
     }
 
     public void setCheckOut(String checkOut) {
-        if(parseTime(checkOut)){
-            this.checkOut = Time.valueOf(checkOut + EXTEND_SECONDS);
-        } else {
-            this.checkOut = null;
-        }
+            this.checkOut = checkParse(checkOut);
     }
 
     private boolean parseTime(String time) {
         final String TIME_WITHOUT_SECONDS = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
           return (time != null) && time.matches(TIME_WITHOUT_SECONDS);
+    }
+
+    private Time checkParse(String time) {
+        if(parseTime(time)){
+            return Time.valueOf(time + EXTEND_SECONDS);
+        }  else {
+            return null;
+        }
     }
 }
