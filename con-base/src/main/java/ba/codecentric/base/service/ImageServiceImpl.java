@@ -1,5 +1,6 @@
 package ba.codecentric.base.service;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,8 @@ public class ImageServiceImpl implements ImageService {
     @Value("${image.directory.path}")
     private String directoryPath;
 
+    private final static Logger log = Logger.getLogger(ImageServiceImpl.class);
+
     /**
      * @return new unique image name (randomUUID + timestamp + .extension)
      */
@@ -27,6 +30,7 @@ public class ImageServiceImpl implements ImageService {
             newImageName = getUniqueImageName(imageName);
             Path filePath = Paths.get(directoryPath + newImageName);
             Files.copy(image, filePath);
+            log.info("Save image: " + imageName);
         } finally {
             image.close();
         }
@@ -37,6 +41,7 @@ public class ImageServiceImpl implements ImageService {
         Path defaultDirectoryPath = Paths.get(directoryPath);
         if (!Files.exists(defaultDirectoryPath)) {
             Files.createDirectories(defaultDirectoryPath);
+            log.info("Create folder: " + directoryPath);
         }
     }
 
