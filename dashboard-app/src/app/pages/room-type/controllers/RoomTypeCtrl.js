@@ -32,12 +32,12 @@
                 $scope.selected.splice(index, 1);
             }
             $scope.roomType.features = $scope.selected;
-        }
+        };
 
         $scope.getFileSystem = function () {
             var fileInput = document.getElementById('upload-image');
             fileInput.click();
-        }
+        };
 
         $scope.submit = function (roomTypeForm) {
             if (roomTypeForm.$invalid) {
