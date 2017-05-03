@@ -65,21 +65,24 @@ INSERT INTO `concierge`.`country` VALUES (51,'Vatican City');
 
 
 CREATE TABLE `concierge`.`hotel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rating` tinyint(4) NOT NULL,
-  `address` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `zip` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country_id` int(11) NOT NULL,
-  `phone` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `fax` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `website` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(128) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `rating` TINYINT(4) NOT NULL,
+  `address` VARCHAR(128) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `zip` VARCHAR(5) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `city` VARCHAR(64) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `country_id` INT(11) NOT NULL,
+  `phone` VARCHAR(45) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `fax` VARCHAR(45) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `email` VARCHAR(45) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `website` VARCHAR(45) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `description` VARCHAR(500) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `check_in` TIME(0) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+  `check_out` TIME(0) COLLATE 'utf8mb4_unicode_ci' NOT NULL,
   PRIMARY KEY (`id`),
+  INDEX `fk_hotel_country` (`country_id` ASC),
   CONSTRAINT `fk_hotel_country` FOREIGN KEY (`country_id`) REFERENCES `concierge`.`country` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 CREATE TABLE `concierge`.`facility_type` (
@@ -151,3 +154,4 @@ CREATE TABLE `concierge`.`room_type_feature` (
   FOREIGN KEY (`room_type_id`) REFERENCES `concierge`.`room_type` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   FOREIGN KEY (`feature_id`) REFERENCES `concierge`.`feature` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
