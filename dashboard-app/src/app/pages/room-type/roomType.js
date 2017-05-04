@@ -8,26 +8,32 @@
 
 
   /** @ngInject */
-  function routeConfig($stateProvider) {
+  function routeConfig($stateProvider,baSidebarServiceProvider) {
        $stateProvider
            .state('room', {
                  url: '/room',
+                 abstract:true,
                  template : '<ui-view autoscroll="true" autoscroll-body-top></ui-view>',
                  title: 'Room',
                  sidebarMeta: {
                      icon: 'ion-compose',
                      order: 250,
                  },
+                 controller:'RoomTypeCtrl'
+           })
+           .state('room.roomTypeOverview', {
+                  url: '/roomTypeOverview',
+                  templateUrl: 'app/pages/room-type/views/room-type-overview.html',
+                  title: 'Room Type Overview',
+                  sidebarMeta: {
+                     order: 0,
+                  },
+
            })
            .state('room.roomType', {
                   url: '/roomType',
                   templateUrl: 'app/pages/room-type/views/room-type.html',
                   title: 'Room Type',
-                  sidebarMeta: {
-                     order: 0,
-                  },
-                  controller: 'RoomTypeCtrl'
            })
   }
-
 })()
