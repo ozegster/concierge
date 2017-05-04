@@ -102,6 +102,13 @@
                 console.log(response)
         })
 
+        RoomTypeService.getAllRoomTypes().then(function (response) {
+            $scope.listOfRoomType = response.data;
+            $scope.rowCollection = response.data;
+        },  function (error) {
+               console.log(error);
+        });
+
         $scope.deleteRoomType = function (selectedRoomType) {
             RoomTypeService.deleteRoomType(selectedRoomType).then(function (response) {
             if (response.status === 200 && response.data) {
