@@ -8,14 +8,14 @@
                              ng-class="{'has-error' : roomTypeForm.roomTypeName.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomTypeName.$valid && roomTypeForm.$submitted}">
                             <label for="room-name">Room Name</label>
                             <input type="text" name="roomTypeName" class="form-control" id="room-name"
-                                   ng-model="roomType.name" required ng-maxlength="80" existing-name="">
+                                   ng-model="roomType.name" required ng-maxlength="80">
                             <div ng-show="roomTypeForm.$submitted">
                                 <label class="help-block error-block basic-block"
-                                       ng-show="roomTypeForm.roomTypeName.$error.required">Please enter name of the room</label>
+                                       ng-show="roomTypeForm.roomTypeName.$error.required">Please enter name of the
+                                    room</label>
                                 <label class="help-block error-block basic-block"
-                                       ng-show="roomTypeForm.roomTypeName.$error.maxlength">Name is too long, 80 characters allowed</label>
-                                <label class="help-block error-block basic-block"
-                                       ng-show="roomTypeForm.roomTypeName.$error.unique">Name is taken, choose a different one</label>
+                                       ng-show="roomTypeForm.roomTypeName.$error.maxlength">Name is too long, 80
+                                    characters allowed</label>
                             </div>
                         </div>
                         <div class="form-group row form-horizontal"
@@ -28,9 +28,11 @@
                             </div>
 
                             <label class="help-block error-block basic-block"
-                                   ng-show="roomTypeForm.numberOfPeople.$error.required && roomTypeForm.$submitted">Please enter number of people</label>
+                                   ng-show="roomTypeForm.numberOfPeople.$error.required && roomTypeForm.$submitted">Please
+                                enter number of people</label>
                             <label class="help-block error-block basic-block"
-                                   ng-show="roomTypeForm.numberOfPeople.$error.pattern && roomTypeForm.$submitted">Please enter a valid number 1 - 6</label>
+                                   ng-show="roomTypeForm.numberOfPeople.$error.pattern && roomTypeForm.$submitted">Please
+                                enter a valid number 1 - 6</label>
 
                         </div>
 
@@ -43,9 +45,11 @@
                                        ng-model="roomType.numberOfKids" required ng-pattern="/^[0-3]{1}$/">
                             </div>
                             <label class="help-block error-block basic-block"
-                                   ng-show="roomTypeForm.numberOfKids.$error.required && roomTypeForm.$submitted">Please enter number of kids</label>
+                                   ng-show="roomTypeForm.numberOfKids.$error.required && roomTypeForm.$submitted">Please
+                                enter number of kids</label>
                             <label class="help-block error-block basic-block"
-                                   ng-show="roomTypeForm.numberOfKids.$error.pattern && roomTypeForm.$submitted">Please enter a valid number 0 - 3</label>
+                                   ng-show="roomTypeForm.numberOfKids.$error.pattern && roomTypeForm.$submitted">Please
+                                enter a valid number 0 - 3</label>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
@@ -56,11 +60,14 @@
                                            ng-model="roomType.size" required ng-min="5" ng-max="127">
                                     <div ng-show="roomTypeForm.$submitted">
                                         <label class="help-block error-block basic-block"
-                                               ng-show="roomTypeForm.roomSize.$error.required">Please enter size of the room</label>
+                                               ng-show="roomTypeForm.roomSize.$error.required">Please enter size of the
+                                            room</label>
                                         <label class="help-block error-block basic-block"
-                                               ng-show="roomTypeForm.roomSize.$error.min">Please enter a number greater than 4</label>
+                                               ng-show="roomTypeForm.roomSize.$error.min">Please enter a number greater
+                                            than 4</label>
                                         <label class="help-block error-block basic-block"
-                                               ng-show="roomTypeForm.roomSize.$error.max">Please enter a number smaller than 128</label>
+                                               ng-show="roomTypeForm.roomSize.$error.max">Please enter a number smaller
+                                            than 128</label>
                                     </div>
                                 </div>
                             </div>
@@ -74,17 +81,20 @@
                                             required></select>
                                     <div ng-show="roomTypeForm.$submitted">
                                         <label class="help-block error-block basic-block"
-                                               ng-show="roomTypeForm.bedType.$error.required">Please enter bed type of the room</label>
+                                               ng-show="roomTypeForm.bedType.$error.required">Please enter bed type of
+                                            the room</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6" ba-panel ba-panel-title="IMAGE">
-                        <div class="form-group" ng-class="{'has-error' : roomTypeForm.roomImage.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomImage.$valid && roomTypeForm.$submitted}">
+                        <div class="form-group"
+                             ng-class="{'has-error' : roomTypeForm.roomImage.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomImage.$valid && roomTypeForm.$submitted}">
                             <img ng-click="getFileSystem()" class="img-center" ng-src="{{imageSrc}}">
-                            <input ng-show="false" type="file" name="roomImage" ng-model="roomImage" valid-file accept="image/gif, image/jpeg, image/png" id="upload-image"
-                                   file-model="roomType.image" >
+                            <input ng-show="false" type="file" name="roomImage" ng-model="roomImage" valid-file
+                                   accept="image/gif, image/jpeg, image/png" id="upload-image"
+                                   file-model="roomType.image">
                             <div class="centerText" ng-show="roomTypeForm.$submitted">
                                 <label class="help-block error-block basic-block"
                                        ng-show="roomTypeForm.roomImage.$error.validFile">Please enter the image</label>
@@ -102,7 +112,8 @@
                                     <div class="clearfix" ng-if="$index % 4 == 0"></div>
                                     <div class="col-md-3">
                                         <label class="custom-checkbox">
-                                            <input type="checkbox" ng-checked="featureBox" ng-click="toggleSelection(feature)">
+                                            <input type="checkbox" ng-checked="featureBox"
+                                                   ng-click="toggleSelection(feature)">
                                             <span>{{feature.name}}</span>
                                         </label>
                                     </div>
@@ -116,8 +127,11 @@
                 <div class="col-md-12">
                     <div class="form-group col-md-12">
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-primary btn-lg"  ng-disabled="roomTypeForm.$invalid && roomTypeForm.$submitted"
-                                    ng-attr-title="{{roomTypeForm.$invalid && roomTypeForm.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                    ng-disabled="roomTypeForm.$invalid && roomTypeForm.$submitted"
+                                    ng-attr-title="{{roomTypeForm.$invalid && roomTypeForm.$submitted ? 'Invalid input(s) found' : ''}}">
+                                Save
+                            </button>
                         </div>
                     </div>
                 </div>

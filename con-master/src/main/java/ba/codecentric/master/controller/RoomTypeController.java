@@ -31,13 +31,12 @@ public class RoomTypeController {
 
     @RequestMapping(value = "/room-type", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) throws IOException {
-        if (!roomTypeService.isExistingName(roomType.getName())) {
-            String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
-            if (fileName != null) {
-                roomType.setImage(fileName);
-                return roomTypeService.saveRoom(roomType);
-            }
+        String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
+        if (fileName != null) {
+            roomType.setImage(fileName);
+            return roomTypeService.saveRoom(roomType);
         }
+
         return new RoomType();
     }
 

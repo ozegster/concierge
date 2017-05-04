@@ -54,7 +54,13 @@
                     $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
 
                 } else {
-                    toastr.error(response.data.name + ' has not been saved successfully', 'Save Room type');
+                    if (response.data.errors) {
+                        angular.forEach(response.data.errors, function (value, key) {
+                            toastr.error(response.data.errors[key].defaultMessage, 'Error');
+                        });
+                    } else {
+                        toastr.error(response.data.error, 'Error');
+                    }
                 }
             }, function (error) {
                 console.log(error);
