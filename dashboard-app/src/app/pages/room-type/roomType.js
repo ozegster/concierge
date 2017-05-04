@@ -16,15 +16,15 @@
                  title: 'Room',
                  sidebarMeta: {
                      icon: 'ion-compose',
-                     order: 250,
-                 },
+                     order: 250
+                 }
            })
            .state('room.roomType', {
                   url: '/roomType',
                   templateUrl: 'app/pages/room-type/views/room-type.html',
                   title: 'Room Type',
                   sidebarMeta: {
-                     order: 0,
+                     order: 0
                   },
                   controller: 'RoomTypeCtrl'
            })

@@ -1,5 +1,5 @@
 (function (){
-    angular.module('ConciergeApp.pages.roomType')
+    angular.module('ConciergeApp.pages.facility')
     .directive('validFile',function(){
         return {
             require:'ngModel',
