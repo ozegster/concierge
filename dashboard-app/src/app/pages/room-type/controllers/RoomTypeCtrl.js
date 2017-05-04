@@ -3,13 +3,14 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomTypeCtrl', RoomTypeCtrl);
 
-    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr'];
-    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr) {
+    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr', '$state']
+    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $state) {
 
         $scope.roomType = {};
         $scope.selected = [];
         $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
-
+        $scope.checked= [];
+        $scope.path = '';
 
         BedTypeService.getBedTypes().then(function (response) {
             $scope.beds = response.data;
@@ -49,7 +50,7 @@
                     roomTypeForm.$setPristine();
                     roomTypeForm.$setUntouched();
                     $scope.roomType = {};
-                    $scope.featureBox = false;
+                    $scope.uncheckFeatures();
                     angular.element("input[type='file']").val(null);
                     $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
 
@@ -60,6 +61,47 @@
                 console.log(error);
             })
         }
+
+
+
+        $scope.editRoomType = function (selectedRoomType) {
+            $state.go('room.roomType');
+            $scope.roomType = selectedRoomType;
+
+            for(var i = 0; i < selectedRoomType.features.length; i++){
+                $scope.checked[selectedRoomType.features[i].id -1] = true;
+            }
+            var img = selectedRoomType.image;
+            $scope.imageSrc = $scope.path + img;
+        }
+
+
+
+        $scope.uncheckFeatures = function(){
+
+            for(var i = 0; i < $scope.checked.length;i++){
+                $scope.checked[i] = false;
+            }
+        }
+
+        RoomTypeService.getDirectory().then(function (response) {
+            $scope.path = response.data;
+            },function (response) {
+                console.log(response)
+        })
+
+        $scope.deleteRoomType = function (selectedRoomType) {
+            RoomTypeService.deleteRoomType(selectedRoomType).then(function (response) {
+            if (response.status === 200 && response.data) {
+                toastr.success(response.data.name + ' has been deleted successfully', 'Delete Room type');
+            }
+
+            $scope.updateTableAfterDelete(selectedRoomType)
+            },function (response) {
+              console.log(response)
+            })
+        }
+
 
     }
 })();
