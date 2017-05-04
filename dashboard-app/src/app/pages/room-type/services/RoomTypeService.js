@@ -26,8 +26,45 @@
 
             };
 
+            var getAllRoomTypes = function () {
+                return $http({
+                    method: 'GET',
+                    url: SERVER_PATH.url + '/room-type',
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            };
+
+            var deleteRoomType = function (selectedRoomType) {
+                return $http({
+                    method: 'POST',
+                    url: SERVER_PATH.url + '/delete-room-type',
+                    data: selectedRoomType
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            }
+
+            var getDirectory = function () {
+                return $http({
+                    method: 'GET',
+                    url: SERVER_PATH.url + '/directory',
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                })
+            }
+
             return {
-                saveRoomType: saveRoomType
+                saveRoomType: saveRoomType,
+                getAllRoomTypes: getAllRoomTypes,
+                getDirectory: getDirectory,
+                deleteRoomType: deleteRoomType
             };
         }])
 })();
