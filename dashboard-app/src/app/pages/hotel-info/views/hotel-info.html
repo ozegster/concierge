@@ -114,7 +114,7 @@
                         <div class="form-group" ng-class="{'has-error' : hotelInfo.email.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.email.$valid && hotelInfo.$submitted}">
                             <label for="email">Email</label>
                             <input class="form-control" id="email" type="email" ng-model="hotel.email" name="email"
-                                   required ng-pattern="/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,3}$/" ng-maxlength="45">
+                                   required ng-pattern="/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,20}$/" ng-maxlength="45">
                             <div ng-show="hotelInfo.$submitted" >
                                 <label class="help-block error-block basic-block" ng-show="hotelInfo.email.$error.required">Please enter a email</label>
                                 <label class="help-block error-block basic-block" ng-show="hotelInfo.email.$error.pattern">Please enter a valid email address e.g. info@hotel.com</label>
