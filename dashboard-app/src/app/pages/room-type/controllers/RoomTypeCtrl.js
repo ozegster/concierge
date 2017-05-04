@@ -75,7 +75,13 @@
             $scope.imageSrc = $scope.path + img;
         }
 
+        $scope.updateTableAfterDelete = function (deletedRoomType) {
+            var index = $scope.listOfRoomType.indexOf(deletedRoomType);
 
+            if (index > -1) {
+                $scope.listOfRoomType.splice(index,1);
+            }
+        }
 
         $scope.uncheckFeatures = function(){
 
