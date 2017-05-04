@@ -90,6 +90,12 @@
             }
         }
 
+        $scope.openForm = function(){
+            $scope.roomType = {};
+            $scope.uncheckFeatures();
+            $state.go('room.roomType');
+        }
+
         RoomTypeService.getDirectory().then(function (response) {
             $scope.path = response.data;
             },function (response) {
