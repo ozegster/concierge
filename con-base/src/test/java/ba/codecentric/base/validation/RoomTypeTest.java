@@ -4,9 +4,6 @@ import ba.codecentric.base.domain.BedType;
 import ba.codecentric.base.domain.RoomType;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -16,8 +13,6 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
 public class RoomTypeTest {
 
 
@@ -171,6 +166,40 @@ public class RoomTypeTest {
         Set<ConstraintViolation<RoomType>> validations = validator.validate(roomType);
         assertEquals(1, validations.size());
         assertEquals("Please enter size of the room", validations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void sizeIsTooSmall() {
+        RoomType roomType = getRoomType();
+        roomType.setSize(0);
+        Set<ConstraintViolation<RoomType>> validations = validator.validate(roomType);
+        assertEquals(1, validations.size());
+        assertEquals("Minimum size is 5", validations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void sizeIsTooBig() {
+        RoomType roomType = getRoomType();
+        roomType.setSize(128);
+        Set<ConstraintViolation<RoomType>> validations = validator.validate(roomType);
+        assertEquals(1, validations.size());
+        assertEquals("Maximum size is 127", validations.iterator().next().getMessage());
+    }
+
+    @Test
+    public void sizeIsValidMinimum() {
+        RoomType roomType = getRoomType();
+        roomType.setSize(5);
+        Set<ConstraintViolation<RoomType>> validations = validator.validate(roomType);
+        assertEquals(0, validations.size());
+    }
+
+    @Test
+    public void sizeIsValidMaximum() {
+        RoomType roomType = getRoomType();
+        roomType.setSize(127);
+        Set<ConstraintViolation<RoomType>> validations = validator.validate(roomType);
+        assertEquals(0, validations.size());
     }
 
     @Test

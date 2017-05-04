@@ -47,13 +47,15 @@
                                 <div class="form-group"
                                      ng-class="{'has-error' : roomTypeForm.roomSize.$invalid && roomTypeForm.$submitted, 'has-success' : roomTypeForm.roomSize.$valid && roomTypeForm.$submitted}">
                                     <label for="size">Size(sq meters)</label>
-                                    <input type="text" id="size" name="roomSize" class="form-control"
-                                           ng-model="roomType.size" required ng-pattern="/^[0-9]*$/">
+                                    <input type="number" id="size" name="roomSize" class="form-control"
+                                           ng-model="roomType.size" required ng-min="5" ng-max="127">
                                     <div ng-show="roomTypeForm.$submitted">
                                         <label class="help-block error-block basic-block"
                                                ng-show="roomTypeForm.roomSize.$error.required">Please enter size of the room</label>
                                         <label class="help-block error-block basic-block"
-                                               ng-show="roomTypeForm.roomSize.$error.pattern">Please enter only numbers</label>
+                                               ng-show="roomTypeForm.roomSize.$error.min">Please enter a number greater than 4</label>
+                                        <label class="help-block error-block basic-block"
+                                               ng-show="roomTypeForm.roomSize.$error.max">Please enter a number smaller than 128</label>
                                     </div>
                                 </div>
                             </div>

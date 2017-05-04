@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('ConciergeApp.pages.hotelInfo', ['ui.select'])
+    angular.module('ConciergeApp.pages.hotelInfo', ['ui.select', 'moment-picker'])
         .config(routeConfig);
 
 
