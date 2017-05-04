@@ -5,6 +5,7 @@ import ba.codecentric.base.repository.RoomTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 @Service
 public class RoomTypeServiceImpl implements RoomTypeService {
@@ -20,5 +21,15 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     @Transactional
     public RoomType saveRoom(RoomType roomType) {
         return roomTypeRepository.save(roomType);
+    }
+
+    @Override
+    public List<RoomType> getAllRoomTypes(){
+        return roomTypeRepository.findAll();
+    }
+
+    @Override
+    public void deleteRoomType(RoomType roomType){
+        roomTypeRepository.delete(roomType);
     }
 }
