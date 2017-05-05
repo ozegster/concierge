@@ -42,7 +42,7 @@
         $scope.changeRoomType = function (roomType) {
             $scope.selectedRoomType = roomType;
             RoomTypeService.getImage(roomType.image).then(function (data) {
-                var canvas = document.getElementById("room-type-image");
+                var canvas = angular.element('#room-type-image-canvas')[0];
                 var context = canvas.getContext('2d');
                 var img = new Image();
                 img.onload = function () {

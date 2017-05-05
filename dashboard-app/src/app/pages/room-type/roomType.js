@@ -3,7 +3,7 @@
 
 
     angular.module('ConciergeApp.pages.roomType', ['ui.select'])
-        .config(routeConfig);
+           .config(routeConfig);
 
 
     /** @ngInject */
