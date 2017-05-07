@@ -12,14 +12,12 @@
        $stateProvider
            .state('room', {
                  url: '/room',
-                 abstract:true,
                  template : '<ui-view autoscroll="true" autoscroll-body-top></ui-view>',
                  title: 'Room',
                  sidebarMeta: {
                      icon: 'ion-compose',
                      order: 250,
                  },
-                 controller:'RoomTypeCtrl'
            })
            .state('room.roomTypeOverview', {
                   url: '/roomTypeOverview',
@@ -28,12 +26,14 @@
                   sidebarMeta: {
                      order: 0,
                   },
+                  controller:'RoomTypeCtrl'
 
            })
            .state('room.roomType', {
                   url: '/roomType',
                   templateUrl: 'app/pages/room-type/views/room-type.html',
                   title: 'Room Type',
+                  controller:'RoomTypeCtrl'
            })
   }
 })()
