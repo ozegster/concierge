@@ -3,14 +3,13 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomTypeCtrl', RoomTypeCtrl);
 
-    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr', '$state']
-    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $state) {
+    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr', '$uibModal', '$state', '$window']
+    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal, $state, $window) {
 
         $scope.roomType = {};
-        $scope.selected = [];
+        $scope.selectedFeatures = [];
         $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
-        $scope.checked= [];
-        $scope.path = '';
+        $scope.checkbox= [];
 
         BedTypeService.getBedTypes().then(function (response) {
             $scope.beds = response.data;
@@ -24,33 +23,20 @@
             console.log(error);
         });
 
-        $scope.toggleSelection = function (feature) {
-            var index = $scope.selected.indexOf(feature);
-
-            if (index === -1) {
-                $scope.selected.push(feature);
-            } else {
-                $scope.selected.splice(index, 1);
-            }
-            $scope.roomType.features = $scope.selected;
-        }
-
-        $scope.getFileSystem = function () {
-            var fileInput = document.getElementById('upload-image');
-            fileInput.click();
-        }
-
         $scope.submit = function (roomTypeForm) {
-            if (roomTypeForm.$invalid) {
+            if (roomTypeForm.$invalid || $scope.isImageMissing()) {
                 return;
             }
-            RoomTypeService.saveRoomType($scope.roomType, $scope.roomType.image).then(function (response) {
+            console.log($scope.roomType.features)
+            RoomTypeService.saveRoomType($scope.roomType, $scope.croppedImg).then(function (response) {
+            console.log(response)
                 if (response.status === 200 && response.data) {
                     toastr.success(response.data.name + ' has been saved successfully', 'Save Room type');
                     roomTypeForm.$setPristine();
                     roomTypeForm.$setUntouched();
                     $scope.roomType = {};
                     $scope.uncheckFeatures();
+                    $scope.selectedFeatures = [];
                     angular.element("input[type='file']").val(null);
                     $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
 
@@ -62,18 +48,18 @@
             })
         }
 
+        $scope.openModal = function () {
+            $uibModal.open({
+                templateUrl: 'app/theme/components/crop-image/crop-upload-image.html',
+                controller: 'ModalCtrl',
+                scope:$scope
+            })
+        };
 
-
-        $scope.editRoomType = function (selectedRoomType) {
-            $state.go('room.roomType');
-            $scope.roomType = selectedRoomType;
-
-            for(var i = 0; i < selectedRoomType.features.length; i++){
-                $scope.checked[selectedRoomType.features[i].id -1] = true;
-            }
-            var img = selectedRoomType.image;
-            $scope.imageSrc = $scope.path + img;
-        }
+        $scope.isImageMissing = function () {
+            var image = angular.element('#room-type-image').attr('src');
+            return image === $scope.imageSrc;
+        };
 
         $scope.updateTableAfterDelete = function (deletedRoomType) {
             var index = $scope.listOfRoomType.indexOf(deletedRoomType);
@@ -81,26 +67,23 @@
             if (index > -1) {
                 $scope.listOfRoomType.splice(index,1);
             }
-        }
+        };
 
-        $scope.uncheckFeatures = function(){
+        $scope.uncheckFeatures = function () {
 
-            for(var i = 0; i < $scope.checked.length;i++){
-                $scope.checked[i] = false;
-            }
-        }
+            angular.forEach($scope.checkbox, function (value, index) {
+                $scope.checkbox[index] = false;
+            })
+        };
 
-        $scope.openForm = function(){
-            $scope.roomType = {};
-            $scope.uncheckFeatures();
-            $state.go('room.roomType');
-        }
+        $scope.checkFeatures = function (selectedRoomType) {
 
-        RoomTypeService.getDirectory().then(function (response) {
-            $scope.path = response.data;
-            },function (response) {
-                console.log(response)
-        })
+            angular.forEach(selectedRoomType.features, function (value,index) {
+                var currentIndex = selectedRoomType.features[index].id;
+                $scope.checkbox[currentIndex] = true;
+                $scope.selectedFeatures.push(selectedRoomType.features[index]);
+            })
+        };
 
         RoomTypeService.getAllRoomTypes().then(function (response) {
             $scope.listOfRoomType = response.data;
@@ -109,18 +92,24 @@
                console.log(error);
         });
 
+        $scope.handleEditButton = function (selectedRoomType) {
+            $window.localStorage.setItem('editableRoomType',JSON.stringify(selectedRoomType));
+            $state.go('room.roomType');
+        };
+
+        $scope.handleAddRoomTypeButton = function () {
+            $state.go('room.roomType');
+        };
+
         $scope.deleteRoomType = function (selectedRoomType) {
             RoomTypeService.deleteRoomType(selectedRoomType).then(function (response) {
             if (response.status === 200 && response.data) {
                 toastr.success(response.data.name + ' has been deleted successfully', 'Delete Room type');
             }
-
-            $scope.updateTableAfterDelete(selectedRoomType)
+            $scope.updateTableAfterDelete(selectedRoomType);
             },function (response) {
               console.log(response)
             })
-        }
-
-
+        };
     }
 })();
