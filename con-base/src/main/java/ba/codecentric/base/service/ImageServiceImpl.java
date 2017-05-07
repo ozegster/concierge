@@ -33,6 +33,12 @@ public class ImageServiceImpl implements ImageService {
         return newImageName;
     }
 
+    @Override
+    public InputStream loadImage(String name) throws IOException {
+        Path filePath = Paths.get(directoryPath + name);
+        return Files.newInputStream(filePath);
+    }
+
     private void createImageDirectories() throws IOException {
         Path defaultDirectoryPath = Paths.get(directoryPath);
         if (!Files.exists(defaultDirectoryPath)) {
@@ -52,4 +58,6 @@ public class ImageServiceImpl implements ImageService {
     private String getTimestamp() {
         return String.valueOf(System.currentTimeMillis());
     }
+
+
 }
