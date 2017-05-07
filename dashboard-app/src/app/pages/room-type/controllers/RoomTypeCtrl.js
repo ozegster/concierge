@@ -123,6 +123,22 @@
             }
         };
 
+        $scope.getByteFromBase64 = function (dataURI) {
+            var byteString;
+
+            if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+                byteString = atob(dataURI.split(',')[1]);
+            } else {
+                byteString = unescape(dataURI.split(',')[1]);
+            }
+            var bytes = new Uint8Array(new ArrayBuffer(byteString.length));
+
+            for (var i = 0; i < byteString.length; i++) {
+                bytes[i] = byteString.charCodeAt(i);
+            }
+                return bytes;
+        };
+
         $scope.$on("$stateChangeSuccess",function(){
             if ($state.is('room.roomType') && $window.localStorage.length ) {
                 $scope.openEditableRoomTypeForm();
