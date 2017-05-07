@@ -111,6 +111,13 @@
                console.log(error);
         });
 
+        $scope.openEditableRoomTypeForm = function() {
+            var selectedRoomType = JSON.parse($window.localStorage.getItem('editableRoomType'));
+            $scope.roomType = selectedRoomType;
+            $scope.loadImage(selectedRoomType.image);
+            $scope.checkFeatures(selectedRoomType)
+        };
+
         $scope.handleEditButton = function (selectedRoomType) {
             $window.localStorage.setItem('editableRoomType',JSON.stringify(selectedRoomType));
             $state.go('room.roomType');
