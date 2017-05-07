@@ -111,5 +111,13 @@
               console.log(response)
             })
         };
+
+        $scope.$on("$stateChangeSuccess",function(){
+            if ($state.is('room.roomType') && $window.localStorage.length ) {
+                $scope.openEditableRoomTypeForm();
+            } else {
+                $window.localStorage.clear();
+            }
+        })
     }
 })();
