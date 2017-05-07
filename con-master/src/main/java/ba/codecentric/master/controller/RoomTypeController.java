@@ -5,7 +5,7 @@ import ba.codecentric.base.domain.RoomType;
 import ba.codecentric.base.service.ImageService;
 import ba.codecentric.base.service.RoomTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,8 +19,7 @@ public class RoomTypeController {
     private final RoomTypeService roomTypeService;
     private final ImageService imageService;
 
-    @Value ("${image.directory.path}")
-    String directoryPath;
+
 
     @Autowired
     public RoomTypeController(RoomTypeService roomTypeService, ImageService imageService) {
@@ -43,14 +42,14 @@ public class RoomTypeController {
         return roomTypeService.getAllRoomTypes();
     }
 
-    @RequestMapping(value = "/directory" ,method = RequestMethod.GET, produces="text/plain")
-    public String getDirectoryPath(){
-        return directoryPath;
-    }
-
     @RequestMapping(value = "/delete-room-type", method = RequestMethod.POST)
     public RoomType deleteRoomType(@RequestBody RoomType roomType){
         roomTypeService.deleteRoomType(roomType);
         return roomType;
+    }
+
+    @GetMapping(value = "/room-types/image/{imageName:.+}", produces = { MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE })
+    public InputStreamResource getImage(@PathVariable String imageName) throws IOException {
+        return new InputStreamResource(imageService.loadImage(imageName));
     }
 }
