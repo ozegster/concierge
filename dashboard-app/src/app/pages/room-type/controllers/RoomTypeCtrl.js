@@ -61,6 +61,25 @@
             return image === $scope.imageSrc;
         };
 
+        $scope.toggleSelection = function (feature) {
+            var isAlreadyChecked = false;
+
+            angular.forEach($scope.selectedFeatures, function (value, index) {
+
+                if(value.id === feature.id){
+                    isAlreadyChecked = true;
+                }
+            })
+
+            if (isAlreadyChecked) {
+                $scope.selectedFeatures.splice(feature, 1);
+            } else {
+                $scope.selectedFeatures.push(feature);
+                $scope.checkbox[feature.id] = true;
+            }
+            $scope.roomType.features = $scope.selectedFeatures;
+        }
+
         $scope.updateTableAfterDelete = function (deletedRoomType) {
             var index = $scope.listOfRoomType.indexOf(deletedRoomType);
 
