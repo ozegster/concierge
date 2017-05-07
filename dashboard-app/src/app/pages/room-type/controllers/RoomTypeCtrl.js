@@ -138,6 +138,15 @@
             })
         };
 
+        $scope.loadImage = function (image) {
+            RoomTypeService.getImage(image).then(function (data) {
+                var panelImage = angular.element(document.querySelector('#room-type-image'));
+                panelImage.attr('src','data:image/jpeg;base64,' + data);
+                var base64Image = 'data:image/jpeg;base64,' + data;
+                $scope.getFileFromImage(base64Image)
+            });
+        };
+
         $scope.getFileFromImage = function (img) {
             var byteArray = $scope.getByteFromBase64(img);
             var fileImg = new File([byteArray],'name.png');
