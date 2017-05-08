@@ -50,6 +50,7 @@
 
                 } else {
                     if (response.data.errors) {
+                        roomTypeForm.roomTypeName.$invalid = true;
                         angular.forEach(response.data.errors, function (value, key) {
                             toastr.error(response.data.errors[key].defaultMessage, 'Error');
                         });
