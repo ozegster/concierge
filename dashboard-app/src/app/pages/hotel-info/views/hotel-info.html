@@ -148,7 +148,7 @@
                     </div>
                     <div id="additionalInfo" class="col-md-6" ba-panel ba-panel-title="Additional info">
                         <div class="form-group" ng-class="{'has-error' : hotelInfo.checkIn.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.checkIn.$valid && hotelInfo.$submitted}">
-                            <label for="checkIn">Check-in</label>
+                            <label for="checkIn">Check-in from</label>
                                 <div class="input-group" moment-picker="hotel.checkIn" format="HH:mm">
                                     <span class="input-group-addon">
                                         <i class="fa fa-lg fa-clock-o"></i>
@@ -159,7 +159,7 @@
                                 <label class="help-block error-block basic-block" ng-show="hotelInfo.checkIn.$error.required">Please enter a valid Check-in time</label>
                             </div>
                         <div class="form-group" ng-class="{'has-error' : hotelInfo.checkOut.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.checkOut.$valid && hotelInfo.$submitted}">
-                            <label for="checkOut">Check-out</label>
+                            <label for="checkOut">Check-out until</label>
                                 <div class="input-group" moment-picker="hotel.checkOut" format="HH:mm">
                                     <span class="input-group-addon">
                                         <i class="fa fa-lg fa-clock-o"></i>
