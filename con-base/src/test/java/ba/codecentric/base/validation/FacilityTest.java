@@ -18,7 +18,7 @@ public class FacilityTest {
 
     private static Validator validator;
 
-    private final Logger logger = Logger.getLogger(FacilityTest.class);
+    private final Logger log = Logger.getLogger(FacilityTest.class);
 
 
     @BeforeClass
@@ -44,8 +44,6 @@ public class FacilityTest {
     @Test
     public void facilityNameIsEmpty() {
         Facility facility = getFacility();
-        logger.debug("Hello this is a debug message");
-        logger.info("Hello this is an info message");
         facility.setFacilityName("");
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
