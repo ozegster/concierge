@@ -1,8 +1,6 @@
 package ba.codecentric.base.domain;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -57,7 +55,7 @@ public class Hotel {
 
     @NotBlank(message = "Please enter a email")
     @Size(max = 45, message = "Email is too long, 45 characters allowed")
-    @Email(message = "Please enter a valid email address e.g. info@hotel.com")
+    @Pattern(regexp = "^\\w+[\\w\\.]*@\\w+((-\\w+)|(\\w*))\\.[a-z]{2,20}$", message = "Please enter a valid email address e.g. info@hotel.com")
     private String email;
 
     @NotBlank(message = "Please enter a website")
