@@ -37,7 +37,7 @@
             }, function (error) {
                 console.log(error);
             })
-        }
+        };
 
         $scope.changeRoomType = function (roomType) {
             $scope.selectedRoomType = roomType;
@@ -47,7 +47,7 @@
                 var img = new Image();
                 img.onload = function () {
                     context.drawImage(this, 0, 0, canvas.width, canvas.height);
-                }
+                };
                 img.src = 'data:image/jpeg;base64,' + data;
             });
         }
