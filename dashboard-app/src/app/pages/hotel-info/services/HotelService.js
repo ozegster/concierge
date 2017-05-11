@@ -17,7 +17,7 @@
             var saveHotel = function (hotel) {
                 return $http({
                     method: 'POST',
-                    url: SERVER_PATH.url + '/hotel',
+                    url: SERVER_PATH.url + '/hotels',
                     data: hotel
                 }).then(function (result) {
                     return result;
@@ -28,7 +28,7 @@
 
             var getHotel = function () {
                 var deferred = $q.defer();
-                $http.get(SERVER_PATH.url + '/hotel')
+                $http.get(SERVER_PATH.url + '/hotels')
                     .then(function (response) {
                         if (!response.data) {
                             deferred.reject("There isn't a hotel in db");

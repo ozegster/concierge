@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class RoomTypeServiceImpl implements RoomTypeService {
 
@@ -18,7 +20,14 @@ public class RoomTypeServiceImpl implements RoomTypeService {
 
     @Override
     @Transactional
-    public RoomType saveRoom(RoomType roomType) {
+    public RoomType saveRoomType(RoomType roomType) {
         return roomTypeRepository.save(roomType);
     }
+
+    @Override
+    @Transactional
+    public List<RoomType> getAllRoomTypes() {
+        return roomTypeRepository.findAll();
+    }
+
 }
