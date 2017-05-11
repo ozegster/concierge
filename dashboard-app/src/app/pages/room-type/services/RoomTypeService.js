@@ -14,7 +14,7 @@
                 fd.append('image', file);
                 return $http({
                     method: 'POST',
-                    url: SERVER_PATH.url + '/room-type',
+                    url: SERVER_PATH.url + '/room-types',
                     data: fd,
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
@@ -60,17 +60,16 @@
                 });
             };
 
-            var deleteRoomType = function (selectedRoomType) {
+            var deleteRoomType = function (selectedRoomTypeId) {
                 return $http({
-                    method: 'POST',
-                    url: SERVER_PATH.url + '/delete-room-type',
-                    data: selectedRoomType
+                    method: 'DELETE',
+                    url: SERVER_PATH.url + '/room-type/' + selectedRoomTypeId,
                 }).then(function (response) {
                     return response;
                 }, function (error) {
                     return error;
                 });
-            }
+            };
 
             return {
                 saveRoomType: saveRoomType,
