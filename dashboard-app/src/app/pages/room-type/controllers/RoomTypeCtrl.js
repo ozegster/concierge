@@ -27,7 +27,7 @@
             if (roomTypeForm.$invalid || $scope.isImageMissing()) {
                 return;
             }
-            console.log($scope.roomType.features)
+
             RoomTypeService.saveRoomType($scope.roomType, $scope.croppedImg).then(function (response) {
             console.log(response)
                 if (response.status === 200 && response.data) {
@@ -125,6 +125,15 @@
 
         $scope.handleAddRoomTypeButton = function () {
             $state.go('room.roomType');
+        };
+
+        $scope.handleDeleteButton = function (selectedRoomType) {
+            $scope.name = selectedRoomType.name;
+            $uibModal.open({
+                templateUrl: 'app/pages/room-type/views/room-type-modal.html',
+                controller: 'RoomTypeCtrl',
+                scope: $scope
+            });
         };
 
         $scope.deleteRoomType = function (selectedRoomType) {
