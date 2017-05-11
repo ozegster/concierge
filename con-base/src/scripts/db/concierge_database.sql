@@ -1,9 +1,5 @@
 DROP SCHEMA IF EXISTS `concierge`;
-
-DROP SCHEMA IF EXISTS `concierge`;
 CREATE SCHEMA `concierge` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ;
-
-
 
 CREATE TABLE `concierge`.`country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -62,7 +58,6 @@ INSERT INTO `concierge`.`country` VALUES (48,'Slovakia');
 INSERT INTO `concierge`.`country` VALUES (49,'San Marino');
 INSERT INTO `concierge`.`country` VALUES (50,'Ukraine');
 INSERT INTO `concierge`.`country` VALUES (51,'Vatican City');
-
 
 CREATE TABLE `concierge`.`hotel` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -155,3 +150,11 @@ CREATE TABLE `concierge`.`room_type_feature` (
   FOREIGN KEY (`feature_id`) REFERENCES `concierge`.`feature` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+CREATE TABLE `concierge`.`room` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `number` int(4) NOT NULL,
+  `floor_number` tinyint(4) NOT NULL,
+  `room_type_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`room_type_id`) REFERENCES `concierge`.`room_type` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
