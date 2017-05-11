@@ -29,7 +29,7 @@
             }
 
             RoomTypeService.saveRoomType($scope.roomType, $scope.croppedImg).then(function (response) {
-            console.log(response)
+
                 if (response.status === 200 && response.data) {
                     toastr.success(response.data.name + ' has been saved successfully', 'Save Room type');
                     roomTypeForm.$setPristine();
@@ -46,7 +46,7 @@
             }, function (error) {
                 console.log(error);
             })
-        }
+        };
 
         $scope.openModal = function () {
             $uibModal.open({
@@ -69,7 +69,7 @@
                 if(value.id === feature.id){
                     isAlreadyChecked = true;
                 }
-            })
+            });
 
             if (isAlreadyChecked) {
                 $scope.selectedFeatures.splice(feature, 1);
@@ -78,7 +78,7 @@
                 $scope.checkbox[feature.id] = true;
             }
             $scope.roomType.features = $scope.selectedFeatures;
-        }
+        };
 
         $scope.updateTableAfterDelete = function (deletedRoomType) {
             var index = $scope.listOfRoomType.indexOf(deletedRoomType);
