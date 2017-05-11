@@ -22,7 +22,7 @@
            .state('room.roomTypeOverview', {
                   url: '/roomTypeOverview',
                   templateUrl: 'app/pages/room-type/views/room-type-overview.html',
-                  title: 'Room Type Overview',
+                  title: 'Room Type',
                   sidebarMeta: {
                      order: 0,
                   },
@@ -32,7 +32,7 @@
            .state('room.roomType', {
                   url: '/roomType',
                   templateUrl: 'app/pages/room-type/views/room-type.html',
-                  title: 'Room Type',
+                  title: 'New Room Type',
                   controller:'RoomTypeCtrl'
            })
   }
