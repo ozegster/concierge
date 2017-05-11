@@ -19,7 +19,7 @@ public class RoomTypeServiceImpl implements RoomTypeService {
 
     @Override
     @Transactional
-    public RoomType saveRoom(RoomType roomType) {
+    public RoomType saveRoomType(RoomType roomType) {
         return roomTypeRepository.save(roomType);
     }
 
@@ -29,7 +29,13 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     }
 
     @Override
-    public void deleteRoomType(RoomType roomType){
-        roomTypeRepository.delete(roomType);
+    @Transactional
+    public void deleteRoomType(Integer roomTypeId){
+        roomTypeRepository.deleteById(roomTypeId);
+    }
+
+    @Override
+    public RoomType findById(Integer roomTypeId) {
+        return roomTypeRepository.findOne(roomTypeId);
     }
 }
