@@ -15,7 +15,7 @@ import javax.validation.Valid;
 public class HotelController {
 
     private final HotelService hotelService;
-    private final static Logger log = Logger.getLogger(HotelController.class);
+    private final static Logger LOG = Logger.getLogger(HotelController.class);
 
     @Autowired
     public HotelController(HotelService hotelService) {
@@ -24,7 +24,7 @@ public class HotelController {
 
     @RequestMapping(value = "/hotel", method = RequestMethod.POST)
     public Hotel saveHotel(@Valid @RequestBody Hotel hotel) {
-        log.info("Save Hotel info: " + hotel.getName());
+        LOG.info("Save Hotel info: " + hotel.getName());
         return hotelService.saveHotel(hotel);
 
     }
