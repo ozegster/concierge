@@ -33,7 +33,8 @@
     "angular-xeditable": "~0.5.0",
     "ng-js-tree": "~0.0.7",
     "angular-ui-select": "^0.19.6",
-    "angular-img-cropper":"1.1.0"
+    "angular-img-cropper": "1.1.0",
+    "angular-moment-picker": "moment-picker#^0.9.10"
   },
   "resolutions": {
     "angular": "~1.5.9",
