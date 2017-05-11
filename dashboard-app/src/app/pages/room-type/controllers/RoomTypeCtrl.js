@@ -32,7 +32,8 @@
 
                 if (response.status === 200 && response.data) {
                     toastr.success(response.data.name + ' has been saved successfully', 'Save Room type');
-
+                    $scope.selectedFeatures = [];
+                    $scope.uncheckFeatures();
                     $state.go('room.roomTypeOverview');
 
                 } else {
@@ -58,16 +59,17 @@
 
         $scope.toggleSelection = function (feature) {
             var isAlreadyChecked = false;
+            var removeIndex = 0;
 
             angular.forEach($scope.selectedFeatures, function (value, index) {
-
                 if(value.id === feature.id){
                     isAlreadyChecked = true;
+                    removeIndex = index;
                 }
             });
 
             if (isAlreadyChecked) {
-                $scope.selectedFeatures.splice(feature, 1);
+                $scope.selectedFeatures.splice(removeIndex, 1);
             } else {
                 $scope.selectedFeatures.push(feature);
                 $scope.checkbox[feature.id] = true;
@@ -88,7 +90,7 @@
                 var currentIndex = selectedRoomType.features[index].id;
                 $scope.checkbox[currentIndex] = true;
                 $scope.selectedFeatures.push(selectedRoomType.features[index]);
-            })
+            });
         };
 
         RoomTypeService.getAllRoomTypes().then(function (response) {
