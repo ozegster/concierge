@@ -19,33 +19,36 @@ public class RoomTypeController {
     private final RoomTypeService roomTypeService;
     private final ImageService imageService;
 
-
-
     @Autowired
     public RoomTypeController(RoomTypeService roomTypeService, ImageService imageService) {
         this.roomTypeService = roomTypeService;
         this.imageService = imageService;
     }
 
-    @RequestMapping(value = "/room-type", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/room-types", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) throws IOException {
         String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
         if (fileName != null) {
             roomType.setImage(fileName);
-            return roomTypeService.saveRoom(roomType);
+            return roomTypeService.saveRoomType(roomType);
         }
         return new RoomType();
     }
 
-    @RequestMapping(value = "/room-type", method = RequestMethod.GET)
+    @GetMapping(value = "/room-type")
     public List<RoomType> getRoomType(){
         return roomTypeService.getAllRoomTypes();
     }
 
-    @RequestMapping(value = "/delete-room-type", method = RequestMethod.POST)
-    public RoomType deleteRoomType(@RequestBody RoomType roomType){
-        roomTypeService.deleteRoomType(roomType);
-        return roomType;
+    @DeleteMapping(value = "/room-type/{roomTypeId}")
+    public void deleteRoomType(@PathVariable Integer roomTypeId) throws Exception{
+
+        RoomType roomType = roomTypeService.findById(roomTypeId);
+
+        if(roomType != null) {
+            roomTypeService.deleteRoomType(roomTypeId);
+            imageService.deleteImage(roomType.getImage());
+        }
     }
 
     @GetMapping(value = "/room-types/image/{imageName:.+}", produces = { MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE })
