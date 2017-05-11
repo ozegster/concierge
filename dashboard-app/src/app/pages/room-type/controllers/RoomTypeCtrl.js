@@ -3,8 +3,8 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomTypeCtrl', RoomTypeCtrl);
 
-    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr', '$uibModal', '$state', '$window']
-    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal, $state, $window) {
+    RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr', '$uibModal', '$state', '$window', '$uibModalStack'];
+    function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal, $state, $window, $uibModalStack) {
 
         $scope.roomType = {};
         $scope.selectedFeatures = [];
@@ -32,20 +32,15 @@
 
                 if (response.status === 200 && response.data) {
                     toastr.success(response.data.name + ' has been saved successfully', 'Save Room type');
-                    roomTypeForm.$setPristine();
-                    roomTypeForm.$setUntouched();
-                    $scope.roomType = {};
-                    $scope.uncheckFeatures();
-                    $scope.selectedFeatures = [];
-                    angular.element("input[type='file']").val(null);
-                    $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
+
+                    $state.go('room.roomTypeOverview');
 
                 } else {
                     toastr.error(response.data.name + ' has not been saved successfully', 'Save Room type');
                 }
             }, function (error) {
                 console.log(error);
-            })
+            });
         };
 
         $scope.openModal = function () {
@@ -78,14 +73,6 @@
                 $scope.checkbox[feature.id] = true;
             }
             $scope.roomType.features = $scope.selectedFeatures;
-        };
-
-        $scope.updateTableAfterDelete = function (deletedRoomType) {
-            var index = $scope.listOfRoomType.indexOf(deletedRoomType);
-
-            if (index > -1) {
-                $scope.listOfRoomType.splice(index,1);
-            }
         };
 
         $scope.uncheckFeatures = function () {
@@ -128,7 +115,7 @@
         };
 
         $scope.handleDeleteButton = function (selectedRoomType) {
-            $scope.name = selectedRoomType.name;
+            $scope.selectedRoomType = selectedRoomType;
             $uibModal.open({
                 templateUrl: 'app/pages/room-type/views/room-type-modal.html',
                 controller: 'RoomTypeCtrl',
@@ -136,15 +123,29 @@
             });
         };
 
+        $scope.closeRoomTypeModal = function () {
+            $uibModalStack.dismissAll();
+        };
+
         $scope.deleteRoomType = function (selectedRoomType) {
-            RoomTypeService.deleteRoomType(selectedRoomType).then(function (response) {
-            if (response.status === 200 && response.data) {
-                toastr.success(response.data.name + ' has been deleted successfully', 'Delete Room type');
-            }
-            $scope.updateTableAfterDelete(selectedRoomType);
-            },function (response) {
-              console.log(response)
-            })
+
+            RoomTypeService.deleteRoomType(selectedRoomType.id).then(function (response) {
+
+                if (response.status === 200) {
+                    toastr.success(selectedRoomType.name + ' has been deleted successfully', 'Delete Room type');
+
+                    $scope.closeRoomTypeModal();
+                    $state.reload();
+                } else if (response.status === 500) {
+                    toastr.error('Room type ' + selectedRoomType.name + ' can not be deleted, it is already in use', 'Delete Room type');
+                } else {
+                    toastr.error(selectedRoomType.name + ' has not been deleted successfully', 'Delete Room type');
+                }
+                },function (response) {
+                   console.log(response)
+            });
+
+            $scope.closeRoomTypeModal();
         };
 
         $scope.loadImage = function (image) {
