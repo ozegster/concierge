@@ -38,4 +38,9 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     public RoomType findById(Integer roomTypeId) {
         return roomTypeRepository.findOne(roomTypeId);
     }
+
+    @Override
+    public String findImageById(Integer roomTypeId){
+        return roomTypeRepository.findImageById(roomTypeId);
+    }
 }
