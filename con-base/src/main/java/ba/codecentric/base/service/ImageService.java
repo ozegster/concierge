@@ -10,4 +10,5 @@ public interface ImageService {
     void deleteImage(String imageName);
     boolean isImageExists(String imageName);
 
+    InputStream loadImage(String name) throws IOException;
 }

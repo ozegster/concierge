@@ -25,7 +25,7 @@
                 });
 
             };
-
+          
             var getImage = function (imageName) {
                 return $http({
                     method: 'GET',
@@ -33,11 +33,12 @@
                     responseType: "arraybuffer"
                 }).then(function (response) {
                     var base64Image = arrayBufferToBase64(response.data);
+
                         return base64Image;
                    }, function (error) {
                         return error;
                    });
-            };
+          };
 
             function arrayBufferToBase64(buffer) {
                 var binary = '';
@@ -46,13 +47,13 @@
                 for (var i = 0; i < len; i++) {
                     binary += String.fromCharCode(bytes[i]);
                 }
-                    return window.btoa(binary);
+                  return window.btoa(binary);
             }
 
             var getAllRoomTypes = function () {
                 return $http({
                     method: 'GET',
-                    url: SERVER_PATH.url + '/room-type',
+                    url: SERVER_PATH.url + '/room-types',
                 }).then(function (response) {
                     return response;
                 }, function (error) {

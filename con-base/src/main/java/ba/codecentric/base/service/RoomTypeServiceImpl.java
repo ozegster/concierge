@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
+import java.util.List;
+
 @Service
 public class RoomTypeServiceImpl implements RoomTypeService {
 
@@ -24,6 +26,7 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     }
 
     @Override
+    @Transactional
     public List<RoomType> getAllRoomTypes(){
         return roomTypeRepository.findAll();
     }
@@ -43,4 +46,5 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     public String findImageById(Integer roomTypeId){
         return roomTypeRepository.findImageById(roomTypeId);
     }
+
 }
