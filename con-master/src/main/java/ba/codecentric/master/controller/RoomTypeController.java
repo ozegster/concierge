@@ -31,12 +31,8 @@ public class RoomTypeController {
 
     @PostMapping(value = "/room-types", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public RoomType saveRoom(@RequestPart("image") MultipartFile image, @Valid @RequestPart("roomType") RoomType roomType) throws IOException {
-        String fileName = imageService.saveImage(image.getInputStream(), image.getOriginalFilename());
-        if (fileName != null) {
-            roomType.setImage(fileName);
-            return roomTypeService.saveRoomType(roomType);
-        }
-        return new RoomType();
+        roomType.setImage(imageService.saveImage(image.getInputStream(), image.getOriginalFilename()));
+        return roomTypeService.saveRoomType(roomType);
     }
 
     @GetMapping(value = "/room-types")
@@ -44,7 +40,7 @@ public class RoomTypeController {
         return roomTypeService.getAllRoomTypes();
     }
 
-    @GetMapping(value = "/room-types/image/{imageName:.+}", produces = { MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE })
+    @GetMapping(value = "/room-types/image/{imageName:.+}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     public InputStreamResource getImage(@PathVariable String imageName) throws IOException {
         return new InputStreamResource(imageService.loadImage(imageName));
     }
