@@ -64,4 +64,9 @@ public class ImageServiceImpl implements ImageService {
         File file = file = new File(directoryPath + imageName);
         file.delete();
     }
+
+    public boolean isImageExists(String imageName){
+        File file = new File(directoryPath + imageName);
+        return file.exists();
+    }
 }
