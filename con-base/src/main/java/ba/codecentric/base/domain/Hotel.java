@@ -15,6 +15,7 @@ import java.sql.Time;
 @Table(name = "hotel")
 public class Hotel {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -175,7 +176,7 @@ public class Hotel {
     }
 
     public void setCheckIn(String checkIn) {
-            this.checkIn = checkParse(checkIn);
+            this.checkIn = parseStringToTime(checkIn);
     }
 
     public Time getCheckOut() {
@@ -183,18 +184,19 @@ public class Hotel {
     }
 
     public void setCheckOut(String checkOut) {
-            this.checkOut = checkParse(checkOut);
+            this.checkOut = parseStringToTime(checkOut);
     }
 
-    private boolean parseTime(String time) {
+    private boolean isParsable(String time) {
         final String TIME_WITHOUT_SECONDS = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
           return (time != null) && time.matches(TIME_WITHOUT_SECONDS);
     }
 
-    private Time checkParse(String time) {
+
+    private Time parseStringToTime(String time) {
         final String EXTEND_SECONDS = ":00";
-        if(parseTime(time)){
-            return Time.valueOf(time + EXTEND_SECONDS);
+        if(isParsable(time)){
+           return Time.valueOf(time + EXTEND_SECONDS);
         }  else {
             return null;
         }
