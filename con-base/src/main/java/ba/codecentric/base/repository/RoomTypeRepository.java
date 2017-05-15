@@ -10,5 +10,5 @@ public interface RoomTypeRepository extends JpaRepository<RoomType, Integer> {
     void deleteById(Integer roomTypeId);
 
     @Query("SELECT roomType.image FROM RoomType roomType WHERE roomType.id = ?1")
-    String findImageById(Integer id);
+    String findImagePathById(Integer id);
 }

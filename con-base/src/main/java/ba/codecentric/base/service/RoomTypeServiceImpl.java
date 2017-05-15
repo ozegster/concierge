@@ -40,7 +40,7 @@ public class RoomTypeServiceImpl implements RoomTypeService {
     }
 
     @Override
-    public String findImageById(Integer roomTypeId){
-        return roomTypeRepository.findImageById(roomTypeId);
+    public String findImagePathById(Integer roomTypeId){
+        return roomTypeRepository.findImagePathById(roomTypeId);
     }
 }

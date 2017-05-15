@@ -32,7 +32,7 @@ public class RoomTypeController {
         Integer roomTypeId = roomType.getId();
 
         if(roomTypeId != null){
-            imageName = roomTypeService.findImageById(roomTypeId);
+            imageName = roomTypeService.findImagePathById(roomTypeId);
             if(imageService.doesImageExist(imageName)) {
                 imageService.deleteImage(imageName);
             }

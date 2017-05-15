@@ -10,5 +10,5 @@ public interface RoomTypeService {
     List<RoomType> getAllRoomTypes();
     void deleteRoomType(Integer roomTypeId);
     RoomType findById(Integer roomtypeId);
-    String findImageById(Integer roomtypeId);
+    String findImagePathById(Integer roomtypeId);
 }
