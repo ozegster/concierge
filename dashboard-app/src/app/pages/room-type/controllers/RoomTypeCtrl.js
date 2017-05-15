@@ -6,11 +6,11 @@
 
     RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr', '$uibModal', '$state', '$window', '$uibModalStack'];
     function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal, $state, $window, $uibModalStack) {
-      
+
         $scope.roomType = {};
         $scope.selectedFeatures = [];
         $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
-        $scope.checkbox= [];
+        $scope.checkbox = [];
 
         BedTypeService.getBedTypes().then(function (response) {
             $scope.beds = response.data;
@@ -29,7 +29,7 @@
                 return;
             }
 
-        RoomTypeService.saveRoomType($scope.roomType, $scope.croppedImg).then(function (response) {
+            RoomTypeService.saveRoomType($scope.roomType, $scope.croppedImg).then(function (response) {
 
                 if (response.status === 200 && response.data) {
                     toastr.success(response.data.name + ' has been saved successfully', 'Save Room type');
@@ -49,7 +49,7 @@
             $uibModal.open({
                 templateUrl: 'app/theme/components/crop-image/crop-upload-image.html',
                 controller: 'ModalCtrl',
-                scope:$scope
+                scope: $scope
             })
         };
 
@@ -63,7 +63,7 @@
             var removeIndex = 0;
 
             angular.forEach($scope.selectedFeatures, function (value, index) {
-                if(value.id === feature.id){
+                if (value.id === feature.id) {
                     isAlreadyChecked = true;
                     removeIndex = index;
                 }
@@ -87,7 +87,7 @@
 
         $scope.checkFeatures = function (selectedRoomType) {
 
-            angular.forEach(selectedRoomType.features, function (value,index) {
+            angular.forEach(selectedRoomType.features, function (value, index) {
                 var currentIndex = selectedRoomType.features[index].id;
                 $scope.checkbox[currentIndex] = true;
                 $scope.selectedFeatures.push(selectedRoomType.features[index]);
@@ -97,11 +97,11 @@
         RoomTypeService.getAllRoomTypes().then(function (response) {
             $scope.listOfRoomType = response.data;
             $scope.rowCollection = response.data;
-        },  function (error) {
-               console.log(error);
+        }, function (error) {
+            console.log(error);
         });
 
-        $scope.openEditableRoomTypeForm = function() {
+        $scope.openEditableRoomTypeForm = function () {
             var selectedRoomType = JSON.parse($window.localStorage.getItem('editableRoomType'));
             $scope.roomType = selectedRoomType;
             $scope.loadImage(selectedRoomType.image);
@@ -109,7 +109,7 @@
         };
 
         $scope.handleEditButton = function (selectedRoomType) {
-            $window.localStorage.setItem('editableRoomType',JSON.stringify(selectedRoomType));
+            $window.localStorage.setItem('editableRoomType', JSON.stringify(selectedRoomType));
             $state.go('room.roomType');
         };
 
@@ -144,8 +144,8 @@
                 } else {
                     toastr.error(selectedRoomType.name + ' has not been deleted successfully', 'Delete Room type');
                 }
-                },function (response) {
-                   console.log(response)
+            }, function (response) {
+                console.log(response)
             });
 
             $scope.closeRoomTypeModal();
@@ -154,7 +154,7 @@
         $scope.loadImage = function (image) {
             RoomTypeService.getImage(image).then(function (data) {
                 var panelImage = angular.element(document.querySelector('#room-type-image'));
-                panelImage.attr('src','data:image/jpeg;base64,' + data);
+                panelImage.attr('src', 'data:image/jpeg;base64,' + data);
                 var base64Image = 'data:image/jpeg;base64,' + data;
                 $scope.getFileFromImage(base64Image)
             });
@@ -162,7 +162,7 @@
 
         $scope.getFileFromImage = function (img) {
             var byteArray = $scope.getByteFromBase64(img);
-            var fileImg = new File([byteArray],'name.png');
+            var fileImg = new File([byteArray], 'name.png');
             var reader = new FileReader();
             $scope.croppedImg = fileImg;
 
@@ -184,14 +184,15 @@
             for (var i = 0; i < byteString.length; i++) {
                 bytes[i] = byteString.charCodeAt(i);
             }
-                return bytes;
+            return bytes;
         };
 
-        $scope.$on("$stateChangeSuccess",function(){
-            if ($state.is('room.roomType') && $window.localStorage.length ) {
+        $scope.$on("$stateChangeSuccess", function () {
+            if ($state.is('room.roomType') && $window.localStorage.length) {
                 $scope.openEditableRoomTypeForm();
             } else {
                 $window.localStorage.clear();
             }
         })
+    }
 })();
