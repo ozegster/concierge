@@ -7,8 +7,11 @@ import java.util.List;
 public interface RoomTypeService {
 
     RoomType saveRoomType(RoomType roomType);
+
     List<RoomType> getAllRoomTypes();
+
     void deleteRoomType(Integer roomTypeId);
+
     RoomType findById(Integer roomtypeId);
     String findImagePathById(Integer roomtypeId);
 }

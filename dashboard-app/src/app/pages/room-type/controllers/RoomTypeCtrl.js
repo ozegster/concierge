@@ -3,9 +3,10 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomTypeCtrl', RoomTypeCtrl);
 
+
     RoomTypeCtrl.$inject = ['BedTypeService', 'FeatureService', 'RoomTypeService', '$scope', 'toastr', '$uibModal', '$state', '$window', '$uibModalStack'];
     function RoomTypeCtrl(BedTypeService, FeatureService, RoomTypeService, $scope, toastr, $uibModal, $state, $window, $uibModalStack) {
-
+      
         $scope.roomType = {};
         $scope.selectedFeatures = [];
         $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
@@ -28,7 +29,7 @@
                 return;
             }
 
-            RoomTypeService.saveRoomType($scope.roomType, $scope.croppedImg).then(function (response) {
+        RoomTypeService.saveRoomType($scope.roomType, $scope.croppedImg).then(function (response) {
 
                 if (response.status === 200 && response.data) {
                     toastr.success(response.data.name + ' has been saved successfully', 'Save Room type');
@@ -193,5 +194,4 @@
                 $window.localStorage.clear();
             }
         })
-    }
 })();
