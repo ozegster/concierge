@@ -1,0 +1,45 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12" ba-panel>
+            <button type="button" class="btn btn-primary" ng-click="handleAddRoomTypeButton()">Add New Room Type</button>
+            <table class="table table-hover" st-table="listOfRoomType" st-safe-src="rowCollection">
+                <thead>
+                    <tr>
+                        <th colspan="3"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+                    </tr>
+                    <tr>
+                        <th st-sort="name" class="sortable-column">Room Type</th>
+                        <th st-sort="size" class="sortable-column">Size</th>
+                        <th>People</th>
+                        <th>Kids</th>
+                        <th>Bed Type</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="roomType in listOfRoomType">
+                        <td>{{roomType.name}}</td>
+                        <td>{{roomType.size}}</td>
+                        <td>{{roomType.numberOfPeople}}</td>
+                        <td>{{roomType.numberOfKids}}</td>
+                        <td>{{roomType.bedType.type}}</td>
+                        <td>
+                            <div class="buttons">
+                                <button class="btn btn-primary editable-table-button btn-xs" ng-click="handleEditButton(roomType)">Edit</button>
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="handleDeleteButton(roomType)">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+

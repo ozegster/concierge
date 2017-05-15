@@ -94,7 +94,7 @@
                                     <div class="clearfix" ng-if="$index % 4 == 0"></div>
                                     <div class="col-md-3">
                                         <label class="custom-checkbox">
-                                            <input type="checkbox" ng-checked="featureBox" ng-click="toggleSelection(feature)">
+                                            <input type="checkbox" ng-checked="checkbox[feature.id]" ng-click="toggleSelection(feature)">
                                             <span>{{feature.name}}</span>
                                         </label>
                                     </div>

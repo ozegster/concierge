@@ -1,7 +1,7 @@
 package ba.codecentric.base.service;
 
-import ba.codecentric.base.domain.RoomType;
 
+import ba.codecentric.base.domain.RoomType;
 import java.util.List;
 
 public interface RoomTypeService {
@@ -10,4 +10,8 @@ public interface RoomTypeService {
 
     List<RoomType> getAllRoomTypes();
 
+    void deleteRoomType(Integer roomTypeId);
+
+    RoomType findById(Integer roomtypeId);
+    String findImagePathById(Integer roomtypeId);
 }

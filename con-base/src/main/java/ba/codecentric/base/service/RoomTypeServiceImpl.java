@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 import java.util.List;
 
@@ -33,8 +34,24 @@ public class RoomTypeServiceImpl implements RoomTypeService {
 
     @Override
     @Transactional
-    public List<RoomType> getAllRoomTypes() {
+    public List<RoomType> getAllRoomTypes(){
         return roomTypeRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void deleteRoomType(Integer roomTypeId){
+        roomTypeRepository.deleteById(roomTypeId);
+    }
+
+    @Override
+    public RoomType findById(Integer roomTypeId) {
+        return roomTypeRepository.findOne(roomTypeId);
+    }
+
+    @Override
+    public String findImagePathById(Integer roomTypeId){
+        return roomTypeRepository.findImagePathById(roomTypeId);
     }
 
 }

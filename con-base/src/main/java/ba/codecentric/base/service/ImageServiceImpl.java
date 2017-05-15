@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -64,5 +65,16 @@ public class ImageServiceImpl implements ImageService {
 
     private String getTimestamp() {
         return String.valueOf(System.currentTimeMillis());
+    }
+
+    public void deleteImage(String imageName){
+        File file = file = new File(directoryPath + imageName);
+        file.delete();
+    }
+
+    @Override
+    public boolean doesImageExist(String imageName){
+        File file = new File(directoryPath + imageName);
+        return file.exists();
     }
 }

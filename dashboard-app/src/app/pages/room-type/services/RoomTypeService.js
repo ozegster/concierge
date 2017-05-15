@@ -25,8 +25,32 @@
                 });
 
             };
+          
+            var getImage = function (imageName) {
+                return $http({
+                    method: 'GET',
+                    url: SERVER_PATH.url + '/room-types/image/' + imageName,
+                    responseType: "arraybuffer"
+                }).then(function (response) {
+                    var base64Image = arrayBufferToBase64(response.data);
 
-            var getRoomTypes = function () {
+                        return base64Image;
+                   }, function (error) {
+                        return error;
+                   });
+          };
+
+            function arrayBufferToBase64(buffer) {
+                var binary = '';
+                var bytes = new Uint8Array(buffer);
+                var len = bytes.byteLength;
+                for (var i = 0; i < len; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                }
+                  return window.btoa(binary);
+            }
+
+            var getAllRoomTypes = function () {
                 return $http({
                     method: 'GET',
                     url: SERVER_PATH.url + '/room-types',
@@ -37,32 +61,21 @@
                 });
             };
 
-            var getImage = function (imageName) {
+            var deleteRoomType = function (selectedRoomTypeId) {
                 return $http({
-                    method: 'GET',
-                    url: SERVER_PATH.url + '/room-types/image/' + imageName,
-                    responseType: "arraybuffer"
+                    method: 'DELETE',
+                    url: SERVER_PATH.url + '/room-type/' + selectedRoomTypeId,
                 }).then(function (response) {
-                    var base64Image = arrayBufferToBase64(response.data);
-                    return base64Image;
+                    return response;
                 }, function (error) {
                     return error;
                 });
             };
 
-            function arrayBufferToBase64(buffer) {
-                var binary = '';
-                var bytes = new Uint8Array(buffer);
-                var len = bytes.byteLength;
-                for (var i = 0; i < len; i++) {
-                    binary += String.fromCharCode(bytes[i]);
-                }
-                return window.btoa(binary);
-            }
-
             return {
                 saveRoomType: saveRoomType,
-                getRoomTypes: getRoomTypes,
+                getAllRoomTypes: getAllRoomTypes,
+                deleteRoomType: deleteRoomType,
                 getImage: getImage
             };
         }])
