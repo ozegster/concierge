@@ -1,5 +1,6 @@
 package ba.codecentric.base.service;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,17 +17,22 @@ public class ImageServiceImpl implements ImageService {
     @Value("${image.directory.path}")
     private String directoryPath;
 
+    private final static Logger LOG = Logger.getLogger(ImageServiceImpl.class);
+
     /**
      * @return new unique image name (randomUUID + timestamp + .extension)
      */
     @Override
     public String saveImage(InputStream image, String imageName) throws IOException {
+
         String newImageName;
+
         try {
             createImageDirectories();
             newImageName = getUniqueImageName(imageName);
             Path filePath = Paths.get(directoryPath + newImageName);
             Files.copy(image, filePath);
+            LOG.info("Image " + imageName + " saved");
         } finally {
             image.close();
         }
@@ -43,6 +49,7 @@ public class ImageServiceImpl implements ImageService {
         Path defaultDirectoryPath = Paths.get(directoryPath);
         if (!Files.exists(defaultDirectoryPath)) {
             Files.createDirectories(defaultDirectoryPath);
+            LOG.info("Create " + directoryPath + " folder");
         }
     }
 
