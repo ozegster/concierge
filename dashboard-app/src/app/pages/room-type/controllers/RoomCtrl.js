@@ -8,7 +8,7 @@
 
         $scope.room = {};
 
-        RoomTypeService.getRoomTypes().then(function (response) {
+        RoomTypeService.getAllRoomTypes().then(function (response) {
             $scope.roomTypes = response.data;
         }, function (error) {
             console.log(error);
