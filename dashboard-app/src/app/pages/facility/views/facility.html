@@ -73,19 +73,12 @@
                         </div>
                     </div>
                     <div id="image" class="col-md-6" ba-panel ba-panel-title="Image">
-                        <div class="facility-image">
-                            <div class="form-group"
-                                 ng-class="{'has-error' : hotelFacility.facilityImage.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityImage.$valid && hotelFacility.$submitted}">
-                                <img class="img-facility" ng-src="{{imageSrc}}" ng-click="uploadPicture()">
-                                <input ng-show="false" type="file" name="facilityImage" ng-model="facilityImage"
-                                       valid-file
-                                       accept="image/gif, image/jpeg, image/png" id="upload-image"
-                                       file-model="facility.image">
-                                <div class="centerText" ng-show="hotelFacility.$submitted">
-                                    <label class="help-block error-block basic-block"
-                                           ng-show="hotelFacility.facilityImage.$error.validFile">Please select the
-                                        image</label>
-                                </div>
+                        <div class="form-group"
+                             ng-class="{'has-error' : isImageMissing() && hotelFacility.$submitted, 'has-success' : !isImageMissing() && hotelFacility.$submitted}">
+                            <img ng-click="openImageCrop()" class="img-center" ng-src="{{imageSrc}}" id="facility-image">
+                            <div class="centerText" ng-show="hotelFacility.$submitted">
+                                <label class="help-block error-block basic-block" ng-show="isImageMissing()">Please add
+                                    the image</label>
                             </div>
                         </div>
                     </div>
