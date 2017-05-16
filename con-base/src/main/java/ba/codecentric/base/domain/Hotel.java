@@ -192,12 +192,12 @@ public class Hotel {
             this.checkOut = parseStringToTime(checkOut);
     }
 
-    private boolean isParsable(String time) {
+    public boolean isParsable(String time) {
         final String TIME_WITHOUT_SECONDS = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
           return (time != null) && time.matches(TIME_WITHOUT_SECONDS);
     }
 
-    private Time parseStringToTime(String time) {
+    public Time parseStringToTime(String time) {
         final String EXTEND_SECONDS = ":00";
         if(isParsable(time)){
             return Time.valueOf(time + EXTEND_SECONDS);

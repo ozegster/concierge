@@ -13,8 +13,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import java.sql.Time;
@@ -317,38 +315,31 @@ public class HotelTest {
     }
 
     @Test
-    public void isParsableTrue() throws Exception {
-        boolean result = (boolean) getReflectionMethod("10:10", "isParsable");
+    public void isParsableFalse() {
+        Hotel hotel = getHotel();
+        boolean result = hotel.isParsable("1010");
+        assertEquals(false, result);
+    }
+    @Test
+    public void isParsableTrue() {
+        Hotel hotel = getHotel();
+        boolean result = hotel.isParsable("11:10");
         assertEquals(true, result);
     }
 
     @Test
-    public void isParsableIsFalse() throws Exception {
-        boolean result = (boolean) getReflectionMethod("10", "isParsable");
-        assertEquals(false, result);
-    }
-
-    @Test
-    public void parseStringToTimeIsNull() throws Exception {
-        Time result = (Time) getReflectionMethod("10", "parseStringToTime");
+    public void parseStringToTimeIsNull() {
+        Hotel hotel = getHotel();
+        Time result = hotel.parseStringToTime("null");
         assertEquals(null, result);
     }
 
     @Test
-    public void parseStringToTimeIsValid() throws Exception {
+    public void parseStringToTimeIsValid() {
+        Hotel hotel = getHotel();
         Time time = Time.valueOf("11:11:00");
-        Time result = (Time) getReflectionMethod("11:11", "parseStringToTime");
+        Time result = hotel.parseStringToTime("11:11");
         assertEquals(time, result);
-    }
-
-    private Object getReflectionMethod(String time, String method) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
-        Class HotelReflection = Class.forName("ba.codecentric.base.domain.Hotel");
-        Object objectReflection = HotelReflection.newInstance();
-        @SuppressWarnings("unchecked")
-        Method privateMethod = HotelReflection.getDeclaredMethod(method, String.class);
-        privateMethod.setAccessible(true);
-
-        return privateMethod.invoke(objectReflection, time);
     }
 
     private Hotel getHotel() {
