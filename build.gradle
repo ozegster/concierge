@@ -23,8 +23,13 @@ subprojects {
 		mavenCentral()
 	}
 
+	configurations {
+		compile.exclude module: 'spring-boot-starter-logging'
+	}
+
 	dependencies {
 		compile('org.springframework.boot:spring-boot-starter-web')
+		compile('org.springframework.boot:spring-boot-starter-log4j:1.2.5.RELEASE')
 		testCompile('org.springframework.boot:spring-boot-starter-test')
 	}
 }

@@ -1,4 +1,4 @@
-(function(){
+(function () {
     'use strict';
 
 
@@ -6,9 +6,8 @@
            .config(routeConfig);
 
 
-
-  /** @ngInject */
-  function routeConfig($stateProvider) {
+    /** @ngInject */
+  function routeConfig($stateProvider,baSidebarServiceProvider) {
        $stateProvider
            .state('room', {
                  url: '/room',
@@ -16,18 +15,33 @@
                  title: 'Room',
                  sidebarMeta: {
                      icon: 'ion-compose',
-                     order: 250
-                 }
+                     order: 250,
+                 },
+           })
+           .state('room.roomTypeOverview', {
+                  url: '/roomTypeOverview',
+                  templateUrl: 'app/pages/room-type/views/room-type-overview.html',
+                  title: 'Room Type',
+                  sidebarMeta: {
+                     order: 0,
+                  },
+                  controller:'RoomTypeCtrl'
            })
            .state('room.roomType', {
                   url: '/roomType',
                   templateUrl: 'app/pages/room-type/views/room-type.html',
-                  title: 'Room Type',
-                  sidebarMeta: {
-                     order: 0
-                  },
-                  controller: 'RoomTypeCtrl'
+                  title: 'New Room Type',
+                  controller:'RoomTypeCtrl'
+           })
+           .state('room.room', {
+               url: '/newRoom',
+               templateUrl: 'app/pages/room-type/views/room.html',
+               title: 'Room',
+               sidebarMeta: {
+                   order: 0,
+               },
+               controller: 'RoomCtrl'
            })
   }
-
 })();
+

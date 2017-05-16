@@ -3,14 +3,7 @@ package ba.codecentric.base.domain;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -199,10 +192,11 @@ public class Hotel {
           return (time != null) && time.matches(TIME_WITHOUT_SECONDS);
     }
 
+
     private Time parseStringToTime(String time) {
         final String EXTEND_SECONDS = ":00";
         if(isParsable(time)){
-            return Time.valueOf(time + EXTEND_SECONDS);
+           return Time.valueOf(time + EXTEND_SECONDS);
         }  else {
             return null;
         }
