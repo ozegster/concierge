@@ -10,15 +10,16 @@
                                  ng-class="{'has-error' : hotelFacility.facilityName.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityName.$valid && hotelFacility.$submitted}">
                                 <label for="facility-name">Facility name</label>
                                 <input class="form-control has-success text-danger" id="facility-name" type="text"
-                                       name="facilityName" ng-model="facility.facilityName" required ng-maxlength="80">
+                                       name="facilityName" ng-model="facility.facilityName" required ng-maxlength="80" unique-name>
                                 <div ng-show="hotelFacility.$submitted">
                                     <label class="help-block error-block basic-block"
                                            ng-show="hotelFacility.facilityName.$error.required">Please enter name of the
                                         facility</label>
                                     <label class="help-block error-block basic-block"
-                                           ng-show="hotelFacility.facilityName.$error.maxlength">Facility name is too
-                                        long,
+                                           ng-show="hotelFacility.facilityName.$error.maxlength">Facility name is too long,
                                         80 characters allowed</label>
+                                    <label class="help-block error-block basic-block"
+                                           ng-show="hotelFacility.facilityName.$error.uniqueName">Name already exists !</label>
                                 </div>
                             </div>
 
@@ -95,7 +96,8 @@
                 <div class="col-md-12">
                     <div class="form-group col-md-12">
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-primary btn-lg">Save</button>
+                            <button type="submit" class="btn btn-primary btn-lg" ng-disabled="hotelFacility.$invalid && hotelFacility.$submitted"
+                                    ng-attr-title="{{hotelFacility.$invalid && hotelFacility.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
                         </div>
                     </div>
                 </div>
