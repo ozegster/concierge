@@ -13,9 +13,11 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Set;
-
 import static org.junit.Assert.assertEquals;
+import java.sql.Time;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -314,8 +316,42 @@ public class HotelTest {
         assertEquals("Please enter a valid Check-in time", validations.iterator().next().getMessage());
     }
 
+    @Test
+    public void isParsableTrue() throws Exception {
+        boolean result = (boolean) getReflectionMethod("10:10", "isParsable");
+        assertEquals(true, result);
+    }
 
-        private Hotel getHotel() {
+    @Test
+    public void isParsableIsFalse() throws Exception {
+        boolean result = (boolean) getReflectionMethod("10", "isParsable");
+        assertEquals(false, result);
+    }
+
+    @Test
+    public void parseStringToTimeIsNull() throws Exception {
+        Time result = (Time) getReflectionMethod("10", "parseStringToTime");
+        assertEquals(null, result);
+    }
+
+    @Test
+    public void parseStringToTimeIsValid() throws Exception {
+        Time time = Time.valueOf("11:11:00");
+        Time result = (Time) getReflectionMethod("11:11", "parseStringToTime");
+        assertEquals(time, result);
+    }
+
+    private Object getReflectionMethod(String time, String method) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
+        Class HotelReflection = Class.forName("ba.codecentric.base.domain.Hotel");
+        Object objectReflection = HotelReflection.newInstance();
+        @SuppressWarnings("unchecked")
+        Method privateMethod = HotelReflection.getDeclaredMethod(method, String.class);
+        privateMethod.setAccessible(true);
+
+        return privateMethod.invoke(objectReflection, time);
+    }
+
+    private Hotel getHotel() {
         Hotel hotel = new Hotel();
         hotel.setName("hotel name");
         hotel.setRating(3);
