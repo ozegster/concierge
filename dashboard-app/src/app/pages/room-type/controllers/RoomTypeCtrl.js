@@ -45,7 +45,7 @@
             });
         };
 
-        $scope.openModal = function () {
+        $scope.openModal = function(){
             $uibModal.open({
                 templateUrl: 'app/theme/components/crop-image/crop-upload-image.html',
                 controller: 'ModalCtrl',
