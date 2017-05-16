@@ -14,7 +14,7 @@
                 fd.append('image', file);
                 return $http({
                     method: 'POST',
-                    url: SERVER_PATH.url + '/room-type',
+                    url: SERVER_PATH.url + '/room-types',
                     data: fd,
                     transformRequest: angular.identity,
                     headers: {'Content-Type': undefined}
@@ -26,29 +26,6 @@
 
             };
 
-            var isExistingName = function (name) {
-                return $http({
-                    method: 'GET',
-                    url: SERVER_PATH.url + '/room-types/' + name
-                }).then(function (response) {
-                    return response.data;
-                }, function (error) {
-                    return error;
-                });
-
-            };
-
-            var getRoomTypes = function () {
-                return $http({
-                    method: 'GET',
-                    url: SERVER_PATH.url + '/room-types'
-                }).then(function (response) {
-                    return response;
-                }, function (error) {
-                    return error;
-                });
-            };
-
             var getImage = function (imageName) {
                 return $http({
                     method: 'GET',
@@ -56,11 +33,12 @@
                     responseType: "arraybuffer"
                 }).then(function (response) {
                     var base64Image = arrayBufferToBase64(response.data);
-                    return base64Image;
-                }, function (error) {
-                    return error;
-                });
-            };
+
+                        return base64Image;
+                   }, function (error) {
+                        return error;
+                   });
+          };
 
             function arrayBufferToBase64(buffer) {
                 var binary = '';
@@ -69,14 +47,36 @@
                 for (var i = 0; i < len; i++) {
                     binary += String.fromCharCode(bytes[i]);
                 }
-                return window.btoa(binary);
+                  return window.btoa(binary);
             }
+
+            var getAllRoomTypes = function () {
+                return $http({
+                    method: 'GET',
+                    url: SERVER_PATH.url + '/room-types',
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            };
+
+            var deleteRoomType = function (selectedRoomTypeId) {
+                return $http({
+                    method: 'DELETE',
+                    url: SERVER_PATH.url + '/room-type/' + selectedRoomTypeId,
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            };
 
             return {
                 saveRoomType: saveRoomType,
-                getRoomTypes: getRoomTypes,
-                getImage: getImage,
-                isExistingName: isExistingName
+                getAllRoomTypes: getAllRoomTypes,
+                deleteRoomType: deleteRoomType,
+                getImage: getImage
             };
         }])
 })();
