@@ -6,4 +6,6 @@ public interface FacilityService {
 
     Facility saveFacility(Facility facility);
 
+    boolean isExistingName(String name);
+
 }

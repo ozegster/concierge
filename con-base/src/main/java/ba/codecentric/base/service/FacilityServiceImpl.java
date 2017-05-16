@@ -29,4 +29,9 @@ public class FacilityServiceImpl implements FacilityService {
         return facilityRepository.save(facility);
     }
 
+    @Override
+    public boolean isExistingName(String name){
+        return facilityRepository.existsByFacilityName(name);
+    }
+
 }
