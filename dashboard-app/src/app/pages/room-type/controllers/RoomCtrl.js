@@ -3,8 +3,8 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomCtrl', RoomCtrl);
 
-    RoomCtrl.$inject = ['RoomTypeService', 'RoomService', '$scope', 'toastr', '$state', '$window'];
-    function RoomCtrl(RoomTypeService, RoomService, $scope, toastr, $state, $window) {
+    RoomCtrl.$inject = ['RoomTypeService', 'RoomService', '$scope', 'toastr', '$state', '$window', '$uibModal', '$uibModalStack'];
+    function RoomCtrl(RoomTypeService, RoomService, $scope, toastr, $state, $window, $uibModal, $uibModalStack) {
 
         $scope.room = {};
 
@@ -60,11 +60,11 @@
             console.log(error);
         });
 
-        $scope.addNewRoom = function(){
+        $scope.addNewRoomButton = function () {
             $state.go('room.room');
         };
 
-        $scope.editRoom = function(room){
+        $scope.editRoomButton = function (room) {
             $window.localStorage.setItem('editableRoom', JSON.stringify(room));
             $state.go('room.room');
         };
@@ -75,9 +75,34 @@
             $scope.changeRoomType($scope.room.roomType);
         };
 
-        $scope.deleteRoom = function(room){
-
+        $scope.deleteRoomButton = function (room) {
+            $scope.selectedRoom = room;
+            $uibModal.open({
+                templateUrl: 'app/pages/room-type/views/room-modal.html',
+                controller: 'RoomCtrl',
+                scope: $scope
+            });
         };
+
+        $scope.deleteRoom = function (room) {
+            RoomService.deleteRoom(room.id).then(function (response) {
+                if (response.status === 200) {
+                    toastr.success('Room ' + room.number + ' has been deleted successfully', 'Delete Room');
+                    $scope.closeRoomModal();
+                    $state.reload();
+                } else {
+                    toastr.error('Room ' + room.number + ' has not been deleted successfully', 'Delete Room');
+                }
+            }, function (error) {
+                console.log(error);
+            });
+            $scope.closeRoomModal();
+        };
+
+        $scope.closeRoomModal = function () {
+            $uibModalStack.dismissAll();
+        };
+
         $scope.$on("$stateChangeSuccess", function () {
             if ($state.is('room.room') && $window.localStorage.getItem('editableRoom')) {
                 $scope.openEditableRoomForm();
