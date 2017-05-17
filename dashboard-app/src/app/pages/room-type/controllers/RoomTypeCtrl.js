@@ -53,6 +53,7 @@
         };
 
         $scope.openModal = function () {
+            $scope.element = '#room-type-image';
             $uibModal.open({
                 templateUrl: 'app/theme/components/crop-image/crop-upload-image.html',
                 controller: 'ModalCtrl',
