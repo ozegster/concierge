@@ -16,7 +16,7 @@
             if($scope.cropper.croppedImage === null){
                return;
             }
-            $scope.imageSrc = angular.element(document.querySelector('#room-type-image'));
+            $scope.imageSrc = angular.element(document.querySelector($scope.element));
             $scope.imageSrc.attr('src',$scope.cropper.croppedImage);
             $scope.getFileFromCroppedImage();
             $uibModalInstance.dismiss();

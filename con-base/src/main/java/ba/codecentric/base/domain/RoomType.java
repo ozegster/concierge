@@ -1,6 +1,7 @@
 package ba.codecentric.base.domain;
 
 
+import ba.codecentric.base.validation.annotation.Unique;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Column;
@@ -27,6 +28,7 @@ public class RoomType {
     @GeneratedValue
     private Integer id;
 
+    @Unique(message = "Name already exists")
     @NotBlank(message = "Please enter name of the room type")
     @Size(max = 80, message = "Room type name is too long, 80 characters allowed")
     private String name;
@@ -60,6 +62,7 @@ public class RoomType {
     @JoinTable(name = "room_type_feature", joinColumns = {@JoinColumn(name = "room_type_id")}, inverseJoinColumns = {
             @JoinColumn(name = "feature_id")})
     private List<Feature> features = new ArrayList<>();
+
 
     public Integer getId() {
         return id;

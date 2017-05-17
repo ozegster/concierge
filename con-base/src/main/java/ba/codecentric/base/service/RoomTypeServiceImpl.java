@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
-import java.util.List;
-
 @Service
 public class RoomTypeServiceImpl implements RoomTypeService {
 
@@ -54,4 +52,8 @@ public class RoomTypeServiceImpl implements RoomTypeService {
         return roomTypeRepository.findImagePathById(roomTypeId);
     }
 
+    @Override
+    public boolean isExistingName(String name) {
+        return roomTypeRepository.existsByName(name);
+    }
 }

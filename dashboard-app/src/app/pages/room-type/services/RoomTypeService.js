@@ -25,7 +25,7 @@
                 });
 
             };
-          
+
             var getImage = function (imageName) {
                 return $http({
                     method: 'GET',
