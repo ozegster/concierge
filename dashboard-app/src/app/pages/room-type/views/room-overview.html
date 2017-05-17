@@ -1,12 +1,11 @@
 <div class="widgets">
     <div class="row">
         <div class="col-md-12" ba-panel>
-
             <table class="table table-responsive table-hover" st-table="listOfRooms" st-safe-src="roomCollection">
                 <thead>
                     <tr>
                        <td>
-                           <button type="button" class="btn btn-primary" ng-click="addNewRoom()">Add New Room</button>
+                           <button type="button" class="btn btn-primary" ng-click="addNewRoomButton()">Add New Room</button>
                        </td>
                     </tr>
                     <tr>
@@ -28,15 +27,15 @@
                         <td class="col-xs-3">{{room.roomType.name}}</td>
                         <td class="col-xs-3">
                             <div class="buttons">
-                                <button class="btn btn-primary editable-table-button btn-xs" ng-click="editRoom(room)">Edit</button>
-                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="deleteRoom(room)">Delete</button>
+                                <button class="btn btn-primary editable-table-button btn-xs" ng-click="editRoomButton(room)">Edit</button>
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="deleteRoomButton(room)">Delete</button>
                             </div>
                         </td>
                     </tr>
                 </tbody>
                 <tfoot>
-                    <tr>
-                        <td class="text-center">
+                    <tr >
+                        <td colspan="4" class="text-center">
                             <div st-pagination="" st-items-by-page="10"></div>
                         </td>
                     </tr>
