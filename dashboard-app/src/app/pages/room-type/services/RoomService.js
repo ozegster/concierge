@@ -26,8 +26,20 @@
                 });
             };
 
+            var deleteRoom = function (roomId) {
+                return $http({
+                    method: 'DELETE',
+                    url: SERVER_PATH.url + '/rooms/' + roomId
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            };
+
             return {
                 saveRoom: saveRoom,
+                deleteRoom: deleteRoom,
                 getAllRooms: getAllRooms
             };
         }])
