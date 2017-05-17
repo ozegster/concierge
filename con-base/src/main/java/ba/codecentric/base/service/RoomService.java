@@ -9,4 +9,6 @@ public interface RoomService {
     Room saveRoom(Room room);
 
     List<Room> getAllRooms();
+
+    void deleteRoom(Integer id);
 }
