@@ -2,19 +2,31 @@ package ba.codecentric.base.validation;
 
 import ba.codecentric.base.domain.Facility;
 import ba.codecentric.base.domain.FacilityType;
+import ba.codecentric.base.service.FacilityService;
+import ba.codecentric.base.validation.util.BeanValidatorTestUtils;
+import ba.codecentric.base.validation.validator.UniqueFacilityNameValidator;
 import org.apache.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
-
 import static org.junit.Assert.assertEquals;
 
+@RunWith(MockitoJUnitRunner.class)
 public class FacilityTest {
+
+    @Mock
+    private FacilityService facilityService;
+
+    @InjectMocks
+    private UniqueFacilityNameValidator uniqueFacilityNameValidator;
 
     private static Validator validator;
 
@@ -30,6 +42,8 @@ public class FacilityTest {
     @Test
     public void facilityIsEmpty() {
         Facility facility = new Facility();
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(3, validations.size());
     }
@@ -37,6 +51,8 @@ public class FacilityTest {
     @Test
     public void facilityHasAllData() {
         Facility facility = getFacility();
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(0, validations.size());
     }
@@ -45,6 +61,8 @@ public class FacilityTest {
     public void facilityNameIsEmpty() {
         Facility facility = getFacility();
         facility.setFacilityName("");
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Please enter name of the facility", validations.iterator().next().getMessage());
@@ -54,6 +72,8 @@ public class FacilityTest {
     public void facilityNameIsTooLong() {
         Facility facility = getFacility();
         facility.setFacilityName("facility name facility name facility name facility name facility name facility name facility name facility name facility name facility name facility name facility name");
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Facility name is too long, 80 characters allowed", validations.iterator().next().getMessage());
@@ -63,6 +83,8 @@ public class FacilityTest {
     public void facilityNameIsNull() {
         Facility facility = getFacility();
         facility.setFacilityName(null);
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Please enter name of the facility", validations.iterator().next().getMessage());
@@ -72,6 +94,8 @@ public class FacilityTest {
     public void facilityDescriptionIsNull() {
         Facility facility = getFacility();
         facility.setDescription(null);
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Please add facility description", validations.iterator().next().getMessage());
@@ -81,6 +105,8 @@ public class FacilityTest {
     public void descriptionIsTooLong() {
         Facility facility = getFacility();
         facility.setDescription("Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description ");
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Description is too long, 400 characters allowed", validations.iterator().next().getMessage());
@@ -90,6 +116,8 @@ public class FacilityTest {
     public void imageIsNull() {
         Facility facility = getFacility();
         facility.setImage(null);
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Please add facility image", validations.iterator().next().getMessage());
@@ -99,6 +127,8 @@ public class FacilityTest {
     public void imageIsTooLong() {
         Facility facility = getFacility();
         facility.setImage("image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image image ");
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Address of image is too long, 128 characters allowed", validations.iterator().next().getMessage());
@@ -108,6 +138,8 @@ public class FacilityTest {
     public void floorIsTooHigh() {
         Facility facility = getFacility();
         facility.setFloor(15);
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Floor is too high, allowed to 10", validations.iterator().next().getMessage());
@@ -117,6 +149,8 @@ public class FacilityTest {
     public void floorIsTooLow() {
         Facility facility = getFacility();
         facility.setFloor(-5);
+        uniqueFacilityNameValidator.initialize(null);
+        BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueFacilityNameValidator, facility);
         Set<ConstraintViolation<Facility>> validations = validator.validate(facility);
         assertEquals(1, validations.size());
         assertEquals("Floor is too low, allowed to -2", validations.iterator().next().getMessage());
