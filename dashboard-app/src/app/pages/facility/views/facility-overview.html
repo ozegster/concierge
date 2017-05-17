@@ -1,0 +1,38 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12" ba-panel>
+            <button type="button" class="btn btn-primary" ng-click="handleAddFacilityButton()">Add New Facility</button>
+            <table class="table table-hover" st-table="listOfFacility" st-safe-src="rowCollection">
+                <thead>
+                <tr>
+                    <th colspan="3"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+                </tr>
+                <tr>
+                    <th st-sort="name" class="sortable-column">Facility</th>
+                    <th>Floor</th>
+                    <th>Facility Type</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="facility in listOfFacility">
+                    <td>{{facility.facilityName}}</td>
+                    <td>{{facility.floor}}</td>
+                    <td>{{facility.facilityType.facilityType}}</td>
+                    <td>
+                        <div class="buttons">
+                            <button class="btn btn-primary editable-table-button btn-xs" ng-click="handleEditButton(facility)">Edit</button>
+                            <button class="btn btn-danger editable-table-button btn-xs" ng-click="handleDeleteButton(facility)">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4"></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
