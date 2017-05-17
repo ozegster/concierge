@@ -1,27 +1,46 @@
 <div class="widgets">
     <div class="row">
         <div class="col-md-12" ba-panel>
-            <button type="button" class="btn btn-primary" ng-click="addNewRoom()">Add New Room</button>
-            <table class="table table-hover" st-table="listOfRooms" st-safe-src="roomCollection">
+
+            <table class="table table-responsive table-hover" st-table="listOfRooms" st-safe-src="roomCollection">
                 <thead>
                     <tr>
-                        <th colspan="3">
+                       <td>
+                           <button type="button" class="btn btn-primary" ng-click="addNewRoom()">Add New Room</button>
+                       </td>
+                    </tr>
+                    <tr>
+                        <th>
                             <input type="text" class="form-control" placeholder="Search" st-search="">
                         </th>
                     </tr>
                     <tr>
-                        <th st-sort="number" class="sortable-column">Room number</th>
-                        <th st-sort="number" class="sortable-column">Floor number</th>
-                        <th>Room type</th>
+                        <th class="col-xs-3 text-center" st-sort="number" class="sortable-column">Room number</th>
+                        <th class="col-xs-3 text-center" st-sort="floorNumber" class="sortable-column">Floor number</th>
+                        <th class="col-xs-3 text-center" >Room type</th>
+                        <th class="col-xs-3 text-center" >Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="room in listOfRooms">
-                        <td>{{room.number}}</td>
-                        <td>{{room.floorNumber}}</td>
-                        <td>{{room.roomType.name}}</td>
+                    <tr class="text-center" ng-repeat="room in listOfRooms">
+                        <td class="col-xs-3">{{room.number}}</td>
+                        <td class="col-xs-3">{{room.floorNumber}}</td>
+                        <td class="col-xs-3">{{room.roomType.name}}</td>
+                        <td class="col-xs-3">
+                            <div class="buttons">
+                                <button class="btn btn-primary editable-table-button btn-xs" ng-click="editRoom(room)">Edit</button>
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="deleteRoom(room)">Delete</button>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td class="text-center">
+                            <div st-pagination="" st-items-by-page="10"></div>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

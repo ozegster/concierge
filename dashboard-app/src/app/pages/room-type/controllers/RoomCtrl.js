@@ -3,8 +3,8 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomCtrl', RoomCtrl);
 
-    RoomCtrl.$inject = ['RoomTypeService', 'RoomService', '$scope', 'toastr', '$state'];
-    function RoomCtrl(RoomTypeService, RoomService, $scope, toastr, $state) {
+    RoomCtrl.$inject = ['RoomTypeService', 'RoomService', '$scope', 'toastr', '$state', '$window'];
+    function RoomCtrl(RoomTypeService, RoomService, $scope, toastr, $state, $window) {
 
         $scope.room = {};
 
@@ -25,6 +25,7 @@
                     roomForm.$setUntouched();
                     $scope.room = {};
                     $scope.selectedRoomType = null;
+                    $state.go('room.roomOverview');
                 } else {
                     if (response.data.errors) {
                         angular.forEach(response.data.errors, function (value, key) {
@@ -62,5 +63,27 @@
         $scope.addNewRoom = function(){
             $state.go('room.room');
         };
+
+        $scope.editRoom = function(room){
+            $window.localStorage.setItem('editableRoom', JSON.stringify(room));
+            $state.go('room.room');
+        };
+
+        $scope.openEditableRoomForm = function () {
+            var selectedRoom = JSON.parse($window.localStorage.getItem('editableRoom'));
+            $scope.room = selectedRoom;
+            $scope.changeRoomType($scope.room.roomType);
+        };
+
+        $scope.deleteRoom = function(room){
+
+        };
+        $scope.$on("$stateChangeSuccess", function () {
+            if ($state.is('room.room') && $window.localStorage.getItem('editableRoom')) {
+                $scope.openEditableRoomForm();
+            } else {
+                $window.localStorage.clear();
+            }
+        });
     }
 })();
