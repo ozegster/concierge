@@ -15,7 +15,7 @@
                  title: 'Room',
                  sidebarMeta: {
                      icon: 'ion-compose',
-                     order: 250,
+                     order: 5,
                  },
            })
            .state('room.roomTypeOverview', {

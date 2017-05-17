@@ -1,0 +1,103 @@
+<div class="widgets">
+    <div class="container-fluid">
+        <form id="room-form" name="roomForm" autocomplete="off" novalidate ng-submit="submit(roomForm)">
+            <div class="row">
+                <div class="col-md-12" ba-panel ba-panel-title="Guest">
+                    <div class="row">
+                        <div class="col-md-3 form-group" ng-class="{'has-error' : roomForm.roomNumber.$invalid && roomForm.$submitted, 'has-success' : roomForm.roomNumber.$valid && roomForm.$submitted}">
+                            <label for="room-number">Room number</label>
+                            <input type="number" name="roomNumber" class="form-control" id="room-number"
+                                   ng-model="room.number" required ng-min="1" ng-max="100100">
+                            <div ng-show="roomForm.$submitted">
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomForm.roomNumber.$error.required">Please enter the room
+                                    number</label>
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomForm.roomNumber.$error.min">Minimum room number is 1</label>
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomForm.roomNumber.$error.max">Maximum room number is 100100</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 form-group" ng-class="{'has-error' : roomForm.floorNumber.$invalid && roomForm.$submitted, 'has-success' : roomForm.floorNumber.$valid && roomForm.$submitted}">
+                            <label for="floor-number">Floor number</label>
+                            <input type="number" name="floorNumber" class="form-control" id="floor-number"
+                                   ng-model="room.floorNumber" required ng-min="-2" ng-max="100">
+                            <div ng-show="roomForm.$submitted">
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomForm.floorNumber.$error.required">Please enter the floor
+                                    number</label>
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomForm.floorNumber.$error.min">Minimum floor number is -2</label>
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomForm.floorNumber.$error.max">Maximum floor number is 100</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group" ng-class="{'has-error' : roomForm.roomType.$invalid && roomForm.$submitted, 'has-success' : roomForm.roomType.$valid && roomForm.$submitted}">
+                            <label for="room-type">Room type</label>
+                            <select type="text" name="roomType" id="room-type" class="form-control"
+                                    ng-model="room.roomType"
+                                    ng-change="changeRoomType(room.roomType)"
+                                    ng-options="roomType as roomType.name for roomType in roomTypes track by roomType.id"
+                                    required>
+                                <option value="" disabled selected>Options</option>
+                            </select>
+                            <div ng-show="roomForm.$submitted">
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomForm.roomType.$error.required">Please select the room type</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" ba-panel ba-panel-title="ROOM TYPE DETAILS">
+                    <div class="row" ng-show="selectedRoomType">
+                        <div class="col-md-6">
+                            <table id="room-type-details" class="table table-responsive">
+                                <tr>
+                                    <td>Name:</td>
+                                    <td>{{selectedRoomType.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Number of people:</td>
+                                    <td>{{selectedRoomType.numberOfPeople}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Number of kids:</td>
+                                    <td>{{selectedRoomType.numberOfKids}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Size:</td>
+                                    <td>{{selectedRoomType.size}} sq meters</td>
+                                </tr>
+                                <tr>
+                                    <td>Bed type:</td>
+                                    <td>{{selectedRoomType.bedType.type}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Features:</td>
+                                    <td>
+                                        <div ng-repeat="feature in selectedRoomType.features">
+                                            {{feature.name}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="canvas-container">
+                                <canvas id="room-type-image-canvas" height="300" width="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg pull-right"  ng-disabled="roomForm.$invalid && roomForm.$submitted"
+                            ng-attr-title="{{roomForm.$invalid && roomForm.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
