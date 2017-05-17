@@ -11,4 +11,6 @@ public interface RoomTypeRepository extends JpaRepository<RoomType, Integer> {
 
     @Query("SELECT roomType.image FROM RoomType roomType WHERE roomType.id = ?1")
     String findImagePathById(Integer id);
+
+    boolean existsByName(String name);
 }

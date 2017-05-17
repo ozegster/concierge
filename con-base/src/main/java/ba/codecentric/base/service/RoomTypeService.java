@@ -13,5 +13,8 @@ public interface RoomTypeService {
     void deleteRoomType(Integer roomTypeId);
 
     RoomType findById(Integer roomtypeId);
+
     String findImagePathById(Integer roomtypeId);
+
+    boolean isExistingName(String name);
 }
