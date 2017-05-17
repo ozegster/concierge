@@ -14,8 +14,8 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
-
 import static org.junit.Assert.assertEquals;
+import java.sql.Time;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -314,8 +314,35 @@ public class HotelTest {
         assertEquals("Please enter a valid Check-in time", validations.iterator().next().getMessage());
     }
 
+    @Test
+    public void isParsableFalse() {
+        Hotel hotel = getHotel();
+        boolean result = hotel.isParsable("1010");
+        assertEquals(false, result);
+    }
+    @Test
+    public void isParsableTrue() {
+        Hotel hotel = getHotel();
+        boolean result = hotel.isParsable("11:10");
+        assertEquals(true, result);
+    }
 
-        private Hotel getHotel() {
+    @Test
+    public void parseStringToTimeIsNull() {
+        Hotel hotel = getHotel();
+        Time result = hotel.parseStringToTime("null");
+        assertEquals(null, result);
+    }
+
+    @Test
+    public void parseStringToTimeIsValid() {
+        Hotel hotel = getHotel();
+        Time time = Time.valueOf("11:11:00");
+        Time result = hotel.parseStringToTime("11:11");
+        assertEquals(time, result);
+    }
+
+    private Hotel getHotel() {
         Hotel hotel = new Hotel();
         hotel.setName("hotel name");
         hotel.setRating(3);
