@@ -3,11 +3,13 @@ package ba.codecentric.master.controller;
 import ba.codecentric.base.domain.Room;
 import ba.codecentric.base.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class RoomController {
@@ -22,5 +24,10 @@ public class RoomController {
     @PostMapping(value = "/rooms")
     public void save(@Valid @RequestBody Room room) {
         roomService.saveRoom(room);
+    }
+
+    @GetMapping(value = "/rooms")
+    public List<Room> getRooms() {
+        return roomService.getAllRooms();
     }
 }

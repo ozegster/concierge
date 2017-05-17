@@ -15,8 +15,20 @@
 
             };
 
+            var getAllRooms = function () {
+                return $http({
+                    method: 'GET',
+                    url: SERVER_PATH.url + '/rooms'
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            };
+
             return {
-                saveRoom: saveRoom
+                saveRoom: saveRoom,
+                getAllRooms: getAllRooms
             };
         }])
 })();

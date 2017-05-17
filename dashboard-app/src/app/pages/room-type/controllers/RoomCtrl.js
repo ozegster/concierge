@@ -3,8 +3,8 @@
     angular.module('ConciergeApp.pages.roomType')
         .controller('RoomCtrl', RoomCtrl);
 
-    RoomCtrl.$inject = ['RoomTypeService', 'RoomService', '$scope', 'toastr'];
-    function RoomCtrl(RoomTypeService, RoomService, $scope, toastr) {
+    RoomCtrl.$inject = ['RoomTypeService', 'RoomService', '$scope', 'toastr', '$state'];
+    function RoomCtrl(RoomTypeService, RoomService, $scope, toastr, $state) {
 
         $scope.room = {};
 
@@ -50,6 +50,17 @@
                 };
                 img.src = 'data:image/jpeg;base64,' + data;
             });
-        }
+        };
+
+        RoomService.getAllRooms().then(function (response) {
+            $scope.listOfRooms = response.data;
+            $scope.roomCollection = response.data;
+        }, function (error) {
+            console.log(error);
+        });
+
+        $scope.addNewRoom = function(){
+            $state.go('room.room');
+        };
     }
 })();
