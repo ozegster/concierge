@@ -5,7 +5,6 @@ import ba.codecentric.base.domain.RoomBooking;
 import ba.codecentric.base.helper.BookingRequest;
 import ba.codecentric.base.service.RoomBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,8 +23,9 @@ public class RoomBookingController {
     public RoomBooking saveRoomBooking(@RequestBody RoomBooking roomBooking) {
         return roomBookingService.saveRoomBooking(roomBooking);
     }
-@GetMapping(value = "/get/available/rooms")
-    public Iterable<Room> getAvailableRooms(@RequestBody BookingRequest bookingRequest){
+
+    @PostMapping(value = "/get/available/rooms")
+    public Iterable<Room> getAvailableRooms(@RequestBody BookingRequest bookingRequest) {
         return roomBookingService.findAvailableRooms(bookingRequest);
     }
 
