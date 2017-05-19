@@ -59,7 +59,7 @@
                                          ng-class="{'has-error' : hotelFacility.facilityType.$invalid && hotelFacility.$submitted, 'has-success' : hotelFacility.facilityType.$valid && hotelFacility.$submitted}">
                                         <label for="type">Type</label>
                                         <select class="form-control" id="type" ng-model="facility.facilityType"
-                                                ng-options="type as type.facilityType for type in facilityTypes"
+                                                ng-options="type as type.facilityType for type in facilityTypes track by type.id"
                                                 name="facilityType" required></select>
                                         <div ng-show="hotelFacility.$submitted">
                                             <label class="help-block error-block basic-block"
