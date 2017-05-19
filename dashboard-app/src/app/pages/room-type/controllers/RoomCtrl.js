@@ -64,6 +64,10 @@
             $state.go('room.room');
         };
 
+        $scope.cancelButton = function () {
+            $state.go('room.roomOverview');
+        };
+
         $scope.editRoomButton = function (room) {
             $window.localStorage.setItem('editableRoom', JSON.stringify(room));
             $state.go('room.room');
