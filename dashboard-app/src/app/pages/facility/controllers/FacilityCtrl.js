@@ -10,6 +10,13 @@
         $scope.floors = [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
 
+        FacilityService.getAllFacility().then(function (response) {
+            $scope.listOfFacility = response.data;
+            $scope.rowCollection = response.data;
+        }, function (error) {
+            console.log(error);
+        });
+
         FacilityService.getFacilityType().then(function (response) {
             $scope.facilityTypes = response.data;
         }, function (error) {
@@ -25,9 +32,9 @@
                 if (response.status === 200) {
                     toastr.success(response.data.facilityName + ' has successfully saved', 'Save Facility');
                     facility.$setPristine();
-                    facility.$setUntouched();
                     $scope.facility = {};
-                    $scope.featureBox = false;
+                    $scope.selectedFacility = null;
+                    $state.go('facilityOverview');
                     angular.element("input[type='file']").val(null);
                     $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
                 } else {
@@ -70,62 +77,18 @@
             }
         };
 
-        FacilityService.getAllFacility().then(function (response) {
-            $scope.listOfFacility = response.data;
-            $scope.rowCollection = response.data;
-        }, function (error) {
-            console.log(error);
-        });
-
-        $scope.toggleSelection = function (feature) {
-            var isAlreadyChecked = false;
-            var removeIndex = 0;
-
-            angular.forEach($scope.selectedFeatures, function (value, index) {
-                if (value.id === feature.id) {
-                    isAlreadyChecked = true;
-                    removeIndex = index;
-                }
-            });
-
-            if (isAlreadyChecked) {
-                $scope.selectedFeatures.splice(removeIndex, 1);
-            } else {
-                $scope.selectedFeatures.push(feature);
-                $scope.checkbox[feature.id] = true;
-            }
-            $scope.roomType.features = $scope.selectedFeatures;
-        };
-
-        $scope.uncheckFeatures = function () {
-
-            angular.forEach($scope.checkbox, function (value, index) {
-                $scope.checkbox[index] = false;
-            })
-        };
-
-        $scope.checkFeatures = function (selectedFacility) {
-
-            angular.forEach(selectedFacility.features, function (value, index) {
-                var currentIndex = selectedFacility.features[index].id;
-                $scope.checkbox[currentIndex] = true;
-                $scope.selectedFeatures.push(selectedFacility.features[index]);
-            });
-        };
-
         $scope.openEditableFacilityForm = function () {
             var selectedFacility = JSON.parse($window.localStorage.getItem('editableFacility'));
             $scope.facility = selectedFacility;
-            $scope.facilityType = selectedFacility;
             $scope.loadImage(selectedFacility.image);
-        };
-
-        $scope.handleAddFacilityButton = function () {
-            $state.go('facility');
         };
 
         $scope.handleEditButton = function (selectedFacility) {
             $window.localStorage.setItem('editableFacility', JSON.stringify(selectedFacility));
+            $state.go('facility');
+        };
+
+        $scope.handleAddFacilityButton = function () {
             $state.go('facility');
         };
 
