@@ -24,6 +24,7 @@
                                        min="1" max="6" ng-model="roomType.numberOfPeople" required
                                        ng-pattern="/^[1-6]{1}$/">
                             </div>
+
                             <label class="help-block error-block basic-block"
                                        ng-show="roomTypeForm.numberOfPeople.$error.required && roomTypeForm.$submitted">Please enter number of people</label>
                                 <label class="help-block error-block basic-block"

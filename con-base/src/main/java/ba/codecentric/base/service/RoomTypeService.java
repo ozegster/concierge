@@ -15,4 +15,6 @@ public interface RoomTypeService {
     RoomType findById(Integer roomtypeId);
 
     String findImagePathById(Integer roomtypeId);
+
+    boolean isExistingName(String name);
 }
