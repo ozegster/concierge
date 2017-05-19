@@ -8,7 +8,7 @@
         'ConciergeApp.pages.hotelInfo',
         'ConciergeApp.pages.facility',
         'ConciergeApp.pages.roomType',
-        'ConciergeApp.pages.roomBooking'
+        'ConciergeApp.pages.checkIn'
 
     ])
         .config(routeConfig);

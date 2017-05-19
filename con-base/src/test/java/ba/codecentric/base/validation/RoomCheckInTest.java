@@ -15,10 +15,10 @@ import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RoomBookingTest {
+public class RoomCheckInTest {
 
     private static Validator validator;
-    private final static Logger LOG = Logger.getLogger(RoomBookingTest.class);
+    private final static Logger LOG = Logger.getLogger(RoomCheckInTest.class);
 
     @BeforeClass
     public static void setUp() {

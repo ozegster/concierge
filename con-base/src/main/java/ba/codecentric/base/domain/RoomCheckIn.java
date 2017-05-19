@@ -14,8 +14,8 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-@Table(name = "room_booking")
-public class RoomBooking {
+@Table(name = "room_check_in")
+public class RoomCheckIn {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -38,8 +38,8 @@ public class RoomBooking {
     @Column(name = "check_out")
     private Date checkOut;
 
-    @Column(name = "number_of_people")
-    private Integer numberOfPeople;
+    @Column(name = "number_of_adults")
+    private Integer numberOfAdults;
 
     @Column(name = "number_of_kids")
     private Integer numberOfKids;
@@ -98,12 +98,12 @@ public class RoomBooking {
         this.checkOut = checkOut;
     }
 
-    public Integer getNumberOfPeople() {
-        return numberOfPeople;
+    public Integer getNumberOfAdults() {
+        return numberOfAdults;
     }
 
-    public void setNumberOfPeople(Integer numberOfPeople) {
-        this.numberOfPeople = numberOfPeople;
+    public void setNumberOfAdults(Integer numberOfAdults) {
+        this.numberOfAdults = numberOfAdults;
     }
 
     public Integer getNumberOfKids() {

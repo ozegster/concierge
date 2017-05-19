@@ -2,12 +2,12 @@ package ba.codecentric.base.helper;
 
 import java.util.Date;
 
-public class BookingRequest {
+public class CheckInRequest {
 
     private Date checkIn;
     private Date checkOut;
     private Integer numberOfKids;
-    private Integer numberOfPeople;
+    private Integer numberOfAdults;
 
     public Date getCheckIn() {
         return checkIn;
@@ -33,11 +33,11 @@ public class BookingRequest {
         this.numberOfKids = numberOfKids;
     }
 
-    public Integer getNumberOfPeople() {
-        return numberOfPeople;
+    public Integer getNumberOfAdults() {
+        return numberOfAdults;
     }
 
-    public void setNumberOfPeople(Integer numberOfPeople) {
-        this.numberOfPeople = numberOfPeople;
+    public void setNumberOfAdults(Integer numberOfAdults) {
+        this.numberOfAdults = numberOfAdults;
     }
 }
