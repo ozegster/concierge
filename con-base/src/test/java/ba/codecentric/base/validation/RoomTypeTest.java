@@ -38,7 +38,6 @@ public class RoomTypeTest {
     @Test
     public void roomTypeIsEmpty() {
         RoomType roomType = new RoomType();
-        System.out.println(uniqueValidator);
         uniqueValidator.initialize(null);
         BeanValidatorTestUtils.replaceValidatorInContext(validator, uniqueValidator, roomType);
         Set<ConstraintViolation<RoomType>> validations = validator.validate(roomType);
