@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
+import static org.mockito.Mockito.mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import javax.validation.ConstraintValidatorContext;
 import static org.junit.Assert.assertFalse;
@@ -23,7 +23,7 @@ public class UniqueFacilityNameValidatorTest {
 
     @Test
     public void nameExists(){
-        ConstraintValidatorContext ctx = Mockito.mock(ConstraintValidatorContext.class);
+        ConstraintValidatorContext ctx = mock(ConstraintValidatorContext.class);
         when(facilityService.isExistingName("The Facility Name")).thenReturn(true);
         boolean result = uniqueFacilityNameValidator.isValid("The Facility Name", ctx );
         assertFalse(result);
@@ -31,7 +31,7 @@ public class UniqueFacilityNameValidatorTest {
 
     @Test
     public void nameNotExists(){
-        ConstraintValidatorContext ctx = Mockito.mock(ConstraintValidatorContext.class);
+        ConstraintValidatorContext ctx = mock(ConstraintValidatorContext.class);
         when(facilityService.isExistingName("The Facility Name")).thenReturn(false);
         boolean result = uniqueFacilityNameValidator.isValid("The Facility Name", ctx );
         assertTrue(result);
