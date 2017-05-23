@@ -5,7 +5,9 @@ import ba.codecentric.base.service.FacilityService;
 import ba.codecentric.base.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,22 +50,22 @@ public class FacilityController {
             return facilityService.saveFacility(facility);
         }
         return new Facility();
-
     }
 
     @GetMapping(value = "/facilities")
-    public List<Facility> getAllFacility() {
-        return facilityService.getAllFacility();
+    public List<Facility> getAllFacilities() {
+        return facilityService.getAllFacilities();
     }
 
     @DeleteMapping(value = "/facilities/{facilityId}")
-    public void deleteFacility(@PathVariable Integer facilityId) throws Exception {
-
+    public ResponseEntity<String> deleteFacility(@PathVariable Integer facilityId) throws Exception {
         Facility facility = facilityService.findById(facilityId);
-
         if (facility != null) {
             facilityService.deleteFacility(facilityId);
             imageService.deleteImage(facility.getImage());
+            return new ResponseEntity<>( HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Facility was not found", HttpStatus.NOT_FOUND);
         }
     }
 

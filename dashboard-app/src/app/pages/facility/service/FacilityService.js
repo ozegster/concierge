@@ -61,7 +61,7 @@
                 return window.btoa(binary);
             }
 
-            var getAllFacility = function () {
+            var getAllFacilities = function () {
                 return $http({
                     method: 'GET',
                     url: SERVER_PATH.url + '/facilities'
@@ -86,7 +86,7 @@
             return {
                 getFacilityType: getFacilityType,
                 saveFacility: saveFacility,
-                getAllFacility: getAllFacility,
+                getAllFacilities: getAllFacilities,
                 deleteFacility: deleteFacility,
                 getImage: getImage
             };

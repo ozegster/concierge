@@ -8,7 +8,7 @@ public interface FacilityService {
 
     Facility saveFacility(Facility facility);
 
-    List<Facility> getAllFacility();
+    List<Facility> getAllFacilities();
 
     void deleteFacility(Integer facilityId);
 

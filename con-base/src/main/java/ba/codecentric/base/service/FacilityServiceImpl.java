@@ -33,7 +33,7 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     @Transactional
-    public List<Facility> getAllFacility() {
+    public List<Facility>getAllFacilities() {
         return facilityRepository.findAll();
     }
 

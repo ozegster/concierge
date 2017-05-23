@@ -10,7 +10,7 @@
         $scope.floors = [-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
 
-        FacilityService.getAllFacility().then(function (response) {
+        FacilityService.getAllFacilities().then(function (response) {
             $scope.listOfFacility = response.data;
             $scope.rowCollection = response.data;
         }, function (error) {
@@ -110,14 +110,14 @@
             FacilityService.deleteFacility(selectedFacility.id).then(function (response) {
 
                 if (response.status === 200) {
-                    toastr.success(selectedFacility.name + ' has been deleted successfully', 'Delete Facility');
+                    toastr.success(selectedFacility.facilityName + ' has been deleted successfully', 'Delete Facility');
 
                     $scope.closeFacilityModal();
                     $state.reload();
                 } else if (response.status === 500) {
-                    toastr.error('Facility ' + selectedFacility.name + ' can not be deleted, it is already in use', 'Delete Facility');
+                    toastr.error('Facility ' + selectedFacility.facilityName + ' can not be deleted, it is already in use', 'Delete Facility');
                 } else {
-                    toastr.error(selectedFacility.name + ' has not been deleted successfully', 'Delete Facility');
+                    toastr.error(selectedFacility.facilityName + ' has not been deleted successfully', 'Delete Facility');
                 }
             }, function (response) {
                 console.log(response)
