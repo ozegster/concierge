@@ -61,14 +61,14 @@ public class FacilityController {
     @DeleteMapping(value = "/facilities/{facilityId}")
     public @ResponseBody ResponseEntity<String> deleteFacility(@PathVariable Integer facilityId) throws Exception {
         Facility facility = facilityService.findById(facilityId);
-        String jsonMessage = "[\"message: Facility is found\"]";
+        String deleteMessage = "[\"message: Facility is found\"]";
         if (facility != null) {
             facilityService.deleteFacility(facilityId);
             imageService.deleteImage(facility.getImage());
-            return new ResponseEntity<>(jsonMessage, HttpStatus.OK);
+            return new ResponseEntity<>(deleteMessage, HttpStatus.OK);
         } else {
-            jsonMessage = "[\"message: Facility was not found\"]";
-            return new ResponseEntity<>(jsonMessage, HttpStatus.NOT_FOUND);
+            deleteMessage = "[\"message: Facility was not found\"]";
+            return new ResponseEntity<>(deleteMessage, HttpStatus.NOT_FOUND);
         }
     }
 
