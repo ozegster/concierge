@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -58,14 +59,16 @@ public class FacilityController {
     }
 
     @DeleteMapping(value = "/facilities/{facilityId}")
-    public ResponseEntity<String> deleteFacility(@PathVariable Integer facilityId) throws Exception {
+    public @ResponseBody ResponseEntity<String> deleteFacility(@PathVariable Integer facilityId) throws Exception {
         Facility facility = facilityService.findById(facilityId);
+        String jsonMessage = "[\"message: Facility is found\"]";
         if (facility != null) {
             facilityService.deleteFacility(facilityId);
             imageService.deleteImage(facility.getImage());
-            return new ResponseEntity<>( HttpStatus.OK);
+            return new ResponseEntity<>(jsonMessage, HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("Facility was not found", HttpStatus.NOT_FOUND);
+            jsonMessage = "[\"message: Facility was not found\"]";
+            return new ResponseEntity<>(jsonMessage, HttpStatus.NOT_FOUND);
         }
     }
 
