@@ -114,9 +114,7 @@
 
                     $scope.closeFacilityModal();
                     $state.reload();
-                } else if (response.status === 500) {
-                    toastr.error('Facility ' + selectedFacility.facilityName + ' can not be deleted, it is already in use', 'Delete Facility');
-                } else {
+               } else {
                     toastr.error(selectedFacility.facilityName + ' has not been deleted successfully', 'Delete Facility');
                 }
             }, function (response) {
