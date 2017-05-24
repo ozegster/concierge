@@ -34,7 +34,7 @@ public class HotelTest {
     public void hotelIsEmpty() {
         Hotel hotel = new Hotel();
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(12, validations.size());
+        assertEquals(13, validations.size());
     }
 
     @Test
@@ -356,6 +356,7 @@ public class HotelTest {
         hotel.setDescription("description");
         hotel.setCheckIn("10:10");
         hotel.setCheckOut("11:11");
+        hotel.setImageLogo("image");
         hotel.setCountry(new Country());
 
         return hotel;

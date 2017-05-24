@@ -3,7 +3,7 @@
         <form id="hotel-info-form" name="hotelInfo" ng-submit="submit(hotelInfo)" autocomplete="off" novalidate>
             <div id="general-info" class="col-md-12" ba-panel ba-panel-title="General info">
                 <div class="row">
-                    <div class="form-group col-md-6"
+                    <div class="form-group col-md-3"
                          ng-class="{'has-error' : hotelInfo.hotelName.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.hotelName.$valid && hotelInfo.$submitted}">
                         <label for="name">Hotel name</label>
                         <input class="form-control has-success text-danger" id="name" type="text" name="hotelName" ng-model="hotel.name" required ng-maxlength="128">
@@ -12,8 +12,8 @@
                                   <label class="help-block error-block basic-block" ng-show="hotelInfo.hotelName.$error.maxlength">Name is too long, 128 characters allowed</label>
                             </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <div class="center">
+                    <div class="form-group col-md-4">
+                        <div class="text-xs-left">
                             <div class="stars" ng-class="{'has-error' : hotelInfo.rating.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.rating.$valid && hotelInfo.$submitted}">
                                 <input class="star star-5 form-control" id="star-5" type="radio" name="rating" value="5"
                                        ng-model="hotel.rating" ng-required="!hotel.rating">
@@ -36,6 +36,15 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="hotel-logo" id="logo">Hotel logo</label>
+                            <div class="form-group" ng-class="{'has-error' : isImageMissing() && hotelInfo.$submitted, 'has-success' : !isImageMissing() && hotelInfo.$submitted}">
+                                <img ng-click="openModal()"  ng-src="{{imageSrc}}" id="logo-image">
+                                <div class="centerText" ng-show="hotelInfo.$submitted">
+                                    <label class="help-block error-block basic-block" ng-show="isImageMissing()">Please enter the hotel logo</label>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

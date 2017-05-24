@@ -69,6 +69,5 @@
                 reader.readAsDataURL($scope.croppedImg);
             }
         };
-
     }
 })();

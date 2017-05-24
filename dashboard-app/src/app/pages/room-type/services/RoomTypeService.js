@@ -53,7 +53,7 @@
             var getAllRoomTypes = function () {
                 return $http({
                     method: 'GET',
-                    url: SERVER_PATH.url + '/room-types',
+                    url: SERVER_PATH.url + '/room-types'
                 }).then(function (response) {
                     return response;
                 }, function (error) {
