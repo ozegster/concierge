@@ -19,8 +19,21 @@
                 return deferred.promise;
             };
 
+            var saveCheckIn = function (checkIn) {
+                return $http({
+                    method: 'POST',
+                    url: SERVER_PATH.url + '/room/check-in',
+                    data: checkIn
+                }).then(function (result) {
+                    return result;
+                }, function (error) {
+                    return error;
+                })
+            };
+
             return {
-                getAvailableRooms: getAvailableRooms
+                getAvailableRooms: getAvailableRooms,
+                saveCheckIn: saveCheckIn
 
             };
 

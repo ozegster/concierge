@@ -37,22 +37,22 @@
                                    name="email"
                                    required ng-pattern="/^\w+[\w-\.]*\@\w+((-\w+)|(\w*))\.[a-z]{2,20}$/"
                                    ng-maxlength="45">
-                            <div ng-show="booking.$submitted">
+                            <div ng-show="roomCheckIn.$submitted">
                                 <label class="help-block error-block basic-block"
-                                       ng-show="booking.email.$error.required">Please enter a email</label>
+                                       ng-show="roomCheckIn.email.$error.required">Please enter a email</label>
                                 <label class="help-block error-block basic-block"
-                                       ng-show="booking.email.$error.pattern">Please enter a valid email address e.g.
+                                       ng-show="roomCheckIn.email.$error.pattern">Please enter a valid email address e.g.
                                     info@hotel.com</label>
                                 <label class="help-block error-block basic-block"
-                                       ng-show="booking.email.$error.maxlength">Email is too long, 45 characters
+                                       ng-show="roomCheckIn.email.$error.maxlength">Email is too long, 45 characters
                                     allowed</label>
                             </div>
                         </div>
 
                     </div>
                     <div id="contact-info" class="col-md-6 with-scroll" ba-panel ba-panel-title="Accomodation info">
-                        <div class="form-group" ng-controller="CheckInCtrl"
-                             ng-class="{'has-error' : booking.checkIn.$invalid && booking.$submitted, 'has-success' : booking.checkIn.$valid && booking.$submitted}">
+                        <div class="form-group"
+                             ng-class="{'has-error' : roomCheckIn.checkIn.$invalid && roomCheckIn.$submitted, 'has-success' : roomCheckIn.checkIn.$valid && roomCheckIn.$submitted}">
                             <label for="checkIn">Check-in</label>
                             <div class="form-group">
                                 <div class="input-group">
@@ -66,29 +66,32 @@
                                                     class="glyphicon glyphicon-calendar"></i></button>
                                     </span>
                                 </div>
-
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomCheckIn.checkIn.$error.required && roomCheckIn.$submitted">Please enter check-in date</label>
                             </div>
                         </div>
-                        <div class="form-group" ng-controller="CheckInCtrl"
-                             ng-class="{'has-error' : booking.checkOut.$invalid && booking.$submitted, 'has-success' : booking.checkOut.$valid && booking.$submitted}">
+                        <div class="form-group"
+                             ng-class="{'has-error' : roomCheckIn.checkOut.$invalid && roomCheckIn.$submitted, 'has-success' : roomCheckIn.checkOut.$valid && roomCheckIn.$submitted}">
                             <label for="checkOut">Check-out</label>
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="checkOut" id="checkOut"
                                            uib-datepicker-popup="{{format}}"
                                            datepicker-options="options" ng-model="checkIn.checkOut" is-open="opened"
-                                           ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                           required close-text="Close" alt-input-formats="altInputFormats"
                                     />
                                     <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="open()"><i
                                                     class="glyphicon glyphicon-calendar"></i></button>
                                     </span>
                                 </div>
+                                <label class="help-block error-block basic-block"
+                                       ng-show="roomCheckIn.checkOut.$error.required && roomCheckIn.$submitted">Please enter check-out date</label>
 
                             </div>
                         </div>
                         <div class="form-group row form-horizontal"
-                             ng-class="{'has-error' : booking.numberOfAdults.$invalid && booking.$submitted, 'has-success' : booking.numberOfAdults.$valid && booking.$submitted}">
+                             ng-class="{'has-error' : roomCheckIn.numberOfAdults.$invalid && roomCheckIn.$submitted, 'has-success' : roomCheckIn.numberOfAdults.$valid && roomCheckIn.$submitted}">
                             <label for="number-of-adults" class="col-md-4">Number of adults</label>
                             <div class="col-md-3">
                                 <input type="number" name="numberOfAdults" class="form-control" id="number-of-adults"
@@ -96,12 +99,12 @@
                                        ng-pattern="/^[1-6]{1}$/">
                             </div>
                             <label class="help-block error-block basic-block"
-                                   ng-show="booking.numberOfAdults.$error.required && booking.$submitted">Please enter number of people</label>
+                                   ng-show="roomCheckIn.numberOfAdults.$error.required && roomCheckIn.$submitted">Please enter number of people</label>
                             <label class="help-block error-block basic-block"
-                                   ng-show="booking.numberOfAdults.$error.pattern && booking.$submitted">Please enter a valid number 1 - 6</label>
+                                   ng-show="roomCheckIn.numberOfAdults.$error.pattern && roomCheckIn.$submitted">Please enter a valid number 1 - 6</label>
                         </div>
                         <div class="form-group row form-horizontal"
-                             ng-class="{'has-error' : booking.numberOfKids.$invalid && booking.$submitted, 'has-success' : booking.numberOfKids.$valid && booking.$submitted}">
+                             ng-class="{'has-error' : roomCheckIn.numberOfKids.$invalid && roomCheckIn.$submitted, 'has-success' : roomCheckIn.numberOfKids.$valid && roomCheckIn.$submitted}">
                             <label for="number-of-kids" class="col-md-4">Number of kids</label>
                             <div class="col-md-3">
                                 <input type="number" name="numberOfKids" class="form-control" id="number-of-kids"
@@ -109,26 +112,27 @@
                                        ng-model="checkIn.numberOfKids" required ng-pattern="/^[0-3]{1}$/">
                             </div>
                             <label class="help-block error-block basic-block"
-                                   ng-show="booking.numberOfKids.$error.required && booking.$submitted">Please enter number of kids</label>
+                                   ng-show="roomCheckIn.numberOfKids.$error.required && roomCheckIn.$submitted">Please enter number of kids</label>
                             <label class="help-block error-block basic-block"
-                                   ng-show="booking.numberOfKids.$error.pattern && booking.$submitted">Please enter a valid number 0 - 3</label>
+                                   ng-show="roomCheckIn.numberOfKids.$error.pattern && roomCheckIn.$submitted">Please enter a valid number 0 - 3</label>
                         </div>
                         <div class="pull-right">
-                            <button type="button" class="btn btn-primary btn-lg" ng-click="getAvailableRooms(checkIn)"
-                                    ng-disabled="booking.$invalid && booking.$submitted"
-                                    ng-attr-title="{{booking.$invalid && booking.$submitted ? 'Invalid input(s) found' : ''}}">
-                                Save
+                            <button type="button" class="btn btn-primary btn-xs" ng-click="getAvailableRooms(checkIn)"
+                                    ng-disabled="roomCheckIn.numberOfKids.$invalid && roomCheckIn.numberOfAdults.$invalid"
+                                    ng-attr-title="{{roomCheckIn.$invalid && roomCheckIn.$submitted ? 'Invalid input(s) found' : ''}}">
+                                Room search
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-12" ba-panel ba-panel-title="Available rooms">
-                <table class="table table-hover" st-table="listOfAvailableRooms" st-safe-src="rowCollection">
+                <table class="table table-hover" st-table="availableRooms" st-safe-src="rowCollection">
                     <thead>
                     <tr>
-                        <th st-sort="name" class="sortable-column">Number</th>
-                        <th st-sort="size" class="sortable-column">Floor</th>
+                        <th st-sort="number" class="sortable-column" st-sort-default="true">Number</th>
+                        <th st-sort="roomType.name" class="sortable-column">Name</th>
+                        <th st-sort="floorNumber" class="sortable-column">Floor</th>
                         <th>Adults</th>
                         <th>Kids</th>
                         <th>Bed Type</th>
@@ -138,14 +142,17 @@
                     <tbody>
                     <tr ng-repeat="rooms in availableRooms">
                         <td>{{rooms.number}}</td>
+                        <td>{{rooms.roomType.name}}</td>
                         <td>{{rooms.floorNumber}}</td>
                         <td>{{rooms.roomType.numberOfPeople}}</td>
                         <td>{{rooms.roomType.numberOfKids}}</td>
-                        <td>{{rooms.bedType.type}}</td>
+                        <td>{{rooms.roomType.bedType.type}}</td>
                         <td>
-                            <div class="buttons">
-                                <button class="btn btn-primary editable-table-button btn-xs" ng-click="handleEditButton(roomType)">Edit</button>
-                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="handleDeleteButton(roomType)">Delete</button>
+                            <div class="col-md-4" >
+                                <label class="radio-inline custom-radio nowrap">
+                                    <input type="radio" name="roomId" id="roomId" ng-model="checkIn.room.id" value="{{rooms.id}}" required>
+                                    <span>Select room</span>
+                                </label>
                             </div>
                         </td>
                     </tr>
@@ -156,6 +163,7 @@
                     </tr>
                     </tfoot>
                 </table>
+
             </div>
 
             <div class="row">
@@ -163,8 +171,8 @@
                     <div class="form-group col-md-12">
                         <div class="pull-right">
                             <button type="submit" class="btn btn-primary btn-lg"
-                                    ng-disabled="booking.$invalid && booking.$submitted"
-                                    ng-attr-title="{{booking.$invalid && booking.$submitted ? 'Invalid input(s) found' : ''}}">
+                                    ng-disabled="roomCheckIn.$invalid && roomCheckIn.$submitted"
+                                    ng-attr-title="{{roomCheckIn.$invalid && roomCheckIn.$submitted ? 'Invalid input(s) found' : ''}}">
                                 Save
                             </button>
                         </div>
