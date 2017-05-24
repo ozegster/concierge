@@ -18,8 +18,11 @@
 
         HotelService.getHotel().then(function (response) {
             $scope.hotel = response.data;
-        }, function () {
-            $scope.hotel = {};
+            if($scope.hotel.imageLogo != null) {
+                $scope.loadImage($scope.hotel.imageLogo);
+            } else $scope.hotel.imageLogo = $scope.imageSrc;
+        }, function (error) {
+            console.log(error);
         });
 
         $scope.closeHotelModal = function () {

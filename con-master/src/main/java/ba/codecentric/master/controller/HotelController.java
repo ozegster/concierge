@@ -30,7 +30,7 @@ public class HotelController {
     }
 
     @PostMapping(value = "/hotels", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Hotel saveHotel(@RequestPart("image") MultipartFile image, @Valid @RequestBody Hotel hotel) throws IOException {
+    public Hotel saveHotel(@RequestPart("image") MultipartFile image, @Valid @RequestPart("hotel") Hotel hotel) throws IOException {
 
         String imageName = "";
         Integer hotelId = hotel.getId();
@@ -54,7 +54,6 @@ public class HotelController {
     public InputStreamResource getImage(@PathVariable String imageName) throws IOException {
         return new InputStreamResource(imageService.loadImage(imageName));
     }
-
 
     @GetMapping(value = "/hotels")
     public Hotel getHotel() {

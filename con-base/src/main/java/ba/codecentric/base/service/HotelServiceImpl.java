@@ -26,11 +26,11 @@ public class HotelServiceImpl implements HotelService {
             return new Hotel();
         }
         LOG.info("Hotel " + hotel.getName() + " is saved");
-
         return hotelRepository.save(hotel);
     }
 
     @Override
+    @Transactional
     public Hotel getHotel() {
         return hotelRepository.findFirstByOrderById();
     }

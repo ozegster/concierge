@@ -13,5 +13,4 @@ public interface HotelService {
     String findImagePathById(Integer hotelId);
 
     boolean isExistingName(String name);
-
 }
