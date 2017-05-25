@@ -342,6 +342,15 @@ public class HotelTest {
         assertEquals(time, result);
     }
 
+    @Test
+    public void imageLogoIsTooLong() {
+        Hotel hotel = getHotel();
+        hotel.setImageLogo("lkjsdfh glksjdh fglksjhdf glskjdhf gljkshd flgjkh slfdhgslkjdh glkjshd flgjhs ldfjh glsjdkh gljksh dlfjhg sljkdh gfljkh dslfjhg slkjdhfg l.jgp");
+        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
+        assertEquals(1, validations.size());
+        assertEquals("ImageLogo is too long, 128 characters allowed", validations.iterator().next().getMessage());
+    }
+
     private Hotel getHotel() {
         Hotel hotel = new Hotel();
         hotel.setName("hotel name");

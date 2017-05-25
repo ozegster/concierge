@@ -77,6 +77,7 @@ public class Hotel {
     private Time checkOut;
 
     @NotBlank(message = "Please enter the hotel logo")
+    @Size(max = 128, message = "ImageLogo is too long, 128 characters allowed")
     @Column(name = "image_logo")
     private String imageLogo;
 
