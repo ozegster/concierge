@@ -2,6 +2,7 @@
 div.stars {
   display: inline-block;
   line-height: normal;
+  vertical-align: bottom;
 }
 
 input.star {
@@ -38,9 +39,10 @@ label.star:hover {
 }
 
 .center {
-  line-height: 0px;
   text-align: center;
+  padding-top: 13px;
 }
+
 
 #description textarea {
   resize: none;
@@ -48,14 +50,15 @@ label.star:hover {
 }
 
 #logo-image {
-  display: block;
+  display: inline;
   margin: 0 auto;
   cursor: pointer;
   width: 280px;
   height: 40px;
+  alignment: left;
 }
 
 label[for=hotel-logo] {
   display: block;
-  text-align: center;
+  text-align: left;
 }
