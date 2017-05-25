@@ -134,6 +134,10 @@
             });
         };
 
+        $scope.handleCancelButton = function () {
+            $state.go('room.roomTypeOverview')
+        };
+
         $scope.closeRoomTypeModal = function () {
             $uibModalStack.dismissAll();
         };
