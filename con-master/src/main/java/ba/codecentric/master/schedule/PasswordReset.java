@@ -20,7 +20,7 @@ public class PasswordReset {
         this.roomCheckInRepository = roomCheckInRepository;
     }
 
-    @Scheduled(cron = "0 49 20 * * ?")
+    @Scheduled(cron = "0 0 12 * * ?")
     public void resetPassword() {
 
         for (RoomCheckIn roomCheckIn : roomCheckInRepository.findByCheckOutDate(new Date())) {
