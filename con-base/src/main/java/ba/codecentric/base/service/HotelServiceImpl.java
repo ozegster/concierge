@@ -30,12 +30,6 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    @Transactional
-    public Hotel getHotel() {
-        return hotelRepository.findFirstByOrderById();
-    }
-
-    @Override
     public Hotel findById(Integer hotelId) {
         return hotelRepository.findOne(hotelId);
     }
@@ -49,5 +43,12 @@ public class HotelServiceImpl implements HotelService {
     public boolean isExistingName(String name) {
         return hotelRepository.existsByName(name);
     }
-}
 
+    @Override
+    @Transactional
+    public Hotel getHotel() {
+        return hotelRepository.findFirstByOrderById();
+    }
+
+
+}

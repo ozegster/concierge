@@ -89,17 +89,6 @@
             }
         };
 
-        $scope.getFileFromImage = function (img) {
-            var byteArray = $scope.getByteFromBase64(img);
-            var fileImg = new File([byteArray], 'name.png');
-            var reader = new FileReader();
-            $scope.croppedImg = fileImg;
-
-            if ($scope.croppedImg) {
-                reader.readAsDataURL($scope.croppedImg);
-            }
-        };
-
         $scope.getByteFromBase64 = function (dataURI) {
             var byteString;
 
