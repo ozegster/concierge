@@ -16,6 +16,15 @@
             console.log(errorMessage);
         });
 
+        $scope.openModal = function () {
+            $scope.element = '#logo-image';
+            $uibModal.open({
+                templateUrl: 'app/theme/components/crop-image/crop-upload-imageLogo.html',
+                controller: 'ModalCtrl',
+                scope: $scope
+            })
+        };
+
         HotelService.getHotel().then(function (response) {
             $scope.hotel = response.data;
             if($scope.hotel.imageLogo != null) {
@@ -29,15 +38,6 @@
             $uibModalStack.dismissAll();
         };
 
-        $scope.openModal = function () {
-            $scope.element = '#logo-image';
-            $uibModal.open({
-                templateUrl: 'app/theme/components/crop-image/crop-upload-image.html',
-                controller: 'ModalCtrl',
-                scope: $scope
-            })
-        };
-
         $scope.submit = function (hotelForm) {
             if (hotelForm.$invalid) {
                 return;
@@ -45,6 +45,7 @@
             HotelService.saveHotel($scope.hotel, $scope.croppedImg).then(function (response) {
                 if (response.status === 200) {
                     toastr.success(response.data.name + ' has successfully saved', 'Save Hotel');
+                    hotel.$setPristine();
                     $scope.hotel = {};
                     angular.element("input[type='file']").val(null);
                     $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();

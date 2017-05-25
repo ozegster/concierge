@@ -49,11 +49,13 @@ label.star:hover {
 
 #logo-image {
   display: block;
-  max-width: 100%;
-  height: 30px;
+  margin: 0 auto;
+  cursor: pointer;
+  width: 280px;
+  height: 40px;
 }
 
-#label-logo {
+label[for=hotel-logo] {
   display: block;
-  text-align: left;
+  text-align: center;
 }

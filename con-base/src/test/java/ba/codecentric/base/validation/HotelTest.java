@@ -356,7 +356,7 @@ public class HotelTest {
         hotel.setDescription("description");
         hotel.setCheckIn("10:10");
         hotel.setCheckOut("11:11");
-        hotel.setImageLogo("image");
+        hotel.setImageLogo("image.jpg");
         hotel.setCountry(new Country());
 
         return hotel;
