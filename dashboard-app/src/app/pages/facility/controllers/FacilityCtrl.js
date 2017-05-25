@@ -92,6 +92,10 @@
             $state.go('facility');
         };
 
+        $scope.handleCancelButton = function () {
+            $state.go('facilityOverview')
+        };
+
         $scope.closeFacilityModal = function () {
             $uibModalStack.dismissAll();
         };
