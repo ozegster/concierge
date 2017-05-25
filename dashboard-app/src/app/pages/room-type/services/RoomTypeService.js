@@ -64,7 +64,7 @@
             var deleteRoomType = function (selectedRoomTypeId) {
                 return $http({
                     method: 'DELETE',
-                    url: SERVER_PATH.url + '/room-type/' + selectedRoomTypeId,
+                    url: SERVER_PATH.url + '/room-type/' + selectedRoomTypeId
                 }).then(function (response) {
                     return response;
                 }, function (error) {

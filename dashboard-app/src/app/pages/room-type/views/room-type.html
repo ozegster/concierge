@@ -111,6 +111,7 @@
                         <div class="pull-right">
                             <button type="submit" class="btn btn-primary btn-lg"  ng-disabled="(roomTypeForm.$invalid || isImageMissing()) && roomTypeForm.$submitted"
                                     ng-attr-title="{{roomTypeForm.$invalid && roomTypeForm.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
+                            <button type="button" class="btn btn-primary btn-lg" ng-click="handleCancelButton()">Cancel</button>
                         </div>
                     </div>
                 </div>
