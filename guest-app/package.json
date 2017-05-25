@@ -1,5 +1,7 @@
 {
   "name": "concierge-app",
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-webserver": "^0.9.1"
   }
 }
