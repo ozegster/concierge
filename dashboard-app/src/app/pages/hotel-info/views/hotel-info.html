@@ -13,7 +13,8 @@
                             </div>
                     </div>
                     <div class="form-group col-md-4">
-                        <div class="center">
+                        <label for="stars">Rating</label>
+                        <div class="alignment-stars">
                             <div class="stars" ng-class="{'has-error' : hotelInfo.rating.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.rating.$valid && hotelInfo.$submitted}">
                                 <input class="star star-5 form-control" id="star-5" type="radio" name="rating" value="5"
                                        ng-model="hotel.rating" ng-required="!hotel.rating">
@@ -39,12 +40,12 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="hotel-logo">Hotel logo</label>
-                            <div class="form-group" ng-class="{'has-error' : isImageMissing() && hotelInfo.$submitted, 'has-success' : !isImageMissing() && hotelInfo.$submitted}">
-                                <img ng-click="openModal()" class="img-responsive" ng-src="{{imageSrc}}" id="logo-image">
-                                <div class="centerText" ng-show="hotelInfo.$submitted">
-                                    <label class="help-block error-block basic-block" ng-show="isImageMissing()">Please enter the hotel logo</label>
-                                </div>
+                        <div class="form-group" ng-class="{'has-error' : isImageMissing() && hotelInfo.$submitted, 'has-success' : !isImageMissing() && hotelInfo.$submitted}">
+                            <img ng-click="openModal()" class="img-responsive" ng-src="{{imageSrc}}" id="logo-image">
+                            <div class="centerText" ng-show="hotelInfo.$submitted">
+                                <label class="help-block error-block basic-block" ng-show="isImageMissing()">Please enter the hotel logo</label>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>

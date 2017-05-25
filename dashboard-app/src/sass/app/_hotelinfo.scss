@@ -2,7 +2,6 @@
 div.stars {
   display: inline-block;
   line-height: normal;
-  vertical-align: bottom;
 }
 
 input.star {
@@ -11,7 +10,8 @@ input.star {
 
 label.star {
   float: right;
-  padding: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
   font-size: 36px;
   color: #D3D3D3;
 }
@@ -31,18 +31,15 @@ input.star:checked ~ label.star:before {
 label.star:before {
   content: '\f005';
   font-family: FontAwesome;
-
 }
 
 label.star:hover {
   cursor: pointer;
 }
 
-.center {
-  text-align: center;
-  padding-top: 13px;
+.alignment-stars {
+  text-align: left;
 }
-
 
 #description textarea {
   resize: none;
@@ -61,4 +58,10 @@ label.star:hover {
 label[for=hotel-logo] {
   display: block;
   text-align: left;
+}
+
+label[for=name] {
+  display: block;
+  text-align: left;
+  padding-bottom: 5px;
 }
