@@ -53,7 +53,7 @@
             var getAllRoomTypes = function () {
                 return $http({
                     method: 'GET',
-                    url: SERVER_PATH.url + '/room-types',
+                    url: SERVER_PATH.url + '/room-types'
                 }).then(function (response) {
                     return response;
                 }, function (error) {
@@ -64,7 +64,7 @@
             var deleteRoomType = function (selectedRoomTypeId) {
                 return $http({
                     method: 'DELETE',
-                    url: SERVER_PATH.url + '/room-type/' + selectedRoomTypeId,
+                    url: SERVER_PATH.url + '/room-type/' + selectedRoomTypeId
                 }).then(function (response) {
                     return response;
                 }, function (error) {
