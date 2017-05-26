@@ -1,6 +1,6 @@
 {
-  "name": "concierge-app",
-  "description": "Concierge App",
+  "name": "guest-app",
+  "description": "Guest App",
   "ignore": [
     "**/.*",
     "node_modules",
