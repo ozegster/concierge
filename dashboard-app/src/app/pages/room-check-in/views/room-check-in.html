@@ -51,15 +51,15 @@
 
                     </div>
                     <div id="contact-info" class="col-md-6 with-scroll" ba-panel ba-panel-title="Accomodation info">
-                        <div class="form-group" ng-controller="CheckInCtrl"
+                        <div class="form-group"
                              ng-class="{'has-error' : roomCheckIn.checkIn.$invalid && roomCheckIn.$submitted, 'has-success' : roomCheckIn.checkIn.$valid && roomCheckIn.$submitted}">
                             <label for="checkIn">Check-in</label>
                             <div class="form-group">
-                                <div class="input-group">
+                                <div class="datepicker input-group" ng-controller="DatepickerCtrl">
                                     <input type="text" class="form-control" name="checkIn" id="checkIn"
-                                           uib-datepicker-popup="{{format}}"
-                                           datepicker-options="options" ng-model="checkIn.checkIn" is-open="opened"
-                                           ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+                                           uib-datepicker-popup="{{format}}" datepicker-append-to-body="true"
+                                           datepicker-options="options" ng-model="checkIn.checkInDate" is-open="opened"
+                                           ng-required="true"  alt-input-formats="altInputFormats"
                                     />
                                     <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="open()"><i
@@ -70,15 +70,15 @@
                                        ng-show="roomCheckIn.checkIn.$error.required && roomCheckIn.$submitted">Please enter check-in date</label>
                             </div>
                         </div>
-                        <div class="form-group" ng-controller="CheckInCtrl"
+                        <div class="form-group"
                              ng-class="{'has-error' : roomCheckIn.checkOut.$invalid && roomCheckIn.$submitted, 'has-success' : roomCheckIn.checkOut.$valid && roomCheckIn.$submitted}">
                             <label for="checkOut">Check-out</label>
                             <div class="form-group">
-                                <div class="input-group">
+                                <div class="datepicker input-group" ng-controller="DatepickerCtrl">
                                     <input type="text" class="form-control" name="checkOut" id="checkOut"
-                                           uib-datepicker-popup="{{format}}"
-                                           datepicker-options="options" ng-model="checkIn.checkOut" is-open="opened"
-                                           required close-text="Close" alt-input-formats="altInputFormats"
+                                           uib-datepicker-popup="{{format}}" datepicker-append-to-body="true"
+                                           datepicker-options="options" ng-model="checkIn.checkOutDate" is-open="opened"
+                                           required alt-input-formats="altInputFormats"
                                     />
                                     <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="open()"><i

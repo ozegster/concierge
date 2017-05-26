@@ -8,27 +8,6 @@
     function CheckInCtrl($scope, toastr, CheckInService, $uibModal) {
 
         $scope.checkIn = {};
-        $scope.open = open;
-        $scope.opened = false;
-        $scope.openedCheckIn = false;
-        $scope.formats = 'dd.MM.yyyy';
-        $scope.options = {
-            showWeeks: false
-        };
-
-        function open() {
-            console.log($scope.opened);
-            $scope.opened = true;
-        //    $scope.opened = !$scope.opened;
-
-        }
-        $scope.openCheckIn = function () {
-            if($scope.checkIn ===null){
-                $scope.opened = false;
-            }
-            console.log($scope.openedCheckIn);
-            $scope.openedCheckIn = !$scope.openedCheckIn;
-        };
 
         $scope.getAvailableRooms = function (checkIn) {
             CheckInService.getAvailableRooms(checkIn).then(function (response) {
