@@ -6,7 +6,6 @@ gulp.task('guest-app-home', function () {
         .pipe(webserver({
             fallback:'src/index.html',
             open:true,
-            port: 3000,
             livereload: true
         }));
 });
