@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RoomBookingController {
+public class RoomCheckInController {
 
     private final RoomCheckInService roomCheckInService;
 
     @Autowired
-    public RoomBookingController(RoomCheckInService roomCheckInService) {
+    public RoomCheckInController(RoomCheckInService roomCheckInService) {
         this.roomCheckInService = roomCheckInService;
     }
 
