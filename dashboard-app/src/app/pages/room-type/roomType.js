@@ -37,10 +37,16 @@
                url: '/newRoom',
                templateUrl: 'app/pages/room-type/views/room.html',
                title: 'Room',
+               controller: 'RoomCtrl'
+           })
+           .state('room.roomOverview', {
+               url: '/roomOverview',
+               templateUrl: 'app/pages/room-type/views/room-overview.html',
+               title: 'Room',
                sidebarMeta: {
                    order: 0
                },
-               controller: 'RoomCtrl'
+               controller:'RoomCtrl'
            })
   }
 })();

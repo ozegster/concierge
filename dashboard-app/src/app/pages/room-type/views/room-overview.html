@@ -1,0 +1,48 @@
+<div class="widgets">
+    <div class="row">
+        <div class="col-md-12" ba-panel>
+            <div class="table-responsive">
+            <table class="table table-hover" st-table="listOfRooms" st-safe-src="roomCollection">
+                <thead>
+                    <tr>
+                       <td>
+                           <button type="button" class="btn btn-primary" ng-click="addNewRoomButton()">Add New Room</button>
+                       </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <input type="text" class="form-control" placeholder="Search" st-search="">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-3 text-center" st-sort="number" class="sortable-column">Room number</th>
+                        <th class="col-xs-3 text-center" st-sort="floorNumber" class="sortable-column">Floor number</th>
+                        <th class="col-xs-3 text-center" >Room type</th>
+                        <th class="col-xs-3 text-center" >Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="text-center" ng-repeat="room in listOfRooms">
+                        <td class="col-xs-3">{{room.number}}</td>
+                        <td class="col-xs-3">{{room.floorNumber}}</td>
+                        <td class="col-xs-3">{{room.roomType.name}}</td>
+                        <td class="col-xs-3">
+                            <div class="buttons">
+                                <button class="btn btn-primary editable-table-button btn-xs" ng-click="editRoomButton(room)">Edit</button>
+                                <button class="btn btn-danger editable-table-button btn-xs" ng-click="deleteRoomButton(room)">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr >
+                        <td colspan="4" class="text-center">
+                            <div st-pagination="" st-items-by-page="10"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>

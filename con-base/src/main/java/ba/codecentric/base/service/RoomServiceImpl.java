@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class RoomServiceImpl implements RoomService {
 
@@ -20,6 +22,18 @@ public class RoomServiceImpl implements RoomService {
     @Transactional
     public Room saveRoom(Room room) {
         return roomRepository.save(room);
+    }
+
+    @Override
+    @Transactional
+    public List<Room> getAllRooms() {
+        return roomRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void deleteRoom(Integer id) {
+        roomRepository.delete(id);
     }
 
 }
