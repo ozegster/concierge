@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('ConciergeApp',[]);
+angular.module('GuestApp',[]);
