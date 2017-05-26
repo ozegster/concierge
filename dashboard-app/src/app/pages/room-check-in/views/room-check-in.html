@@ -51,7 +51,7 @@
 
                     </div>
                     <div id="contact-info" class="col-md-6 with-scroll" ba-panel ba-panel-title="Accomodation info">
-                        <div class="form-group"
+                        <div class="form-group" ng-controller="CheckInCtrl"
                              ng-class="{'has-error' : roomCheckIn.checkIn.$invalid && roomCheckIn.$submitted, 'has-success' : roomCheckIn.checkIn.$valid && roomCheckIn.$submitted}">
                             <label for="checkIn">Check-in</label>
                             <div class="form-group">
@@ -70,7 +70,7 @@
                                        ng-show="roomCheckIn.checkIn.$error.required && roomCheckIn.$submitted">Please enter check-in date</label>
                             </div>
                         </div>
-                        <div class="form-group"
+                        <div class="form-group" ng-controller="CheckInCtrl"
                              ng-class="{'has-error' : roomCheckIn.checkOut.$invalid && roomCheckIn.$submitted, 'has-success' : roomCheckIn.checkOut.$valid && roomCheckIn.$submitted}">
                             <label for="checkOut">Check-out</label>
                             <div class="form-group">
