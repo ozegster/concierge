@@ -27,7 +27,7 @@ public class RoomCheckInServiceImpl implements RoomCheckInService {
 
     @Override
     public Iterable<Room> findAvailableRooms(CheckInRequest checkInRequest) {
-        return roomCheckInRepository.getAvailableRooms(checkInRequest.getNumberOfKids(), checkInRequest.getNumberOfAdults());
+        return roomCheckInRepository.getAvailableRooms(checkInRequest.getNumberOfKids(), checkInRequest.getNumberOfAdults(),checkInRequest.getCheckIn(),checkInRequest.getCheckOut());
     }
 
     private Integer getPassword() {
