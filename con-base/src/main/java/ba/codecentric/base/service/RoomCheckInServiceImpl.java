@@ -4,7 +4,6 @@ import ba.codecentric.base.domain.Room;
 import ba.codecentric.base.domain.RoomCheckIn;
 import ba.codecentric.base.helper.CheckInRequest;
 import ba.codecentric.base.repository.RoomCheckInRepository;
-import ba.codecentric.base.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +13,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RoomCheckInServiceImpl implements RoomCheckInService {
 
     private final RoomCheckInRepository roomCheckInRepository;
-    private final RoomRepository roomRepository;
 
     @Autowired
-    public RoomCheckInServiceImpl(RoomCheckInRepository roomCheckInRepository, RoomRepository roomRepository) {
+    public RoomCheckInServiceImpl(RoomCheckInRepository roomCheckInRepository) {
         this.roomCheckInRepository = roomCheckInRepository;
-        this.roomRepository = roomRepository;
     }
 
     @Override
@@ -30,7 +27,7 @@ public class RoomCheckInServiceImpl implements RoomCheckInService {
 
     @Override
     public Iterable<Room> findAvailableRooms(CheckInRequest checkInRequest) {
-        return roomRepository.getAvailableRooms(checkInRequest.getNumberOfKids(), checkInRequest.getNumberOfAdults());
+        return roomCheckInRepository.getAvailableRooms(checkInRequest.getNumberOfKids(), checkInRequest.getNumberOfAdults());
     }
 
     private Integer getPassword() {

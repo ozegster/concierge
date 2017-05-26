@@ -27,7 +27,6 @@ public class RoomCheckInController {
 
     @PutMapping(value = "/get/available/rooms")
     public Iterable<Room> getAvailableRooms(@RequestBody CheckInRequest checkInRequest) {
-        Iterable<Room> rooms = roomCheckInService.findAvailableRooms(checkInRequest);
         return roomCheckInService.findAvailableRooms(checkInRequest);
     }
 
