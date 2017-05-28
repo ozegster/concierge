@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -21,26 +25,37 @@ public class RoomCheckIn {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotBlank(message = "Please enter name of guest")
+    @NotBlank(message = "Please enter guest name")
     @Size(max = 128, message = "Name is too long, 128 characters allowed")
     private String name;
 
-    @NotBlank(message = "Please enter name of guest")
-    @Size(max = 128, message = "Name is too long, 128 characters allowed")
+    @NotBlank(message = "Please enter guest last name")
+    @Size(max = 128, message = "Last name is too long, 128 characters allowed")
     @Column(name = "last_name")
     private String lastName;
 
+    @NotBlank(message = "Please enter a email")
+    @Size(max = 45, message = "Email is too long, 45 characters allowed")
+    @Pattern(regexp = "^\\w+[\\w\\.]*@\\w+((-\\w+)|(\\w*))\\.[a-z]{2,20}$", message = "Please enter a valid email address e.g. info@hotel.com")
     private String email;
 
+    @NotNull(message = "Please enter check-in date")
     @Column(name = "check_in")
     private Date checkIn;
 
+    @NotNull(message = "Please enter check-out date")
     @Column(name = "check_out")
     private Date checkOut;
 
+    @NotNull(message = "Please enter number of adults")
+    @Min(value = 1, message = "Minimum number of adults is 1")
+    @Max(value = 6, message = "Maximum number of adults is 6")
     @Column(name = "number_of_adults")
     private Integer numberOfAdults;
 
+    @NotNull(message = "Please enter number of kids")
+    @Min(value = 0, message = "Minimum number of kids is 0")
+    @Max(value = 3, message = "Maximum number of kids is 3")
     @Column(name = "number_of_kids")
     private Integer numberOfKids;
 

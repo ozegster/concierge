@@ -3,7 +3,7 @@
         <form id="room-check-in-form" name="roomCheckInForm" ng-submit="submit(roomCheckInForm)" autocomplete="off" novalidate>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="col-md-6" ba-panel ba-panel-title="Guest">
+                    <div class="col-md-6 info-guest" ba-panel ba-panel-title="Guest">
                         <div class="form-group"
                              ng-class="{'has-error' : roomCheckInForm.name.$invalid && roomCheckInForm.$submitted, 'has-success' : roomCheckInForm.name.$valid && roomCheckInForm.$submitted}">
                             <label for="name">Name</label>
@@ -50,7 +50,7 @@
                         </div>
 
                     </div>
-                    <div id="contact-info" class="col-md-6 with-scroll" ba-panel ba-panel-title="Accomodation info">
+                    <div id="accomodation-info" class="col-md-6 with-scroll" ba-panel ba-panel-title="Accomodation info">
                         <div class="form-group"
                              ng-class="{'has-error' : roomCheckInForm.checkIn.$invalid && roomCheckInForm.$submitted, 'has-success' : roomCheckInForm.checkIn.$valid && roomCheckInForm.$submitted}">
                             <label for="checkIn">Check-in</label>
@@ -118,7 +118,7 @@
                         </div>
                         <div class="pull-right">
                             <button type="button" class="btn btn-primary btn-xs" ng-click="getAvailableRooms()"
-                                    ng-disabled="roomCheckInForm.numberOfKids.$invalid && roomCheckInForm.numberOfAdults.$invalid"
+                                    ng-disabled="roomCheckInForm.numberOfKids.$invalid || roomCheckInForm.numberOfAdults.$invalid || roomCheckInForm.checkOut.$invalid || roomCheckInForm.checkOut.$invalid"
                                     ng-attr-title="{{roomCheckInForm.$invalid && roomCheckInForm.$submitted ? 'Invalid input(s) found' : ''}}">
                                 Room search
                             </button>
