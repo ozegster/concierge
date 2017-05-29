@@ -8,6 +8,7 @@ import ba.codecentric.base.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 @Service
@@ -37,7 +38,31 @@ public class RoomCheckInServiceImpl implements RoomCheckInService {
 
     @Override
     public Iterable<Room> findAvailableRooms(CheckInRequest checkInRequest) {
-        return roomCheckInRepository.getAvailableRooms(checkInRequest.getNumberOfKids(), checkInRequest.getNumberOfAdults(), checkInRequest.getCheckIn(), checkInRequest.getCheckOut());
+
+        ArrayList<Room> availableRooms = new ArrayList<>();
+
+        for (Room room : roomRepository.findRoomsWithNumberOfPeople(checkInRequest.getNumberOfKids(), checkInRequest.getNumberOfAdults())) {
+            ArrayList<RoomCheckIn> checkInRooms = (ArrayList<RoomCheckIn>) roomCheckInRepository.findByRoom(room);
+
+            if (checkInRooms.size() == 0) {
+                availableRooms.add(room);
+            } else {
+                boolean removed = false;
+                for (RoomCheckIn roomCheckIn : roomCheckInRepository.findByRoom(room)) {
+                    if (checkInRequest.getCheckOut().before(roomCheckIn.getCheckIn()) || checkInRequest.getCheckIn().after(roomCheckIn.getCheckOut())) {
+                        if (!removed) {
+                            if (!availableRooms.contains(room)) {
+                                availableRooms.add(room);
+                            }
+                        }
+                    } else {
+                        availableRooms.remove(room);
+                        removed = true;
+                    }
+                }
+            }
+        }
+        return availableRooms;
     }
 
     private Integer getPassword() {
