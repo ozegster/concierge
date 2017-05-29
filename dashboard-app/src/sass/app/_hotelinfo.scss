@@ -2,6 +2,7 @@
 div.stars {
   display: inline-block;
   line-height: normal;
+  alignment: left;
 }
 
 input.star {
@@ -10,15 +11,27 @@ input.star {
 
 label.star {
   float: right;
-  padding-right: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
   font-size: 36px;
   color: #D3D3D3;
+
 }
 
 @media screen
-and (max-width: 500px){
+and (max-width: 400px) {
   label.star {
     font-size: 20px;
+  }
+}
+
+@media screen
+and (max-width: 991px) {
+  .alignment-stars {
+    text-align: left !important;
+  }
+  .rating {
+    padding-left: 0 !important;
   }
 }
 
@@ -37,7 +50,7 @@ label.star:hover {
 }
 
 .alignment-stars {
-  text-align: left;
+  text-align: center;
 }
 
 #description textarea {
@@ -49,9 +62,8 @@ label.star:hover {
   display: inline;
   margin: 0 auto;
   cursor: pointer;
-  width: 280px;
-  height: 40px;
-  alignment: left;
+  width: 230px;
+  height: 50px;
 }
 
 label[for=hotel-logo] {
@@ -64,3 +76,9 @@ label[for=name] {
   text-align: left;
   padding-bottom: 5px;
 }
+
+.rating {
+  text-align: left;
+  padding-left: 35px;
+}
+

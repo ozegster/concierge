@@ -15,12 +15,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import org.apache.log4j.Logger;
 
 @RestController
 public class HotelController {
 
     private final HotelService hotelService;
     private final ImageService imageService;
+    private final static Logger LOG = Logger.getLogger(HotelController.class);
 
     @Autowired
     public HotelController(HotelService hotelService, ImageService imageService) {
@@ -30,7 +32,7 @@ public class HotelController {
 
     @PostMapping(value = "/hotels", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Hotel saveHotel(@RequestPart("image") MultipartFile image, @Valid @RequestPart("hotel") Hotel hotel) throws IOException {
-
+        LOG.info("Save Hotel info: " + hotel.getName());
         String imageName = "";
         Integer hotelId = hotel.getId();
 

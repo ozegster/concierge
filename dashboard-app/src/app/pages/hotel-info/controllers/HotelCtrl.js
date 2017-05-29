@@ -7,7 +7,7 @@
     HotelCtrl.$inject = ['HotelService', '$scope', 'toastr', '$uibModal', '$uibModalStack'];
     function HotelCtrl(HotelService, $scope, toastr, $uibModal, $uibModalStack) {
         $scope.hotel = {};
-        $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
+        $scope.imageSrc = 'assets/img/placeholder-hotel-logo.jpg?_ts=' + new Date().getTime();
 
         // getting countries from database to show in select box
         HotelService.getCountries().then(function (response) {
@@ -48,7 +48,7 @@
                     hotel.$setPristine();
                     $scope.hotel = {};
                     angular.element("input[type='file']").val(null);
-                    $scope.imageSrc = 'assets/img/placeholder.png?_ts=' + new Date().getTime();
+                    $scope.imageSrc = 'assets/img/placeholder-hotel-logo.jpg?_ts=' + new Date().getTime();
                 } else {
                     if (response.data.errors) {
                         angular.forEach(response.data.errors, function (value, key) {
