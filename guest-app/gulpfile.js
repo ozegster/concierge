@@ -6,6 +6,7 @@ gulp.task('serve', function () {
         .pipe(webserver({
             fallback:'src/index.html',
             open:true,
-            livereload: true
+            livereload: true,
+            port: 8000
         }));
 });
