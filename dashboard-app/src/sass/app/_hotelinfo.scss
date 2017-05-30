@@ -11,8 +11,7 @@ input.star {
 
 label.star {
   float: right;
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-left: 10px;
   font-size: 36px;
   color: #D3D3D3;
 
@@ -31,7 +30,7 @@ and (max-width: 991px) {
     text-align: left !important;
   }
   .rating {
-    padding-left: 0 !important;
+    padding-left: 12px !important;
   }
 }
 
