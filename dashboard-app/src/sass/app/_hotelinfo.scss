@@ -2,7 +2,7 @@
 div.stars {
   display: inline-block;
   line-height: normal;
-  alignment: left;
+  alignment: center;
 }
 
 input.star {
@@ -35,6 +35,12 @@ and (max-width: 991px) {
   }
 }
 
+@media screen
+  and (max-height:400px ) {
+
+}
+
+
 input.star:checked ~ label.star:before {
   content: '\f005';
   color: #ffe80a;
@@ -51,6 +57,7 @@ label.star:hover {
 
 .alignment-stars {
   text-align: center;
+  padding-left: 0px;
 }
 
 #description textarea {
@@ -78,7 +85,7 @@ label[for=name] {
 }
 
 .rating {
-  text-align: left;
-  padding-left: 35px;
+  text-align: center;
+  padding-left:0px;
 }
 
