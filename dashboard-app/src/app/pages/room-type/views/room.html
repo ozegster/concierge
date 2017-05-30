@@ -94,8 +94,12 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary btn-lg pull-right"  ng-disabled="roomForm.$invalid && roomForm.$submitted"
-                            ng-attr-title="{{roomForm.$invalid && roomForm.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-primary btn-lg"
+                                ng-disabled="roomForm.$invalid && roomForm.$submitted"
+                                ng-attr-title="{{roomForm.$invalid && roomForm.$submitted ? 'Invalid input(s) found' : ''}}">Save</button>
+                        <button type="button" class="btn btn-primary btn-lg" ng-click="cancelButton()">Cancel</button>
+                    </div>
                 </div>
             </div>
         </form>

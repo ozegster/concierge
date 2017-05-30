@@ -38,7 +38,14 @@
                     $state.go('room.roomTypeOverview');
 
                 } else {
-                    toastr.error(response.data.name + ' has not been saved successfully', 'Save Room type');
+                    if (response.data.errors) {
+                        roomTypeForm.roomTypeName.$invalid = true;
+                        angular.forEach(response.data.errors, function (value, key) {
+                            toastr.error(response.data.errors[key].defaultMessage, 'Error');
+                        });
+                    } else {
+                        toastr.error(response.data.error, 'Error');
+                    }
                 }
             }, function (error) {
                 console.log(error);
@@ -125,6 +132,10 @@
                 controller: 'RoomTypeCtrl',
                 scope: $scope
             });
+        };
+
+        $scope.handleCancelButton = function () {
+            $state.go('room.roomTypeOverview')
         };
 
         $scope.closeRoomTypeModal = function () {
