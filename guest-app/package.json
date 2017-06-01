@@ -2,6 +2,9 @@
   "name": "guest-app",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-webserver": "^0.9.1"
+    "gulp-inject": "^4.2.0",
+    "gulp-main-bower-files": "^1.6.2",
+    "gulp-webserver": "^0.9.1",
+    "run-sequence": "^1.2.2"
   }
 }
