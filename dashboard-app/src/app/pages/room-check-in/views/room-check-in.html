@@ -145,44 +145,52 @@
                     </div>
                 </div>
                 <div class="col-md-12" ba-panel ba-panel-title="Available rooms">
-                    <table class="table table-hover" st-table="availableRooms" st-safe-src="rowCollection">
-                        <thead>
-                        <tr>
-                            <th st-sort="number" class="sortable-column" st-sort-default="true">Number</th>
-                            <th st-sort="roomType.name" class="sortable-column">Name</th>
-                            <th st-sort="floorNumber" class="sortable-column">Floor</th>
-                            <th>Adults</th>
-                            <th>Kids</th>
-                            <th>Bed Type</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="rooms in availableRooms">
-                            <td>{{rooms.number}}</td>
-                            <td>{{rooms.roomType.name}}</td>
-                            <td>{{rooms.floorNumber}}</td>
-                            <td>{{rooms.roomType.numberOfPeople}}</td>
-                            <td>{{rooms.roomType.numberOfKids}}</td>
-                            <td>{{rooms.roomType.bedType.type}}</td>
-                            <td>
-                                <div class="col-md-4">
-                                    <label class="radio-inline custom-radio nowrap">
-                                        <input type="radio" name="roomId" id="roomId" ng-model="roomCheckIn.room.id"
-                                               value="{{rooms.id}}" required>
-                                        <span>Select room</span>
-                                    </label>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4"></td>
-                        </tr>
-                        </tfoot>
-                    </table>
+                    <div class="form-group"
+                         ng-class="{'has-error' : roomCheckInForm.roomId.$invalid && roomCheckInForm.$submitted, 'has-success' : roomCheckInForm.roomId.$valid && roomCheckInForm.$submitted}">
+                        <table class="table table-hover" st-table="availableRooms" st-safe-src="rowCollection">
+                            <thead>
+                            <tr>
+                                <th st-sort="number" class="sortable-column" st-sort-default="true">Number</th>
+                                <th st-sort="roomType.name" class="sortable-column">Name</th>
+                                <th st-sort="floorNumber" class="sortable-column">Floor</th>
+                                <th>Adults</th>
+                                <th>Kids</th>
+                                <th>Bed Type</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="rooms in availableRooms">
+                                <td>{{rooms.number}}</td>
+                                <td>{{rooms.roomType.name}}</td>
+                                <td>{{rooms.floorNumber}}</td>
+                                <td>{{rooms.roomType.numberOfPeople}}</td>
+                                <td>{{rooms.roomType.numberOfKids}}</td>
+                                <td>{{rooms.roomType.bedType.type}}</td>
+                                <td>
+                                    <div class="col-md-4">
 
+                                        <label class="radio-inline custom-radio nowrap">
+                                            <input type="radio" name="roomId" id="roomId" ng-model="roomCheckIn.room.id"
+                                                   value="{{rooms.id}}" required>
+                                            <span>Select room</span>
+                                        </label>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4"></td>
+                            </tr>
+                            </tfoot>
+                        </table>
+                        <div ng-show="roomCheckInForm.$submitted">
+                            <label class="help-block error-block basic-block"
+                                   ng-show="roomCheckInForm.roomId.$error.required">Please select available room</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row">
