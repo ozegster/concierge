@@ -4,7 +4,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  font-size: 20px;
+  font-size: 25px;
   transform: translate(-50%, -50%);
   color : white;
   text-shadow:0 1px 2px black;
@@ -16,31 +16,36 @@
 }
 
 .img-container:hover {
-  opacity: 0.9;
-}
-
-.panel-container{
-  margin-left: 15%;
+  opacity: 0.8;
 }
 
 .panel-title{
-  font-size: 50px;
+  font-size: 70px;
   color : white;
   text-shadow:1px 2px 3px black;
 }
 
-@media (max-width: 300px) {
+@media (max-width: 350px) {
   .img-title {
-    font-size: 8px;
+    font-size: 6px;
   }
   .panel-title{
-    font-size: 250px;
+    font-size: 15px;
   }
 }
 
-@media (min-width : 301px) and (max-width: 768px) {
+@media (min-width : 351px) and (max-width: 500px) {
   .img-title {
     font-size: 15px;
+  }
+  .panel-title{
+    font-size: 25px;
+  }
+}
+
+@media (min-width : 501px) and (max-width: 768px) {
+  .img-title {
+    font-size: 20px;
   }
   .panel-title{
     font-size: 35px;
@@ -48,8 +53,11 @@
 }
 
 .row{
-  margin-bottom: 10px;
   text-align: center;
+  width:75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
 }
 
 .panel-header{
@@ -59,5 +67,6 @@
 .logo{
   margin: 0 auto;
 }
+
 
 
