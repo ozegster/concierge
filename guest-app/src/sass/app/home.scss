@@ -1,0 +1,63 @@
+
+.img-title {
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 20px;
+  transform: translate(-50%, -50%);
+  color : white;
+  text-shadow:0 1px 2px black;
+}
+
+.img-container {
+  position: relative;
+  cursor : pointer;
+}
+
+.img-container:hover {
+  opacity: 0.9;
+}
+
+.panel-container{
+  margin-left: 15%;
+}
+
+.panel-title{
+  font-size: 50px;
+  color : white;
+  text-shadow:1px 2px 3px black;
+}
+
+@media (max-width: 300px) {
+  .img-title {
+    font-size: 8px;
+  }
+  .panel-title{
+    font-size: 250px;
+  }
+}
+
+@media (min-width : 301px) and (max-width: 768px) {
+  .img-title {
+    font-size: 15px;
+  }
+  .panel-title{
+    font-size: 35px;
+  }
+}
+
+.row{
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.panel-header{
+  text-align: center;
+}
+
+.logo{
+  margin: 0 auto;
+}
+
+
