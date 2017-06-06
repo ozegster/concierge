@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class FacilityServiceImpl implements FacilityService {
 
@@ -30,8 +32,30 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
+
     public boolean isExistingName(String name){
         return facilityRepository.existsByFacilityName(name);
     }
 
+    @Transactional
+    public List<Facility>getAllFacilities() {
+        return facilityRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public void deleteFacility(Integer facilityId) {
+        facilityRepository.deleteById(facilityId);
+    }
+
+    @Override
+    public Facility findById(Integer facilityId) {
+        return facilityRepository.findOne(facilityId);
+    }
+
+    @Override
+    public String findImagePathById(Integer facilityId) {
+        return facilityRepository.findImagePathById(facilityId);
+
+    }
 }

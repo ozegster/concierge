@@ -15,8 +15,32 @@
 
             };
 
+            var getAllRooms = function () {
+                return $http({
+                    method: 'GET',
+                    url: SERVER_PATH.url + '/rooms'
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            };
+
+            var deleteRoom = function (roomId) {
+                return $http({
+                    method: 'DELETE',
+                    url: SERVER_PATH.url + '/rooms/' + roomId
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            };
+
             return {
-                saveRoom: saveRoom
+                saveRoom: saveRoom,
+                deleteRoom: deleteRoom,
+                getAllRooms: getAllRooms
             };
         }])
 })();

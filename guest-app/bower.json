@@ -1,0 +1,17 @@
+{
+  "name": "guest-app",
+  "description": "Guest App",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.8",
+    "angular-ui-router": "~0.3.2",
+    "angular-animate": "~1.5.8",
+    "bootstrap": "~3.3.5"
+  }
+}
