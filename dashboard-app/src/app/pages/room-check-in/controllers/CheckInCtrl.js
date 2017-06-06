@@ -40,6 +40,8 @@
                     });
                     roomCheckInForm.$setPristine();
                     roomCheckInForm.$setUntouched();
+                    $scope.rowCollection = [];
+                    $scope.availableRooms = [];
                     $scope.roomCheckIn = {};
                 } else {
                     toastr.error(response.data.error, 'Error');
