@@ -38,17 +38,14 @@
             $uibModalStack.dismissAll();
         };
 
-        $scope.submit = function (hotelForm) {
-            if (hotelForm.$invalid) {
+        $scope.submit = function (hotel) {
+            if (hotel.$invalid) {
                 return;
             }
             HotelService.saveHotel($scope.hotel, $scope.croppedImg).then(function (response) {
                 if (response.status === 200) {
                     toastr.success(response.data.name + ' has successfully saved', 'Save Hotel');
                     hotel.$setPristine();
-                    $scope.hotel = {};
-                    angular.element("input[type='file']").val(null);
-                    $scope.imageSrc = 'assets/img/placeholder-hotel-logo.jpg?_ts=' + new Date().getTime();
                 } else {
                     if (response.data.errors) {
                         angular.forEach(response.data.errors, function (value, key) {
