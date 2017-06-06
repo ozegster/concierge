@@ -14,6 +14,7 @@
             };
 
             var saveFacility = function (facility, image) {
+                console.log(SERVER_PATH);
                 if (image) {
                     facility.image = image.name;
                 } else {
@@ -83,12 +84,27 @@
                 });
             };
 
+            var isExistingName = function (name) {
+                return $http({
+                    method: 'GET',
+                    params : { name : name},
+                    url: SERVER_PATH.url + '/facilities'
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            };
+
+
             return {
                 getFacilityType: getFacilityType,
                 saveFacility: saveFacility,
+                isExistingName: isExistingName
                 getAllFacilities: getAllFacilities,
                 deleteFacility: deleteFacility,
                 getImage: getImage
+
             };
 
         }

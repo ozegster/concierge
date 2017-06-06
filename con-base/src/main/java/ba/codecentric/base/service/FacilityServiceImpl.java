@@ -32,6 +32,11 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
+
+    public boolean isExistingName(String name){
+        return facilityRepository.existsByFacilityName(name);
+    }
+
     @Transactional
     public List<Facility>getAllFacilities() {
         return facilityRepository.findAll();
