@@ -1,4 +1,9 @@
 
+.panel-container{
+  margin-top:3%;
+  margin-bottom:5%;
+}
+
 .img-title {
   margin: 0 auto;
   position: absolute;
@@ -20,35 +25,44 @@
 }
 
 .panel-title{
-  font-size: 70px;
+  font-size: 80px;
   color : white;
   text-shadow:1px 2px 3px black;
 }
 
-@media (max-width: 350px) {
+@media (max-width: 400px) {
   .img-title {
     font-size: 6px;
   }
   .panel-title{
-    font-size: 15px;
+    font-size: 20px;
   }
 }
 
-@media (min-width : 351px) and (max-width: 500px) {
+@media (min-width : 401px) and (max-width: 500px) {
+  .img-title {
+    font-size: 10px;
+  }
+  .panel-title{
+    font-size: 30px;
+  }
+}
+
+@media (min-width : 501px) and (max-width: 700px) {
   .img-title {
     font-size: 15px;
   }
   .panel-title{
-    font-size: 25px;
+    font-size: 40px;
   }
 }
 
-@media (min-width : 501px) and (max-width: 768px) {
+@media (min-width : 701px) and (max-width: 850px) {
   .img-title {
     font-size: 20px;
   }
   .panel-title{
-    font-size: 35px;
+    font-size: 60px;
   }
 }
 
@@ -57,7 +71,7 @@
   width:75%;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10px;
+  margin-top: 25px;
 }
 
 .panel-header{
