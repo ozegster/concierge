@@ -11,8 +11,7 @@
 
         $scope.getAvailableRooms = function () {
             if ($scope.roomCheckIn.checkOut < $scope.roomCheckIn.checkIn) {
-                return $scope.roomCheckInForm.checkOut.$setValidity('smallerDate', false);
-                // return toastr.error('Room check-out date is less than check-in', 'Error');
+                return toastr.error('Room check-out date is less than check-in', 'Error');
             }
             CheckInService.getAvailableRooms($scope.roomCheckIn).then(function (response) {
 
@@ -29,8 +28,7 @@
                 return toastr.error('Select available room', 'Error');
             }
             if ($scope.roomCheckIn.checkOut < $scope.roomCheckIn.checkIn) {
-                return $scope.roomCheckInForm.checkOut.$setValidity('smallerDate', false);
-                // return toastr.error('Room check-out date is less than check-in', 'Error');
+                return toastr.error('Room check-out date is less than check-in', 'Error');
             }
             CheckInService.saveCheckIn($scope.roomCheckIn).then(function (response) {
                 if (response.status === 200) {
