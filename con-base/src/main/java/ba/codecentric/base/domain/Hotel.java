@@ -1,6 +1,7 @@
 package ba.codecentric.base.domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -74,6 +75,11 @@ public class Hotel {
     @NotNull(message = "Please enter a valid Check-out time")
     @Column(name = "check_out")
     private Time checkOut;
+
+    @NotBlank(message = "Please enter the hotel logo")
+    @Size(max = 128, message = "ImageLogo is too long, 128 characters allowed")
+    @Column(name = "image_logo")
+    private String imageLogo;
 
     @ManyToOne
     @JoinColumn(name = "country_id")
@@ -181,7 +187,7 @@ public class Hotel {
     }
 
     public void setCheckIn(String checkIn) {
-            this.checkIn = parseStringToTime(checkIn);
+        this.checkIn = parseStringToTime(checkIn);
     }
 
     public Time getCheckOut() {
@@ -189,19 +195,27 @@ public class Hotel {
     }
 
     public void setCheckOut(String checkOut) {
-            this.checkOut = parseStringToTime(checkOut);
+        this.checkOut = parseStringToTime(checkOut);
+    }
+
+    public String getImageLogo() {
+        return imageLogo;
+    }
+
+    public void setImageLogo(String imageLogo) {
+        this.imageLogo = imageLogo;
     }
 
     public boolean isParsable(String time) {
         final String TIME_WITHOUT_SECONDS = ("^([0-1]\\d|2[0-3]):([0-5]\\d)$");
-          return (time != null) && time.matches(TIME_WITHOUT_SECONDS);
+        return (time != null) && time.matches(TIME_WITHOUT_SECONDS);
     }
 
     public Time parseStringToTime(String time) {
         final String EXTEND_SECONDS = ":00";
-        if(isParsable(time)){
+        if (isParsable(time)) {
             return Time.valueOf(time + EXTEND_SECONDS);
-        }  else {
+        } else {
             return null;
         }
     }

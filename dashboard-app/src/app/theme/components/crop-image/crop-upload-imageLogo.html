@@ -1,0 +1,20 @@
+
+<div  class="modal-container">
+    <div class="modal-content modal-md">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+                <em class="ion-ios-close-empty sn-link-close"></em>
+            </button>
+            <h4 class="modal-title">CROP AND UPLOAD LOGO</h4>
+        </div>
+        <div class="modal-body">
+            <canvas canvas-placeholder-hotel-logo class="modal-canvas" width="400" height="100" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="400" crop-height="100" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
+            <input ng-show="false" type="file" img-cropper-fileread image="cropper.sourceImage" id="upload-image" accept="image/jpeg, image/gif, image/png">
+        </div>
+        <div class="text-center footer">
+            <button type="button" class="btn btn-primary btn-responsive" ng-click="getFileSystem()">Upload Logo</button>
+            <button type="button" class="btn btn-primary btn-responsive" ng-click="getCroppedImage()">Add Logo</button>
+            <button type="button" class="btn btn-primary btn-responsive" ng-click="closeModal()">Cancel</button>
+        </div>
+    </div>
+</div>

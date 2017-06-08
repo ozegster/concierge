@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
@@ -75,5 +75,10 @@ public class FacilityController {
     @GetMapping(value = "/facility/image/{imageName:.+}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     public InputStreamResource getImage(@PathVariable String imageName) throws IOException {
         return new InputStreamResource(imageService.loadImage(imageName));
+    }
+
+    @GetMapping(value = "/facilities")
+    public boolean isExistingName(@RequestParam("name") String name){
+        return facilityService.isExistingName(name);
     }
 }

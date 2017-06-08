@@ -34,7 +34,7 @@ public class HotelTest {
     public void hotelIsEmpty() {
         Hotel hotel = new Hotel();
         Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
-        assertEquals(12, validations.size());
+        assertEquals(13, validations.size());
     }
 
     @Test
@@ -342,6 +342,15 @@ public class HotelTest {
         assertEquals(time, result);
     }
 
+    @Test
+    public void imageLogoIsTooLong() {
+        Hotel hotel = getHotel();
+        hotel.setImageLogo("lkjsdfh glksjdh fglksjhdf glskjdhf gljkshd flgjkh slfdhgslkjdh glkjshd flgjhs ldfjh glsjdkh gljksh dlfjhg sljkdh gfljkh dslfjhg slkjdhfg l.jgp");
+        Set<ConstraintViolation<Hotel>> validations = validator.validate(hotel);
+        assertEquals(1, validations.size());
+        assertEquals("ImageLogo is too long, 128 characters allowed", validations.iterator().next().getMessage());
+    }
+
     private Hotel getHotel() {
         Hotel hotel = new Hotel();
         hotel.setName("hotel name");
@@ -356,6 +365,7 @@ public class HotelTest {
         hotel.setDescription("description");
         hotel.setCheckIn("10:10");
         hotel.setCheckOut("11:11");
+        hotel.setImageLogo("image.jpg");
         hotel.setCountry(new Country());
 
         return hotel;

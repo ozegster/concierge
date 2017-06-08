@@ -1,7 +1,7 @@
 package ba.codecentric.base.domain;
 
+import ba.codecentric.base.validation.annotation.UniqueFacilityName;
 import org.hibernate.validator.constraints.NotBlank;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,6 +22,7 @@ public class Facility {
     @Column(name = "facility_name")
     @NotBlank(message = "Please enter name of the facility")
     @Size(max = 80, message = "Facility name is too long, 80 characters allowed")
+    @UniqueFacilityName
     private String facilityName;
 
     @NotBlank(message = "Please add facility description")
