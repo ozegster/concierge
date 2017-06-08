@@ -8,4 +8,9 @@ public interface HotelService {
 
     Hotel getHotel();
 
+    Hotel findById(Integer hotelId);
+
+    String findImagePathById(Integer hotelId);
+
+    boolean isExistingName(String name);
 }
