@@ -15,16 +15,21 @@
             };
 
             var saveHotel = function (hotel, image) {
-                if (image) {
-                    hotel.imageLogo = image.name;
-                } else {
-                    hotel.imageLogo = '';
-                }
+                var byte = [];
                 var fd = new FormData();
+
+                if (typeof image == 'string') {
+                    byte = getBlobFromBase64(image);
+                    hotel.imageLogo = "name";
+                    fd.append('image', new Blob([byte]));
+                } else {
+                    fd.append('image',image);
+                }
+                //hotel.imageLogo = "name";
+
                 fd.append('hotel', new Blob([JSON.stringify(hotel)], {
                     type: "application/json"
                 }));
-                fd.append('image', image);
 
                 return $http({
                     method: 'POST',
@@ -37,6 +42,22 @@
                 }, function (error) {
                     return error;
                 })
+            };
+
+            function getBlobFromBase64(dataURI) {
+                var byteString;
+
+                if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+                    byteString = atob(dataURI.split(',')[1]);
+                } else {
+                    byteString = unescape(dataURI.split(',')[1]);
+                }
+                var bytes = new Uint8Array(new ArrayBuffer(byteString.length));
+
+                for (var i = 0; i < byteString.length; i++) {
+                    bytes[i] = byteString.charCodeAt(i);
+                }
+                return bytes;
             };
 
             var getHotel = function () {
