@@ -28,7 +28,8 @@
         HotelService.getHotel().then(function (response) {
             $scope.hotel = response.data;
             if($scope.hotel.imageLogo != null) {
-                //$scope.loadImage($scope.hotel.imageLogo);
+                var panelImage = angular.element(document.querySelector('#logo-image'));
+                panelImage.attr('src', $scope.hotel.imageLogo);
             } else $scope.hotel.imageLogo = $scope.imageSrc;
         }, function (error) {
             console.log(error);
@@ -60,15 +61,6 @@
             });
 
             $scope.closeHotelModal();
-        };
-
-        $scope.loadImage = function (image) {
-            HotelService.getImageLogo(image).then(function (data) {
-                var panelImage = angular.element(document.querySelector('#logo-image'));
-                panelImage.attr('src', 'data:image/jpeg;base64,' + data);
-                var base64Image = 'data:image/jpeg;base64,' + data;
-                $scope.getFileFromImage(base64Image)
-            });
         };
 
         $scope.isImageMissing = function () {
