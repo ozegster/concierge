@@ -30,7 +30,10 @@
             if($scope.hotel.imageLogo != null) {
                 var panelImage = angular.element(document.querySelector('#logo-image'));
                 panelImage.attr('src', $scope.hotel.imageLogo);
-            } else $scope.hotel.imageLogo = $scope.imageSrc;
+                $scope.croppedImg = response.data.imageLogo;
+            } else {
+                $scope.hotel.imageLogo = $scope.imageSrc;
+            }
         }, function (error) {
             console.log(error);
         });
@@ -40,7 +43,7 @@
         };
 
         $scope.submit = function (hotel) {
-            if (hotel.$invalid) {
+            if (hotel.$invalid || $scope.isImageMissing()) {
                 return;
             }
             HotelService.saveHotel($scope.hotel, $scope.croppedImg).then(function (response) {
