@@ -77,7 +77,7 @@ public class FacilityController {
         return new InputStreamResource(imageService.loadImage(imageName));
     }
 
-    @GetMapping(value = "/facilities")
+    @GetMapping(value = "/facilitiess")
     public boolean isExistingName(@RequestParam("name") String name){
         return facilityService.isExistingName(name);
     }

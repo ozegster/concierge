@@ -28,7 +28,7 @@
         HotelService.getHotel().then(function (response) {
             $scope.hotel = response.data;
             if($scope.hotel.imageLogo != null) {
-                $scope.loadImage($scope.hotel.imageLogo);
+                //$scope.loadImage($scope.hotel.imageLogo);
             } else $scope.hotel.imageLogo = $scope.imageSrc;
         }, function (error) {
             console.log(error);
@@ -102,5 +102,13 @@
             }
             return bytes;
         };
+
+        HotelService.test().then(function (response) {
+           console.log(response.data)
+            var panelImage = angular.element(document.querySelector('#logo-image'));
+            panelImage.attr('src',response.data.imageLogo);
+        }, function (error) {
+            console.log(error)
+        });
     }
 })();

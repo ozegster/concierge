@@ -77,11 +77,26 @@
                 }
                 return window.btoa(binary);
             }
+
+            var test = function () {
+                return $http({
+                    method: 'GET',
+                    url: SERVER_PATH.url + '/test',
+                    //responseType: "arraybuffer"
+                }).then(function (response) {
+                   // var base64Image = arrayBufferToBase64(response.data);
+
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            }
             return {
                 getCountries: getCountries,
                 getHotel: getHotel,
                 saveHotel: saveHotel,
-                getImageLogo: getImageLogo
+                getImageLogo: getImageLogo,
+                test:test
 
             };
 

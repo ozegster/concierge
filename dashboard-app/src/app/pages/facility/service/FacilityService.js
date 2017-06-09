@@ -100,7 +100,7 @@
             return {
                 getFacilityType: getFacilityType,
                 saveFacility: saveFacility,
-                isExistingName: isExistingName
+                isExistingName: isExistingName,
                 getAllFacilities: getAllFacilities,
                 deleteFacility: deleteFacility,
                 getImage: getImage
