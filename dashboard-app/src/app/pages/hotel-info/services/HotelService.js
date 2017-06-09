@@ -54,50 +54,10 @@
                 return deferred.promise;
             };
 
-            var getImageLogo = function (imageName) {
-                return $http({
-                    method: 'GET',
-                    url: SERVER_PATH.url + '/hotel/imageLogo/' + imageName,
-                    responseType: "arraybuffer"
-                }).then(function (response) {
-                    var base64Image = arrayBufferToBase64(response.data);
-
-                    return base64Image;
-                }, function (error) {
-                    return error;
-                });
-            };
-
-            function arrayBufferToBase64(buffer) {
-                var binary = '';
-                var bytes = new Uint8Array(buffer);
-                var len = bytes.byteLength;
-                for (var i = 0; i < len; i++) {
-                    binary += String.fromCharCode(bytes[i]);
-                }
-                return window.btoa(binary);
-            }
-
-            var test = function () {
-                return $http({
-                    method: 'GET',
-                    url: SERVER_PATH.url + '/test',
-                    //responseType: "arraybuffer"
-                }).then(function (response) {
-                   // var base64Image = arrayBufferToBase64(response.data);
-
-                    return response;
-                }, function (error) {
-                    return error;
-                });
-            }
             return {
                 getCountries: getCountries,
                 getHotel: getHotel,
-                saveHotel: saveHotel,
-                getImageLogo: getImageLogo,
-                test:test
-
+                saveHotel: saveHotel
             };
 
         }])
