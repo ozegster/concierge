@@ -17,7 +17,7 @@
         });
 
         $scope.openModal = function () {
-            $scope.element = '#logo-image';
+            $scope.element = '#hotel-logo';
             $uibModal.open({
                 templateUrl: 'app/theme/components/crop-image/crop-upload-imageLogo.html',
                 controller: 'ModalCtrl',
@@ -28,7 +28,7 @@
         HotelService.getHotel().then(function (response) {
             $scope.hotel = response.data;
             if($scope.hotel.imageLogo != null) {
-                var panelImage = angular.element(document.querySelector('#logo-image'));
+                var panelImage = angular.element(document.querySelector('#hotel-logo'));
                 panelImage.attr('src', $scope.hotel.imageLogo);
                 $scope.croppedImg = response.data.imageLogo;
             } else {
