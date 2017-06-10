@@ -112,7 +112,10 @@
         $scope.openEditableRoomTypeForm = function () {
             var selectedRoomType = JSON.parse($window.localStorage.getItem('editableRoomType'));
             $scope.roomType = selectedRoomType;
-            $scope.loadImage(selectedRoomType.image);
+            delete $scope.imageSrc;
+            var panelImage = angular.element(document.querySelector('#room-type-image'));
+            panelImage.attr('src',$scope.roomType.image);
+            $scope.croppedImg = $scope.roomType.image;
             $scope.checkFeatures(selectedRoomType)
         };
 
