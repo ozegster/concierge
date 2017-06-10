@@ -23,9 +23,9 @@
                     hotel.imageLogo = "name";
                     fd.append('image', new Blob([byte]));
                 } else {
+                    hotel.imageLogo = image.name;
                     fd.append('image',image);
                 }
-                //hotel.imageLogo = "name";
 
                 fd.append('hotel', new Blob([JSON.stringify(hotel)], {
                     type: "application/json"
