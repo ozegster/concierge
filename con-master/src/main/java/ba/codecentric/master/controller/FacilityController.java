@@ -77,11 +77,6 @@ public class FacilityController {
         }
     }
 
-    @GetMapping(value = "/facility/image/{imageName:.+}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
-    public InputStreamResource getImage(@PathVariable String imageName) throws IOException {
-        return new InputStreamResource(imageService.loadImage(imageName));
-    }
-
     @GetMapping(value = "/facility")
     public boolean isExistingName(@RequestParam("name") String name){
         return facilityService.isExistingName(name);
