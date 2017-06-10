@@ -64,8 +64,12 @@ public class RoomTypeController {
     }
 
     @GetMapping(value = "/room-types")
-    public List<RoomType> getRoomTypes() {
-        return roomTypeService.getAllRoomTypes();
+    public List<RoomType> getRoomTypes() throws IOException{
+        List<RoomType>list = roomTypeService.getAllRoomTypes();
+        for(RoomType roomType : list){
+            roomType.setImage(imageService.encodeImage(roomType.getImage()));
+        }
+        return list;
     }
 
     @GetMapping(value = "/room-types/image/{imageName:.+}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
