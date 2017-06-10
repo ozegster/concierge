@@ -59,20 +59,6 @@
                 return bytes;
             };
 
-            var getImage = function (imageName) {
-                return $http({
-                    method: 'GET',
-                    url: SERVER_PATH.url + '/facility/image/' + imageName,
-                    responseType: "arraybuffer"
-                }).then(function (response) {
-                    var base64Image = arrayBufferToBase64(response.data);
-
-                    return base64Image;
-                }, function (error) {
-                    return error;
-                });
-            };
-
             var getAllFacilities = function () {
                 return $http({
                     method: 'GET',
