@@ -71,9 +71,4 @@ public class RoomTypeController {
         }
         return list;
     }
-
-    @GetMapping(value = "/room-types/image/{imageName:.+}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
-    public InputStreamResource getImage(@PathVariable String imageName) throws IOException {
-        return new InputStreamResource(imageService.loadImage(imageName));
-    }
 }
