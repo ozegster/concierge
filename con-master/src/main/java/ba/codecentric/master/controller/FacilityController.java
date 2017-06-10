@@ -54,8 +54,13 @@ public class FacilityController {
     }
 
     @GetMapping(value = "/facilities")
-    public List<Facility> getAllFacilities() {
-        return facilityService.getAllFacilities();
+    public List<Facility> getAllFacilities() throws IOException{
+        List<Facility>list =  facilityService.getAllFacilities();
+        for(Facility facility : list){
+            facility.setImage(imageService.encodeImage(facility.getImage()));
+        }
+
+        return list;
     }
 
     @DeleteMapping(value = "/facilities/{facilityId}")
@@ -77,7 +82,7 @@ public class FacilityController {
         return new InputStreamResource(imageService.loadImage(imageName));
     }
 
-    @GetMapping(value = "/facilitiess")
+    @GetMapping(value = "/facility")
     public boolean isExistingName(@RequestParam("name") String name){
         return facilityService.isExistingName(name);
     }
