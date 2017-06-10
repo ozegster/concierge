@@ -1,17 +1,23 @@
 (function () {
     angular.module('ConciergeApp.pages.roomType')
         .factory('RoomTypeService', ['$http', 'SERVER_PATH', function ($http, SERVER_PATH) {
-            var saveRoomType = function (roomType, file) {
-                if (file) {
-                    roomType.image = file.name;
-                } else {
-                    roomType.image = '';
-                }
+            var saveRoomType = function (roomType, image) {
+                var byte = [];
                 var fd = new FormData();
+
+                if (typeof image == 'string') {
+                    byte = getBlobFromBase64(image);
+                    roomType.image = 'name';
+                    fd.append('image', new Blob([byte]));
+                } else {
+                    fd.append('image',image);
+                    roomType.image = image.name;
+                }
+
                 fd.append('roomType', new Blob([JSON.stringify(roomType)], {
                     type: "application/json"
                 }));
-                fd.append('image', file);
+
                 return $http({
                     method: 'POST',
                     url: SERVER_PATH.url + '/room-types',
@@ -26,29 +32,21 @@
 
             };
 
-            var getImage = function (imageName) {
-                return $http({
-                    method: 'GET',
-                    url: SERVER_PATH.url + '/room-types/image/' + imageName,
-                    responseType: "arraybuffer"
-                }).then(function (response) {
-                    var base64Image = arrayBufferToBase64(response.data);
+            function getBlobFromBase64(dataURI) {
+                var byteString;
 
-                        return base64Image;
-                   }, function (error) {
-                        return error;
-                   });
-          };
-
-            function arrayBufferToBase64(buffer) {
-                var binary = '';
-                var bytes = new Uint8Array(buffer);
-                var len = bytes.byteLength;
-                for (var i = 0; i < len; i++) {
-                    binary += String.fromCharCode(bytes[i]);
+                if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+                    byteString = atob(dataURI.split(',')[1]);
+                } else {
+                    byteString = unescape(dataURI.split(',')[1]);
                 }
-                  return window.btoa(binary);
-            }
+                var bytes = new Uint8Array(new ArrayBuffer(byteString.length));
+
+                for (var i = 0; i < byteString.length; i++) {
+                    bytes[i] = byteString.charCodeAt(i);
+                }
+                return bytes;
+            };
 
             var getAllRoomTypes = function () {
                 return $http({
@@ -76,7 +74,6 @@
                 saveRoomType: saveRoomType,
                 getAllRoomTypes: getAllRoomTypes,
                 deleteRoomType: deleteRoomType,
-                getImage: getImage
             };
         }])
 })();
