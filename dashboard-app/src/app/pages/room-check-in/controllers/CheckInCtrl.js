@@ -7,13 +7,17 @@
     CheckInCtrl.$inject = ['$scope', 'toastr', 'CheckInService', '$uibModal'];
     function CheckInCtrl($scope, toastr, CheckInService, $uibModal) {
 
-        $scope.roomCheckIn = {};
+        $scope.roomCheckIn = {
+            checkOut: new Date(),
+            checkIn: new Date()
+        };
 
         $scope.getAvailableRooms = function () {
             if ($scope.roomCheckIn.checkOut < $scope.roomCheckIn.checkIn) {
                 return toastr.error('Room check-out date is less than check-in', 'Error');
             }
             CheckInService.getAvailableRooms($scope.roomCheckIn).then(function (response) {
+
                 $scope.availableRooms = response.data;
                 $scope.rowCollection = response.data;
             })
@@ -40,6 +44,8 @@
                     });
                     roomCheckInForm.$setPristine();
                     roomCheckInForm.$setUntouched();
+                    $scope.rowCollection = [];
+                    $scope.availableRooms = [];
                     $scope.roomCheckIn = {};
                 } else {
                     toastr.error(response.data.error, 'Error');

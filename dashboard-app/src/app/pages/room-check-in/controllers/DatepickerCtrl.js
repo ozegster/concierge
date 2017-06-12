@@ -10,7 +10,8 @@
         $scope.opened = false;
         $scope.format = 'dd.MM.yyyy';
         $scope.options = {
-            showWeeks: false
+            showWeeks: false,
+            minDate: new Date()
         };
 
         function open() {
