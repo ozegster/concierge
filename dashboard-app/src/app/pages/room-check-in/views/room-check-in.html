@@ -89,7 +89,7 @@
                                         <input type="text" class="form-control" name="checkOut" id="checkOut"
                                                uib-datepicker-popup="{{format}}" datepicker-append-to-body="true"
                                                datepicker-options="options" ng-model="roomCheckIn.checkOut"
-                                               is-open="opened"
+                                               is-open="opened" date-check="{{roomCheckIn.checkIn}}"
                                                required alt-input-formats="altInputFormats"
                                         />
                                         <span class="input-group-btn">
@@ -101,7 +101,7 @@
                                            ng-show="roomCheckInForm.checkOut.$error.required && roomCheckInForm.$submitted">Please
                                         enter check-out date</label>
                                     <label class="help-block error-block basic-block"
-                                           ng-show="roomCheckInForm.checkOut.$error.smallerDate && roomCheckInForm.$submitted">Room check-out date is less than check-in</label>
+                                           ng-show="roomCheckInForm.checkOut.$error.dateCheck">Room check-out date is less than check-in</label>
 
                                 </div>
                             </div>
