@@ -50,10 +50,8 @@ public class RoomCheckInServiceImpl implements RoomCheckInService {
                 boolean removed = false;
                 for (RoomCheckIn roomCheckIn : roomCheckInRepository.findByRoom(room)) {
                     if (checkInRequest.getCheckOut().before(roomCheckIn.getCheckIn()) || checkInRequest.getCheckIn().after(roomCheckIn.getCheckOut())) {
-                        if (!removed) {
-                            if (!availableRooms.contains(room)) {
-                                availableRooms.add(room);
-                            }
+                        if (!removed && !availableRooms.contains(room)) {
+                            availableRooms.add(room);
                         }
                     } else {
                         availableRooms.remove(room);
