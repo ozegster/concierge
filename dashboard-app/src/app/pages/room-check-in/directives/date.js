@@ -5,35 +5,27 @@
                 require: '^ngModel',
                 link: function ($scope, $element, $attrs, ctrl) {
                     var validate = function (viewValue) {
-                        var comparisonModel = $attrs.dateCheck;
-                        var t, f;
+                        // split the date to get yyyy-mm-dd
+                        var dateEndArray = $attrs.dateCheck.split('T')[0].split('-');
+                        // get the date to compare against in dd-mm-yyyy format
+                        var lowerThan = dateEndArray[2]+'.'+dateEndArray[1]+'.'+dateEndArray[0].replace('"','');
 
-                        if (!viewValue || !comparisonModel) {
+                        if (!viewValue || !lowerThan) {
                             // It's valid because we have nothing to compare against
                             ctrl.$setValidity('dateCheck', true);
+                        } else {
+                            ctrl.$setValidity('dateCheck', viewValue > lowerThan);
                         }
-                        if (comparisonModel) {
-                            var to = comparisonModel.split(".");
-                            t = new Date(to[2], to[1] - 1, to[0]);
-                        }
-                        if (viewValue) {
-                            var from = viewValue.split(".");
-                            f = new Date(from[2], from[1] - 1, from[0]);
-                        }
-
-                        ctrl.$setValidity('dateCheck', Date.parse(t) > Date.parse(f));
-                        // console.log(Date.parse(t));
-                        // if ($attrs.dateCheck > viewValue) {
-                        //     ctrl.$setValidity('dateCheck', false);
-                        // }
-                        // It's valid if model is lower than the model we're comparing against
 
                         return viewValue;
                     };
-                    //ctrl.$parsers.unshift(validate);
+
+                    ctrl.$parsers.unshift(validate);
                     ctrl.$formatters.push(validate);
-                    // console.debug($attrs.ngModel.$viewValue);
-                    //     ctrl.$setValidity('dateCheck', false);
+
+                    $attrs.$observe('dateCheck', function(lowerThan){
+                        return validate(ctrl.$viewValue);
+                    });
                 }
             };
         })
