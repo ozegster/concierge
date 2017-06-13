@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                             <div class="form-group"
-                                 ng-class="{'has-error' : roomCheckInForm.checkOut.$invalid && roomCheckInForm.$submitted, 'has-success' : roomCheckInForm.checkOut.$valid && roomCheckInForm.$submitted}">
+                                 ng-class="{'has-error' : roomCheckInForm.checkOut.$invalid && roomCheckInForm.$dirty, 'has-success' : roomCheckInForm.checkOut.$valid && roomCheckInForm.$submitted}">
                                 <label for="checkOut">Check-out</label>
                                 <div class="form-group">
                                     <div class="datepicker input-group" ng-controller="DatepickerCtrl">
@@ -101,7 +101,7 @@
                                            ng-show="roomCheckInForm.checkOut.$error.required && roomCheckInForm.$submitted">Please
                                         enter check-out date</label>
                                     <label class="help-block error-block basic-block"
-                                           ng-show="roomCheckInForm.checkOut.$error.dateCheck">Room check-out date is less than check-in</label>
+                                           ng-show="roomCheckInForm.checkOut.$error.dateCheck">Room check-out date must be after check-in date</label>
 
                                 </div>
                             </div>
