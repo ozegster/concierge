@@ -15,7 +15,7 @@
                     <div class="form-group col-md-4 alignment-stars" >
                         <label for="rating" class="rating">Rating</label>
                         <div class="alignment-stars">
-                            <div class="stars" ng-class="{'has-error' : hotelInfo.rating.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.rating.$valid && hotelInfo.$submitted}">
+                            <div id="rating" class="stars" ng-class="{'has-error' : hotelInfo.rating.$invalid && hotelInfo.$submitted, 'has-success' : hotelInfo.rating.$valid && hotelInfo.$submitted}">
                                 <input class="star star-5 form-control" id="star-5" type="radio" name="rating" value="5"
                                        ng-model="hotel.rating" ng-required="!hotel.rating">
                                 <label class="star star-5" for="star-5"></label>
@@ -41,7 +41,7 @@
                     <div class="form-group col-md-4">
                         <label for="hotel-logo">Hotel logo</label>
                         <div class="form-group" ng-class="{'has-error' : isImageMissing() && hotelInfo.$submitted, 'has-success' : !isImageMissing() && hotelInfo.$submitted}">
-                            <img ng-click="openModal()" class="img-responsive" ng-src="{{imageSrc}}" id="logo-image">
+                            <img ng-click="openModal()" class="img-responsive" ng-src="{{imageSrc}}" id="hotel-logo">
                             <div ng-show="hotelInfo.$submitted">
                                 <label class="help-block error-block basic-block" ng-show="isImageMissing()">Please enter the hotel logo</label>
                             </div>

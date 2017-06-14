@@ -65,21 +65,13 @@
             return image === $scope.imageSrc;
         };
 
-        $scope.getFileFromImage = function (img) {
-            var byteArray = $scope.getByteFromBase64(img);
-            var fileImg = new File([byteArray], 'name.png');
-            var reader = new FileReader();
-            $scope.croppedImg = fileImg;
-
-            if ($scope.croppedImg) {
-                reader.readAsDataURL($scope.croppedImg);
-            }
-        };
-
         $scope.openEditableFacilityForm = function () {
             var selectedFacility = JSON.parse($window.localStorage.getItem('editableFacility'));
             $scope.facility = selectedFacility;
-            $scope.loadImage(selectedFacility.image);
+            delete $scope.imageSrc;
+            var panelImage = angular.element(document.querySelector('#facility-image'));
+            panelImage.attr('src',$scope.facility.image);
+            $scope.croppedImg = $scope.facility.image;
         };
 
         $scope.handleEditButton = function (selectedFacility) {
@@ -125,31 +117,6 @@
             });
 
             $scope.closeFacilityModal();
-        };
-
-        $scope.loadImage = function (image) {
-            FacilityService.getImage(image).then(function (data) {
-                var panelImage = angular.element(document.querySelector('#facility-image'));
-                panelImage.attr('src', 'data:image/jpeg;base64,' + data);
-                var base64Image = 'data:image/jpeg;base64,' + data;
-                $scope.getFileFromImage(base64Image)
-            });
-        };
-
-        $scope.getByteFromBase64 = function (dataURI) {
-            var byteString;
-
-            if (dataURI.split(',')[0].indexOf('base64') >= 0) {
-                byteString = atob(dataURI.split(',')[1]);
-            } else {
-                byteString = unescape(dataURI.split(',')[1]);
-            }
-            var bytes = new Uint8Array(new ArrayBuffer(byteString.length));
-
-            for (var i = 0; i < byteString.length; i++) {
-                bytes[i] = byteString.charCodeAt(i);
-            }
-            return bytes;
         };
 
         $scope.$on("$stateChangeSuccess", function () {

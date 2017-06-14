@@ -1,12 +1,11 @@
 package ba.codecentric.base.service;
 
 import org.apache.log4j.Logger;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,12 +39,6 @@ public class ImageServiceImpl implements ImageService {
         return newImageName;
     }
 
-    @Override
-    public InputStream loadImage(String name) throws IOException {
-        Path filePath = Paths.get(directoryPath + name);
-        return Files.newInputStream(filePath);
-    }
-
     private void createImageDirectories() throws IOException {
         Path defaultDirectoryPath = Paths.get(directoryPath);
         if (!Files.exists(defaultDirectoryPath)) {
@@ -76,5 +69,16 @@ public class ImageServiceImpl implements ImageService {
     public boolean doesImageExist(String imageName){
         File file = new File(directoryPath + imageName);
         return file.exists();
+    }
+
+    @Override
+    public String encodeImage(String imageName) throws FileNotFoundException, IOException{
+        File file = new File(directoryPath + imageName);
+        InputStream is = new FileInputStream(file);
+        byte byteArray[] = new byte[(int)file.length()];
+        is.read(byteArray);
+        String imageString = "data:image/png;base64," + Base64.encodeBase64String(byteArray);
+
+        return imageString;
     }
 }

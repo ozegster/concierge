@@ -27,10 +27,8 @@
         };
 
         $scope.getFileFromCroppedImage = function () {
-            var selectedImg = document.querySelector('input[type=file]').files[0];
-            var name = selectedImg.name.split('.')[1];
             var byteArray = $scope.getBlobFromBase64($scope.cropper.croppedImage);
-            var fileImg = new File([byteArray], name + '.png');
+            var fileImg = new File([byteArray],"image.png");
             var reader = new FileReader();
             $scope.$parent.croppedImg = fileImg;
 

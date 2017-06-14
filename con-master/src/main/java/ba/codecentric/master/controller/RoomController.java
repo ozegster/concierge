@@ -1,6 +1,8 @@
 package ba.codecentric.master.controller;
 
 import ba.codecentric.base.domain.Room;
+import ba.codecentric.base.domain.RoomType;
+import ba.codecentric.base.service.ImageService;
 import ba.codecentric.base.service.RoomService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -20,11 +23,13 @@ import java.util.List;
 public class RoomController {
 
     private final RoomService roomService;
+    private final ImageService imageService;
     private final static Logger LOG = Logger.getLogger(RoomController.class);
 
     @Autowired
-    public RoomController(RoomService roomService) {
+    public RoomController(RoomService roomService,ImageService imageService) {
         this.roomService = roomService;
+        this.imageService = imageService;
     }
 
     @PostMapping
@@ -34,8 +39,17 @@ public class RoomController {
     }
 
     @GetMapping
-    public List<Room> getRooms() {
-        return roomService.getAllRooms();
+    public List<Room> getRooms() throws IOException{
+        List<Room>list = roomService.getAllRooms();
+
+        for(Room room : list){
+            RoomType roomType = room.getRoomType();
+            String image = roomType.getImage();
+            if(!image.startsWith("data:image/png;base64,")) {
+                roomType.setImage(imageService.encodeImage(roomType.getImage()));
+            }
+        }
+        return list;
     }
 
     @DeleteMapping(value = "/{id}")

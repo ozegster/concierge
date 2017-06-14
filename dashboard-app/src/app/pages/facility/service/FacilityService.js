@@ -14,13 +14,18 @@
             };
 
             var saveFacility = function (facility, image) {
-                console.log(SERVER_PATH);
-                if (image) {
-                    facility.image = image.name;
-                } else {
-                    facility.image = '';
-                }
+                var byte = [];
                 var fd = new FormData();
+
+                if (typeof image == 'string') {
+                    byte = getBlobFromBase64(image);
+                    facility.image = 'name';
+                    fd.append('image', new Blob([byte]));
+                } else {
+                    fd.append('image',image);
+                    facility.image = image.name;
+                }
+
                 fd.append('facility', new Blob([JSON.stringify(facility)], {
                     type: "application/json"
                 }));
@@ -38,29 +43,21 @@
                 });
             };
 
-            var getImage = function (imageName) {
-                return $http({
-                    method: 'GET',
-                    url: SERVER_PATH.url + '/facility/image/' + imageName,
-                    responseType: "arraybuffer"
-                }).then(function (response) {
-                    var base64Image = arrayBufferToBase64(response.data);
+            function getBlobFromBase64(dataURI) {
+                var byteString;
 
-                    return base64Image;
-                }, function (error) {
-                    return error;
-                });
-            };
-
-            function arrayBufferToBase64(buffer) {
-                var binary = '';
-                var bytes = new Uint8Array(buffer);
-                var len = bytes.byteLength;
-                for (var i = 0; i < len; i++) {
-                    binary += String.fromCharCode(bytes[i]);
+                if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+                    byteString = atob(dataURI.split(',')[1]);
+                } else {
+                    byteString = unescape(dataURI.split(',')[1]);
                 }
-                return window.btoa(binary);
-            }
+                var bytes = new Uint8Array(new ArrayBuffer(byteString.length));
+
+                for (var i = 0; i < byteString.length; i++) {
+                    bytes[i] = byteString.charCodeAt(i);
+                }
+                return bytes;
+            };
 
             var getAllFacilities = function () {
                 return $http({
@@ -88,7 +85,7 @@
                 return $http({
                     method: 'GET',
                     params : { name : name},
-                    url: SERVER_PATH.url + '/facilities'
+                    url: SERVER_PATH.url + '/facility'
                 }).then(function (response) {
                     return response;
                 }, function (error) {
@@ -102,11 +99,8 @@
                 saveFacility: saveFacility,
                 isExistingName: isExistingName,
                 getAllFacilities: getAllFacilities,
-                deleteFacility: deleteFacility,
-                getImage: getImage
-
+                deleteFacility: deleteFacility
             };
-
         }
         ]);
 })();
