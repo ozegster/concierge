@@ -11,7 +11,8 @@
         HomeService.getHotel().then(function (response) {
             if (response.data) {
                 $scope.hotel = response.data;
-                $scope.hotel.name = response.data.name;
+                var logo = angular.element(document.querySelector('.logo-img'));
+                logo.attr('src', $scope.hotel.imageLogo);
             } else {
                 console.log('Hotel not found')
             }
