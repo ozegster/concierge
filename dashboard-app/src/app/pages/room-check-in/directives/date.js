@@ -9,14 +9,7 @@
                         var dateEndArray = $attrs.dateCheck.split('T')[0].split('-');
                         // get the date to compare against in dd-mm-yyyy format
                         var lowerThan = dateEndArray[2]+'.'+dateEndArray[1]+'.'+dateEndArray[0].replace('"','');
-
-                        if (!viewValue || !lowerThan) {
-                            // It's valid because we have nothing to compare against
-                            ctrl.$setValidity('dateCheck', true);
-                        } else {
                             ctrl.$setValidity('dateCheck', viewValue > lowerThan);
-                        }
-
                         return viewValue;
                     };
 
