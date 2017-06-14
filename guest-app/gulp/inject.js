@@ -21,8 +21,8 @@ gulp.task('inject', function () {
     var injectBower = gulp.src(mainBowerFiles(), {read: false});
 
     return gulp.src(conf.paths.src + conf.paths.index)
-        .pipe(inject(gulp.src(mainBowerFiles(), {read: false}), injectBowerOptions))
-        .pipe(inject(gulp.src(conf.paths.src + conf.paths.javascript).pipe(fileSort()),injectOptions))
-        .pipe(inject(gulp.src(conf.paths.tmp + '/app/*.css'), injectOptions))
+        .pipe(inject(injectBower, injectBowerOptions))
+        .pipe(inject(injectScript,injectOptions))
+        .pipe(inject(injectStyle, injectOptions))
         .pipe(gulp.dest(conf.paths.tmp))
 });
