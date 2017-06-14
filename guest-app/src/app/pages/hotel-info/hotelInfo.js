@@ -8,7 +8,8 @@
         $stateProvider
             .state('hotelInfo', {
                 url: '/hotelInfo',
-                templateUrl: 'app/pages/hotel-info/view/hotel-info.html'
+                templateUrl: 'app/pages/hotel-info/view/hotel-info.html',
+                controller: 'HotelInfoCtrl'
             })
     }
 })();
