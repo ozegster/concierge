@@ -1,1 +1,76 @@
-hotel-info <button type="button"><a ui-sref="home">get home</a></button>
+<button type="button"><a ui-sref="home">get home</a></button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>HOTEL INFO</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table vertical-align">
+                    <tbody>
+                        <tr>
+                            <td>Name:</td>
+                            <td>{{hotel.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Logo:</td>
+                            <td>
+                                <div class="logo"><img src="" class="logo-img img-responsive"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Rating:</td>
+                            <td>{{hotel.rating}}</td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td>{{hotel.address}}</td>
+                        </tr>
+                        <tr>
+                            <td>City:</td>
+                            <td>{{hotel.city}}</td>
+                        </tr>
+                        <tr>
+                            <td>Zip:</td>
+                            <td>{{hotel.zip}}</td>
+                        </tr>
+                        <tr>
+                            <td>Country:</td>
+                            <td>{{hotel.country.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone:</td>
+                            <td>{{hotel.phone}}</td>
+                        </tr>
+                        <tr>
+                            <td>Fax:</td>
+                            <td>{{hotel.fax}}</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>{{hotel.email}}</td>
+                        </tr>
+                        <tr>
+                            <td>Website:</td>
+                            <td>{{hotel.website}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td>{{hotel.description}}</td>
+                        </tr>
+                        <tr>
+                            <td>Check-in time:</td>
+                            <td>{{hotel.checkIn}}</td>
+                        </tr>
+                        <tr>
+                            <td>Check-out time:</td>
+                            <td>{{hotel.checkOut}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
