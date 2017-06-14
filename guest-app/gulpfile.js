@@ -1,12 +1,8 @@
 var gulp = require('gulp');
-var webserver = require('gulp-webserver');
+var runSequence = require('run-sequence');
 
 gulp.task('serve', function () {
-    gulp.src('src')
-        .pipe(webserver({
-            fallback:'src/index.html',
-            open:true,
-            livereload: true,
-            port: 8000
-        }));
+    runSequence('clean','style','inject','openBrowser')
 });
+
+require('require-dir')('./gulp');
