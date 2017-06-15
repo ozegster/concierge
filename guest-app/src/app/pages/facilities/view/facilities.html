@@ -1,1 +1,39 @@
-facilities <button type="button"><a ui-sref="home">get home</a></button>
+<div class="panel-container">
+    <div class="row">
+        <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8 panel-header">
+            <p class="panel-title">Facilities</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 table-responsive" ba-panel ba-panel-title="FACILITIES DETAILS">
+            <table id="facilities-details" class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Facility type</th>
+                    <th>Floor</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="facility in listOfFacilities">
+                    <td>{{facility.facilityName}}</td>
+                    <td>{{facility.facilityType.facilityType}}</td>
+                    <td>{{facility.floor}}</td>
+                    <td>{{facility.description}}</td>
+                    <td><img ng-src="{{facility.image}}" alt="" border='3' height='80' width='100'
+                             class="img-responsive"/></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-12">
+            <div class="pull-right">
+                <button type="button" class="btn btn-default btn-responsive"><a ui-sref="home">BACK</a></button>
+            </div>
+        </div>
+    </div>
+</div>
