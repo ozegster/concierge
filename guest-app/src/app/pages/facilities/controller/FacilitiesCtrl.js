@@ -6,17 +6,17 @@
     FacilitiesCtrl.$inject = ['$scope', 'FacilitiesService'];
     function FacilitiesCtrl($scope, FacilitiesService) {
 
+        $scope.facility = '';
 
         FacilitiesService.getAllFacilities().then(function (response) {
             if(response.data) {
                 $scope.listOfFacilities = response.data;
                 var image = angular.element(document.querySelector('.facility-image'));
             } else {
-                console.log('Facilities not found')
+                $scope.facility = 'not available';
             }
         }, function (error) {
             console.log(error);
         });
-
     }
 })();
