@@ -42,15 +42,8 @@
 
         $scope.changeRoomType = function (roomType) {
             $scope.selectedRoomType = roomType;
-            RoomTypeService.getImage(roomType.image).then(function (data) {
-                var canvas = angular.element('#room-type-image-canvas')[0];
-                var context = canvas.getContext('2d');
-                var img = new Image();
-                img.onload = function () {
-                    context.drawImage(this, 0, 0, canvas.width, canvas.height);
-                };
-                img.src = 'data:image/jpeg;base64,' + data;
-            });
+            var panelImage = angular.element(document.querySelector('#room-type-img'));
+            panelImage.attr('src',$scope.selectedRoomType.image);
         };
 
         RoomService.getAllRooms().then(function (response) {

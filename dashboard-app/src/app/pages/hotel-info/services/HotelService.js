@@ -15,16 +15,21 @@
             };
 
             var saveHotel = function (hotel, image) {
-                if (image) {
-                    hotel.imageLogo = image.name;
-                } else {
-                    hotel.imageLogo = '';
-                }
+                var byte = [];
                 var fd = new FormData();
+
+                if (typeof image == 'string') {
+                    byte = getBlobFromBase64(image);
+                    hotel.imageLogo = "name";
+                    fd.append('image', new Blob([byte]));
+                } else {
+                    hotel.imageLogo = image.name;
+                    fd.append('image',image);
+                }
+
                 fd.append('hotel', new Blob([JSON.stringify(hotel)], {
                     type: "application/json"
                 }));
-                fd.append('image', image);
 
                 return $http({
                     method: 'POST',
@@ -37,6 +42,22 @@
                 }, function (error) {
                     return error;
                 })
+            };
+
+            function getBlobFromBase64(dataURI) {
+                var byteString;
+
+                if (dataURI.split(',')[0].indexOf('base64') >= 0) {
+                    byteString = atob(dataURI.split(',')[1]);
+                } else {
+                    byteString = unescape(dataURI.split(',')[1]);
+                }
+                var bytes = new Uint8Array(new ArrayBuffer(byteString.length));
+
+                for (var i = 0; i < byteString.length; i++) {
+                    bytes[i] = byteString.charCodeAt(i);
+                }
+                return bytes;
             };
 
             var getHotel = function () {
@@ -54,35 +75,10 @@
                 return deferred.promise;
             };
 
-            var getImageLogo = function (imageName) {
-                return $http({
-                    method: 'GET',
-                    url: SERVER_PATH.url + '/hotel/imageLogo/' + imageName,
-                    responseType: "arraybuffer"
-                }).then(function (response) {
-                    var base64Image = arrayBufferToBase64(response.data);
-
-                    return base64Image;
-                }, function (error) {
-                    return error;
-                });
-            };
-
-            function arrayBufferToBase64(buffer) {
-                var binary = '';
-                var bytes = new Uint8Array(buffer);
-                var len = bytes.byteLength;
-                for (var i = 0; i < len; i++) {
-                    binary += String.fromCharCode(bytes[i]);
-                }
-                return window.btoa(binary);
-            }
             return {
                 getCountries: getCountries,
                 getHotel: getHotel,
-                saveHotel: saveHotel,
-                getImageLogo: getImageLogo
-
+                saveHotel: saveHotel
             };
 
         }])

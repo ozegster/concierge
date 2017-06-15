@@ -54,8 +54,13 @@ public class FacilityController {
     }
 
     @GetMapping(value = "/facilities")
-    public List<Facility> getAllFacilities() {
-        return facilityService.getAllFacilities();
+    public List<Facility> getAllFacilities() throws IOException{
+        List<Facility>list =  facilityService.getAllFacilities();
+        for(Facility facility : list){
+            facility.setImage(imageService.encodeImage(facility.getImage()));
+        }
+
+        return list;
     }
 
     @DeleteMapping(value = "/facilities/{facilityId}")
@@ -70,11 +75,6 @@ public class FacilityController {
             deleteMessage = "[\"message: Facility was not found\"]";
             return new ResponseEntity<>(deleteMessage, HttpStatus.NOT_FOUND);
         }
-    }
-
-    @GetMapping(value = "/facility/image/{imageName:.+}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
-    public InputStreamResource getImage(@PathVariable String imageName) throws IOException {
-        return new InputStreamResource(imageService.loadImage(imageName));
     }
 
     @GetMapping(value = "/facility")
