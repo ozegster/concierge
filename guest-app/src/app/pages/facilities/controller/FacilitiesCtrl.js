@@ -11,7 +11,6 @@
             if(response.data) {
                 $scope.listOfFacilities = response.data;
                 var image = angular.element(document.querySelector('.facility-image'));
-                image.attr('src', $scope.listOfFacilities.image);
             } else {
                 console.log('Facilities not found')
             }
