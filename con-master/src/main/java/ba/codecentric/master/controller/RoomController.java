@@ -57,4 +57,9 @@ public class RoomController {
         roomService.deleteRoom(id);
         LOG.info("Delete Room with id: " + id);
     }
+
+    @GetMapping(value = "/{id}")
+    public Room getRoom(@PathVariable Integer id){
+        return roomService.getRoom(id);
+    }
 }
