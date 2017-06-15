@@ -1,1 +1,11 @@
 directory <button type="button"><a ui-sref="home">get home</a></button>
+
+<div ng-repeat="item in floors">
+    <h1>Floor Number : {{item.number}}</h1>
+    <ul ng-repeat="room in item.rooms">
+        <li>Room number : {{room}}</li>
+    </ul>
+    <ul ng-repeat="facility in item.facilities">
+        <li>{{facility}}</li>
+    </ul>
+</div>
