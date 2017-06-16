@@ -1,11 +1,18 @@
-directory <button type="button"><a ui-sref="home">get home</a></button>
-
-<div ng-repeat="item in floors">
-    <h1>Floor Number : {{item.number}}</h1>
-    <ul ng-repeat="room in item.rooms">
-        <li>Room number : {{room}}</li>
-    </ul>
-    <ul ng-repeat="facility in item.facilities">
-        <li>{{facility}}</li>
-    </ul>
+<div>
+    <div class="row">
+        <div style="text-align:center;font-size:60px;margin-bottom:3%"
+             class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8">DIRECTORY
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8">
+            <div ng-repeat="item in floors" style="margin:0 auto;text-align:center">
+                <p style="font-size:20px">FLOOR NUMBER : {{item.number}}</p>
+                <ul style="list-style-position:inside">
+                    <li ng-repeat="room in item.rooms">Room number : {{room}}</li>
+                    <li ng-repeat="facility in item.facilities">Facility : {{facility}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
