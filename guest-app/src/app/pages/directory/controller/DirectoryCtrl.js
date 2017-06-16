@@ -52,23 +52,25 @@
             angular.forEach(floorNumbers, function (valueFloorNumbers, keyFloorNumbers) {
                 currentFloor = {
                     number : '',
-                    rooms : [],
-                    facilities : []
+                    rooms : '',
+                    facilities : ''
                 };
                 currentFloor.number = valueFloorNumbers;
+
                 angular.forEach(arr, function (valueArr, keyArr) {
                     if(valueFloorNumbers === valueArr.floorNumber){
-                        currentFloor.rooms.push(valueArr.number)
+                        currentFloor.rooms += valueArr.number + ',';
                     }
                     if(valueFloorNumbers === valueArr.floor) {
-                        currentFloor.facilities.push(valueArr.facilityName)
+                        currentFloor.facilities += valueArr.facilityType.facilityType + ','
                     }
                 });
+
+                currentFloor.rooms = currentFloor.rooms.slice(0,-1);
+                currentFloor.facilities = currentFloor.facilities.slice(0,-1);
                 allFloors.push(currentFloor);
             });
             $scope.floors = allFloors;
-            console.log($scope.floors)
-
         };
 
         $scope.isNumberExists = function (floorNumbers, currentFloor) {
