@@ -7,6 +7,7 @@
     function RoomInfoCtrl($scope, RoomInfoService) {
 
         $scope.room = {};
+        $scope.air = false;
 
         RoomInfoService.getRoom(1).then(function (response) {
             if(response.data) {
