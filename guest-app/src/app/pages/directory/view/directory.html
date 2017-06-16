@@ -1,17 +1,24 @@
-<div>
+<div class="directory-container">
     <div class="row">
-        <div style="text-align:center;font-size:60px;margin-bottom:3%"
-             class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8">DIRECTORY
-        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 directory-title">DIRECTORY</div>
     </div>
+    <table class="table table-responsive table-bordered table-hover">
+        <tr>
+            <td><label>Floor Number</label></td>
+            <td><label>Rooms Number</label></td>
+            <td><label>Facilities</label></td>
+
+        </tr>
+        <tr ng-repeat="item in floors">
+            <td>{{item.number}}</td>
+            <td>{{item.rooms}}</td>
+            <td>{{item.facilities}}</td>
+        </tr>
+    </table>
     <div class="row">
-        <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8">
-            <div ng-repeat="item in floors" style="margin:0 auto;text-align:center">
-                <p style="font-size:20px">FLOOR NUMBER : {{item.number}}</p>
-                <ul style="list-style-position:inside">
-                    <li ng-repeat="room in item.rooms">Room number : {{room}}</li>
-                    <li ng-repeat="facility in item.facilities">Facility : {{facility}}</li>
-                </ul>
+        <div class="form-group col-md-12">
+            <div class="pull-right button-container">
+                <button type="button" class="btn btn-default btn-responsive" ui-sref="home">BACK</button>
             </div>
         </div>
     </div>
