@@ -61,7 +61,7 @@
                          ba-panel-title="Accomodation info">
                         <div div-height>
                             <div class="form-group"
-                                 ng-class="{'has-error' : roomCheckInForm.checkIn.$invalid && roomCheckInForm.$submitted, 'has-success' : roomCheckInForm.checkIn.$valid && roomCheckInForm.$submitted}">
+                                 ng-class="{'has-error' : roomCheckInForm.checkIn.$invalid && roomCheckInForm.$dirty, 'has-success' : roomCheckInForm.checkIn.$valid && roomCheckInForm.$submitted}">
                                 <label for="checkIn">Check-in</label>
                                 <div class="form-group">
                                     <div class="datepicker input-group" ng-controller="DatepickerCtrl">
@@ -69,6 +69,7 @@
                                                uib-datepicker-popup="{{format}}" datepicker-append-to-body="true"
                                                datepicker-options="options" ng-model="roomCheckIn.checkIn"
                                                is-open="opened"
+                                               date-check-in="{{roomCheckIn.checkOut | date:'dd.MM.yyyy'}}"
                                                ng-required="true" alt-input-formats="altInputFormats"
                                         />
                                         <span class="input-group-btn">
@@ -79,6 +80,9 @@
                                     <label class="help-block error-block basic-block"
                                            ng-show="roomCheckInForm.checkIn.$error.required && roomCheckInForm.$submitted">Please
                                         enter check-in date</label>
+                                    <label class="help-block error-block basic-block"
+                                           ng-show="roomCheckInForm.checkIn.$error.dateCheckIn">Room check-id date must
+                                        be before check-in date</label>
                                 </div>
                             </div>
                             <div class="form-group"
@@ -89,7 +93,8 @@
                                         <input type="text" class="form-control" name="checkOut" id="checkOut"
                                                uib-datepicker-popup="{{format}}" datepicker-append-to-body="true"
                                                datepicker-options="options" ng-model="roomCheckIn.checkOut"
-                                               is-open="opened" date-check="{{roomCheckIn.checkIn}}"
+                                               is-open="opened"
+                                               date-check-out="{{roomCheckIn.checkIn | date:'dd.MM.yyyy'}}"
                                                required alt-input-formats="altInputFormats"
                                         />
                                         <span class="input-group-btn">
@@ -101,7 +106,8 @@
                                            ng-show="roomCheckInForm.checkOut.$error.required && roomCheckInForm.$submitted">Please
                                         enter check-out date</label>
                                     <label class="help-block error-block basic-block"
-                                           ng-show="roomCheckInForm.checkOut.$error.dateCheck">Room check-out date must be after check-in date</label>
+                                           ng-show="roomCheckInForm.checkOut.$error.dateCheck">Room check-out date must
+                                        be after check-in date</label>
 
                                 </div>
                             </div>
