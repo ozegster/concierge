@@ -11,6 +11,7 @@
         FacilitiesService.getAllFacilities().then(function (response) {
             if(response.data) {
                 $scope.listOfFacilities = response.data;
+                $scope.rowCollection = response.data;
                 var image = angular.element(document.querySelector('.facility-image'));
             } else {
                 $scope.message = 'not available';

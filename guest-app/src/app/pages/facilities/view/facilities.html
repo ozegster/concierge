@@ -6,8 +6,11 @@
     </div>
     <div class="row">
         <div class="col-md-12 table-responsive">
-            <table id="facilities-details" class="table table-hover">
+            <table class="table table-hover" st-table="listOfFacilities" st-safe-src="rowCollection">
                 <thead>
+                <tr>
+                    <th colspan="3"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+                </tr>
                 <tr>
                     <th>Name</th>
                     <th>Facility type</th>
@@ -17,7 +20,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="facility in listOfFacilities">
+                <tr ng-repeat="facility in listOfFacilities| orderBy:'floor'">
                     <td>{{facility.facilityName}}</td>
                     <td>{{facility.facilityType.facilityType}}</td>
                     <td>{{facility.floor}}</td>
@@ -26,6 +29,11 @@
                              class="img-responsive"/></td>
                 </tr>
                 </tbody>
+                <tfoot>
+                <tr>
+                    <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4"></td>
+                </tr>
+                </tfoot>
             </table>
         </div>
     </div>
