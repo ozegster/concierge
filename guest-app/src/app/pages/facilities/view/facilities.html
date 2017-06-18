@@ -1,46 +1,37 @@
 <div class="panel-container">
     <div class="row">
         <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8 panel-header">
+            <div ui-sref="hotelInfo" class="logo"><img src="" class="logo-img img-responsive"></div>
             <p class="panel-title">Facilities</p><span ng-bind="message" class="panel-title"></span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 table-responsive">
-            <table class="table table-hover" st-table="listOfFacilities" st-safe-src="rowCollection">
-                <thead>
-                <tr>
-                    <th colspan="3"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
-                </tr>
-                <tr>
-                    <th>Name</th>
-                    <th>Facility type</th>
-                    <th>Floor</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="facility in listOfFacilities| orderBy:'floor'">
-                    <td>{{facility.facilityName}}</td>
-                    <td>{{facility.facilityType.facilityType}}</td>
-                    <td>{{facility.floor}}</td>
-                    <td style="text-align: left">{{facility.description}}</td>
-                    <td><img ng-src="{{facility.image}}" height='80' width='100'
-                             class="img-responsive"/></td>
-                </tr>
-                </tbody>
-                <tfoot>
-                <tr>
-                    <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4"></td>
-                </tr>
-                </tfoot>
-            </table>
+        <div class="col-md-12">
+            <div class="col-xs-4 col-sm-4 col-md-4 img-container"
+                 ng-repeat="facility in listOfFacilities">
+                <img ng-click="selectedFacilityShow()" ng-src="{{facility.image}}" class="img-responsive"/>
+                <div ui-sref="facility">
+                    <p class="img-title">{{facility.facilityName}}</p><br>
+                    <p></p>
+                </div>
+                <div ng-show="selectedFacility">
+                    <div>
+                        <p>Facility type: {{facility.facilityType.facilityType}}</p>
+                    </div>
+                    <div>
+                        <p>Floor: {{facility.floor}}</p>
+                    </div>
+                    <div>
+                        <p>Description: {{facility.description}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="form-group col-md-12">
             <div class="pull-right">
-                <button type="button" class="btn btn-default btn-responsive" ui-sref="home">BACK</button>
+                <button type="button" class="column-resize-line" ui-sref="home">BACK</button>
             </div>
         </div>
     </div>
