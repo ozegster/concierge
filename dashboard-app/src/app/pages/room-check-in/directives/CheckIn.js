@@ -1,6 +1,6 @@
 (function () {
     angular.module('ConciergeApp.pages.checkIn')
-        .directive('dateCheckIn', function () {
+        .directive('dateCheckIn', ['$timeout', function ($timeout) {
             return {
                 require: '^ngModel',
                 link: function ($scope, $element, $attrs, ctrl) {
@@ -16,12 +16,15 @@
                             var from = viewValue.toString().split(".");
                             checkInDate = new Date(from[2], from[1] - 1, from[0]);
                         }
-                        ctrl.$setValidity('dateCheckIn', checkOutDate >= checkInDate);
+                        $timeout(function () {
+                            if (checkOutDate <= checkInDate)
+                                $scope.roomCheckIn.checkOut = checkInDate.setDate(checkInDate.getDate() + 1);
+                        });
                         return viewValue;
                     };
 
                     ctrl.$parsers.unshift(validate);
                 }
             };
-        })
+        }])
 })();

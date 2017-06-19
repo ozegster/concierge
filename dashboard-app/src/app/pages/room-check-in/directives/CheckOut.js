@@ -7,7 +7,7 @@
                     var validate = function (viewValue) {
                         var comparisonModel = $attrs.dateCheckOut;
                         var checkInDate, checkOutDate;
-
+                        ctrl.$setValidity('dateCheck', true);
                         if (comparisonModel) {
                             var to = comparisonModel.toString().split(".");
                             checkInDate = new Date(to[2], to[1] - 1, to[0]);
@@ -16,7 +16,10 @@
                             var from = viewValue.toString().split(".");
                             checkOutDate = new Date(from[2], from[1] - 1, from[0]);
                         }
-                        ctrl.$setValidity('dateCheck', checkInDate <= checkOutDate);
+                        if (checkInDate >= checkOutDate) {
+                            ctrl.$setValidity('dateCheck', false);
+                        }
+
                         return viewValue;
                     };
 
