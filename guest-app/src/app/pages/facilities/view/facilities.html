@@ -15,9 +15,6 @@
                 </div>
                 <div ng-show="selected">
                     <div>
-                        <p>Facility type: {{facility.facilityType.facilityType}}</p>
-                    </div>
-                    <div>
                         <p>Floor: {{facility.floor}}</p>
                     </div>
                 </div>
@@ -25,8 +22,15 @@
         </div>
             <div ng-show="selectedFacilityName" ng-repeat="facility in listOfFacilities | filter : {facilityName : selectedFacilityName}">
                 <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8">
-                    <h3>Name: {{facility.facilityName}}</h3>
-                    <h3>Description: {{facility.description}}</h3>
+                    <div>
+                        <h3>{{facility.facilityName}}</h3>
+                    </div>
+                    <div>
+                        <p>Facility type: {{facility.facilityType.facilityType}}</p>
+                    </div>
+                    <div>
+                        <h3>{{facility.description}}</h3>
+                    </div>
                 </div>
             </div>
         </div>
