@@ -9,8 +9,8 @@
         <div class="col-md-12">
             <div class="col-xs-4 col-sm-4 col-md-4 img-container"
                  ng-repeat="facility in listOfFacilities | orderBy: 'floor'">
-                <img ng-click="getSelected(facility.facilityName)" ng-src="{{facility.image}}" class="img-responsive"/>
-                <div ng-click="getMoreDetails(facility.facilityName)">
+                <img ng-click="getMoreDetails(facility.facilityName)" ng-src="{{facility.image}}" class="img-responsive"/>
+                <div  ng-click="getSelected()">
                     <p class="img-title">{{facility.facilityName}}</p><br/>
                 </div>
                 <div ng-show="selected">

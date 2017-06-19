@@ -33,12 +33,15 @@
         });
 
         $scope.getSelected = function () {
-               $scope.selected = !$scope.selected;
+                $scope.selected = !$scope.selected;
         };
 
-        $scope.getMoreDetails = function (facilityName) {
-            $scope.selectedFacilityName= facilityName;
-        };
+            $scope.getMoreDetails = function (facilityName) {
+               if($scope.selectedFacilityName != facilityName) {
+                   $scope.selectedFacilityName = facilityName;
+               } else $scope.selectedFacilityName = 'false';
+            };
 
-    }
+        }
+
 })();
