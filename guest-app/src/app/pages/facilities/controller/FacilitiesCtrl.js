@@ -3,12 +3,11 @@
 
     angular.module('GuestApp.pages.facilities').controller('FacilitiesCtrl', FacilitiesCtrl);
 
-    FacilitiesCtrl.$inject = ['$scope', 'FacilitiesService', 'HomeService'];
-    function FacilitiesCtrl($scope, FacilitiesService, HomeService) {
+    FacilitiesCtrl.$inject = ['$scope', '$state', 'FacilitiesService', 'HomeService'];
+    function FacilitiesCtrl($scope, $state, FacilitiesService, HomeService) {
 
         $scope.message = '';
         $scope.selected = false;
-
 
         HomeService.getHotel().then(function (response) {
             if (response.data) {
@@ -33,14 +32,13 @@
             console.log(error);
         });
 
-        $scope.selectedDetails = function () {
+        $scope.getSelected = function () {
             $scope.selected = !$scope.selected;
         };
 
         $scope.getMoreDetails = function (facilityName) {
-             $scope.selectedFacility = facilityName;
+            $scope.selectedFacilityName= facilityName;
         };
-
 
     }
 })();
