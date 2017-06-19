@@ -12,14 +12,6 @@
                 title:'Facilities',
                 controller:'FacilitiesCtrl'
             });
-
-        $stateProvider
-            .state('facility', {
-                url: '/facility',
-                templateUrl: 'app/pages/facilities/view/facility.html',
-                title:'Facility',
-                controller:'FacilitiesCtrl'
-            })
     }
 })();
 

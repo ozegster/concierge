@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <div class="col-xs-4 col-sm-4 col-md-4 img-container"
                  ng-repeat="facility in listOfFacilities | orderBy: 'floor'">
-                <img ng-click="getSelected()" ng-src="{{facility.image}}" class="img-responsive"/>
+                <img ng-click="getSelected(facility.facilityName)" ng-src="{{facility.image}}" class="img-responsive"/>
                 <div ng-click="getMoreDetails(facility.facilityName)">
                     <p class="img-title">{{facility.facilityName}}</p><br/>
                 </div>
@@ -20,26 +20,29 @@
                 </div>
             </div>
         </div>
-            <div ng-show="selectedFacilityName" ng-repeat="facility in listOfFacilities | filter : {facilityName : selectedFacilityName}">
+    </div>
+    <div>
+        <div class="col-md-12">
+            <div ng-show="selectedFacilityName"
+                 ng-repeat="facility in listOfFacilities | filter : {facilityName : selectedFacilityName}">
                 <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8">
                     <div>
                         <h3>{{facility.facilityName}}</h3>
+                        <h4>Facility type: {{facility.facilityType.facilityType}}</h4>
                     </div>
                     <div>
-                        <p>Facility type: {{facility.facilityType.facilityType}}</p>
-                    </div>
-                    <div>
-                        <h3>{{facility.description}}</h3>
+                        <h4>Description: {{facility.description}}</h4>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="form-group col-md-12">
-            <div class="pull-right">
-                <button type="button" class="column-resize-line" ui-sref="home">BACK</button>
-            </div>
+</div>
+<div class="row">
+    <div class="form-group col-md-12">
+        <div class="pull-right">
+            <button type="button" class="column-resize-line" ui-sref="home">BACK</button>
         </div>
     </div>
+</div>
 </div>
