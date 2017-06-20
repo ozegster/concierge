@@ -7,8 +7,9 @@
     CheckInCtrl.$inject = ['$scope', 'toastr', 'CheckInService', '$uibModal'];
     function CheckInCtrl($scope, toastr, CheckInService, $uibModal) {
 
+        $scope.today = new Date();
         $scope.roomCheckIn = {
-            checkOut: new Date(),
+            checkOut: $scope.today.setDate($scope.today.getDate() + 1),
             checkIn: new Date()
         };
 
