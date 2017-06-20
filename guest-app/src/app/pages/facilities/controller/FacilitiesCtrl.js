@@ -7,7 +7,6 @@
     function FacilitiesCtrl($scope, FacilitiesService, HomeService) {
 
         $scope.message = '';
-        $scope.selected = false;
 
         HomeService.getHotel().then(function (response) {
             if (response.data) {
@@ -32,16 +31,12 @@
             console.log(error);
         });
 
-        $scope.getSelected = function () {
-                $scope.selected = !$scope.selected;
+        $scope.getMoreDetails = function (facilityName) {
+            if ($scope.selectedFacilityName != facilityName) {
+                $scope.selectedFacilityName = facilityName;
+            } else $scope.selectedFacilityName = 'false';
         };
 
-            $scope.getMoreDetails = function (facilityName) {
-               if($scope.selectedFacilityName != facilityName) {
-                   $scope.selectedFacilityName = facilityName;
-               } else $scope.selectedFacilityName = 'false';
-            };
-
-        }
+    }
 
 })();
