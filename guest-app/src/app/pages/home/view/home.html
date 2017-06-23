@@ -1,68 +1,87 @@
-<div class="panel-container">
-    <div class="row">
-        <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8 panel-header">
-            <div class="logo"><img src="" class="logo-img img-responsive"></div>
-            <p class="panel-title">{{hotel.name}}</p>
-        </div>
-    </div>
-    <div class="row">
-        <div ui-sref="directions" class="col-xs-4 col-sm-4 col-md-4 img-container">
-            <img src="assets/img/placeholder.png" class="img-responsive">
-            <div>
-                <p class="img-title">Directions</p>
-            </div>
-        </div>
-        <div ui-sref="hotelInfo" class="col-xs-4 col-sm-4 col-md-4 img-container">
-            <img src="assets/img/placeholder.png" class="img-responsive">
-            <div>
-                <p class="img-title">Hotel Info</p>
-            </div>
-        </div>
-        <div ui-sref="facilities" class="col-xs-4 col-sm-4 col-md-4 img-container">
-            <img src="assets/img/placeholder.png" class="img-responsive">
-            <div>
-                <p class="img-title">Facilities</p>
+<section id ="courses" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="header-section text-center">
+                <div class="logo"><img src="" class="logo-img img-responsive"></div>
+                <h2>{{hotel.name}}</h2>
+                <hr class="bottom-line">
             </div>
         </div>
     </div>
-    <div class="row">
-        <div ui-sref="roomInfo" class="col-xs-4 col-sm-4 col-md-4 img-container">
-            <img src="assets/img/placeholder.png" class="img-responsive">
-            <div>
-                <p class="img-title">Room Info</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 padleft-right" ui-sref="directions">
+                <figure class="imghvr-fold-up">
+                    <img src="assets/img/placeholder.png" class="img-responsive">
+                    <figcaption>
+                        <h3>Directions</h3>
+                    </figcaption>
+                </figure>
             </div>
-        </div>
-        <div ui-sref="reception" class="col-xs-4 col-sm-4 col-md-4 img-container">
-            <img src="assets/img/placeholder.png" class="img-responsive">
-            <div>
-                <p class="img-title">Reception</p>
+            <div class="col-md-4 col-sm-6 padleft-right" ui-sref="hotelInfo">
+                <figure class="imghvr-fold-up">
+                    <img src="assets/img/placeholder.png" class="img-responsive">
+                    <figcaption>
+                        <h3>Hotel info</h3>
+                    </figcaption>
+                </figure>
             </div>
-        </div>
-        <div ui-sref="guestComments" class="col-xs-4 col-sm-4 col-md-4 img-container">
-            <img src="assets/img/placeholder.png" class="img-responsive">
-            <div>
-                <p class="img-title">Guest Comments</p>
+            <div class="col-md-4 col-sm-6 padleft-right" ui-sref="facilities">
+                <figure class="imghvr-fold-up">
+                    <img src="assets/img/placeholder.png" class="img-responsive">
+                    <figcaption>
+                        <h3>Facilities</h3>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 col-sm-6 padleft-right" ui-sref="roomInfo">
+                <figure class="imghvr-fold-up">
+                    <img src="assets/img/placeholder.png" class="img-responsive">
+                    <figcaption>
+                        <h3>Room info</h3>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 col-sm-6 padleft-right" ui-sref="reception">
+                <figure class="imghvr-fold-up">
+                    <img src="assets/img/placeholder.png" class="img-responsive">
+                    <figcaption>
+                        <h3>Reception</h3>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 col-sm-6 padleft-right" ui-sref="guestComments">
+                <figure class="imghvr-fold-up">
+                    <img src="assets/img/placeholder.png" class="img-responsive">
+                    <figcaption>
+                        <h3>Guest comments</h3>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 col-sm-6 padleft-right" ui-sref="weather">
+                <figure class="imghvr-fold-up">
+                    <img src="assets/img/placeholder.png" class="img-responsive">
+                    <figcaption>
+                        <h3>Weather</h3>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 col-sm-6 padleft-right" ui-sref="nearBy">
+                <figure class="imghvr-fold-up">
+                    <img src="assets/img/placeholder.png" class="img-responsive">
+                    <figcaption>
+                        <h3>Near by</h3>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 col-sm-6 padleft-right" ui-sref="directory">
+                <figure class="imghvr-fold-up">
+                    <img src="assets/img/placeholder.png" class="img-responsive">
+                    <figcaption>
+                        <h3>Directory</h3>
+                    </figcaption>
+                </figure>
             </div>
         </div>
     </div>
-    <div class="row img-panel">
-        <div ui-sref="weather" class="col-xs-4 col-sm-4 col-md-4 img-container">
-            <img src="assets/img/placeholder.png" class="img-responsive">
-            <div>
-                <p class="img-title">Weather</p>
-            </div>
-        </div>
-        <div ui-sref="nearBy" class="col-xs-4 col-sm-4 col-md-4 img-container">
-            <img src="assets/img/placeholder.png" class="img-responsive">
-            <div>
-                <p class="img-title">Near By</p>
-            </div>
-        </div>
-        <div ui-sref="directory" class="col-xs-4 col-sm-4 col-md-4 img-container">
-            <img src="assets/img/placeholder.png" class="img-responsive">
-            <div>
-                <p class="img-title">Directory</p>
-            </div>
-        </div>
-    </div>
-</div>
+</section>
