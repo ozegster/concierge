@@ -1,38 +1,21 @@
 .header{
-  height:15%;
   background:#4e5eb3;
 }
 
 .title{
   font-size:50px;
-  top: 50%;
-  transform: translateY(-50%);
   color:white;
   text-align:center;
   text-shadow:1px 1px 1px black;
-}
-
-body, html{
-  height:100%;
+  margin-top:2%;
+  margin-bottom:2%;
 }
 
 .sidebar-nav{
   list-style-type: none;
   text-align:left;
   background:#4e5eb3;
-  height:100%;
-}
-
-.middle{
-  height:100%;
-}
-
-.sidebar-container{
-  height:100%;
-}
-
-.main-div{
-  height:100%;
+  margin-bottom:0px;
 }
 
 .content{
