@@ -3,5 +3,6 @@
 angular.module('GuestApp',[
     'ui.router',
 
-    'GuestApp.pages'
+    'GuestApp.pages',
+    'GuestApp.theme',
 ]);
