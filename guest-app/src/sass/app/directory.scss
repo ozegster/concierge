@@ -11,3 +11,42 @@
 .button-container{
   margin-right:10%;
 }
+
+.floor-data:hover{
+  color: #afa9c0;
+}
+
+.floor-data{
+  cursor:pointer;
+  word-break:break-all;
+}
+
+.floor-container{
+  box-shadow:  1px 6px 10px 0px silver,
+              -1px -2px 10px 0px silver;
+  margin-bottom:3%;
+}
+
+.content{
+  margin-top:3%;
+  margin-left:3%;
+  text-align:center;
+}
+
+.floor-title{
+  font-size:25px;
+  text-decoration: underline;
+  font-style: italic;
+}
+
+.floor-data-title{
+  font-size:20px;
+}
+
+.modals-titles{
+  padding-left:15px;
+}
+
+.equals-height-measure{
+  word-break:break-all;
+}
