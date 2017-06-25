@@ -1,11 +1,11 @@
 <div class="row header">
     <div class="col-md-12 col-cm-12 col-xs-12 col-lg-12 title">
-        PAGE TITLE
+        DIRECTORY
     </div>
 </div>
 <div class="row">
     <div class="sidebar-container col-xs-2  col-md-2  col-sm-2">
-        <ul class="sidebar-nav" equals-height>
+        <ul class="sidebar-nav">
             <li>HOME</li>
             <li>DIRECTORY</li>
             <li>DIRECTIONS</li>
@@ -19,11 +19,21 @@
         </ul>
     </div>
     <div class="col-sm-9 col-md-9 col-xs-9 content">
-        Ovaj div bi sluzio za glavni sadrzaj tiketa <br>
-        Sidebar ce imati linkove za sve ostale stranice tako da nam nece trebati Back button <br>
-        Page title ce biti zamijenjeno sa pravim imenom stranice <br>
-        Sto se tice stajlinga, mozemo nesta promijeniti npr. boju, font-family i sl. <br>
-        Ako imate neku ideju, napravite promjenu pa pusajte <br>
-        Sto se tice pozicioniranja elemenata, trudio sam se da bude slicno kao i dashboard <br>
+        <div class="row floor-container" ng-repeat="item in floors">
+            <p class="floor-title">FLOOR NUMBER : {{item.number}}</p>
+            <div class="col-md-6">
+                <p class="floor-data-title">Room Numbers :</p>
+                <p>
+                    <span class="floor-data" ng-repeat="room in item.rooms" ng-click="getRoomData(room)">{{room.number}}{{$last ? '' : ', '}}</span>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <p class="floor-data-title">Facility Name:</p>
+                <p>
+                    <span class="floor-data" ng-repeat="facility in item.facilities" style="word-break:break-all"
+                          ng-click="getFacilityData(facility)">{{facility.facilityName}}{{$last ? '' : ', '}}</span>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
