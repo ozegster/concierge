@@ -3,8 +3,8 @@
 
     angular.module('GuestApp.pages.directory').controller('DirectoryCtrl', DirectoryCtrl);
 
-    DirectoryCtrl.$inject = ['$scope', 'DirectoryService'];
-    function DirectoryCtrl($scope, DirectoryService) {
+    DirectoryCtrl.$inject = ['$scope', 'DirectoryService', "$uibModal"];
+    function DirectoryCtrl($scope, DirectoryService, $uibModal) {
 
         $scope.floors = [];
 
@@ -52,22 +52,18 @@
             angular.forEach(floorNumbers, function (valueFloorNumbers, keyFloorNumbers) {
                 currentFloor = {
                     number : '',
-                    rooms : '',
-                    facilities : ''
+                    rooms : [],
+                    facilities : []
                 };
                 currentFloor.number = valueFloorNumbers;
-
                 angular.forEach(arr, function (valueArr, keyArr) {
                     if(valueFloorNumbers === valueArr.floorNumber){
-                        currentFloor.rooms += valueArr.number + ',';
+                        currentFloor.rooms.push(valueArr)
                     }
                     if(valueFloorNumbers === valueArr.floor) {
-                        currentFloor.facilities += valueArr.facilityType.facilityType + ','
+                        currentFloor.facilities.push(valueArr)
                     }
                 });
-
-                currentFloor.rooms = currentFloor.rooms.slice(0,-1);
-                currentFloor.facilities = currentFloor.facilities.slice(0,-1);
                 allFloors.push(currentFloor);
             });
             $scope.floors = allFloors;
@@ -75,6 +71,24 @@
 
         $scope.isNumberExists = function (floorNumbers, currentFloor) {
             return floorNumbers.indexOf(currentFloor)
+        };
+
+        $scope.getRoomData = function (room){
+            $scope.room = room;
+            $uibModal.open({
+                templateUrl: 'app/pages/directory/view/room-data-modal.html',
+                controller: 'DirectoryCtrl',
+                scope: $scope
+            });
+        };
+
+        $scope.getFacilityData = function (facility){
+            $scope.facility = facility;
+            $uibModal.open({
+                templateUrl: 'app/pages/directory/view/facility-data-modal.html',
+                controller: 'DirectoryCtrl',
+                scope: $scope
+            });
         }
     }
 })();
