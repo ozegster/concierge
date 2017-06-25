@@ -1,39 +1,20 @@
-<div class="row header">
-    <div class="col-md-12 col-cm-12 col-xs-12 col-lg-12 title">
-        DIRECTORY
-    </div>
-</div>
-<div class="row">
-    <div class="sidebar-container col-xs-2  col-md-2  col-sm-2">
-        <ul class="sidebar-nav">
-            <li>HOME</li>
-            <li>DIRECTORY</li>
-            <li>DIRECTIONS</li>
-            <li>FACILITIES</li>
-            <li>NEAR BY</li>
-            <li>ROOM INFO</li>
-            <li>HOTEL INFO</li>
-            <li>GUEST COMMENTS</li>
-            <li>RECEPTION</li>
-            <li>WEATHER</li>
-        </ul>
-    </div>
-    <div class="col-sm-9 col-md-9 col-xs-9 content">
-        <div class="row floor-container" ng-repeat="item in floors">
-            <p class="floor-title">FLOOR NUMBER : {{item.number}}</p>
-            <div class="col-md-6">
-                <p class="floor-data-title">Room Numbers :</p>
-                <p>
-                    <span class="floor-data" ng-repeat="room in item.rooms" ng-click="getRoomData(room)">{{room.number}}{{$last ? '' : ', '}}</span>
-                </p>
-            </div>
-            <div class="col-md-6">
-                <p class="floor-data-title">Facility Name:</p>
-                <p>
-                    <span class="floor-data" ng-repeat="facility in item.facilities" style="word-break:break-all"
-                          ng-click="getFacilityData(facility)">{{facility.facilityName}}{{$last ? '' : ', '}}</span>
-                </p>
-            </div>
+<section class="section-padding">
+</section>
+<div class="row" ng-repeat="item in floors">
+    <div class="floor-container col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xs-10 col-sm-10 col-md-10 col-lg-10">
+        <p class="floor-title">FLOOR NUMBER : {{item.number}}</p>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p class="floor-data-title">Room Numbers :</p>
+            <p>
+                <span class="floor-data" ng-repeat="room in item.rooms" ng-click="getRoomData(room)">{{room.number}}{{$last ? '' : ', '}}</span>
+            </p>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <p class="floor-data-title">Facility Name:</p>
+            <p>
+            <span class="floor-data" ng-repeat="facility in item.facilities"
+                  ng-click="getFacilityData(facility)">{{facility.facilityName}}{{$last ? '' : ', '}}</span>
+            </p>
         </div>
     </div>
 </div>
