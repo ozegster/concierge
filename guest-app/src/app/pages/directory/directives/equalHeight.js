@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('GuestApp.theme')
+    angular.module('GuestApp.pages.directory')
         .directive("equalsHeight",['$timeout', function ($timeout) {
             return {
                 restrict: 'A',
