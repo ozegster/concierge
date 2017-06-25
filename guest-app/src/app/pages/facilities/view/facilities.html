@@ -1,24 +1,23 @@
-<div class="panel-container">
-    <div class="row">
-        <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8 panel-header">
-            <div ui-sref="hotelInfo" class="logo"><img src="" class="logo-img img-responsive img-container"></div>
-            <p class="panel-title">Facilities</p><span ng-bind="message" class="panel-title"></span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div ng-click="getMoreDetails(facility.facilityName)" class="col-xs-4 col-sm-4 col-md-4 img-container"
-                 ng-repeat="facility in listOfFacilities | orderBy: 'floor'">
-                <img ng-src="{{facility.image}}"
-                     class="img-responsive"/>
-                <div>
-                    <p class="img-title">{{facility.facilityName}}</p><br/>
-                </div>
+<section id ="courses" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="header-section text-center">
+                <h2>Facilities</h2>
+                <hr class="bottom-line">
             </div>
         </div>
     </div>
-    <div>
-        <div class="col-md-12">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 padleft-right" ng-click="getSelectedFacility(facility.facilityName)" ng-repeat="facility in listOfFacilities | orderBy: 'floor'">
+                <figure class="imghvr-fold-up">
+                        <img ng-src="{{facility.image}}"
+                             class="img-responsive"/>
+                    <figcaption>
+                        <h3>{{facility.facilityName}}</h3>
+                    </figcaption>
+                </figure>
+            </div>
             <div ng-repeat="facility in listOfFacilities | filter : {facilityName : selectedFacilityName}">
                 <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8">
                     <div ng-show="selectedFacilityName">
@@ -33,12 +32,4 @@
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="form-group col-md-12">
-        <div class="pull-right">
-            <button type="button" class="column-resize-line" ui-sref="home">BACK</button>
-        </div>
-    </div>
-</div>
-</div>
+</section>
