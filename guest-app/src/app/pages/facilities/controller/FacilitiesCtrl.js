@@ -31,10 +31,10 @@
             console.log(error);
         });
 
-        $scope.getSelectedFacility = function (facilityName) {
-            if ($scope.selectedFacilityName != facilityName) {
-                $scope.selectedFacilityName = facilityName;
-            } else $scope.selectedFacilityName = 'false';
+        $scope.getSelectedFacility = function (facilityId) {
+            if ($scope.selectedFacility != facilityId) {
+                $scope.selectedFacility = facilityId;
+            } else $scope.selectedFacility = 'false';
         };
     }
 

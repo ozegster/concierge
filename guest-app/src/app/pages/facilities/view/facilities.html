@@ -9,7 +9,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-sm-6 padleft-right" ng-click="getSelectedFacility(facility.facilityName)" ng-repeat="facility in listOfFacilities | orderBy: 'floor'">
+            <div class="col-md-4 col-sm-6 padleft-right" ng-click="getSelectedFacility(facility.id)" ng-repeat="facility in listOfFacilities | orderBy: 'floor'">
                 <figure class="imghvr-fold-up">
                         <img ng-src="{{facility.image}}"
                              class="img-responsive"/>
@@ -18,9 +18,9 @@
                     </figcaption>
                 </figure>
             </div>
-            <div ng-repeat="facility in listOfFacilities | filter : {facilityName : selectedFacilityName}">
+            <div ng-repeat="facility in listOfFacilities | filter : {id : selectedFacility}">
                 <div class="col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-md-8 col-sm-8 col-xs-8 col-lg-8">
-                    <div ng-show="selectedFacilityName">
+                    <div ng-show="selectedFacility">
                         <h3>{{facility.facilityName}}</h3>
                         <ul>
                             <li><h4>Facility type: {{facility.facilityType.facilityType}}</h4></li>
