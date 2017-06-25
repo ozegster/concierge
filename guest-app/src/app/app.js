@@ -2,7 +2,7 @@
 
 angular.module('GuestApp',[
     'ui.router',
+    'ui.bootstrap',
 
-    'GuestApp.pages',
-    'GuestApp.theme',
+    'GuestApp.pages'
 ]);
