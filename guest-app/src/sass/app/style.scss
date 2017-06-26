@@ -646,7 +646,8 @@ Footer
   margin-bottom: 10px;
 }
 .btn {
-  padding: 10px 20px;
+  padding: 1px 1px;
+
 }
 .light-form-button{
   background: #5fcf80;
@@ -771,4 +772,8 @@ Responsive media queries
   .navbar-default .navbar-nav > li > a{
     text-align: center;
   }
+}
+
+.cursor-hand {
+  cursor: pointer;
 }
