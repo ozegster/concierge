@@ -21,7 +21,7 @@
 
         $scope.getSelectedFacility = function (facility) {
                 $scope.facility = facility;
-            $uibModal.open({
+            $uibModals.open({
                 templateUrl: 'app/pages/facilities/view/facility-modal.html',
                 controller: 'FacilitiesCtrl',
                 scope: $scope
