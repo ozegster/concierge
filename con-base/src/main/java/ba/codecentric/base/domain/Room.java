@@ -33,6 +33,7 @@ public class Room {
     @JoinColumn(name = "room_type_id")
     private RoomType roomType;
 
+
     public Integer getId() {
         return id;
     }
@@ -64,5 +65,4 @@ public class Room {
     public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
-
 }
