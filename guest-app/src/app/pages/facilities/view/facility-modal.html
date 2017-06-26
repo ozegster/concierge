@@ -1,13 +1,11 @@
 <div class="modal-container">
     <div class="modal-content">
         <div class="modal-body">
-            <div class="row">
-                <h4 class="modals-titles">{{facility.facilityName}}</h4>
-                <div class="col-lg-8 equals-height-measure">
-                    <p>Facility Type : {{facility.facilityType.facilityType}}</p>
-                    <p>Floor Number : {{facility.floor}}</p>
-                    <p>Description : {{facility.description}}</p>
-                </div>
+            <h4 class="modals-titles">{{facility.facilityName}}</h4>
+            <div>
+                <p><b>Facility Type:</b> {{facility.facilityType.facilityType}}</p>
+                <p><b>Floor Number:</b> {{facility.floor}}</p>
+                <p><b>Description:</b> {{facility.description}}</p>
             </div>
         </div>
         <div class="modal-footer">
