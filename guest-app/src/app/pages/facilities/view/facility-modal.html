@@ -1,8 +1,18 @@
-<div class="col-md-4 col-sm-6 padleft-right" ui-sref="facilities">
-    <figure class="imghvr-fold-up">
-        <p>Selected facility:{{selectedFacility}}</p>
-        <figcaption>
-            <h3>Facilities</h3>
-        </figcaption>
-    </figure>
+<div class="modal-container">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="row">
+                <h4 class="modals-titles">Facility Details :</h4>
+                <div class="col-lg-8 equals-height-measure">
+                    <p>Name : {{facility.facilityName}}</p>
+                    <p>Description : {{facility.description}}</p>
+                    <p>Floor Number : {{facility.floor}}</p>
+                    <p>Facility Type : {{facility.facilityType.facilityType}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-responsive" ng-click="$dismiss()">Cancel</button>
+        </div>
+    </div>
 </div>

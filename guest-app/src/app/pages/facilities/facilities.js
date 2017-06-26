@@ -12,6 +12,7 @@
                 title:'Facilities',
                 controller:'FacilitiesCtrl'
             });
+
     }
 })();
 

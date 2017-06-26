@@ -3,22 +3,10 @@
 
     angular.module('GuestApp.pages.facilities').controller('FacilitiesCtrl', FacilitiesCtrl);
 
-    FacilitiesCtrl.$inject = ['$scope', 'FacilitiesService', 'HomeService'];
-    function FacilitiesCtrl($scope, FacilitiesService, HomeService) {
+    FacilitiesCtrl.$inject = ['$scope', 'FacilitiesService', '$uibModal'];
+    function FacilitiesCtrl($scope, FacilitiesService, $uibModals) {
 
         $scope.message = '';
-
-        HomeService.getHotel().then(function (response) {
-            if (response.data) {
-                $scope.hotel = response.data;
-                var logo = angular.element(document.querySelector('.logo-img'));
-                logo.attr('src', $scope.hotel.imageLogo);
-            } else {
-                console.log('Hotel not found')
-            }
-        }, function (error) {
-            console.log(error);
-        });
 
         FacilitiesService.getAllFacilities().then(function (response) {
             if (response.data) {
@@ -31,10 +19,13 @@
             console.log(error);
         });
 
-        $scope.getSelectedFacility = function (facilityId) {
-            if ($scope.selectedFacility != facilityId) {
-                $scope.selectedFacility = facilityId;
-            } else $scope.selectedFacility = 'false';
+        $scope.getSelectedFacility = function (facility) {
+                $scope.facility = facility;
+            $uibModal.open({
+                templateUrl: 'app/pages/facilities/view/facility-modal.html',
+                controller: 'FacilitiesCtrl',
+                scope: $scope
+            });
         };
     }
 
