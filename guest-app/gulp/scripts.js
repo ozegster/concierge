@@ -15,6 +15,12 @@ gulp.task('scripts-reload', function () {
 });
 
 function scriptsBuild() {
-    return gulp.src(path.join(conf.paths.src, '/app/**/*.js'))
-        .pipe(gulp.dest(conf.paths.tmp))
+    return gulp.src([
+        path.join(conf.paths.src, '/assets/js/**/*.js'),
+        path.join(conf.paths.src, '/app/**/*.module.js'),
+        path.join(conf.paths.src, '/app/**/*.js'),
+        path.join('!' + conf.paths.src, '/app/**/*.spec.js'),
+        path.join('!' + conf.paths.src, '/app/**/*.mock.js')
+    ])
 }
+
