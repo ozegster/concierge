@@ -1,20 +1,22 @@
 <section class="section-padding">
 </section>
-<div class="row" ng-repeat="item in floors">
-    <div class="floor-container col-xs-offset-1 col-sm-offset-1 col-md-offset-1 col-lg-offset-1 col-xs-10 col-sm-10 col-md-10 col-lg-10">
-        <p class="floor-title">FLOOR NUMBER : {{item.number}}</p>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <p class="floor-data-title">Room Numbers :</p>
-            <p>
-                <span class="floor-data" ng-repeat="room in item.rooms" ng-click="getRoomData(room)">{{room.number}}{{$last ? '' : ', '}}</span>
-            </p>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <p class="floor-data-title">Facility Name:</p>
-            <p>
-            <span class="floor-data" ng-repeat="facility in item.facilities"
-                  ng-click="getFacilityData(facility)">{{facility.facilityName}}{{$last ? '' : ', '}}</span>
-            </p>
-        </div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 padleft-right btn" ng-click="" ng-repeat="item in floors">
+        <figure class="imghvr-fold-up">
+            <img ng-src="assets/img/directory.jpg" class="img-responsive"/>
+            <figcaption>
+                <div class="col-lg-6 floor-data-container">
+                    <p class="floor-data-title">Facility Name:</p>
+                    <p class="floor-data" ng-repeat="facility in item.facilities" ng-click="getFacilityData(facility)">{{facility.facilityName}}{{$last ? '' : ', '}}</p>
+                    <p ng-show="!item.facilities.length">No facility on this floor</p>
+                </div>
+                <div class="col-lg-6 floor-data-container">
+                    <p class="floor-data-title">Rooms :</p>
+                    <p class="floor-data" ng-repeat="room in item.rooms" ng-click="getRoomData(room)">Number {{room.number}}{{$last ? '' : ', '}}</p>
+                    <p ng-show="!item.rooms.length">No room on this floor</p>
+                </div>
+            </figcaption>
+        </figure>
+        <div>Floor number : {{item.number}}</div>
     </div>
 </div>
