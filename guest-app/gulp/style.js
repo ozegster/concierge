@@ -2,15 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var conf = require('./conf');
 
-var browserSync = require('browser-sync').create();
-
-gulp.task('browserSync', function() {
-    browserSync.init({
-        server: {
-            baseDir: 'app'
-        },
-    })
-});
+var browserSync = require('browser-sync');
 
 gulp.task('style', function () {
     styleBuild();
