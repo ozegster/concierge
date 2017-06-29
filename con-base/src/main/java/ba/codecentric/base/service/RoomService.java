@@ -11,6 +11,4 @@ public interface RoomService {
     List<Room> getAllRooms();
 
     void deleteRoom(Integer id);
-
-    Room getRoom(Integer roomId);
 }

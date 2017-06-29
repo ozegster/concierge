@@ -9,4 +9,6 @@ public interface RoomCheckInService {
     RoomCheckIn saveRoomCheckIn(RoomCheckIn roomCheckIn);
 
     Iterable<Room> findAvailableRooms(CheckInRequest checkInRequest);
+
+    RoomCheckIn findRoomCheckInByPassword(Integer password);
 }

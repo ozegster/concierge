@@ -4,9 +4,9 @@
     angular.module('GuestApp.pages.roomInfo')
         .factory('RoomInfoService', ['$http', '$q', function ($http, $q) {
 
-            var getRoom = function (roomId) {
+            var getRoomCheckIn = function (password) {
                 var deferred = $q.defer();
-                $http.get(location.protocol + '//' + location.hostname + ':8090' + '/rooms/' + roomId)
+                $http.get(location.protocol + '//' + location.hostname + ':8090' + '/room/' + password)
                     .then(function (response) {
                         if (!response.data) {
                             deferred.reject("There isn't a hotel in db");
@@ -19,7 +19,7 @@
                 return deferred.promise;
             };
             return {
-                getRoom: getRoom
+                getRoomCheckIn: getRoomCheckIn
             };
         }])
 })();

@@ -6,17 +6,17 @@
     RoomInfoCtrl.$inject = ['$scope','RoomInfoService'];
     function RoomInfoCtrl($scope, RoomInfoService) {
 
-        $scope.room = {};
+        $scope.roomCheckIn = {};
         $scope.air = false;
 
-        RoomInfoService.getRoom(1).then(function (response) {
+        RoomInfoService.getRoomCheckIn(7368).then(function (response) {
             if(response.data) {
-                $scope.room = response.data;
+                $scope.roomCheckIn = response.data;
             } else {
                 console.log('Room not found')
             }
         }, function () {
-            $scope.room.number = 'Not available';
+            $scope.roomCheckIn.room.number = 'Not available';
         });
     }
 })();

@@ -27,7 +27,7 @@ public class RoomController {
     private final static Logger LOG = Logger.getLogger(RoomController.class);
 
     @Autowired
-    public RoomController(RoomService roomService,ImageService imageService) {
+    public RoomController(RoomService roomService, ImageService imageService) {
         this.roomService = roomService;
         this.imageService = imageService;
     }
@@ -39,13 +39,13 @@ public class RoomController {
     }
 
     @GetMapping
-    public List<Room> getRooms() throws IOException{
-        List<Room>list = roomService.getAllRooms();
+    public List<Room> getRooms() throws IOException {
+        List<Room> list = roomService.getAllRooms();
 
-        for(Room room : list){
+        for (Room room : list) {
             RoomType roomType = room.getRoomType();
             String image = roomType.getImage();
-            if(!image.startsWith("data:image/png;base64,")) {
+            if (!image.startsWith("data:image/png;base64,")) {
                 roomType.setImage(imageService.encodeImage(roomType.getImage()));
             }
         }
@@ -56,10 +56,5 @@ public class RoomController {
     public void delete(@PathVariable Integer id) {
         roomService.deleteRoom(id);
         LOG.info("Delete Room with id: " + id);
-    }
-
-    @GetMapping(value = "/{id}")
-    public Room getRoom(@PathVariable Integer id){
-        return roomService.getRoom(id);
     }
 }

@@ -63,6 +63,11 @@ public class RoomCheckInServiceImpl implements RoomCheckInService {
         return availableRooms;
     }
 
+    @Override
+    public RoomCheckIn findRoomCheckInByPassword(Integer password) {
+        return roomCheckInRepository.findByPassword( password);
+    }
+
     private Integer getPassword() {
         return ThreadLocalRandom.current().nextInt(1000, 9999);
     }
