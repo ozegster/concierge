@@ -1,29 +1,21 @@
-<section class="section-padding">
+<section class="section-padding" ng-cloak>
 </section>
 <div class="panel-container">
-
     <div class="container">
         <div class="panel panel-default">
             <div class="panel-heading"><h4>Room information </h4></div>
             <div class="panel-body">
-                <div class="col-lg-5 text-left">
-                    <div class="form-group col-lg-5">
-                        <div class="col-lg-3">
-                        Room number:
-                        </div>
-                        <div class="col-lg-2">
-                            {{roomCheckIn.room.number}}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        Floor number: {{roomCheckIn.room.floorNumber}}
-                    </div>
+                <div class="col-lg-6 text-left">
+
+                    <div class="col-md-4"> Room number: {{roomCheckIn.room.number}}</div>
+                    <div class="col-md-4 strong">Floor number: {{roomCheckIn.room.floorNumber}}</div>
+
+
+
+
                     <table class="table table-responsive">
                         <thead>
-                        <tr>
-                            <th>Room number:</th>
-                            <th>{{roomCheckIn.room.number}}</th>
-                        </tr>
+
                         <tr>
                             <th>Name:</th>
                             <th>{{roomCheckIn.room.roomType.name}}</th>
