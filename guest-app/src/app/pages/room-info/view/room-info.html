@@ -1,53 +1,82 @@
 <section class="section-padding" ng-cloak>
 </section>
-<div class="panel-container">
-    <div class="container">
-        <div class="panel panel-default">
-            <div class="panel-heading"><h4>Room information </h4></div>
-            <div class="panel-body">
-                <div class="col-lg-6 text-left">
-
-                    <div class="col-md-4"> Room number: {{roomCheckIn.room.number}}</div>
-                    <div class="col-md-4 strong">Floor number: {{roomCheckIn.room.floorNumber}}</div>
-
-
-
-
-                    <table class="table table-responsive">
-                        <thead>
-
-                        <tr>
-                            <th>Name:</th>
-                            <th>{{roomCheckIn.room.roomType.name}}</th>
-                        </tr>
-                        <tr>
-                            <th>Size:</th>
-                            <th>{{roomCheckIn.room.roomType.size}} m3</th>
-                        </tr>
-                        <tr>
-                            <th>Bed:</th>
-                            <th>{{roomCheckIn.room.roomType.bedType.type}}</th>
-                        </tr>
-                        <tr>
-                            <th>Features:</th>
-                            <th ng-repeat="features in roomCheckIn.room.roomType.features">
-                                {{features.name}}
-                            </th>
-                        </tr>
-
-
-                        <div>
-                            <div ng-show="air">
-                                <img src="/assets/img/air.png" height="30"/></div>
-                        </div>
-
-                        </thead>
-                    </table>
-
-                </div>
-            </div>
+<div class="container">
+<div class="panel-container"></div>
+    <div class="col-md-4 col-sm-6 padleft-right">
+        <div class="col-md-8 col-sm-6">
+            <h4>Guest information</h4>
+            <p>Name: <strong>{{roomCheckIn.name}}</strong></p>
+            <p>Last name:  <strong>{{roomCheckIn.lastName}}</strong></p>
+            <p>Check in date:  <strong>{{roomCheckIn.checkIn | date:'dd.MM.yyyy'}}</strong></p>
+            <p>Check out date:  <strong>{{roomCheckIn.checkOut | date:'dd.MM.yyyy'}}</strong></p>
         </div>
     </div>
-    <button type="button"><a ui-sref="home">Back</a></button>
+    <div class="info">
+        <div class="col-md-4 col-sm-6 padleft-right">
+            <figure class="imghvr-fold-up">
+                <img src="assets/img/room.jpg" class="img-responsive">
+                <figcaption>
+                    <h3>Room information</h3>
+                </figcaption>
+            </figure>
+        </div>
+    </div>
 </div>
+<!--<div class="container">-->
+    <!--name: {{roomCheckIn.name}}-->
+<!--</div>-->
+<!--<div class="panel-container">-->
+    <!--<div class="container">-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading"><h4>Room information </h4></div>-->
+            <!--<div class="panel-body">-->
+                <!--<div class="col-lg-6">-->
+                    <!--<div class="text-left">-->
+                        <!--<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">-->
+                            <!--<p>Room number: {{roomCheckIn.room.number}}</p>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">-->
+                            <!--<p>Floor number: {{roomCheckIn.room.floorNumber}}</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+
+
+                    <!--<table class="table table-responsive">-->
+                        <!--<thead>-->
+
+                        <!--<tr>-->
+                            <!--<th>Name:</th>-->
+                            <!--<th>{{roomCheckIn.room.roomType.name}}</th>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<th>Size:</th>-->
+                            <!--<th>{{roomCheckIn.room.roomType.size}} m3</th>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<th>Bed:</th>-->
+                            <!--<th>{{roomCheckIn.room.roomType.bedType.type}}</th>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<th>Features:</th>-->
+                            <!--<th ng-repeat="features in roomCheckIn.room.roomType.features">-->
+                                <!--{{features.name}}-->
+                            <!--</th>-->
+                        <!--</tr>-->
+
+
+                        <!--<div>-->
+                            <!--<div ng-show="air">-->
+                                <!--<img src="/assets/img/air.png" height="30"/></div>-->
+                        <!--</div>-->
+
+                        <!--</thead>-->
+                    <!--</table>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<button type="button"><a ui-sref="home">Back</a></button>-->
+<!--</div>-->
 
