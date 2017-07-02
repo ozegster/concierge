@@ -842,7 +842,7 @@ Responsive media queries
 
 #loading-bar-spinner {
   display: block;
-  position: absolute;
+  position: fixed;
   z-index: 10002;
   top: 50%;
   left: 50%;
