@@ -6,8 +6,10 @@ import com.google.maps.PhotoRequest;
 import com.google.maps.PlacesApi;
 import com.google.maps.errors.ApiException;
 import com.google.maps.model.LatLng;
+import com.google.maps.model.Photo;
 import com.google.maps.model.PhotoResult;
 import com.google.maps.model.PlacesSearchResponse;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -36,9 +38,21 @@ public class NearbyGoogleService {
         return response;
     }
 
-//    public void getPlacesImage(String photosReference) throws InterruptedException, ApiException, IOException {
-//        PhotoResult req = PlacesApi.photo(geoApiContext, photosReference).await();
-//    }
+    public String getImage(Photo photos) throws InterruptedException, ApiException, IOException {
+
+        PhotoResult photoResult = null;
+        PhotoRequest photoRequest = PlacesApi.photo(geoApiContext, photos.photoReference)
+                .maxHeight(photos.height).maxWidth(photos.width);
+
+
+        photoResult = photoRequest.await();
+
+        return getBase64String(photoResult.imageData);
+    }
+
+    private String getBase64String(byte[] array){
+        return "data:image/png;base64," + Base64.encodeBase64String(array);
+    }
 
 
 }
