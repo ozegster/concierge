@@ -10,7 +10,7 @@
         'GuestApp.pages.facilities',
         'GuestApp.pages.guestComments',
         'GuestApp.pages.hotelInfo',
-        'GuestApp.pages.nearBy',
+        'GuestApp.pages.nearby',
         'GuestApp.pages.reception',
         'GuestApp.pages.roomInfo',
         'GuestApp.pages.weather',
