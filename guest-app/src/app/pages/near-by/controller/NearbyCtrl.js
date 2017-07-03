@@ -8,11 +8,11 @@
 
         $scope.keyword = "";
         $scope.places = [];
-
+//$scope.image = "";
         $scope.getPlaces = function () {
             NearbyService.getPlaces($scope.keyword).then(function (response) {
                 $scope.places = response.data.results;
-
+console.log($scope.places)
             }, function (error) {
                 console.log('error');
             });
@@ -49,5 +49,15 @@
         };
 
         $scope.setMap();
+
+        $scope.getImage = function (photo) {
+            NearbyService.getImage(photo).then(function(response){
+                response.data;
+                var panelImage = angular.element(document.querySelector('#img'));
+                panelImage.attr('src',response.data);
+            },function(error){
+                console.log(error)
+            })
+        }
     }
 })();
