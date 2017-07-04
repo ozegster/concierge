@@ -7,7 +7,6 @@
 .item-container{
   margin-left:6%;
   margin-top:3%;
-  background:#dbdee0;
   box-shadow: 0 4px 2px -2px silver;
 }
 
@@ -22,5 +21,27 @@
 }
 
 #googleMap{
-  height:400px;
+  height:calc(100vw * 0.3);
+}
+
+.places-image{
+  width:100%;
+  height:calc(100vw * 0.3);
+}
+
+span.error-message{
+  font-size:12px;
+  color:red;
+}
+
+div.button-container, div.radius-container{
+  margin-top:2%;
+}
+
+h5.place-header{
+  background: #337ab7;;
+  color:white;
+  text-align:center;
+  padding-top:5px;
+  padding-bottom:5px;
 }
