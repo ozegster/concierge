@@ -4,9 +4,9 @@
 
             var url = location.protocol + '//' + location.hostname + ':8090';
 
-            var getPlaces = function (keyword) {
+            var getPlaces = function (keyword, radius) {
 
-                return $http.get(url + '/places', {params: {"data": keyword}})
+                return $http.get(url + '/places', {params: {"keyword": keyword,"radius":radius}})
                     .then(function (response) {
                         return response;
                     }, function (error) {
