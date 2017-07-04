@@ -5,34 +5,83 @@
 </div>
 <div class="row form-container">
     <div class="col-lg-6">
-        <form>
-            <div class=form-check">
-                <label class="radio-inline">
-                    <input class="form-check-input" type="radio" ng-model="keyword" value="food">Food
-                </label>
+        <form name="placesForm" novalidate ng-submit="getPlaces(placesForm)">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class=form-check">
+                        <label class="radio-inline">
+                            <input class="form-check-input" name="placeType" type="radio" ng-model="keyword"
+                                   value="food" required>Restaurant
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="radio-inline">
+                            <input class="form-check-input" name="placeType" type="radio" ng-model="keyword"
+                                   value="bank" required>Bank
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="radio-inline">
+                            <input class="form-check-input" name="placeType" type="radio" ng-model="keyword"
+                                   value="cafe" required>Cafe
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="radio-inline">
+                            <input class="form-check-input" name="placeType" type="radio" ng-model="keyword"
+                                   value="shopping" required>Shopping
+                        </label>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-check">
+                        <label class="radio-inline">
+                            <input class="form-check-input" name="placeType" type="radio" ng-model="keyword"
+                                   value="emergency" required>Health
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="radio-inline">
+                            <input class="form-check-input" name="placeType" type="radio" ng-model="keyword" value="ATM"
+                                   required>ATM
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="radio-inline">
+                            <input class="form-check-input" name="placeType" type="radio" ng-model="keyword"
+                                   value="bakery" required>Bakery
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="radio-inline">
+                            <input class="form-check-input" name="placeType" type="radio" ng-model="keyword"
+                                   value="pharmacy" required>Pharmacy
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="form-check">
-                <label class="radio-inline">
-                    <input class="form-check-input" type="radio" ng-model="keyword" value="banks">Bank,ATM
-                </label>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div ng-show="placesForm.$submitted">
+                        <span class="error-message" ng-show="placesForm.placeType.$error.required">Please, select places type</span>
+                    </div>
+                </div>
             </div>
-            <div class="form-check">
-                <label class="radio-inline">
-                    <input class="form-check-input" type="radio" ng-model="keyword" value="coffee">Coffee
-                </label>
+            <div class="row radius-container">
+                <div class="col-lg-12">
+                    <span>Radius : </span>
+                    <input name="radius" type="number" ng-model="radius" ng-min="100" ng-max="1000" required>
+                    <div ng-show="placesForm.$submitted">
+                        <span class="error-message" ng-show="placesForm.radius.$error.min">Minimum is 100m</span>
+                        <span class="error-message" ng-show="placesForm.radius.$error.max">Maximum is 1000m</span>
+                        <span class="error-message" ng-show="placesForm.radius.$error.required">Please, enter radius</span>
+                    </div>
+                </div>
             </div>
-            <div class="form-check">
-                <label class="radio-inline">
-                    <input class="form-check-input" type="radio" ng-model="keyword" value="shopping">Shopping
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="radio-inline">
-                    <input class="form-check-input" type="radio" ng-model="keyword" value="health">Health
-                </label>
-            </div>
-            <div>
-                <button type="button" class="btn btn-primary" ng-click="getPlaces()">SEARCH</button>
+            <div class="row button-container">
+                <div class="col-lg-12">
+                    <button type="submit" class="btn btn-primary">SEARCH</button>
+                </div>
             </div>
         </form>
     </div>
@@ -45,11 +94,12 @@
 <div class="row nearby-places-container">
     <div class="col-md-3 item-container" ng-repeat="item in places">
         <div>
-            <h5>Name : {{item.name}}</h5>
+            <h5 class="place-header">{{item.name}}</h5>
             <h5>Address : {{item.vicinity}}</h5>
             <h5>Open Now : {{item.openingHours.openNow ? 'YES' : 'NO'}}</h5>
             <h5>Type : {{item.types[0]}}, {{item.types[1]}}</h5>
-            <h5 class="clickable" ng-click="setMap(item.geometry.location.lat,item.geometry.location.lng,item.name)">Show
+            <h5 class="clickable" ng-click="setMap(item.geometry.location.lat,item.geometry.location.lng,item.name)">
+                Show
                 Place On Map</h5>
             <h5 class="clickable" ng-click="getImage(item.photos[0])">See Image</h5>
         </div>
