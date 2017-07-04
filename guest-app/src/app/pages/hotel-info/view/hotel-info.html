@@ -1,3 +1,49 @@
-<section class="section-padding">
-    <p>Hotel info</p>
+<section class="section-padding" ng-cloak>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>HOTEL INFO</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="heading">
+                    <h4>BASIC</h4>
+                    <div id="logo-container">
+                        <img src="" class="hotel-logo img-responsive">
+                    </div>
+                    <p>Hotel {{hotel.name}}</p>
+                    <p class="pull-left" ng-repeat="i in range track by $index">
+                        <i class="fa fa-star icon-cog yellow"></i>
+                    </p>
+                    <br/>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="heading">
+                    <h4>LOCATION</h4>
+                    <p>{{hotel.address}}</p>
+                    <p>{{hotel.zip}}, {{hotel.city}}</p>
+                    <p>{{hotel.country.name}}</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="heading">
+                    <h4>CONTACT</h4>
+                    <p><i class="fa fa-phone fa-fw"></i> {{hotel.phone}}</p>
+                    <p><i class="fa fa-fax fa-fw"></i> {{hotel.fax}}</p>
+                    <p><i class="fa fa-envelope-o fa-fw"></i> {{hotel.email}}</p>
+                    <p><i class="fa fa-sticky-note-o fa-fw"></i> {{hotel.website}}</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="heading">
+                    <h4>DETAILS</h4>
+                    <p><i class="fa fa-check-circle-o fa-fw"></i> Check in {{hotel.checkIn}}</p>
+                    <p><i class="fa fa-close fa-fw"></i> Check out {{hotel.checkIn}}</p>
+                    <p><i class="fa fa-info fa-fw"></i> {{hotel.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
