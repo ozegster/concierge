@@ -1,13 +1,26 @@
-.nearby-places-container, .form-container{
+.form-container{
   margin-left:1%;
   margin-top:3%;
+  margin-bottom:3%;
 }
 
 .item-container{
-
+  margin-left:6%;
+  margin-top:3%;
+  background:#dbdee0;
+  box-shadow: 0 4px 2px -2px silver;
 }
 
-.map-link:hover{
+.clickable:hover{
   cursor : pointer;
   color : silver;
+}
+
+.nearby-places-container{
+ margin-left:1%;
+  margin-bottom:2%;
+}
+
+#googleMap{
+  height:400px;
 }
