@@ -2,17 +2,16 @@
     'use strict';
 
     angular.module('GuestApp.pages.nearby').controller('NearbyCtrl', NearbyCtrl);
-    NearbyCtrl.$inject = ['$scope','$window', 'NearbyService'];
+    NearbyCtrl.$inject = ['$scope','$window','$uibModal', 'NearbyService'];
 
-    function NearbyCtrl($scope,$window, NearbyService) {
+    function NearbyCtrl($scope,$window,$uibModal, NearbyService) {
 
         $scope.keyword = "";
         $scope.places = [];
-//$scope.image = "";
+
         $scope.getPlaces = function () {
             NearbyService.getPlaces($scope.keyword).then(function (response) {
                 $scope.places = response.data.results;
-console.log($scope.places)
             }, function (error) {
                 console.log('error');
             });
@@ -52,12 +51,20 @@ console.log($scope.places)
 
         $scope.getImage = function (photo) {
             NearbyService.getImage(photo).then(function(response){
-                response.data;
-                var panelImage = angular.element(document.querySelector('#img'));
-                panelImage.attr('src',response.data);
+               $scope.openImageInModal(response.data);
             },function(error){
                 console.log(error)
             })
+        }
+
+        $scope.openImageInModal = function (photo) {
+            $scope.placesImage = photo;
+            $uibModal.open({
+                templateUrl:'app/pages/near-by/view/image-modal.html',
+                controller: 'NearbyCtrl',
+                scope : $scope
+            })
+
         }
     }
 })();
