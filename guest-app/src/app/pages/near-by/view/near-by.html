@@ -1,35 +1,35 @@
 <section class="section-padding">
 </section>
 <div class="row">
-    <div class="col-lg-12" id="googleMap" style=height:400px;"></div>
+    <div class="col-lg-12" id="googleMap"></div>
 </div>
 <div class="row form-container">
     <div class="col-lg-6">
         <form>
             <div class=form-check">
-            <label class="radio-inline">
-                <input class="form-check-input" type="radio" ng-model="keyword" value="food">Food
-            </label>
+                <label class="radio-inline">
+                    <input class="form-check-input" type="radio" ng-model="keyword" value="food">Food
+                </label>
             </div>
             <div class="form-check">
-            <label class="radio-inline">
-                <input class="form-check-input" type="radio" ng-model="keyword" value="atm">Bank,ATM
-            </label>
+                <label class="radio-inline">
+                    <input class="form-check-input" type="radio" ng-model="keyword" value="banks">Bank,ATM
+                </label>
             </div>
             <div class="form-check">
-            <label class="radio-inline">
-                <input class="form-check-input" type="radio" ng-model="keyword" value="coffee">Coffee
-            </label>
+                <label class="radio-inline">
+                    <input class="form-check-input" type="radio" ng-model="keyword" value="coffee">Coffee
+                </label>
             </div>
             <div class="form-check">
-            <label class="radio-inline">
-                <input class="form-check-input" type="radio" ng-model="keyword" value="shopping">Shopping
-            </label>
+                <label class="radio-inline">
+                    <input class="form-check-input" type="radio" ng-model="keyword" value="shopping">Shopping
+                </label>
             </div>
             <div class="form-check">
-            <label class="radio-inline">
-                <input class="form-check-input" type="radio" ng-model="keyword" value="health">Health
-            </label>
+                <label class="radio-inline">
+                    <input class="form-check-input" type="radio" ng-model="keyword" value="health">Health
+                </label>
             </div>
             <div>
                 <button type="button" class="btn btn-primary" ng-click="getPlaces()">SEARCH</button>
@@ -43,27 +43,15 @@
     </div>
 </div>
 <div class="row nearby-places-container">
-    <div class="col-md-4 item-container" ng-repeat="item in places"
-         style="margin-bottom:3%;box-shadow:inset 0 0 2px #000000;">
+    <div class="col-md-3 item-container" ng-repeat="item in places">
         <div>
             <h5>Name : {{item.name}}</h5>
             <h5>Address : {{item.vicinity}}</h5>
             <h5>Open Now : {{item.openingHours.openNow ? 'YES' : 'NO'}}</h5>
             <h5>Type : {{item.types[0]}}, {{item.types[1]}}</h5>
-            <h5 class="map-link" ng-click="setMap(item.geometry.location.lat,item.geometry.location.lng,item.name)">Show
+            <h5 class="clickable" ng-click="setMap(item.geometry.location.lat,item.geometry.location.lng,item.name)">Show
                 Place On Map</h5>
+            <h5 class="clickable" ng-click="getImage(item.photos[0])">See Image</h5>
         </div>
     </div>
-    <!--<div class="col-md-4 padleft-right" ng-repeat="item in places">-->
-    <!--<figure class="imghvr-fold-up">-->
-    <!--<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CnRtAAAATLZNl354RwP_9UKbQ_5Psy40texXePv4oAlgP4qNEkdIrkyse7rPXYGd9D_Uj1rVsQdWT4oRz4QrYAJNpFX7rzqqMlZw2h2E2y5IKMUZ7ouD_SlcHxYq1yL4KbKUv3qtWgTK0A6QbGh87GB3sscrHRIQiG2RrmU_jF4tENr9wGS_YxoUSSDrYjWmrNfeEHSGSc3FyhNLlBU&key=AIzaSyDwaKMhq0FWSR7bIyNHd9vmaZ4G1eiOTJM" alt="N/A" class="img-responsive">-->
-    <!--<figcaption>-->
-    <!--<h4>Nmae:{{item.name}}</h4>-->
-    <!--<h4>Address{{item.vicinity}}</h4>-->
-    <!--<h4>Open Now:{{item.openingHours.openNow?YES:NO}}</h4>-->
-    <!--<h4 ng-click="setMap(item.geometry.location.lat,item.geometry.location.lng)">Show on map</h4>-->
-    <!--</figcaption>-->
-    <!--</figure>-->
-    <!--<div>{{item.name}}</div>-->
-    <!--</div>-->
 </div>
