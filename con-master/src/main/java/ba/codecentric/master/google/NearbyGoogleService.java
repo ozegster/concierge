@@ -27,11 +27,11 @@ public class NearbyGoogleService {
     }
 
 
-    public PlacesSearchResponse getPlaces(String keywordForSearching) throws InterruptedException, ApiException, IOException {
+    public PlacesSearchResponse getPlaces(String keywordForSearching, int radius) throws InterruptedException, ApiException, IOException {
 
         LatLng location = new LatLng(44.7273374, 18.0773216);
         NearbySearchRequest request = PlacesApi.nearbySearchQuery(geoApiContext, location)
-                .radius(500).keyword(keywordForSearching);
+                .radius(radius).keyword(keywordForSearching);
 
         PlacesSearchResponse response = request.await();
 

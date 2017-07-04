@@ -21,9 +21,8 @@ public class NearbyGoogleController {
     }
 
     @GetMapping(value = "/places")
-    public PlacesSearchResponse getPlaces(@RequestParam("data")String keywordForSearching) throws InterruptedException, ApiException, IOException {
-        System.out.println("ctrl " + keywordForSearching);
-        return googleService.getPlaces(keywordForSearching);
+    public PlacesSearchResponse getPlaces(@RequestParam("keyword")String keywordForSearching,@RequestParam("radius")int radius) throws InterruptedException, ApiException, IOException {
+        return googleService.getPlaces(keywordForSearching, radius);
     }
 
     @PostMapping(value = "/images",produces="text/plain")
