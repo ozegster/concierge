@@ -96,7 +96,7 @@
         <div>
             <h5 class="place-header">{{item.name}}</h5>
             <h5>Address : {{item.vicinity}}</h5>
-            <h5>Open Now : {{item.openingHours.openNow ? 'YES' : 'NO'}}</h5>
+            <h5>Open Now : {{item.openingHours.openNow ? 'YES' : item.openingHours.openNow == null ? 'No Information' : 'NO'}}</h5>
             <h5>Type : {{item.types[0]}}, {{item.types[1]}}</h5>
             <h5 class="clickable" ng-click="setMap(item.geometry.location.lat,item.geometry.location.lng,item.name)">
                 Show
