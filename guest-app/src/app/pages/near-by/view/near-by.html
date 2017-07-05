@@ -84,16 +84,16 @@
     </div>
 </div>
 <div class="row nearby-places-container">
-    <div class="col-md-3 item-container" ng-repeat="item in places">
-        <div>
-            <h5 class="place-header">{{item.name}}</h5>
-            <h5>Address : {{item.vicinity}}</h5>
-            <h5>Open Now : {{item.openingHours.openNow ? 'YES' : item.openingHours.openNow == null ? 'No Information' : 'NO'}}</h5>
-            <h5>Type : {{item.types[0]}}, {{item.types[1]}}</h5>
-            <h5 class="clickable" ng-click="setMap(item.geometry.location.lat,item.geometry.location.lng,item.name)">
-                Show
-                Place On Map</h5>
-            <h5 class="clickable" ng-click="getImage(item.photos[0])">See Image</h5>
+    <div ng-repeat="item in places">
+        <div class="clearfix" ng-if="$index % 3 == 0"></div>
+        <div class="col-sm-3 col-md-3 col-lg-3 item-container">
+            <h5 class="place-header place-data">{{item.name}}</h5>
+            <h5 class="place-data">Address : {{item.vicinity}}</h5>
+            <h5 class="place-data">Open Now : {{item.openingHours.openNow ? 'YES' : item.openingHours.openNow == null ? 'No Information' : 'NO'}}</h5>
+            <h5 class="place-data">Type : {{item.types[0]}}, {{item.types[1]}}</h5>
+            <h5 class="clickable place-data" ng-click="setMap(item.geometry.location.lat,item.geometry.location.lng,item.name)">
+            Show Place On Map</h5>
+            <h5 class="clickable place-data" ng-click="getImage(item.photos[0])">See Image</h5>
         </div>
     </div>
 </div>
