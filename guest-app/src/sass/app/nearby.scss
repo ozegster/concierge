@@ -4,10 +4,16 @@
   margin-bottom:3%;
 }
 
-.item-container{
+div.item-container{
   margin-left:6%;
   margin-top:3%;
-  box-shadow: 0 4px 2px -2px silver;
+  box-shadow: 0 4px 4px 0 silver;
+  padding-left:0px;
+  padding-right:0px;
+}
+
+.item-container h4{
+  padding-left:3px;
 }
 
 .clickable:hover{
@@ -43,5 +49,5 @@ h5.place-header{
   color:white;
   text-align:center;
   padding-top:5px;
-  padding-bottom:5px;
+  padding-bottom:15px;
 }
