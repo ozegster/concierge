@@ -4,5 +4,6 @@ exports.paths = {
     index : '/index.html',
     javascript : '/app/**/*.js',
     css :  '/sass/**/*.scss',
-    tmp : ".tmp/serve"
+    tmp : ".tmp/serve",
+    html : '/app/**/*.html',
 };
