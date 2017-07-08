@@ -8,8 +8,11 @@
         $stateProvider
             .state('facilities', {
                 url: '/facilities',
-                templateUrl: 'app/pages/facilities/view/facilities.html'
-            })
+                templateUrl: 'app/pages/facilities/view/facilities.html',
+                title:'Facilities',
+                controller:'FacilitiesCtrl'
+            });
+
     }
 })();
 

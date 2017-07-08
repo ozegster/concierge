@@ -13,7 +13,7 @@
         'GuestApp.pages.nearBy',
         'GuestApp.pages.reception',
         'GuestApp.pages.roomInfo',
-        'GuestApp.pages.weather',
+        'GuestApp.pages.weather'
     ])
         .config(routeConfig);
 

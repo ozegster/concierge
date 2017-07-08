@@ -1,0 +1,15 @@
+<div class="modal-container">
+    <div class="modal-content">
+        <div class="modal-body">
+            <h4 class="modals-titles">{{facility.facilityName}}</h4>
+            <div>
+                <p><b>Facility Type:</b> {{facility.facilityType.facilityType}}</p>
+                <p><b>Floor Number:</b> {{facility.floor}}</p>
+                <p><b>Description:</b> {{facility.description}}</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-responsive" ng-click="$dismiss()">Cancel</button>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,23 @@
-facilities <button type="button"><a ui-sref="home">get home</a></button>
+<section id ="courses" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="header-section text-center">
+                <h2>Facilities</h2>
+                <hr class="bottom-line">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 padleft-right btn" ng-click="getSelectedFacility(facility)" ng-repeat="facility in listOfFacilities">
+                <figure class="imghvr-fold-up">
+                        <img ng-src="{{facility.image}}"
+                             class="img-responsive"/>
+                    <figcaption>
+                        <h3>{{facility.facilityName}}</h3>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
