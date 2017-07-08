@@ -70,10 +70,23 @@
                 });
             };
 
+            var isExistingName = function (name) {
+                return $http({
+                    method: 'GET',
+                    params : { name : name},
+                    url: SERVER_PATH.url + '/room-types-name'
+                }).then(function (response) {
+                    return response;
+                }, function (error) {
+                    return error;
+                });
+            };
+
             return {
                 saveRoomType: saveRoomType,
                 getAllRoomTypes: getAllRoomTypes,
                 deleteRoomType: deleteRoomType,
+                isExistingName:isExistingName
             };
         }])
 })();

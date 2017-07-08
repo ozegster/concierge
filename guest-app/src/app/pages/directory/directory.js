@@ -9,7 +9,8 @@
         $stateProvider
             .state('directory', {
                 url: '/directory',
-                templateUrl: 'app/pages/directory/view/directory.html'
+                templateUrl: 'app/pages/directory/view/directory.html',
+                controller : 'DirectoryCtrl'
             })
     }
 })();

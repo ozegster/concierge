@@ -1,0 +1,27 @@
+.floor-data:hover{
+  color: black;
+}
+
+.floor-data{
+  cursor:pointer;
+  margin:0px;
+}
+
+.floor-data-title{
+  font-size:20px;
+  margin-top:3%;
+  color:black;
+}
+
+.modals-titles{
+  padding-left:15px;
+}
+
+.equals-height-measure{
+  word-break:break-all;
+}
+
+.floor-data-container{
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
